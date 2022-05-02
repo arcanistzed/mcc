@@ -12,29 +12,41 @@
     "@typhonjs-config/eslint-config/esm/2022/browser",
     "@typhonjs-fvtt/eslint-config-foundry.js"
   ],
-
   // Defines / overrides a few more environment parameters not provided in the configs above.
   "env": {
     "jquery": true
   },
-
   // Prevents overwriting any built in globals particularly from `@typhonjs-fvtt/eslint-config-foundry.js`, but also
   // node & browser environments. `event / window.event` shadowing is allowed due to being a common variable name and
   // an uncommonly used browser feature.
   //
   // Note: if you are using Typescript you must use `@typescript-eslint/no-shadow`
   "rules": {
-    "no-shadow": ["error", {
-      "builtinGlobals": true,
-      "hoist": "all",
-      "allow": [
-        "document",
-        "event",
-        "name",
-        "parent",
-        "status",
-        "top"
-      ]
-    }]
+    "no-shadow": [
+      "error",
+      {
+        "builtinGlobals": true,
+        "hoist": "all",
+        "allow": [
+          "document",
+          "event",
+          "name",
+          "parent",
+          "status",
+          "top"
+        ]
+      }
+    ],
+    "brace-style": [
+      "error",
+      "1tbs",
+      {
+        "allowSingleLine": true
+      }
+    ],
+    "arrow-parens": [
+      "error",
+      "as-needed"
+    ]
   }
 }

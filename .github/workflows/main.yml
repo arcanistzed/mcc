@@ -1,4 +1,3 @@
-# From https://github.com/League-of-Foundry-Developers/FoundryVTT-Module-Template/blob/master/.github/workflows/main.yml
 name: Release Creation
 
 on:
@@ -11,37 +10,41 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      # Substitute the Manifest and Download URLs in the `module.json`.
+      # Substitute the Manifest and Download URLs in the module.json
       - name: Substitute Manifest and Download Links For Versioned Ones
         id: sub_manifest_link_version
         uses: microsoft/variable-substitution@v1
         with:
-          files: 'module.json'
+          files: "module.json"
         env:
           version: ${{github.event.release.tag_name}}
           url: https://github.com/${{github.repository}}
           manifest: https://github.com/${{github.repository}}/releases/latest/download/module.json
           download: https://github.com/${{github.repository}}/releases/download/${{github.event.release.tag_name}}/module.zip
 
-      # Install packages.
-      - run: npm install
+      # Create a zip file with all files required by the module to add to the release
+      - run: zip -r ./module.zip module.json README.md LICENSE CHANGELOG.md styles/ dist/ templates/ languages/
 
-      # Build distribution.
-      - run: npm run build
-
-      # Create a zip file with all files required by the module to add to the release.
-      - run: zip -r ./module.zip module.json dist/ lang/ packs/ LICENSE AUTHORS
-
-      # Create a release for this specific version.
+      # Create a release for this specific version
       - name: Update Release with Files
         id: create_version_release
         uses: ncipollo/release-action@v1
         with:
-          allowUpdates: true # Set this to false if you want to prevent updating existing releases.
+          allowUpdates: true # Set this to false if you want to prevent updating existing releases
           name: ${{ github.event.release.name }}
           draft: false
           prerelease: false
           token: ${{ secrets.GITHUB_TOKEN }}
-          artifacts: './module.json, ./module.zip'
+          artifacts: "./module.json, ./module.zip"
           tag: ${{ github.event.release.tag_name }}
           body: ${{ github.event.release.body }}
+
+      # Autopublish to the Foundry Admin panel
+      - name: FoundryVTT AutoPublish
+        uses: Varriount/fvtt-autopublish@v1.0.6
+        with:
+          username: ${{ secrets.FOUNDRY_ADMIN_USER }}
+          password: ${{ secrets.FOUNDRY_ADMIN_PW }}
+          module-id: ${{ secrets.FOUNDRY_ADMIN_ID }}
+          manifest-url: https://github.com/${{ github.repository }}/releases/download/${{ github.event.release.tag_name }}/module.json
+          manifest-file: ./module.json

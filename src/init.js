@@ -1,3 +1,4 @@
-import BasicApplication from './view/BasicApplication.js';
+import ModuleCompatibilityChecker from "./view/app.js";
 
-Hooks.once('ready', () => new BasicApplication().render(true, { focus: true }));
+Hooks.once("ready", () => new ModuleCompatibilityChecker().render(true, { focus: true }));
+globalThis.ModuleCompatibilityChecker = ModuleCompatibilityChecker;

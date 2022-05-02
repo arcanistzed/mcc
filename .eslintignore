@@ -1,9 +1,7 @@
 .github/
 dist/
-docs/
-external/
-lang/
-scripts/
+languages/
 styles/
 templates/
 src/**/*.svelte
+rollup.config.mjs

@@ -1,40 +1,53 @@
 {
-  "name": "template-svelte-esm",
-  "title": "Template Svelte (ESM)",
-  "description": "Provides a bare-bones Foundry module template repo to get set up with using the TyphonJS Runtime Library and Svelte with ES Modules.",
-  "author": "Michael Leahy (TyphonJS) - MLeahy#4299",
+  "name": "mcc",
+  "title": "Module Compatibility Checker",
+  "description": "Check your module list for compatibility with the latest major version of Foundry VTT.",
+  "author": "Arcanist",
   "authors": [
     {
-      "name": "Michael Leahy (TyphonJS) - MLeahy#4299",
-      "url": "https://www.typhonjs.io"
+      "name": "Arcanist",
+      "url": "https://arcanistzed.github.io/",
+      "email": "arcanistzed@gmail.com",
+      "discord": "arcanist#4317",
+      "reddit": "u/arcanistzed"
     }
   ],
-  "url": "https://github.com/typhonjs-fvtt-demo/template-svelte-esm",
-  "readme": "https://github.com/typhonjs-fvtt-demo/template-svelte-esm/blob/master/README.md",
-  "bugs": "https://github.com/typhonjs-fvtt-demo/template-svelte-esm/issues",
-  "changelog": "https://github.com/typhonjs-fvtt-demo/template-svelte-esm/releases/latest/",
-  "version": "0.0.0",
-  "minimumCoreVersion": "0.8.6",
-  "compatibleCoreVersion": "9",
+  "url": "This is auto replaced",
+  "license": "https://github.com/arcanistzed/mcc/blob/main/LICENSE",
+  "readme": "https://github.com/arcanistzed/mcc/blob/main/README.md",
+  "bugs": "https://github.com/arcanistzed/mcc/issues/new/choose",
+  "changelog": "https://github.com/arcanistzed/mcc/blob/main/CHANGELOG.md",
+  "flags": {
+    "allowBugReporter": true
+  },
+  "version": "This is auto replaced",
+  "minimumCoreVersion": "9",
+  "compatibleCoreVersion": "10",
+  "scripts": [],
   "esmodules": [
-    "./dist/template-svelte-esm.js"
+    "dist/mcc.js"
   ],
   "styles": [
-    "./dist/template-svelte-esm.css"
+    "dist/mcc.css"
   ],
   "languages": [
     {
       "lang": "en",
       "name": "English",
-      "path": "lang/en.json"
+      "path": "languages/en.json"
     }
   ],
+  "packs": [],
   "system": [],
   "dependencies": [],
-  "socket": false,
-  "manifest": "https://github.com/typhonjs-fvtt-demo/template-svelte-esm/releases/latest/download/module.json",
-  "download": "https://github.com/typhonjs-fvtt-demo/template-svelte-esm/releases/download/0.0.0/module.zip",
-  "protected": false,
-  "coreTranslation": false,
-  "library": false
+  "manifest": "This is auto replaced",
+  "download": "This is auto replaced",
+  "library": false,
+  "manifestPlusVersion": "1.2.0",
+  "media": [
+    {
+      "type": "cover",
+      "url": ""
+    }
+  ]
 }
