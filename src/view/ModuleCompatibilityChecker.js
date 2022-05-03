@@ -1,5 +1,5 @@
 import { SvelteApplication } from "@typhonjs-fvtt/runtime/svelte/application";
-import Shell from "./app.svelte";
+import ModuleCompatibilityCheckerShell from "./ModuleCompatibilityChecker.svelte";
 
 export default class ModuleCompatibilityChecker extends SvelteApplication {
 	/** @override */
@@ -9,7 +9,7 @@ export default class ModuleCompatibilityChecker extends SvelteApplication {
 			width: 300,
 
 			svelte: {
-				class: Shell,
+				class: ModuleCompatibilityCheckerShell,
 				target: document.body,
 			},
 		});
