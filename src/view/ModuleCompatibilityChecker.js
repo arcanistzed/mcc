@@ -5,8 +5,11 @@ export default class ModuleCompatibilityChecker extends SvelteApplication {
 	/** @override */
 	static get defaultOptions() {
 		return foundry.utils.mergeObject(super.defaultOptions, {
-			title: "mcc.title",
-			width: 300,
+			title: "mcc.appTitle",
+			classes: ["mcc"],
+			width: window.innerWidth * 0.75,
+			height: window.innerHeight * 0.75,
+			resizable: true,
 
 			svelte: {
 				class: ModuleCompatibilityCheckerShell,

@@ -1,5 +1,36 @@
 {
     "mcc": {
-        "settings": {}
+        "appTitle": "Module Compatibility Checker",
+        "statuses": {
+            "x": "Package does not function at all or prevents the world loading",
+            "o": "Package functions with some errors",
+            "b": "Blocked from being tested",
+            "g": "Package works without issue or an updated version is available",
+            "n": "No testing necessary",
+            "a": "Archived - To be archived or no longer available",
+            "u": "Unknown status - Package may not be in the official listing"
+        },
+        "loading": "Loading...",
+        "hide": "Hide",
+        "show": "Show",
+        "details": "details",
+        "title": "Title",
+        "type": "Type",
+        "id": "ID",
+        "author": "Author Name",
+        "version": "Compatible Version",
+        "status": "Status",
+        "notes": "Notes",
+        "untitled": "Untitled",
+        "unknownAuthor": "Unknown Author",
+        "report": {
+            "count": "Package count",
+            "percentage": "Percentage ready"
+        },
+        "ready": "Ready",
+        "notReady": "Not ready",
+        "source": "Open spreadsheet",
+        "error": "Please try again. If this issue persists, join my Discord server to report a bug.",
+        "website": "My Website"
     }
 }
