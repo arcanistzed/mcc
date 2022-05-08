@@ -6,7 +6,6 @@
 	import { fade } from "svelte/transition";
 
 	import GooglePieChart from "./components/GooglePieChart.svelte";
-	import PieChart from "./components/PieChart.svelte";
 	import Loading from "./components/Loading.svelte";
 	import Error from "./components/Error.svelte";
 
@@ -66,7 +65,6 @@
 	{:then rows}
 		<main>
 			<header>
-				<PieChart {percentage} />
 				<GooglePieChart
 					cols={[
 						{ type: "string" },
