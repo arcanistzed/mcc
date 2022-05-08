@@ -6,7 +6,7 @@
 	import { fade } from "svelte/transition";
 	import { flip } from "svelte/animate";
 
-	import GooglePieChart from "./components/GooglePieChart.svelte";
+	import PieChart from "./components/PieChart.svelte";
 	import Loading from "./components/Loading.svelte";
 	import Error from "./components/Error.svelte";
 
@@ -76,16 +76,11 @@
 	{:else}
 		<main>
 			<header>
-				<GooglePieChart
-					cols={[
-						{ type: "string" },
-						{ type: "number" },
+				<PieChart
+					data={[
+						{ label: [localize("ready")], value: percentage, hue: 120 },
+						{ label: [localize("notReady")], value: 100 - percentage, hue: 0 },
 					]}
-					rows={[
-						[localize("ready"), percentage],
-						[localize("notReady"), 100 - percentage]
-					]}
-					on:select={(...args) => console.log(args)}
 				/>
 				<button on:click={() => (details = !details)}>
 					{details ? localize("hide") : localize("show")}
@@ -157,7 +152,6 @@
 		display: flex;
 		justify-content: center;
 		position: relative;
-		min-height: 3em;
 	}
 
 	button {
