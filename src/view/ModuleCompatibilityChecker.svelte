@@ -142,7 +142,7 @@
 	{/if}
 </ApplicationShell>
 
-<style lang="scss" scoped>
+<style scoped>
 	main {
 		display: flex;
 		gap: 1em;
@@ -155,8 +155,9 @@
 
 	header {
 		display: flex;
-		justify-content: space-between;
+		justify-content: center;
 		position: relative;
+		min-height: 3em;
 	}
 
 	button {
@@ -170,12 +171,14 @@
 		height: fit-content;
 		width: 100%;
 		margin: 0;
+		border: none;
 	}
 
 	thead,
 	tfoot {
 		position: sticky;
 		background-color: #555;
+		z-index: 1;
 	}
 
 	thead {
