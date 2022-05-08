@@ -4,6 +4,7 @@
 <script>
 	import { ApplicationShell } from "@typhonjs-fvtt/runtime/svelte/component/core";
 	import { fade } from "svelte/transition";
+	import { flip } from "svelte/animate";
 
 	import GooglePieChart from "./components/GooglePieChart.svelte";
 	import Loading from "./components/Loading.svelte";
@@ -14,17 +15,25 @@
 
 	let rows = [],
 		details = false,
+		state = "loading",
+		errorMessage,
 		working,
 		known,
 		percentage,
-		direction = false;
+		direction = false,
+		key = 0;
 
 	const spreadsheetURL = `https://docs.google.com/spreadsheets/d/${SpreadsheetController.spreadsheetID}/edit`;
 
-	async function getRows() {
-		rows = await SpreadsheetController.getRows();
-		return rows;
-	}
+	SpreadsheetController.getRows()
+		.then(result => {
+			state = null;
+			rows = result;
+		})
+		.catch(error => {
+			state = "error";
+			errorMessage = error;
+		});
 
 	const colors = {
 			X: "#cc0000",
@@ -60,9 +69,11 @@
 </script>
 
 <ApplicationShell bind:elementRoot styleContent={{ padding: 0 }}>
-	{#await getRows()}
+	{#if state === "loading"}
 		<Loading />
-	{:then rows}
+	{:else if state === "error"}
+		<Error {errorMessage} />
+	{:else}
 		<main>
 			<header>
 				<GooglePieChart
@@ -96,8 +107,8 @@
 					</tr>
 				</thead>
 				<tbody>
-					{#each rows as row, i}
-						<tr style="background-color: {colors[row.status] + (i % 2 === 0 ? '50' : '80')}">
+					{#each rows as row, i (key)}
+						<tr animate:flip style="background-color: {colors[row.status] + (i % 2 === 0 ? '50' : '80')}">
 							<td>{row.title}</td>
 							{#if details}
 								<td transition:fade>{row.type}</td>
@@ -128,9 +139,7 @@
 				</tfoot>
 			</table>
 		</main>
-	{:catch error}
-		<Error {error} />
-	{/await}
+	{/if}
 </ApplicationShell>
 
 <style lang="scss" scoped>
