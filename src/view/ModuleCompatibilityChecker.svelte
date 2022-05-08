@@ -2,6 +2,8 @@
 <svelte:options accessors={true} />
 
 <script>
+  import Heading from './Heading.svelte';
+
 	import { ApplicationShell } from "@typhonjs-fvtt/runtime/svelte/component/core";
 	import { fade } from "svelte/transition";
 	import { flip } from "svelte/animate";
@@ -20,8 +22,7 @@
 		working,
 		known,
 		percentage,
-		direction = false,
-		key = 0;
+		mode;
 
 	const spreadsheetURL = `https://docs.google.com/spreadsheets/d/${SpreadsheetController.spreadsheetID}/edit`;
 
@@ -60,11 +61,6 @@
 		percentage = parseFloat((100 * (working / Math.max(known, 1))).toFixed(2));
 	}
 
-	function sortBy(heading) {
-		rows = rows.sort((a, b) => a[heading].localeCompare(b[heading]));
-		if (direction) rows = rows.reverse();
-	}
-
 	export let elementRoot;
 </script>
 
@@ -90,21 +86,21 @@
 			<table>
 				<thead>
 					<tr>
-						<th on:click={() => sortBy("title")}>{localize("title")}</th>
+						<Heading name={"title"} bind:rows={rows} bind:mode={mode}/>
 						{#if details}
-							<th transition:fade>{localize("type")}</th>
-							<th transition:fade>{localize("id")}</th>
-							<th transition:fade>{localize("author")}</th>
-							<th transition:fade>{localize("version")}</th>
+							<Heading name={"type"} bind:rows={rows} bind:mode={mode}/>
+							<Heading name={"id"} bind:rows={rows} bind:mode={mode}/>
+							<Heading name={"author"} bind:rows={rows} bind:mode={mode}/>
+							<Heading name={"version"} bind:rows={rows} bind:mode={mode}/>
 						{/if}
-						<th>{localize("status")}</th>
-						<th>{localize("notes")}</th>
+						<Heading name={"status"} bind:rows={rows} bind:mode={mode}/>
+						<Heading name={"notes"} bind:rows={rows} bind:mode={mode}/>
 					</tr>
 				</thead>
 				<tbody>
-					{#each rows as row, i (key)}
+					{#each rows as row, i (row.id)}
 						<tr animate:flip style="background-color: {colors[row.status] + (i % 2 === 0 ? '50' : '80')}">
-							<td>{row.title}</td>
+							<td transition:fade>{row.title}</td>
 							{#if details}
 								<td transition:fade>{row.type}</td>
 								<td transition:fade>{row.id}</td>
@@ -112,19 +108,20 @@
 								<td transition:fade>{row.version}</td>
 							{/if}
 							{#if isV10}
-								<td data-tooltip={explanations[row.status]}>{row.status}</td>
+								<td transition:fade data-tooltip={explanations[row.status]}>{row.status}</td>
 							{:else}
-								<td title={explanations[row.status]}>{row.status}</td>
+								<td transition:fade title={explanations[row.status]}>{row.status}</td>
 							{/if}
-							<td>{row.notes}</td>
+							<td transition:fade>{row.notes}</td>
 						</tr>
 					{/each}
 				</tbody>
 				<tfoot>
 					<tr>
-						<td colspan={details ? 4 : 1}>{localize("report.count")}: {rows.length}</td>
-						<td colspan={details ? 2 : 1}>{localize("report.percentage")}: {percentage}%</td>
-						<td>
+						<td transition:fade colspan={details ? 4 : 1}>{localize("report.count")}: {rows.length}</td>
+						<td transition:fade colspan={details ? 2 : 1}>{localize("report.percentage")}: {percentage}%</td
+						>
+						<td transition:fade>
 							<a href={spreadsheetURL}>
 								{localize("source")}
 								<i class="fa-solid fa-arrow-up-right-from-square" />
@@ -179,12 +176,7 @@
 		top: 0;
 	}
 
-	th {
-		white-space: nowrap;
-	}
-
-	td,
-	th {
+	td {
 		padding: 0.5em;
 	}
 
