@@ -6,22 +6,22 @@ import preprocess from "svelte-preprocess";
 import { terser } from "rollup-plugin-terser"; // Terser is used for minification / mangling
 import { postcssConfig, terserConfig, typhonjsRuntime } from "@typhonjs-fvtt/runtime/rollup";
 
-const s_COMPRESS = false; // Set to true to compress the module bundle.
-const s_SOURCEMAPS = true; // Generate sourcemaps for the bundle (recommended).
+const COMPRESS = false; // Set to true to compress the module bundle.
+const SOURCEMAPS = true; // Generate sourcemaps for the bundle (recommended).
 
 // Set to true to enable linking against the TyphonJS Runtime Library module.
 // You must add a Foundry module dependency on the `typhonjs` Foundry package or manually install it in Foundry from:
 // https://github.com/typhonjs-fvtt-lib/typhonjs/releases/latest/download/module.json
-const s_TYPHONJS_MODULE_LIB = false;
+const TYPHONJS_MODULE_LIB = false;
 
 // Creates a standard configuration for PostCSS with autoprefixer & postcss-preset-env.
 const postcssMain = postcssConfig({
 	extract: "mcc.css",
-	compress: s_COMPRESS,
-	sourceMap: s_SOURCEMAPS,
+	compress: COMPRESS,
+	sourceMap: SOURCEMAPS,
 });
 
-const s_RESOLVE_CONFIG = {
+const RESOLVE_CONFIG = {
 	browser: true,
 	dedupe: ["svelte"],
 };
@@ -29,10 +29,10 @@ const s_RESOLVE_CONFIG = {
 export default () => {
 	// Defines potential output plugins to use conditionally if the .env file indicates the bundles should be
 	// minified / mangled.
-	const outputPlugins = s_COMPRESS ? [terser(terserConfig())] : [];
+	const outputPlugins = COMPRESS ? [terser(terserConfig())] : [];
 
 	// Defines whether source maps are generated / loaded.
-	const sourcemap = s_SOURCEMAPS;
+	const sourcemap = SOURCEMAPS;
 
 	return [
 		{
@@ -54,6 +54,8 @@ export default () => {
 							return;
 						}
 
+						console.log(warning);
+
 						// Let Rollup handle all other warnings normally.
 						handler(warning);
 					},
@@ -61,10 +63,10 @@ export default () => {
 
 				postcss(postcssMain),
 
-				resolve(s_RESOLVE_CONFIG),
+				resolve(RESOLVE_CONFIG),
 
 				// When s_TYPHONJS_MODULE_LIB is true transpile against the Foundry module version of TRL.
-				s_TYPHONJS_MODULE_LIB && typhonjsRuntime(),
+				TYPHONJS_MODULE_LIB && typhonjsRuntime(),
 
 				/* babel({
 					babelHelpers: "bundled",
