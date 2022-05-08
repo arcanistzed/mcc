@@ -2,29 +2,15 @@
 <svelte:options accessors={true} />
 
 <script>
-  import Heading from './Heading.svelte';
-
 	import { ApplicationShell } from "@typhonjs-fvtt/runtime/svelte/component/core";
-	import { fade } from "svelte/transition";
-	import { flip } from "svelte/animate";
-
-	import PieChart from "./components/PieChart.svelte";
-	import Loading from "./components/Loading.svelte";
-	import Error from "./components/Error.svelte";
-
 	import SpreadsheetController from "../controller/SpreadsheetController.js";
-	import { isV10, localize } from "../utils.js";
+	import Loading from "./Loading.svelte";
+	import Error from "./Error.svelte";
+	import Table from './Table.svelte';
 
 	let rows = [],
-		details = false,
 		state = "loading",
-		errorMessage,
-		working,
-		known,
-		percentage,
-		mode;
-
-	const spreadsheetURL = `https://docs.google.com/spreadsheets/d/${SpreadsheetController.spreadsheetID}/edit`;
+		errorMessage;
 
 	SpreadsheetController.getRows()
 		.then(result => {
@@ -36,31 +22,6 @@
 			errorMessage = error;
 		});
 
-	const colors = {
-			X: "#cc0000",
-			O: "#f1c232",
-			B: "#b45f06",
-			G: "#6aa84f",
-			N: "#3d85c6",
-			A: "#666666",
-			U: "#ffffff",
-		},
-		explanations = {
-			X: localize("statuses.x"),
-			O: localize("statuses.o"),
-			B: localize("statuses.b"),
-			G: localize("statuses.g"),
-			N: localize("statuses.n"),
-			A: localize("statuses.a"),
-			U: localize("statuses.u"),
-		};
-
-	$: {
-		working = rows.filter(row => row.status === "G" || row.status === "N").length;
-		known = rows.filter(row => row.status !== "U").length;
-		percentage = parseFloat((100 * (working / Math.max(known, 1))).toFixed(2));
-	}
-
 	export let elementRoot;
 </script>
 
@@ -70,136 +31,6 @@
 	{:else if state === "error"}
 		<Error {errorMessage} />
 	{:else}
-		<main>
-			<header>
-				<PieChart
-					data={[
-						{ label: [localize("ready")], value: percentage, hue: 120 },
-						{ label: [localize("notReady")], value: 100 - percentage, hue: 0 },
-					]}
-				/>
-				<button on:click={() => (details = !details)}>
-					{details ? localize("hide") : localize("show")}
-					{localize("details")}
-				</button>
-			</header>
-			<table>
-				<thead>
-					<tr>
-						<Heading name={"title"} bind:rows={rows} bind:mode={mode}/>
-						{#if details}
-							<Heading name={"type"} bind:rows={rows} bind:mode={mode}/>
-							<Heading name={"id"} bind:rows={rows} bind:mode={mode}/>
-							<Heading name={"author"} bind:rows={rows} bind:mode={mode}/>
-							<Heading name={"version"} bind:rows={rows} bind:mode={mode}/>
-						{/if}
-						<Heading name={"status"} bind:rows={rows} bind:mode={mode}/>
-						<Heading name={"notes"} bind:rows={rows} bind:mode={mode}/>
-					</tr>
-				</thead>
-				<tbody>
-					{#each rows as row, i (row.id)}
-						<tr animate:flip style="background-color: {colors[row.status] + (i % 2 === 0 ? '50' : '80')}">
-							<td transition:fade>{row.title}</td>
-							{#if details}
-								<td transition:fade>{row.type}</td>
-								<td transition:fade>{row.id}</td>
-								<td transition:fade>{row.author}</td>
-								<td transition:fade>{row.version}</td>
-							{/if}
-							{#if isV10}
-								<td transition:fade data-tooltip={explanations[row.status]}>{row.status}</td>
-							{:else}
-								<td transition:fade title={explanations[row.status]}>{row.status}</td>
-							{/if}
-							<td transition:fade>{row.notes}</td>
-						</tr>
-					{/each}
-				</tbody>
-				<tfoot>
-					<tr>
-						<td transition:fade colspan={details ? 4 : 1}>{localize("report.count")}: {rows.length}</td>
-						<td transition:fade colspan={details ? 2 : 1}>{localize("report.percentage")}: {percentage}%</td
-						>
-						<td transition:fade>
-							<a href={spreadsheetURL}>
-								{localize("source")}
-								<i class="fa-solid fa-arrow-up-right-from-square" />
-							</a>
-						</td>
-					</tr>
-				</tfoot>
-			</table>
-		</main>
+		<Table bind:rows bind:state />
 	{/if}
 </ApplicationShell>
-
-<style scoped>
-	main {
-		display: flex;
-		gap: 1em;
-		flex-direction: column;
-		overflow-y: scroll;
-		position: relative;
-		margin: 1em;
-		padding: 0 0.5em;
-	}
-
-	header {
-		display: flex;
-		justify-content: center;
-		position: relative;
-	}
-
-	button {
-		position: absolute;
-		width: fit-content;
-		right: 0;
-		bottom: 0;
-	}
-
-	table {
-		height: fit-content;
-		width: 100%;
-		margin: 0;
-		border: none;
-	}
-
-	thead,
-	tfoot {
-		position: sticky;
-		background-color: #555;
-		z-index: 1;
-	}
-
-	thead {
-		top: 0;
-	}
-
-	td {
-		padding: 0.5em;
-	}
-
-	tbody {
-		overflow: scroll;
-	}
-
-	tr {
-		transition: 250ms;
-	}
-
-	tr:hover {
-		filter: drop-shadow(0 0 0 black);
-	}
-
-	tfoot {
-		bottom: 0;
-		color: white;
-		text-align: center;
-	}
-
-	tfoot a {
-		color: white;
-		white-space: nowrap;
-	}
-</style>

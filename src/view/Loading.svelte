@@ -1,5 +1,5 @@
 <script>
-	import { localize } from "../../utils.js";
+	import { localize } from "../utils.js";
 </script>
 
 <main>

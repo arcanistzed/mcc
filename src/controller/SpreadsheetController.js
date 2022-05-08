@@ -4,10 +4,10 @@ export default class SpreadsheetController {
 	static spreadsheetID = "1ppPR348igxL75M_G7dWl3otzXYpPwrnj7NVSDP8GmVw";
 
 	static async getRows() {
-		// const spreadsheet = await this.getSpreadsheet();
+		const spreadsheet = await this.getSpreadsheet();
 		await new Promise(resolve => setTimeout(() => resolve(), 1000));
 		const modules = this.getPackageList();
-		const rows = modules.map(module => this.lookupCompatibility(/* spreadsheet */[], module));
+		const rows = modules.map(module => this.lookupCompatibility(spreadsheet, module));
 		return rows;
 	}
 
@@ -22,9 +22,6 @@ export default class SpreadsheetController {
 	}
 
 	static getPackageList() {
-		// FIXME Remove when core bug with active modules is fixed
-		game.modules.forEach(m => (m.active = true));
-
 		return [game.system, ...game.modules.filter(m => m.active && (m.name || m.id))];
 	}
 
@@ -46,7 +43,7 @@ export default class SpreadsheetController {
 			id: current,
 			author: authorName ?? localize("unknownAuthor"),
 			version: compatibleCoreVersion ?? "?",
-			status: Math.random() > 0.5 ? "G" :  Math.random() > 0.5 ? "X" : "U",
+			status: /* Math.random() > 0.5 ? "G" : Math.random() > 0.5 ? "X" : */ "U",
 			notes: "",
 		};
 

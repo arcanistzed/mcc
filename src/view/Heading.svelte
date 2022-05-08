@@ -8,8 +8,16 @@
 	let direction = false;
 
 	function sortBy(heading) {
+		// If there are no contents under this heading, don't sort
+		if (!rows.some(row => row[heading] !== "")) return;
+
+		// Update the current sorting mode
 		mode = heading;
+
+		// Sort the rows by this heading
 		rows = rows.sort((a, b) => a[heading].localeCompare(b[heading]));
+
+		// Reverse the order if the direction is "up"
 		direction = !direction;
 		if (direction) rows = rows.reverse();
 	}
