@@ -31,6 +31,10 @@
 
 <style>
 	google-chart {
-		margin: -4em -2em;
+		position: fixed;
+		top: 2em;
+		right: -2em;
+		z-index: 1;
+		clip-path: path("M0,10 340,10 340,190 245,190 245,235 0,235"); /* To not hide details button */
 	}
 </style>
