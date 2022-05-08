@@ -5,7 +5,6 @@ export default class SpreadsheetController {
 
 	static async getRows() {
 		const spreadsheet = await this.getSpreadsheet();
-		await new Promise(resolve => setTimeout(() => resolve(), 1000));
 		const modules = this.getPackageList();
 		const rows = modules.map(module => this.lookupCompatibility(spreadsheet, module));
 		return rows;
@@ -43,7 +42,7 @@ export default class SpreadsheetController {
 			id: current,
 			author: authorName ?? localize("unknownAuthor"),
 			version: compatibleCoreVersion ?? "?",
-			status: /* Math.random() > 0.5 ? "G" : Math.random() > 0.5 ? "X" : */ "U",
+			status: "U",
 			notes: "",
 		};
 
