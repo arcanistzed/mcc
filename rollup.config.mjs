@@ -6,15 +6,12 @@ import preprocess from "svelte-preprocess";
 import { terser } from "rollup-plugin-terser"; // Terser is used for minification / mangling
 import { postcssConfig, terserConfig, typhonjsRuntime } from "@typhonjs-fvtt/runtime/rollup";
 
-const COMPRESS = false; // Set to true to compress the module bundle.
-const SOURCEMAPS = true; // Generate sourcemaps for the bundle (recommended).
+const PRODUCTION = process.env.BUILD === "production";
 
-// Set to true to enable linking against the TyphonJS Runtime Library module.
-// You must add a Foundry module dependency on the `typhonjs` Foundry package or manually install it in Foundry from:
-// https://github.com/typhonjs-fvtt-lib/typhonjs/releases/latest/download/module.json
-const TYPHONJS_MODULE_LIB = false;
+const COMPRESS = PRODUCTION; // Compress the module bundle in production mode
+const SOURCEMAPS = true; // Generate sourcemaps for the bundle
 
-// Creates a standard configuration for PostCSS with autoprefixer & postcss-preset-env.
+// Creates a standard configuration for PostCSS
 const postcssMain = postcssConfig({
 	extract: "mcc.css",
 	compress: COMPRESS,
@@ -27,11 +24,10 @@ const RESOLVE_CONFIG = {
 };
 
 export default () => {
-	// Defines potential output plugins to use conditionally if the .env file indicates the bundles should be
-	// minified / mangled.
+	// Defines potential output plugins to use conditionally
 	const outputPlugins = COMPRESS ? [terser(terserConfig())] : [];
 
-	// Defines whether source maps are generated / loaded.
+	// Defines whether source maps are generated
 	const sourcemap = SOURCEMAPS;
 
 	return [
@@ -54,9 +50,7 @@ export default () => {
 							return;
 						}
 
-						console.log(warning);
-
-						// Let Rollup handle all other warnings normally.
+						// Let Rollup handle all other warnings normally
 						handler(warning);
 					},
 				}),
@@ -65,15 +59,13 @@ export default () => {
 
 				resolve(RESOLVE_CONFIG),
 
-				// When s_TYPHONJS_MODULE_LIB is true transpile against the Foundry module version of TRL.
-				TYPHONJS_MODULE_LIB && typhonjsRuntime(),
-
-				/* babel({
+				// Transpile only for production builds
+				PRODUCTION && babel({
 					babelHelpers: "bundled",
 					presets: [
 						["@babel/preset-env", { bugfixes: true, shippedProposals: true, targets: { esmodules: true } }],
 					],
-				}), */
+				}),
 			],
 			onwarn(warning, warn) {
 				// Suppress warning from library code

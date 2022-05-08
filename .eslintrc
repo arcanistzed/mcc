@@ -14,6 +14,8 @@
   ],
   // Defines / overrides a few more environment parameters not provided in the configs above.
   "env": {
+    "node": true,
+    "browser": true,
     "jquery": true
   },
   // Prevents overwriting any built in globals particularly from `@typhonjs-fvtt/eslint-config-foundry.js`, but also
@@ -47,6 +49,8 @@
     "arrow-parens": [
       "error",
       "as-needed"
-    ]
+    ],
+    "jsdoc/newline-after-description": "off",
+    "jsdoc/tag-lines": "off"
   }
 }

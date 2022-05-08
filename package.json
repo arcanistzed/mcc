@@ -30,6 +30,7 @@
   "scripts": {
     "build": "rollup --config",
     "build-watch": "rollup --watch --config",
-    "eslint": "eslint ."
+    "lint": "eslint .",
+    "release": "rollup --config --environment BUILD:production"
   }
 }
