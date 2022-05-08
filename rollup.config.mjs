@@ -73,6 +73,18 @@ export default () => {
 					],
 				}), */
 			],
+			onwarn(warning, warn) {
+				// Suppress warning from library code
+				if (
+					warning.code === "THIS_IS_UNDEFINED" &&
+					warning.loc.file.includes("node_modules/@google-web-components/google-chart/google-chart.js")
+				) {
+					return;
+				}
+
+				// Use default for everything else
+				warn(warning);
+			},
 		},
 	];
 };
