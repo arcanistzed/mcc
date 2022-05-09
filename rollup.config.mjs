@@ -9,7 +9,7 @@ import { postcssConfig, terserConfig, typhonjsRuntime } from "@typhonjs-fvtt/run
 const PRODUCTION = process.env.BUILD === "production";
 
 const COMPRESS = PRODUCTION; // Compress the module bundle in production mode
-const SOURCEMAPS = true; // Generate sourcemaps for the bundle
+const SOURCEMAPS = PRODUCTION; // Generate sourcemaps for the bundle
 
 // Creates a standard configuration for PostCSS
 const postcssMain = postcssConfig({
