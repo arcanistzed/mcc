@@ -10,9 +10,6 @@
 	export let state;
 
 	let details = false,
-		working,
-		known,
-		percentage,
 		mode;
 
 	const spreadsheetURL = `https://docs.google.com/spreadsheets/d/${SpreadsheetController.spreadsheetID}/edit`;
@@ -27,12 +24,6 @@
 			errorMessage = error;
 		});
 
-	// Keep the percentage of working packages up to date
-	$: {
-		working = rows.filter(row => row.status === "G" || row.status === "N").length;
-		known = rows.filter(row => row.status !== "U").length;
-		percentage = parseFloat((100 * (working / Math.max(known, 1))).toFixed(2));
-	}
 </script>
 
 <main>
@@ -51,7 +42,7 @@
 	<table>
 		<Header bind:rows bind:details bind:mode />
 		<Rows bind:rows bind:details />
-		<Footer bind:details bind:count={rows.length} bind:percentage url={spreadsheetURL} />
+		<Footer bind:rows bind:details url={spreadsheetURL} />
 	</table>
 </main>
 

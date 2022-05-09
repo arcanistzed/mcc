@@ -2,10 +2,20 @@
 	import { fade } from "svelte/transition";
 	import { isV10, localize } from "../utils.js";
 
+	export let rows;
 	export let details = false;
-	export let count;
-	export let percentage;
 	export let url;
+
+	let percentage, working, known;
+
+	$: count = rows.length;
+	
+	// Keep the percentage of working packages up to date
+	$: {
+		working = rows.filter(row => row.status === "G" || row.status === "N").length;
+		known = rows.filter(row => row.status !== "U").length;
+		percentage = parseFloat((100 * (working / Math.max(known, 1))).toFixed(2));
+	}
 </script>
 
 <tfoot>
