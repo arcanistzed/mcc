@@ -1,6 +1,6 @@
 <script>
 	import { fade } from "svelte/transition";
-	import { localize } from "../utils.js";
+	import { isV10, localize } from "../utils.js";
 
 	export let details = false;
 	export let count;
@@ -15,7 +15,11 @@
 		<td transition:fade>
 			<a href={url}>
 				{localize("source")}
-				<i class="fa-solid fa-arrow-up-right-from-square" />
+				{#if isV10()}
+					<i class="fa-solid fa-arrow-up-right-from-square" />
+				{:else}
+					<i class="fas fa-external-link-alt" />
+				{/if}
 			</a>
 		</td>
 	</tr>

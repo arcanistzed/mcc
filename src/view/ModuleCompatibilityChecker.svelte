@@ -20,6 +20,7 @@
 		.catch(error => {
 			state = "error";
 			errorMessage = error;
+			console.error(error);
 		});
 
 	export let elementRoot;

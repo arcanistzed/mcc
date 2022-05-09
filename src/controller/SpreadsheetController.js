@@ -21,31 +21,33 @@ export default class SpreadsheetController {
 	}
 
 	static getPackageList() {
-		return [game.system, ...game.modules.filter(m => m.active && (m.name || m.id))];
+		return [game.system.data ?? game.system, ...[...game.modules.values()].filter(m => m.active).map(m => m.data)];
 	}
 
 	static lookupCompatibility(spreadsheet, module) {
 		const current = module.id ?? module.name;
 
+		// Get fallback
 		const {
 			title,
-			type,
-			authors: [{ name: authorName }],
+			type = "module",
+			authors: [{ name: authorName } = {}],
 			compatibleCoreVersion,
 		} = module;
-
-		const data = this.rowToObject(spreadsheet.find(r => r[2] === current));
-
 		const fallback = {
 			title: title ?? localize("untitled"),
 			type,
 			id: current,
-			author: authorName ?? localize("unknownAuthor"),
+			author: authorName ?? module.author ?? localize("unknownAuthor"),
 			version: compatibleCoreVersion ?? "?",
 			status: "U",
 			notes: "",
 		};
 
+		// Get spreadsheet data
+		const data = this.rowToObject(spreadsheet.find(r => r[2] === current));
+
+		// Merge data
 		for (const property in data) {
 			if (property === "version") {
 				data.version = isNewerVersion(data.version, fallback.version) ? data.version : fallback.version;
@@ -61,7 +63,7 @@ export default class SpreadsheetController {
 	static rowToObject(row) {
 		const headings = ["title", "type", "id", "author", "version", "status", "notes"],
 			object = {};
-		
+
 		for (let i = 0; i < headings.length; i++) {
 			object[headings[i]] = row?.[i];
 		}

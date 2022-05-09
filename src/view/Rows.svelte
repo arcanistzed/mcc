@@ -34,12 +34,12 @@
 				<td transition:fade>{row.type}</td>
 				<td transition:fade>{row.id}</td>
 				<td transition:fade>{row.author}</td>
-				<td transition:fade>{row.version}</td>
+				<td transition:fade class="center">{row.version}</td>
 			{/if}
-			{#if isV10}
-				<td transition:fade data-tooltip={explanations[row.status]}>{row.status}</td>
+			{#if isV10()}
+				<td transition:fade class="center" data-tooltip={explanations[row.status]}>{row.status}</td>
 			{:else}
-				<td transition:fade title={explanations[row.status]}>{row.status}</td>
+				<td transition:fade class="center" title={explanations[row.status]}>{row.status}</td>
 			{/if}
 			<td transition:fade>{row.notes}</td>
 		</tr>
@@ -61,5 +61,9 @@
 
 	tr:hover {
 		filter: drop-shadow(0 0 0 black);
+	}
+
+	.center {
+		text-align: center;
 	}
 </style>
