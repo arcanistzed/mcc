@@ -12,6 +12,11 @@ In the setup screen, use the URL `https://github.com/arcanistzed/mcc/releases/la
 ## Usage
 
 
+## Development
+
+Once you've cloned the GitHub repo, use `npm install` to fetch all dependencies such as Svelte and TyphonJS Runtime Library. Compile the module with `npm run build` (or `npm run build-watch` for watch mode). Use `npm run release` to compile for production (this is automatically run by the GitHub Actions CI pipeline as well).
+In order for your development version of the module to show up in Foundry VTT, you must [symlink](https://world-smiths.github.io/documentation/wiki/symlinking.html) it.
+
 ## Support
 
 Please consider supporting me on [my Patreon](https://patreon.com/arcanistzed) if you like my work. You can see a list of all my projects on [my website](https://arcanist.me).
