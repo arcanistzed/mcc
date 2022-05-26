@@ -1,4 +1,3 @@
-<!-- This is necessary for Svelte to generate accessors TRL can access for `elementRoot` -->
 <svelte:options accessors={true} />
 
 <script>
