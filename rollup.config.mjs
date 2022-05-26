@@ -4,7 +4,7 @@ import resolve from "@rollup/plugin-node-resolve"; // This resolves NPM modules 
 import svelte from "rollup-plugin-svelte";
 import preprocess from "svelte-preprocess";
 import { terser } from "rollup-plugin-terser"; // Terser is used for minification / mangling
-import { postcssConfig, terserConfig, typhonjsRuntime } from "@typhonjs-fvtt/runtime/rollup";
+import { postcssConfig, terserConfig } from "@typhonjs-fvtt/runtime/rollup";
 
 const PRODUCTION = process.env.BUILD === "production";
 
