@@ -8,6 +8,13 @@
 	export let details = false;
 	export let statuses;
 
+	/**
+	 * Set the color of a row based for an alternating colors effect
+	 * @param element - The element to set the color on
+	 * @param status - The status of the row
+	 * @param i - The index of the row
+	 * @param hover - Whether the row is hovered
+	 */
 	function setColor(element, status, i, hover = false) {
 		const { hsl } = statuses[status];
 		element.style.backgroundColor =
@@ -16,6 +23,9 @@
 				: `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2] + 5 * hover}%, ${50 * (hover + 3)}%)`;
 	}
 
+	/**
+	 * Set alternating colors for all of the rows based on their status
+	 */
 	function setAllColors() {
 		document.querySelectorAll("tr").forEach((tr, i) => {
 			if (tr.dataset.status) setColor(tr, tr.dataset.status, i + 1);

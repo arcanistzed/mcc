@@ -7,6 +7,10 @@
 	export let mode = "";
 	let direction = false;
 
+	/**
+	 * Sort the rows by a given heading
+	 * @param heading - The heading to sort by
+	 */
 	function sortBy(heading) {
 		// If there are no contents under this heading, don't sort
 		if (!rows.some(row => row[heading] !== "")) return;
