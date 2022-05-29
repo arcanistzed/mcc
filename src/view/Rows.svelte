@@ -1,5 +1,5 @@
 <script>
-	import { onMount } from "svelte";
+	import { onMount, afterUpdate } from "svelte";
 	import { fade } from "svelte/transition";
 	import { flip } from "svelte/animate";
 	import { isV10 } from "../utils.js";
@@ -35,6 +35,8 @@
 	// Set all colors when the component is mounted
 	onMount(setAllColors);
 
+	// Set all colors after the DOM update that occurs when the rows change
+	$: afterUpdate(() => setAllColors(rows));
 </script>
 
 <tbody>
