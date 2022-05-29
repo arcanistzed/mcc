@@ -1,7 +1,7 @@
 <script>
 	import { onMount, afterUpdate } from "svelte";
 	import { fade } from "svelte/transition";
-	import { flip } from "svelte/animate";
+	import { verticalTranslate } from "./animate.js";
 	import { isV10 } from "../utils.js";
 
 	export let rows = [];
@@ -42,7 +42,7 @@
 <tbody>
 	{#each rows as row, i (row.id)}
 		<tr
-			animate:flip={{ duration: 1000 }}
+			animate:verticalTranslate
 			on:mouseenter={e => setColor(e.target, row.status, i, true)}
 			on:mouseleave={e => setColor(e.target, row.status, i)}
 			data-status={row.status}
