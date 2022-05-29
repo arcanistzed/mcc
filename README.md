@@ -4,14 +4,11 @@
 
 Check your module list for compatibility with the latest major version of Foundry VTT.
 
-![screenshot](https://user-images.githubusercontent.com/82790112/167322587-78f3c4ec-4cf3-4eaa-b59b-15a088bd81b9.png)
+![screenshot](https://i.imgur.com/hgcUEgK.png)
 
 ## Installation
 
 In the setup screen, use the URL `https://github.com/arcanistzed/mcc/releases/latest/download/module.json` to install the module.
-
-## Usage
-
 
 ## Development
 
