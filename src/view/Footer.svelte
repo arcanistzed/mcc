@@ -41,6 +41,7 @@
 		justify-content: space-around;
 		align-items: center;
 		gap: 1em;
+		border: solid black 1px;
 	}
 
 	a {

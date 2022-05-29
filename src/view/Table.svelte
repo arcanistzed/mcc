@@ -74,7 +74,6 @@
 <style scoped>
 	main {
 		display: flex;
-		gap: 1em;
 		flex-direction: column;
 		overflow-y: scroll;
 		position: relative;
@@ -86,6 +85,7 @@
 		display: flex;
 		justify-content: center;
 		position: relative;
+		margin-bottom: 1em;
 	}
 
 	button {
@@ -99,6 +99,8 @@
 		height: fit-content;
 		width: 100%;
 		margin: 0;
-		border: none;
+		border: solid black 1px;
+		border-bottom: none;
+		box-sizing: border-box;
 	}
 </style>

@@ -64,16 +64,19 @@
 </tbody>
 
 <style scoped>
-	tr td {
-		padding: 0.5em;
-	}
-
 	tbody {
 		overflow: scroll;
 	}
 
 	tr {
 		transition: background-color 250ms;
+	}
+
+	td {
+		padding: 0.5em;
+		border-left: solid 1px;
+		border-right: solid 1px;
+		border-color: black;
 	}
 
 	.center {
