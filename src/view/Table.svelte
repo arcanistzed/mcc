@@ -44,6 +44,7 @@
 		<Rows bind:rows bind:details />
 		<Footer bind:rows bind:details url={spreadsheetURL} />
 	</table>
+	<Footer bind:rows url={spreadsheetURL} />
 </main>
 
 <style scoped>
