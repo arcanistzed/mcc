@@ -29,9 +29,7 @@
 
 <th transition:fade on:click={() => sortBy(name)}>
 	{localize(name)}
-	{#if mode === name}
-		<i class="fas fa-sort-{direction ? 'up' : 'down'}" />
-	{/if}
+	<i class="fas fa-sort{mode !== name ? '' : direction ? '-up' : '-down'}" />
 </th>
 
 <style scoped>
