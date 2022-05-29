@@ -36,9 +36,12 @@
 	th {
 		white-space: nowrap;
 		padding: 0.5em;
-		border-left: solid 1px;
 		border-right: solid 1px;
 		border-color: black;
+	}
+
+	th:last-child {
+		border-right: none;
 	}
 
 	i {

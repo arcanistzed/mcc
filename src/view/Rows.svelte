@@ -74,11 +74,14 @@
 		transition: background-color 250ms;
 	}
 
-	td {
+	td, td:first-child {
 		padding: 0.5em;
-		border-left: solid 1px;
 		border-right: solid 1px;
 		border-color: black;
+	}
+
+	td:last-child {
+		border-right: none;
 	}
 
 	.center {

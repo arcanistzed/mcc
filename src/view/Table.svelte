@@ -102,5 +102,7 @@
 		border: solid black 1px;
 		border-bottom: none;
 		box-sizing: border-box;
+		border-collapse: separate;
+		border-spacing: 0;
 	}
 </style>
