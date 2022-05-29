@@ -38,11 +38,12 @@
 				<td transition:fade>{row.author}</td>
 				<td transition:fade class="center">{row.version}</td>
 			{/if}
-			{#if isV10()}
-				<td transition:fade class="center" data-tooltip={explanations[row.status]}>{row.status}</td>
-			{:else}
-				<td transition:fade class="center" title={explanations[row.status]}>{row.status}</td>
-			{/if}
+			<td
+				transition:fade
+				class="center"
+				data-tooltip={isV10() ? statuses[row.status].explanation : null}
+				title={isV10() ? null : statuses[row.status].explanation}>{row.status}</td
+			>
 			<td transition:fade>{row.notes}</td>
 		</tr>
 	{/each}
