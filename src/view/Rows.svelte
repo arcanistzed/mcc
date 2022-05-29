@@ -8,7 +8,7 @@
 	export let details = false;
 	export let statuses;
 
-	function alternatingColors(element, status, i, hover = false) {
+	function setColor(element, status, i, hover = false) {
 		const { hsl } = statuses[status];
 		element.style.backgroundColor =
 			i % 2
@@ -16,19 +16,23 @@
 				: `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2] + 5 * hover}%, ${50 * (hover + 3)}%)`;
 	}
 
-	onMount(() => {
+	function setAllColors() {
 		document.querySelectorAll("tr").forEach((tr, i) => {
-			if (tr.dataset.status) alternatingColors(tr, tr.dataset.status, i + 1);
+			if (tr.dataset.status) setColor(tr, tr.dataset.status, i + 1);
 		});
-	});
+	}
+
+	// Set all colors when the component is mounted
+	onMount(setAllColors);
+
 </script>
 
 <tbody>
 	{#each rows as row, i (row.id)}
 		<tr
 			animate:flip={{ duration: 1000 }}
-			on:mouseenter={e => alternatingColors(e.target, row.status, i, true)}
-			on:mouseleave={e => alternatingColors(e.target, row.status, i)}
+			on:mouseenter={e => setColor(e.target, row.status, i, true)}
+			on:mouseleave={e => setColor(e.target, row.status, i)}
 			data-status={row.status}
 		>
 			<td transition:fade>{row.title}</td>
@@ -59,7 +63,7 @@
 	}
 
 	tr {
-		transition: 250ms;
+		transition: background-color 250ms;
 	}
 
 	.center {
