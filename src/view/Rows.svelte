@@ -1,34 +1,36 @@
 <script>
+	import { onMount } from "svelte";
 	import { fade } from "svelte/transition";
 	import { flip } from "svelte/animate";
-	import { isV10, localize } from "../utils.js";
-	
+	import { isV10 } from "../utils.js";
+
 	export let rows = [];
 	export let details = false;
+	export let statuses;
 
-	const colors = {
-			X: "#cc0000",
-			O: "#f1c232",
-			B: "#b45f06",
-			G: "#6aa84f",
-			N: "#3d85c6",
-			A: "#666666",
-			U: "#ffffff",
-		},
-		explanations = {
-			X: localize("statuses.x"),
-			O: localize("statuses.o"),
-			B: localize("statuses.b"),
-			G: localize("statuses.g"),
-			N: localize("statuses.n"),
-			A: localize("statuses.a"),
-			U: localize("statuses.u"),
-		};
+	function alternatingColors(element, status, i, hover = false) {
+		const { hsl } = statuses[status];
+		element.style.backgroundColor =
+			i % 2
+				? `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2] + 10 * hover}%, ${30 * (hover + 2)}%)`
+				: `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2] + 5 * hover}%, ${50 * (hover + 3)}%)`;
+	}
+
+	onMount(() => {
+		document.querySelectorAll("tr").forEach((tr, i) => {
+			if (tr.dataset.status) alternatingColors(tr, tr.dataset.status, i + 1);
+		});
+	});
 </script>
 
 <tbody>
 	{#each rows as row, i (row.id)}
-		<tr animate:flip style="background-color: {colors[row.status] + (i % 2 === 0 ? '50' : '80')}">
+		<tr
+			animate:flip={{ duration: 1000 }}
+			on:mouseenter={e => alternatingColors(e.target, row.status, i, true)}
+			on:mouseleave={e => alternatingColors(e.target, row.status, i)}
+			data-status={row.status}
+		>
 			<td transition:fade>{row.title}</td>
 			{#if details}
 				<td transition:fade>{row.type}</td>
@@ -47,7 +49,7 @@
 </tbody>
 
 <style scoped>
-	td {
+	tr td {
 		padding: 0.5em;
 	}
 
@@ -57,10 +59,6 @@
 
 	tr {
 		transition: 250ms;
-	}
-
-	tr:hover {
-		filter: drop-shadow(0 0 0 black);
 	}
 
 	.center {

@@ -1,18 +1,23 @@
 <script>
 	import Pie from "svelte-chartjs/src/Pie.svelte";
 
-    export let data = [];
+	export let statuses = [];
+	export let rows = [];
 </script>
 
 <Pie
 	height={200}
 	data={{
-		labels: data.map(({ label }) => label),
+		labels: Object.values(statuses).map(({ explanation }) => explanation),
 		datasets: [
 			{
-				data: data.map(({ value }) => value),
-				backgroundColor: data.map(({ hue }) => `hsl(${hue}, 50%, 50%)`),
-				hoverBackgroundColor: data.map(({ hue }) => `hsl(${hue}, 50%, 60%)`),
+				data: Object.keys(statuses).map(status => rows.filter(row => row.status === status).length),
+				backgroundColor: Object.values(statuses).map(
+					({ hsl }) => `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%, 100%)`
+				),
+				hoverBackgroundColor: Object.values(statuses).map(
+					({ hsl }) => `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2] + 10}%, 80%)`
+				),
 			},
 		],
 	}}
