@@ -5,7 +5,7 @@
 	export let rows;
 	export let url;
 
-	let percentage, working, known;
+	let percentage, working, known, count;
 
 	$: count = rows.length;
 
