@@ -6,7 +6,7 @@
 </script>
 
 <Pie
-	height={200}
+	style="max-height: 400px;"
 	data={{
 		labels: Object.values(statuses).map(({ explanation }) => explanation),
 		datasets: [
@@ -23,6 +23,6 @@
 	}}
 	options={{
 		responsive: true,
-		maintainAspectRatio: false,
+		maintainAspectRatio: true,
 	}}
 />
