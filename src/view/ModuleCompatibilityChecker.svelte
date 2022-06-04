@@ -25,7 +25,7 @@
 	export let elementRoot;
 </script>
 
-<ApplicationShell bind:elementRoot styleContent={{ padding: 0 }}>
+<ApplicationShell bind:elementRoot stylesContent={{ padding: 0 }}>
 	{#if state === "loading"}
 		<Loading />
 	{:else if state === "error"}
