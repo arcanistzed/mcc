@@ -42,6 +42,7 @@
 		align-items: center;
 		gap: 1em;
 		border: solid black 1px;
+		padding: 0 1rem;
 	}
 
 	a {
