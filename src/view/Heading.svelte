@@ -32,7 +32,7 @@
 	<i class="fas fa-sort{mode !== name ? '' : direction ? '-up' : '-down'}" />
 </th>
 
-<style scoped>
+<style>
 	th {
 		white-space: nowrap;
 		padding: 0.5em;

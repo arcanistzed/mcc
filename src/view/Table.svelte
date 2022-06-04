@@ -71,7 +71,7 @@
 	<Footer bind:rows url={spreadsheetURL} />
 </main>
 
-<style scoped>
+<style>
 	main {
 		display: flex;
 		flex-direction: column;

@@ -65,7 +65,7 @@
 	{/each}
 </tbody>
 
-<style scoped>
+<style>
 	tbody {
 		overflow: scroll;
 	}

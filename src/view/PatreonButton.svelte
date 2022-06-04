@@ -7,7 +7,7 @@
 	Become a patron
 </button>
 
-<style scoped>
+<style>
 	button {
 		align-items: center;
 		background-color: hsl(357, 100%, 63%);

@@ -30,7 +30,7 @@
 	</a>
 </footer>
 
-<style scoped>
+<style>
 	footer {
 		position: sticky;
 		background-color: #555;

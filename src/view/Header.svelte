@@ -20,7 +20,7 @@
 	</tr>
 </thead>
 
-<style scoped>
+<style>
 	thead {
 		position: sticky;
 		background-color: #555;
