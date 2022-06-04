@@ -26,7 +26,7 @@
 
 	const statuses = {
 		X: {
-			hsl: [0, 100, 40],
+			hsl: [0, 100, 60],
 			explanation: localize("statuses.x"),
 		},
 		O: {
