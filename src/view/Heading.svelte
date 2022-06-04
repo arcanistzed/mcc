@@ -27,7 +27,7 @@
 	}
 </script>
 
-<th transition:fade on:click={() => sortBy(name)}>
+<th on:click={() => sortBy(name)}>
 	{localize(name)}
 	<i class="fas fa-sort{mode !== name ? '' : direction ? '-up' : '-down'}" />
 </th>

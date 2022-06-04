@@ -8,15 +8,17 @@
 
 <thead>
 	<tr>
-		<Heading name={"title"} bind:rows bind:mode />
-		{#if details}
-			<Heading name={"type"} bind:rows bind:mode />
-			<Heading name={"id"} bind:rows bind:mode />
-			<Heading name={"author"} bind:rows bind:mode />
-			<Heading name={"version"} bind:rows bind:mode />
-		{/if}
-		<Heading name={"status"} bind:rows bind:mode />
-		<Heading name={"notes"} bind:rows bind:mode />
+		{#key details}
+			<Heading name={"title"} bind:rows bind:mode />
+			{#if details}
+				<Heading name={"type"} bind:rows bind:mode />
+				<Heading name={"id"} bind:rows bind:mode />
+				<Heading name={"author"} bind:rows bind:mode />
+				<Heading name={"version"} bind:rows bind:mode />
+			{/if}
+			<Heading name={"status"} bind:rows bind:mode />
+			<Heading name={"notes"} bind:rows bind:mode />
+		{/key}
 	</tr>
 </thead>
 

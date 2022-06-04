@@ -1,7 +1,6 @@
 <script>
 	import { onMount, afterUpdate } from "svelte";
-	import { fade } from "svelte/transition";
-	import { verticalTranslate } from "./animate.js";
+	import { flip } from "svelte/animate";
 	import { isV10 } from "../utils.js";
 
 	export let rows = [];
@@ -42,25 +41,24 @@
 <tbody>
 	{#each rows as row, i (row.id)}
 		<tr
-			animate:verticalTranslate
+			animate:flip={{ duration: 250 }}
 			on:mouseenter={e => setColor(e.target, row.status, i, true)}
 			on:mouseleave={e => setColor(e.target, row.status, i)}
 			data-status={row.status}
 		>
-			<td transition:fade>{row.title}</td>
+			<td>{row.title}</td>
 			{#if details}
-				<td transition:fade>{row.type}</td>
-				<td transition:fade>{row.id}</td>
-				<td transition:fade>{row.author}</td>
-				<td transition:fade class="center">{row.version}</td>
+				<td>{row.type}</td>
+				<td>{row.id}</td>
+				<td>{row.author}</td>
+				<td class="center">{row.version}</td>
 			{/if}
 			<td
-				transition:fade
 				class="center"
 				data-tooltip={isV10() ? statuses[row.status].explanation : null}
 				title={isV10() ? null : statuses[row.status].explanation}>{row.status}</td
 			>
-			<td transition:fade>{row.notes}</td>
+			<td>{row.notes}</td>
 		</tr>
 	{/each}
 </tbody>

@@ -18,9 +18,9 @@
 </script>
 
 <footer>
-	<p transition:fade>{localize("report.count")}: {count}</p>
-	<p transition:fade>{localize("report.percentage")}: {percentage}%</p>
-	<a transition:fade href={url}>
+	<p>{localize("report.count")}: {count}</p>
+	<p>{localize("report.percentage")}: {percentage}%</p>
+	<a href={url}>
 		{localize("source")}
 		{#if isV10()}
 			<i class="fa-solid fa-arrow-up-right-from-square" />
