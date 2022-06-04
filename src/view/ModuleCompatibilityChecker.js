@@ -1,5 +1,6 @@
 import { SvelteApplication } from "@typhonjs-fvtt/runtime/svelte/application";
 import ModuleCompatibilityCheckerShell from "./ModuleCompatibilityChecker.svelte";
+import PatreonButton from "./PatreonButton.svelte";
 
 export default class ModuleCompatibilityChecker extends SvelteApplication {
 	/** @override */
@@ -16,5 +17,12 @@ export default class ModuleCompatibilityChecker extends SvelteApplication {
 				target: document.body,
 			},
 		});
+	}
+
+	/** @inheritdoc */
+	_getHeaderButtons() {
+		const buttons = super._getHeaderButtons();
+		buttons.unshift(PatreonButton);
+		return buttons;
 	}
 }
