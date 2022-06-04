@@ -5,7 +5,7 @@
 	import SpreadsheetController from "../controller/SpreadsheetController.js";
 	import Loading from "./Loading.svelte";
 	import Error from "./Error.svelte";
-	import Table from './Table.svelte';
+	import Table from "./Table.svelte";
 
 	let rows = [],
 		state = "loading",

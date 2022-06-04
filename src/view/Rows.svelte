@@ -74,7 +74,8 @@
 		transition: background-color 250ms;
 	}
 
-	td, td:first-child {
+	td,
+	td:first-child {
 		padding: 0.5em;
 		border-right: solid 1px;
 		border-color: black;

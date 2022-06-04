@@ -60,12 +60,16 @@ export default () => {
 				resolve(RESOLVE_CONFIG),
 
 				// Transpile only for production builds
-				PRODUCTION && babel({
-					babelHelpers: "bundled",
-					presets: [
-						["@babel/preset-env", { bugfixes: true, shippedProposals: true, targets: { esmodules: true } }],
-					],
-				}),
+				PRODUCTION &&
+					babel({
+						babelHelpers: "bundled",
+						presets: [
+							[
+								"@babel/preset-env",
+								{ bugfixes: true, shippedProposals: true, targets: { esmodules: true } },
+							],
+						],
+					}),
 			],
 			onwarn(warning, warn) {
 				// Suppress warning from library code

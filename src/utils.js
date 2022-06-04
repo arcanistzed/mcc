@@ -12,5 +12,5 @@ export function isV10() {
  * @returns {string} - The localized result
  */
 export function localize(key) {
-    return game.i18n.localize(`mcc.${key}`);
+	return game.i18n.localize(`mcc.${key}`);
 }
