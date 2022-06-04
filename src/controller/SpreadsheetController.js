@@ -21,7 +21,7 @@ export default class SpreadsheetController {
 	}
 
 	static getPackageList() {
-		return [game.system.data ?? game.system, ...[...game.modules.values()].filter(m => m.active).map(m => m.data)];
+		return [game.system.data ?? game.system, ...[...game.modules.values()].map(m => m.data)];
 	}
 
 	static lookupCompatibility(spreadsheet, module) {
