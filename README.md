@@ -6,7 +6,7 @@ Check your module list for compatibility with the latest major version of Foundr
 
 ![screenshot](https://i.imgur.com/hgcUEgK.png)
 
-https://user-images.githubusercontent.com/82790112/172085158-ab8025cb-edd5-45fd-99c9-92ca8b99d9ae.mp4
+<https://user-images.githubusercontent.com/82790112/172085158-ab8025cb-edd5-45fd-99c9-92ca8b99d9ae.mp4>
 
 ## Installation
 
