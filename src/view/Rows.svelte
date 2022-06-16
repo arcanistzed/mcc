@@ -1,11 +1,10 @@
 <script>
 	import { onMount, afterUpdate } from "svelte";
 	import { flip } from "svelte/animate";
-	import { isV10 } from "../utils.js";
+	import { isV10, statuses } from "../utils.js";
 
 	export let rows = [];
 	export let details = false;
-	export let statuses;
 
 	/**
 	 * Set the color of a row based for an alternating colors effect

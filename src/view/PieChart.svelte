@@ -1,7 +1,7 @@
 <script>
 	import Pie from "svelte-chartjs/src/Pie.svelte";
+	import { statuses } from "../utils.js";
 
-	export let statuses = [];
 	export let rows = [];
 </script>
 

@@ -23,42 +23,11 @@
 			state = "error";
 			errorMessage = error;
 		});
-
-	const statuses = {
-		X: {
-			hsl: [0, 100, 60],
-			explanation: localize("statuses.x"),
-		},
-		O: {
-			hsl: [45, 90, 60],
-			explanation: localize("statuses.o"),
-		},
-		B: {
-			hsl: [30, 90, 40],
-			explanation: localize("statuses.b"),
-		},
-		G: {
-			hsl: [120, 40, 50],
-			explanation: localize("statuses.g"),
-		},
-		N: {
-			hsl: [200, 60, 50],
-			explanation: localize("statuses.n"),
-		},
-		A: {
-			hsl: [0, 0, 50],
-			explanation: localize("statuses.a"),
-		},
-		U: {
-			hsl: [0, 0, 100],
-			explanation: localize("statuses.u"),
-		},
-	};
 </script>
 
 <main>
 	<header>
-		<PieChart bind:rows {statuses} />
+		<PieChart bind:rows />
 		<button on:click={() => (details = !details)}>
 			{details ? localize("hide") : localize("show")}
 			{localize("details")}
@@ -66,7 +35,7 @@
 	</header>
 	<table>
 		<Header bind:rows bind:details bind:mode />
-		<Rows bind:rows bind:details {statuses} />
+		<Rows bind:rows bind:details />
 	</table>
 	<Footer bind:rows url={spreadsheetURL} />
 </main>
