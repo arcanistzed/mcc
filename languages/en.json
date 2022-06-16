@@ -31,6 +31,7 @@
         "notReady": "Not ready",
         "source": "Open spreadsheet",
         "error": "Please try again. If this issue persists, join my Discord server to report a bug.",
-        "website": "My Website"
+        "website": "My Website",
+        "button": "Module Compatibility Checker"
     }
 }
