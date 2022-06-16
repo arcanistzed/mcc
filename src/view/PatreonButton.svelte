@@ -3,7 +3,7 @@
 	on:click={() => window.open("https://www.patreon.com/bePatron?u=15896855", "_blank")}
 >
 	<i class="fab fa-patreon" />
-	Patreon support
+	Become a Patreon
 </span>
 
 <style>
