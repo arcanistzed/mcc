@@ -33,7 +33,7 @@ export default class SpreadsheetController {
 			type = "module",
 			authors: [{ name: authorName } = {}],
 			compatibleCoreVersion,
-			compatibility: { verified } = {}
+			compatibility: { verified } = {},
 		} = module;
 		const fallback = {
 			title: title ?? localize("untitled"),
