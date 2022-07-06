@@ -12,7 +12,7 @@ export default class SpreadsheetController {
 
 	static async getSpreadsheet() {
 		const RANGE = encodeURIComponent("A:N");
-		const API_KEY = "AIzaSyB3dDZsxNJYnIStss3pRAxdMow9BOtFFyY";
+		const API_KEY = "AIzaSyBlU3Yx5abB9l71o1A7LfJ1ZAJytMtmuRM";
 		const response = await fetch(
 			`https://sheets.googleapis.com/v4/spreadsheets/${this.spreadsheetID}/values/${RANGE}?majorDimension=ROWS&key=${API_KEY}`
 		);
