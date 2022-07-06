@@ -1,4 +1,19 @@
-import { localize } from "../utils.js";
+// eslint-disable-next-line no-unused-vars
+import { localize, statuses } from "../utils.js";
+
+/**
+ * @typedef {object} RowData
+ * @property {string} title - The title of the module
+ * @property {string} type - The type of the module
+ * @property {string} id - The ID of the module
+ * @property {string} author - The author of the module
+ * @property {string} version - The verified compatible version of the module
+ * @property {keyof statuses} status - The status of the module
+ * @property {string} notes - Any notes about the module
+ *
+ * @typedef {string[]} SpreadsheetRow
+ * @typedef {SpreadsheetRow[]} Spreadsheet
+ */
 
 export default class SpreadsheetController {
 	/**
@@ -16,13 +31,21 @@ export default class SpreadsheetController {
 		}
 	}
 
+	/**
+	 * Get the rows of the spreadsheet
+	 * @returns {Promise<RowData[]>} The rows of the spreadsheet
+	 */
 	static async getRows() {
 		const spreadsheet = await this.getSpreadsheet();
-		const modules = this.getPackageList();
+		const modules = this.getModuleList();
 		const rows = modules.map(module => this.lookupCompatibility(spreadsheet, module));
 		return rows;
 	}
 
+	/**
+	 * Get the spreadsheet
+	 * @returns {Promise<Spreadsheet>} The spreadsheet
+	 */
 	static async getSpreadsheet() {
 		const RANGE = encodeURIComponent("A:N");
 		const API_KEY = "AIzaSyBlU3Yx5abB9l71o1A7LfJ1ZAJytMtmuRM";
@@ -33,25 +56,33 @@ export default class SpreadsheetController {
 		return json.values;
 	}
 
-	static getPackageList() {
+	/**
+	 * Get the list of modules
+	 * @returns {ModuleData[]} The list of installed modules and the current game system
+	 */
+	static getModuleList() {
 		return [game.system.data ?? game.system, ...[...game.modules.values()].map(m => m.data)];
 	}
 
+	/**
+	 * Lookup the compatibility of a module in the spreadsheet
+	 * @param {Spreadsheet} spreadsheet - The spreadsheet
+	 * @param {ModuleData} module - The module to lookup
+	 * @returns {RowData} The row of compatibility data
+	 */
 	static lookupCompatibility(spreadsheet, module) {
-		const current = module.id ?? module.name;
-
 		// Get fallback
 		const {
 			title,
 			type = "module",
-			authors: [{ name: authorName } = {}],
+			authors: [{ name: authorName = "" } = {}],
 			compatibleCoreVersion,
-			compatibility: { verified } = {},
+			compatibility: { verified = null } = {},
 		} = module;
 		const fallback = {
 			title: title ?? localize("untitled"),
 			type,
-			id: current,
+			id: module.id ?? module.name,
 			author: authorName ?? module.author ?? localize("unknownAuthor"),
 			version: verified ?? compatibleCoreVersion ?? "?",
 			status: "U",
@@ -59,7 +90,7 @@ export default class SpreadsheetController {
 		};
 
 		// Get spreadsheet data
-		const data = this.rowToObject(spreadsheet.find(r => r[2] === current));
+		const data = this.rowToData(spreadsheet.find(r => r[2] === (module.id ?? module.name)) ?? []);
 
 		// Merge data
 		for (const property in data) {
@@ -74,13 +105,20 @@ export default class SpreadsheetController {
 		return data;
 	}
 
-	static rowToObject(row) {
-		const headings = ["title", "type", "id", "author", "version", "status", "notes"],
-			object = {};
+	/**
+	 * Convert a spreadsheet row to a row of data
+	 * @param {SpreadsheetRow} row - The spreadsheet row
+	 * @returns {RowData} The row of data
+	 */
+	static rowToData(row) {
+		/** @type {RowData} */
+		const data = {},
+			/** @type {Array<keyof RowData>} */
+			headings = ["title", "type", "id", "author", "version", "status", "notes"];
 
 		for (let i = 0; i < headings.length; i++) {
-			object[headings[i]] = row?.[i];
+			data[headings[i]] = row?.[i];
 		}
-		return object;
+		return data;
 	}
 }
