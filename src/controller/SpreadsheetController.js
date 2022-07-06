@@ -1,7 +1,20 @@
 import { localize } from "../utils.js";
 
 export default class SpreadsheetController {
-	static spreadsheetID = "1ppPR348igxL75M_G7dWl3otzXYpPwrnj7NVSDP8GmVw";
+	/**
+	 * @returns {string} A Google Spreadsheets ID
+	 * @throws {Error} If this is not an explicitly supported generation of Foundry VTT
+	 */
+	static get spreadsheetID() {
+		switch (game.release.generation) {
+			case 9:
+				return "1ppPR348igxL75M_G7dWl3otzXYpPwrnj7NVSDP8GmVw";
+			case 10:
+				return "14PHGJzvjhX19rzSHD7VNXtq9UZne4pUxnBn4bxvoM9k";
+			default:
+				throw new Error(`Unsupported Foundry VTT version ${game.release.generation}`);
+		}
+	}
 
 	static async getRows() {
 		const spreadsheet = await this.getSpreadsheet();
