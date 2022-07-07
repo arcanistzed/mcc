@@ -1,5 +1,4 @@
 <script>
-	import { fade } from "svelte/transition";
 	import { isV10, localize } from "../utils.js";
 
 	export let rows;
