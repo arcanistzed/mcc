@@ -4,6 +4,7 @@
 
 	export let rows;
 	export let url;
+	export let status;
 
 	let percentage, working, known, count;
 
@@ -20,6 +21,7 @@
 <footer>
 	<p>{localize("report.count")}: {count}</p>
 	<p>{localize("report.percentage")}: {percentage}%</p>
+	<p>{status}</p>
 	<a href={url}>
 		{localize("source")}
 		{#if isV10()}

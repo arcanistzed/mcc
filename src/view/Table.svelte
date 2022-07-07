@@ -37,7 +37,7 @@
 		<Header bind:rows bind:details bind:mode />
 		<Rows bind:rows bind:details />
 	</table>
-	<Footer bind:rows url={spreadsheetURL} />
+	<Footer bind:rows url={spreadsheetURL} status={SpreadsheetController.spreadsheetStatus}/>
 </main>
 
 <style>

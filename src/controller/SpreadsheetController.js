@@ -32,11 +32,17 @@ export default class SpreadsheetController {
 	}
 
 	/**
+	 * @type {string} The status of the spreadsheet
+	 */
+	static spreadsheetStatus;
+
+	/**
 	 * Get the rows of the spreadsheet
 	 * @returns {Promise<RowData[]>} The rows of the spreadsheet
 	 */
 	static async getRows() {
 		const spreadsheet = await this.getSpreadsheet();
+		this.spreadsheetStatus = spreadsheet[0][0];
 		const modules = this.getModuleList();
 		const rows = modules.map(module => this.lookupCompatibility(spreadsheet, module));
 		return rows;
