@@ -9,8 +9,8 @@ Hooks.on("renderModuleManagement", async (_app, [html]) => {
 	applyModuleManagementColors(html);
 
 	new PatreonButton({
-		target: html.querySelector("[data-module-id='mcc'] .package-overview"),
-		anchor: html.querySelector("[data-module-id='mcc'] .tag"),
+		target: html.querySelector(":is([data-module-id='mcc'], [data-module-name='mcc']) .package-overview"),
+		anchor: html.querySelector(":is([data-module-id='mcc'], [data-module-name='mcc']) .tag"),
 	});
 
 	new ModuleManagementButton({
