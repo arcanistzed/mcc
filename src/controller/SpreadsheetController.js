@@ -67,7 +67,7 @@ export default class SpreadsheetController {
 	 * @returns {ModuleData[]} The list of installed modules and the current game system
 	 */
 	static getModuleList() {
-		return [game.system.data ?? game.system, ...[...game.modules.values()].map(m => m.data)];
+		return [game.system, ...game.modules.values()];
 	}
 
 	/**
@@ -84,7 +84,7 @@ export default class SpreadsheetController {
 			authors: [{ name: authorName = "" } = {}],
 			compatibleCoreVersion,
 			compatibility: { verified = null } = {},
-		} = module;
+		} = module.data;
 		const fallback = {
 			title: title ?? localize("untitled"),
 			type,
