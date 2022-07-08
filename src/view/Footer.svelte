@@ -20,7 +20,7 @@
 	<p>{localize("report.count")}: {count}</p>
 	<p>{localize("report.percentage")}: {percentage}%</p>
 	<p>{SpreadsheetController.spreadsheetStatus}</p>
-	<a href={`https://docs.google.com/spreadsheets/d/${SpreadsheetController.spreadsheetID}/edit`}>
+	<a href={`https://docs.google.com/spreadsheets/d/${SpreadsheetController.spreadsheetID}/pubhtml`}>
 		{localize("source")}
 		{#if isV10()}
 			<i class="fa-solid fa-arrow-up-right-from-square" />

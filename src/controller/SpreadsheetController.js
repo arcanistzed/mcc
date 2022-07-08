@@ -55,6 +55,7 @@ export default class SpreadsheetController {
 	 */
 	static async getSpreadsheet(version) {
 		const response = await fetch(`https://mcc.arcanist.workers.dev/?version=${version}`);
+		this.spreadsheetID = response.headers.get("X-Spreadsheet-ID");
 		return await response.json();
 	}
 

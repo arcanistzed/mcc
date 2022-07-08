@@ -39,6 +39,7 @@ async function handleRequest(request) {
 	headers.append("Expires", new Date(Date.now() + TTL * 1000).toUTCString());
 	headers.append("Access-Control-Allow-Origin", "*");
 	headers.append("Access-Control-Allow-Headers", "*");
+	headers.append("Access-Control-Expose-Headers", "X-Spreadsheet-ID");
 	headers.append("Access-Control-Allow-Methods", "GET");
 
 	if (url.pathname === "/api/versions") return new Response(JSON.stringify(VERSIONS), { status: 200, headers });
@@ -48,7 +49,7 @@ async function handleRequest(request) {
 	if (!version) return new Response("Missing Foundry VTT core version parameter", { status: 400 });
 	const ID = getSpreadsheetID(version);
 	if (!ID) return new Response("Unsupported Foundry VTT core version", { status: 422 });
-	headers.append("x-mcc-spreadsheet-id", ID);
+	headers.append("X-Spreadsheet-ID", ID);
 
 	// Return the cached version if it exists
 	const cached = await MCC.get(ID, { cacheTtl: TTL });

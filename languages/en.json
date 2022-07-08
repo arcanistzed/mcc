@@ -30,7 +30,7 @@
         },
         "ready": "Ready",
         "notReady": "Not ready",
-        "source": "Open spreadsheet",
+        "source": "Open source",
         "error": "Please try again. If this issue persists, join my Discord server to report a bug.",
         "website": "My Website",
         "button": "Module Compatibility Checker"
