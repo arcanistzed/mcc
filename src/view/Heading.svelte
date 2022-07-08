@@ -1,5 +1,4 @@
 <script>
-	import { fade } from "svelte/transition";
 	import { localize } from "../utils.js";
 
 	export let name;
