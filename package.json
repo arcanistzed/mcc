@@ -11,15 +11,15 @@
   "dependencies": {
     "@typhonjs-fvtt/runtime": "^0.0.14",
     "chart.js": "^3.8.0",
-    "svelte": "^3.48.0",
-    "svelte-preprocess": "^4.10.0"
+    "svelte": "^3.49.0",
+    "svelte-preprocess": "^4.10.7"
   },
   "devDependencies": {
     "@babel/core": "^7",
     "@babel/preset-env": "^7",
     "@cloudflare/workers-types": "^3.14.0",
     "@rollup/plugin-babel": "^5",
-    "@typhonjs-config/eslint-config": "^0.3.0",
+    "@typhonjs-config/eslint-config": "^0.3.4",
     "@typhonjs-fvtt/eslint-config-foundry.js": "^0.8.0",
     "eslint": "^8",
     "rollup": "^2"
