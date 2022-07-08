@@ -9,14 +9,15 @@
     "Michael Leahy <support@typhonjs.io> (https://github.com/typhonrt)"
   ],
   "dependencies": {
-    "@typhonjs-fvtt/runtime": "^0.0.11",
-    "svelte": "^3.46.0",
-    "svelte-preprocess": "^4.10.0",
-    "svelte-chartjs": "^1.1.4"
+    "@typhonjs-fvtt/runtime": "^0.0.14",
+    "svelte": "^3.48.0",
+    "svelte-chartjs": "^1.1.4",
+    "svelte-preprocess": "^4.10.0"
   },
   "devDependencies": {
     "@babel/core": "^7",
     "@babel/preset-env": "^7",
+    "@cloudflare/workers-types": "^3.14.0",
     "@rollup/plugin-babel": "^5",
     "@typhonjs-config/eslint-config": "^0.3.0",
     "@typhonjs-fvtt/eslint-config-foundry.js": "^0.8.0",
