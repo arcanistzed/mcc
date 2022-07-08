@@ -1,3 +1,3 @@
 # Changelog
 
-## 0.1.0 - X May 2022 - First Release
+## 1.0.0-alpha - 8 July 2022 - First pre-release
