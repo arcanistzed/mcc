@@ -80,7 +80,7 @@
 
 	td,
 	td:first-child {
-		padding: 0.5em;
+		padding: 1ch;
 		border-right: solid 1px;
 		border-color: black;
 	}

@@ -34,7 +34,7 @@
 <style>
 	th {
 		white-space: nowrap;
-		padding: 0.5em;
+		padding: 1ch;
 		border-right: solid 1px;
 		border-color: black;
 	}
@@ -44,6 +44,6 @@
 	}
 
 	i {
-		margin-left: 0.5em;
+		margin-left: 0.5ch;
 	}
 </style>

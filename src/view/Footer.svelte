@@ -40,9 +40,8 @@
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
-		gap: 1em;
+		gap: 1ch;
 		border: solid black 1px;
-		padding: 0 1rem;
 	}
 
 	a {

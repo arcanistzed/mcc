@@ -36,15 +36,12 @@
 		flex-direction: column;
 		overflow-y: scroll;
 		position: relative;
-		margin: 1em;
-		padding: 0 0.5em;
+		margin: 1rem;
 	}
 
 	header {
-		display: flex;
-		justify-content: center;
 		position: relative;
-		margin-bottom: 1em;
+		margin-bottom: 1ch;
 	}
 
 	table {
