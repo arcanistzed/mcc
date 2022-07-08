@@ -5,6 +5,13 @@
 
 	export let rows = [];
 	export let details = false;
+	export let search = "";
+
+	// Filter rows by search query
+	let filteredRows = [];
+	$: filteredRows = rows.filter(r =>
+		[r.title, r.id].some(field => field.includes(search.normalize().toLocaleLowerCase()))
+	);
 
 	/**
 	 * Set the color of a row based for an alternating colors effect
@@ -38,7 +45,7 @@
 </script>
 
 <tbody>
-	{#each rows as row, i (row.id)}
+	{#each filteredRows as row, i (row.id)}
 		<tr
 			animate:flip={{ duration: 250 }}
 			on:mouseenter={e => setColor(e.target, row.status, i, true)}

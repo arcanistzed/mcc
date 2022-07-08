@@ -4,6 +4,7 @@
 	import Versions from "./Versions.svelte";
 	import PieChart from "./PieChart.svelte";
 	import Details from "./Details.svelte";
+	import Search from "./Search.svelte";
 	import Header from "./Header.svelte";
 	import Rows from "./Rows.svelte";
 	import Footer from "./Footer.svelte";
@@ -13,19 +14,8 @@
 	export let version;
 
 	let details = false,
+		search = "",
 		mode;
-
-	const spreadsheetURL = `https://docs.google.com/spreadsheets/d/${SpreadsheetController.spreadsheetID}/edit`;
-
-	SpreadsheetController.getRows()
-		.then(result => {
-			state = null;
-			rows = result;
-		})
-		.catch(error => {
-			state = "error";
-			errorMessage = error;
-		});
 </script>
 
 <main>
@@ -37,9 +27,10 @@
 			{localize("details")}
 		</button>
 	</header>
+	<Search bind:search />
 	<table>
 		<Header bind:rows bind:details bind:mode />
-		<Rows bind:rows bind:details />
+		<Rows bind:rows bind:details bind:search />
 	</table>
 	<Footer bind:rows url={spreadsheetURL} status={SpreadsheetController.spreadsheetStatus}/>
 </main>
