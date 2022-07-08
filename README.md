@@ -4,9 +4,9 @@
 
 Check your module list for compatibility with the latest major version of Foundry VTT.
 
-![screenshot](https://i.imgur.com/hgcUEgK.png)
+![screenshot](https://i.imgur.com/DlIyyzs.png)
 
-<https://user-images.githubusercontent.com/82790112/172085158-ab8025cb-edd5-45fd-99c9-92ca8b99d9ae.mp4>
+<https://user-images.githubusercontent.com/82790112/177923036-d47775f5-ebe0-438b-b0ca-4a80bd835c81.mp4>
 
 ## Installation
 
