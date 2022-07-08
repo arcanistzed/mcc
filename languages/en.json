@@ -30,9 +30,10 @@
         },
         "ready": "Ready",
         "notReady": "Not ready",
-        "source": "Open source",
+        "source": "Open official spreadsheet",
         "error": "Please try again. If this issue persists, join my Discord server to report a bug.",
         "website": "My Website",
-        "button": "Module Compatibility Checker"
+        "button": "Module Compatibility Checker",
+        "moduleManagementColorsExplanation": "The background colors below are used to indicate the status of the module in the latest core version. Open the Module Compatibility Checker with the button below for more info."
     }
 }

@@ -5,8 +5,8 @@ import applyModuleManagementColors from "./view/ModuleManagementColors.js";
 
 globalThis.ModuleCompatibilityChecker = ModuleCompatibilityChecker;
 
-Hooks.on("renderModuleManagement", async (_app, [html]) => {
-	applyModuleManagementColors(html);
+Hooks.on("renderModuleManagement", (app, [html]) => {
+	applyModuleManagementColors(app, html);
 
 	new PatreonButton({
 		target: html.querySelector(":is([data-module-id='mcc'], [data-module-name='mcc']) .package-overview"),

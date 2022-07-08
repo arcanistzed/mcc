@@ -1,11 +1,17 @@
-import { statuses } from "../utils.js";
+import { localize, statuses } from "../utils.js";
 import SpreadsheetController from "../controller/SpreadsheetController.js";
 
 /**
- * Apply the status colors to the module management window
- * @param {HTMLElement} html - The HTML element of the Module Management application
+ * Apply the status colors to the module management app
+ * @param {ModuleManagement} app
+ * @param {HTMLElement} html
  */
-export default async function applyModuleManagementColors(html) {
+export default async function applyModuleManagementColors(app, html) {
+	html.querySelector(".notes").textContent += localize("moduleManagementColorsExplanation");
+
+	// Resize the app to fit the new contents
+	app.setPosition();
+
 	const version = (await SpreadsheetController.getVersions()).at(-1);
 	const spreadsheet = await SpreadsheetController.getSpreadsheet(version);
 
