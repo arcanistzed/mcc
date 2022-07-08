@@ -6,7 +6,8 @@ import SpreadsheetController from "../controller/SpreadsheetController.js";
  * @param {HTMLElement} html - The HTML element of the Module Management application
  */
 export default async function applyModuleManagementColors(html) {
-	const spreadsheet = await SpreadsheetController.getSpreadsheet();
+	const version = (await SpreadsheetController.getVersions()).at(-1);
+	const spreadsheet = await SpreadsheetController.getSpreadsheet(version);
 
 	html.querySelectorAll("#module-list :is([data-module-id], [data-module-name])").forEach(el => {
 		const module = game.modules.get(el.dataset.moduleId ?? el.dataset.moduleName);

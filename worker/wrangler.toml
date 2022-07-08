@@ -1,0 +1,6 @@
+name = "mcc"
+workers_dev = true
+kv_namespaces = [
+    { binding = "MCC", id = "ff0447bcbe66448ea02cd70edc7ddf95", preview_id = "2a6423ab395b49998cfc94534df7fc6f" },
+]
+compatibility_date = "2022-07-07"

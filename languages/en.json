@@ -11,6 +11,7 @@
             "u": "Unknown status - Package may not be in the official listing"
         },
         "loading": "Loading...",
+        "selectVersion": "Check compatibility for",
         "hide": "Hide",
         "show": "Show",
         "details": "details",

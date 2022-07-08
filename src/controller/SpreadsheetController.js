@@ -17,31 +17,31 @@ import { localize, statuses } from "../utils.js";
 
 export default class SpreadsheetController {
 	/**
-	 * @returns {string} A Google Spreadsheets ID
-	 * @throws {Error} If this is not an explicitly supported generation of Foundry VTT
-	 */
-	static get spreadsheetID() {
-		switch (game.release.generation) {
-			case 9:
-				return "1ppPR348igxL75M_G7dWl3otzXYpPwrnj7NVSDP8GmVw";
-			case 10:
-				return "14PHGJzvjhX19rzSHD7VNXtq9UZne4pUxnBn4bxvoM9k";
-			default:
-				throw new Error(`Unsupported Foundry VTT version ${game.release.generation}`);
-		}
-	}
-
-	/**
 	 * @type {string} The status of the spreadsheet
 	 */
 	static spreadsheetStatus;
 
 	/**
+	 * @type {string} The ID of the spreadsheet
+	 */
+	static spreadsheetID;
+
+	/**
+	 * Get the core versions that have spreadsheets
+	 * @returns {Promise<string[]>} The versions available
+	 */
+	static async getVersions() {
+		const response = await fetch("https://mcc.arcanist.workers.dev/api/versions");
+		return await response.json();
+	}
+
+	/**
 	 * Get the rows of the spreadsheet
+	 * @param {string} version - The Foundry VTT core version of the spreadsheet to get
 	 * @returns {Promise<RowData[]>} The rows of the spreadsheet
 	 */
-	static async getRows() {
-		const spreadsheet = await this.getSpreadsheet();
+	static async getRows(version) {
+		const spreadsheet = await this.getSpreadsheet(version);
 		this.spreadsheetStatus = spreadsheet[0][0];
 		const modules = this.getModuleList();
 		const rows = modules.map(module => this.lookupCompatibility(spreadsheet, module));
@@ -50,16 +50,12 @@ export default class SpreadsheetController {
 
 	/**
 	 * Get the spreadsheet
+	 * @param {string} version - The Foundry VTT core version of the spreadsheet to get
 	 * @returns {Promise<Spreadsheet>} The spreadsheet
 	 */
-	static async getSpreadsheet() {
-		const RANGE = encodeURIComponent("A:N");
-		const API_KEY = "AIzaSyBlU3Yx5abB9l71o1A7LfJ1ZAJytMtmuRM";
-		const response = await fetch(
-			`https://sheets.googleapis.com/v4/spreadsheets/${this.spreadsheetID}/values/${RANGE}?majorDimension=ROWS&key=${API_KEY}`
-		);
-		const json = await response.json();
-		return json.values;
+	static async getSpreadsheet(version) {
+		const response = await fetch(`https://mcc.arcanist.workers.dev/?version=${version}`);
+		return await response.json();
 	}
 
 	/**

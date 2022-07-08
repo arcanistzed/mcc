@@ -9,18 +9,33 @@
 
 	let rows = [],
 		state = "loading",
-		errorMessage;
+		errorMessage,
+		versions,
+		version;
 
-	SpreadsheetController.getRows()
-		.then(result => {
-			state = null;
-			rows = result;
+	$: (() => {
+		state = "loading";
+		SpreadsheetController.getVersions()
+		.then(v => {
+			versions = v;
+			version ??= v.at(-1);
+			SpreadsheetController.getRows(version)
+				.then(result => {
+					state = null;
+					rows = result;
+				})
+				.catch(error => {
+					state = "error";
+					errorMessage = error;
+					console.error(error);
+				});
 		})
 		.catch(error => {
 			state = "error";
 			errorMessage = error;
 			console.error(error);
 		});
+	})();
 
 	export let elementRoot;
 </script>
@@ -31,6 +46,6 @@
 	{:else if state === "error"}
 		<Error {errorMessage} />
 	{:else}
-		<Table bind:rows bind:state />
+		<Table bind:rows bind:versions bind:version />
 	{/if}
 </ApplicationShell>

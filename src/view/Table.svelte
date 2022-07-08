@@ -1,13 +1,16 @@
 <script>
 	import SpreadsheetController from "../controller/SpreadsheetController.js";
 	import { localize } from "../utils.js";
+	import Versions from "./Versions.svelte";
 	import PieChart from "./PieChart.svelte";
+	import Details from "./Details.svelte";
 	import Header from "./Header.svelte";
 	import Rows from "./Rows.svelte";
 	import Footer from "./Footer.svelte";
 
 	export let rows = [];
-	export let state;
+	export let versions;
+	export let version;
 
 	let details = false,
 		mode;
@@ -27,6 +30,7 @@
 
 <main>
 	<header>
+		<Versions bind:versions bind:version />
 		<PieChart bind:rows />
 		<button on:click={() => (details = !details)}>
 			{details ? localize("hide") : localize("show")}
