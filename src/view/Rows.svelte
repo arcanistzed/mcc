@@ -61,7 +61,6 @@
 			{#if details}
 				<td>{row.type}</td>
 				<td>{row.id}</td>
-				<td>{row.author}</td>
 				<td class="center">{row.version}</td>
 			{/if}
 			<td

@@ -18,12 +18,10 @@
         "title": "Title",
         "type": "Type",
         "id": "ID",
-        "author": "Author Name",
         "version": "Compatible Version",
         "status": "Status",
         "notes": "Notes",
         "untitled": "Untitled",
-        "unknownAuthor": "Unknown Author",
         "report": {
             "count": "Package count",
             "percentage": "Percentage ready"

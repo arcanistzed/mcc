@@ -13,7 +13,6 @@
 			{#if details}
 				<Heading name={"type"} bind:rows bind:mode />
 				<Heading name={"id"} bind:rows bind:mode />
-				<Heading name={"author"} bind:rows bind:mode />
 				<Heading name={"version"} bind:rows bind:mode />
 			{/if}
 			<Heading name={"status"} bind:rows bind:mode />
