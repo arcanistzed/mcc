@@ -40,8 +40,8 @@
 	// Set all colors when the component is mounted
 	onMount(setAllColors);
 
-	// Set all colors after the DOM update that occurs when the rows change
-	$: afterUpdate(() => setAllColors(rows));
+	// Set all colors after the DOM updates
+	afterUpdate(setAllColors);
 </script>
 
 <tbody>
