@@ -1,6 +1,5 @@
 <script>
 	import SpreadsheetController from "../controller/SpreadsheetController.js";
-	import { localize } from "../utils.js";
 	import Versions from "./Versions.svelte";
 	import PieChart from "./PieChart.svelte";
 	import Details from "./Details.svelte";
@@ -22,10 +21,7 @@
 	<header>
 		<Versions bind:versions bind:version />
 		<PieChart bind:rows />
-		<button on:click={() => (details = !details)}>
-			{details ? localize("hide") : localize("show")}
-			{localize("details")}
-		</button>
+		<Details bind:details />
 	</header>
 	<Search bind:search />
 	<table>
@@ -50,13 +46,6 @@
 		justify-content: center;
 		position: relative;
 		margin-bottom: 1em;
-	}
-
-	button {
-		position: absolute;
-		width: fit-content;
-		right: 0;
-		bottom: 0;
 	}
 
 	table {
