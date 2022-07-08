@@ -7,8 +7,8 @@ export default class ModuleCompatibilityChecker extends SvelteApplication {
 		return foundry.utils.mergeObject(super.defaultOptions, {
 			title: "mcc.appTitle",
 			classes: ["mcc"],
-			width: window.innerWidth * 0.75,
-			height: window.innerHeight * 0.75,
+			width: window.innerWidth * 0.5,
+			height: window.innerHeight * 0.95,
 			resizable: true,
 
 			svelte: {
