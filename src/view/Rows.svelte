@@ -56,18 +56,16 @@
 			on:mouseenter={e => setColor(e.target, row.status, i, true)}
 			on:mouseleave={e => setColor(e.target, row.status, i)}
 			data-status={row.status}
+			data-tooltip={isV10() ? statuses[row.status].explanation : null}
+			title={!isV10() ? statuses[row.status].explanation : null}
 		>
 			<td>{row.title}</td>
 			{#if details}
 				<td>{row.type}</td>
 				<td>{row.id}</td>
 				<td class="center">{row.version}</td>
+				<td class="center">{row.status}</td>
 			{/if}
-			<td
-				class="center"
-				data-tooltip={isV10() ? statuses[row.status].explanation : null}
-				title={isV10() ? null : statuses[row.status].explanation}>{row.status}</td
-			>
 			<td>{row.notes}</td>
 		</tr>
 	{/each}
