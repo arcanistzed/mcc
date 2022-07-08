@@ -57,6 +57,7 @@
 			on:mouseleave={e => setColor(e.target, row.status, i)}
 			data-status={row.status}
 			data-tooltip={isV10() ? statuses[row.status].explanation : null}
+			data-tooltip-direction={isV10() ? "LEFT" : null}
 			title={!isV10() ? statuses[row.status].explanation : null}
 		>
 			<td>{row.title}</td>
