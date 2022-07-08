@@ -5,12 +5,17 @@
 
 	export let rows = [];
 	export let details = false;
+	export let hiddenStatuses = [];
 	export let search = "";
 
-	// Filter rows by search query
+	// Filter rows by hidden statuses and search query
 	let filteredRows = [];
-	$: filteredRows = rows.filter(r =>
-		[r.title, r.id].some(field => field.includes(search.normalize().toLocaleLowerCase()))
+	$: filteredRows = rows.filter(
+		r =>
+			!hiddenStatuses.includes(r.status) &&
+			[r.title, r.id].some(field =>
+				field.normalize().toLocaleLowerCase().includes(search.normalize().toLocaleLowerCase())
+			)
 	);
 
 	/**

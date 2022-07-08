@@ -11,7 +11,8 @@
 	export let versions;
 	export let version;
 
-	let details = false,
+	let hiddenStatuses = [],
+		details = false,
 		search = "",
 		mode;
 </script>
@@ -19,13 +20,13 @@
 <main>
 	<header>
 		<Versions bind:versions bind:version />
-		<PieChart bind:rows />
+		<PieChart bind:rows bind:hiddenStatuses />
 		<Details bind:details />
 	</header>
 	<Search bind:search />
 	<table>
 		<Header bind:rows bind:details bind:mode />
-		<Rows bind:rows bind:details bind:search />
+		<Rows bind:rows bind:details bind:hiddenStatuses bind:search />
 	</table>
 	<Footer bind:rows />
 </main>
