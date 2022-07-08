@@ -10,9 +10,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      # Substitute the Manifest and Download URLs in the module.json
-      - name: Substitute Manifest and Download Links For Versioned Ones
-        id: sub_manifest_link_version
+      # Substitute the URLs in the module.json
+      - name: Substitute URLs in Manifest
+        id: sub_manifest_urls
+        if: "!github.event.release.prerelease"
         uses: microsoft/variable-substitution@v1
         with:
           files: "module.json"
@@ -20,6 +21,19 @@ jobs:
           version: ${{github.event.release.tag_name}}
           url: https://github.com/${{github.repository}}
           manifest: https://github.com/${{github.repository}}/releases/latest/download/module.json
+          download: https://github.com/${{github.repository}}/releases/download/${{github.event.release.tag_name}}/module.zip
+
+      # Pre-release: Substitute the URLs in the module.json
+      - name: Pre-release - Substitute URLs in Manifest
+        id: pre_sub_manifest_urls
+        if: "github.event.release.prerelease"
+        uses: microsoft/variable-substitution@v1
+        with:
+          files: "module.json"
+        env:
+          version: ${{github.event.release.tag_name}}
+          url: https://github.com/${{github.repository}}
+          manifest: https://raw.githubusercontent.com/${{github.repository}}/next/module.json
           download: https://github.com/${{github.repository}}/releases/download/${{github.event.release.tag_name}}/module.zip
 
       # Install packages
@@ -39,14 +53,33 @@ jobs:
           allowUpdates: true # Set this to false if you want to prevent updating existing releases
           name: ${{ github.event.release.name }}
           draft: false
-          prerelease: false
+          prerelease: ${{ github.event.release.prerelease }}
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: "./module.json, ./module.zip"
           tag: ${{ github.event.release.tag_name }}
           body: ${{ github.event.release.body }}
 
+      # Pre-release: update next branch
+      - name: Prepare repository
+        id: prep_repo
+        if: "github.event.release.prerelease"
+        run: |
+          git config --global user.name '${{github.actor}}'
+          git config --global user.email '${{github.actor}}@users.noreply.github.com'
+          git add module.json
+          git stash
+          git clean -f
+          git remote set-url origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY"
+          git fetch origin "next"
+          git switch -c "next" "origin/next"
+          git checkout stash module.json
+          git commit -m "${{github.event.release.tag_name}} manifest"
+          git push -f
+
       # Autopublish to the Foundry Admin panel
       - name: FoundryVTT AutoPublish
+        id: auto_publish
+        if: "!github.event.release.prerelease"
         uses: Varriount/fvtt-autopublish@v1.0.6
         with:
           username: ${{ secrets.FOUNDRY_ADMIN_USER }}
