@@ -1,9 +1,8 @@
 <script>
 	import { isV10, localize } from "../utils.js";
+	import SpreadsheetController from "../controller/SpreadsheetController.js";
 
 	export let rows;
-	export let url;
-	export let status;
 
 	let percentage, working, known, count;
 
@@ -20,8 +19,8 @@
 <footer>
 	<p>{localize("report.count")}: {count}</p>
 	<p>{localize("report.percentage")}: {percentage}%</p>
-	<p>{status}</p>
-	<a href={url}>
+	<p>{SpreadsheetController.spreadsheetStatus}</p>
+	<a href={`https://docs.google.com/spreadsheets/d/${SpreadsheetController.spreadsheetID}/edit`}>
 		{localize("source")}
 		{#if isV10()}
 			<i class="fa-solid fa-arrow-up-right-from-square" />

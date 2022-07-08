@@ -1,5 +1,4 @@
 <script>
-	import SpreadsheetController from "../controller/SpreadsheetController.js";
 	import Versions from "./Versions.svelte";
 	import PieChart from "./PieChart.svelte";
 	import Details from "./Details.svelte";
@@ -28,7 +27,7 @@
 		<Header bind:rows bind:details bind:mode />
 		<Rows bind:rows bind:details bind:search />
 	</table>
-	<Footer bind:rows url={spreadsheetURL} status={SpreadsheetController.spreadsheetStatus}/>
+	<Footer bind:rows />
 </main>
 
 <style>
