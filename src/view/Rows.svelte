@@ -3,20 +3,8 @@
 	import { flip } from "svelte/animate";
 	import { isV10, statuses } from "../utils.js";
 
-	export let search = "";
-
 	const spreadsheetStore = getContext("spreadsheetStore");
 	const { details, hiddenStatuses } = spreadsheetStore.stores;
-
-	// Filter rows by hidden statuses and search query
-	let filteredRows = [];
-	$: filteredRows = $spreadsheetStore.filter(
-		r =>
-			!$hiddenStatuses.includes(r.status) &&
-			[r.title, r.id].some(field =>
-				field.normalize().toLocaleLowerCase().includes(search.normalize().toLocaleLowerCase())
-			)
-	);
 
 	/**
 	 * Set the color of a row based for an alternating colors effect
@@ -50,7 +38,7 @@
 </script>
 
 <tbody>
-	{#each filteredRows as row, i (row.id)}
+	{#each [...$spreadsheetStore] as row, i (row.id)}
 		<tr
 			animate:flip={{ duration: 250 }}
 			on:mouseenter={e => setColor(e.target, row.status, i, true)}

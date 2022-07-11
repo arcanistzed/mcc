@@ -6,21 +6,12 @@
 
 	const spreadsheetStore = getContext("spreadsheetStore");
 
-	let percentage, working, known, count;
-
-	$: count = $spreadsheetStore.length;
-
-	// Keep the percentage of working packages up to date
-	$: {
-		working = $spreadsheetStore.filter(row => row.status === "G" || row.status === "N").length;
-		known = $spreadsheetStore.filter(row => row.status !== "U").length;
-		percentage = parseFloat((100 * (working / Math.max(known, 1))).toFixed(2));
-	}
+	const { percentage } = spreadsheetStore.stores;
 </script>
 
 <footer>
-	<p>{localize("report.count")}: {count}</p>
-	<p>{localize("report.percentage")}: {percentage}%</p>
+	<p>{localize("report.count")}: {$spreadsheetStore.length}</p>
+	<p>{localize("report.percentage")}: {$percentage}%</p>
 	<p>{SpreadsheetController.spreadsheetStatus}</p>
 	<a href={`https://docs.google.com/spreadsheets/d/${SpreadsheetController.spreadsheetID}/pubhtml`}>
 		{localize("source")}

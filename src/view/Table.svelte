@@ -6,8 +6,6 @@
 	import Header from "./Header.svelte";
 	import Rows from "./Rows.svelte";
 	import Footer from "./Footer.svelte";
-
-	let search = "";
 </script>
 
 <main>
@@ -16,10 +14,10 @@
 		<PieChart />
 		<Details />
 	</header>
-	<Search bind:search />
+	<Search />
 	<table>
 		<Header />
-		<Rows bind:search />
+		<Rows />
 	</table>
 	<Footer />
 </main>

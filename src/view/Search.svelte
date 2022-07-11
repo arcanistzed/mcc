@@ -1,8 +1,10 @@
 <script>
-	export let search = "";
+	import { getContext } from "svelte";
+
+	const filterSearch = getContext("spreadsheetStore").filterSearch;
 </script>
 
-<input type="search" bind:value={search} placeholder="Search module compatibility..." />
+<input type="search" bind:value={$filterSearch} placeholder="Search module compatibility..." />
 
 <style>
 	input[type="search"] {
