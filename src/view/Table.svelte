@@ -8,8 +8,7 @@
 	import Footer from "./Footer.svelte";
 
 	let hiddenStatuses = [],
-		search = "",
-		mode;
+		search = "";
 </script>
 
 <main>
@@ -20,7 +19,7 @@
 	</header>
 	<Search bind:search />
 	<table>
-		<Header bind:mode />
+		<Header />
 		<Rows bind:hiddenStatuses bind:search />
 	</table>
 	<Footer />

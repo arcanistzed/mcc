@@ -4,11 +4,13 @@
 	import { localize } from "../utils.js";
 
 	export let name;
-	export let mode = "";
 
 	const spreadsheetStore = getContext("spreadsheetStore");
+    const sortByStore = spreadsheetStore.stores.sortBy;
 
 	let direction = false;
+
+	$: sortBy($sortByStore);
 
 	/**
 	 * Sort the rows by a given heading
@@ -19,7 +21,7 @@
 		if (!$spreadsheetStore.some(row => row[heading] !== "")) return;
 
 		// Update the current sorting mode
-		mode = heading;
+		$sortByStore = heading;
 
 		// Sort the rows by this heading
 		$spreadsheetStore = $spreadsheetStore.sort((a, b) => a[heading].localeCompare(b[heading]));
@@ -32,7 +34,7 @@
 
 <th on:click={() => sortBy(name)}>
 	{localize(name)}
-	<i class="fas fa-sort{mode !== name ? '' : direction ? '-up' : '-down'}" />
+	<i class="fas fa-sort{$sortByStore !== name ? '' : direction ? '-up' : '-down'}" />
 </th>
 
 <style>

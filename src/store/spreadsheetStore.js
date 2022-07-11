@@ -23,7 +23,8 @@ class SpreadsheetStore {
 
 	constructor() {
 		this.#stores = {
-			details: mmcSessionStorage.getStore('mmc.details', false)
+			details: mmcSessionStorage.getStore('mmc.details', false),
+			sortBy: mmcSessionStorage.getStore('mmc.sortBy', ""),
 		}
 	}
 
@@ -106,4 +107,6 @@ export const spreadsheetStore = new SpreadsheetStore();
  * @typedef {object} SpreadsheetStores
  *
  * @property {import("svelte/store").Writable<boolean>} details - Show hide additional details in table / rows.
+ *
+ * @property {import("svelte/store").Writable<string>} sortBy - Table header key to sort by.
  */

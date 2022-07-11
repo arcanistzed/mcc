@@ -3,22 +3,20 @@
 
 	import Heading from "./Heading.svelte";
 
-	export let mode;
-
 	const { details } = getContext("spreadsheetStore").stores;
 </script>
 
 <thead>
 	<tr>
 		{#key $details}
-			<Heading name={"title"} bind:mode />
+			<Heading name={"title"} />
 			{#if $details}
-				<Heading name={"type"} bind:mode />
-				<Heading name={"id"} bind:mode />
-				<Heading name={"version"} bind:mode />
-				<Heading name={"status"} bind:mode />
+				<Heading name={"type"} />
+				<Heading name={"id"} />
+				<Heading name={"version"} />
+				<Heading name={"status"} />
 			{/if}
-			<Heading name={"notes"} bind:mode />
+			<Heading name={"notes"} />
 		{/key}
 	</tr>
 </thead>
