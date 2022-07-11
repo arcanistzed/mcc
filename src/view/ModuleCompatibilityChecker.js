@@ -10,7 +10,7 @@ export default class ModuleCompatibilityChecker extends SvelteApplication {
 			width: window.innerWidth * 0.5,
 			height: window.innerHeight * 0.75,
 			resizable: true,
-			minWidth: 700,
+			minWidth: 750,
 
 			svelte: {
 				class: ModuleCompatibilityCheckerShell,
