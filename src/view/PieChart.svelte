@@ -1,12 +1,10 @@
 <script>
 	import { onMount, afterUpdate, onDestroy, getContext } from "svelte";
 	import Chart from "chart.js/auto";
-	import { statuses } from "../utils.js";
-
-	// export let rows = [];
-	export let hiddenStatuses = [];
+	import { statuses, statusesIndexMap } from "../utils.js";
 
 	const spreadsheetStore = getContext("spreadsheetStore");
+	const hiddenStatuses = spreadsheetStore.stores.hiddenStatuses;
 
 	let chart = null,
 		chartRef,
@@ -33,6 +31,8 @@
 	};
 
 	onMount(() => {
+		console.log(`! PieChart - onMount - data: `, data);
+
 		chart = new Chart(chartRef, {
 			type: "pie",
 			data,
@@ -48,10 +48,16 @@
 			},
 		});
 
+		// Set initial hidden statuses coming from session storage.
+		for (const status of $hiddenStatuses) {
+			chart.toggleDataVisibility(statusesIndexMap.get(status));
+		}
+
 		const original = chart.toggleDataVisibility;
+
 		chart.toggleDataVisibility = function (index) {
 			original.call(chart, index);
-			hiddenStatuses = Object.entries(chart._hiddenIndices)
+			$hiddenStatuses = Object.entries(chart._hiddenIndices)
 				.filter(i => i[1])
 				.map(i => Object.keys(statuses)[i[0]]);
 			chart.update();

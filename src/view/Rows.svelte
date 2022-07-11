@@ -3,17 +3,16 @@
 	import { flip } from "svelte/animate";
 	import { isV10, statuses } from "../utils.js";
 
-	export let hiddenStatuses = [];
 	export let search = "";
 
 	const spreadsheetStore = getContext("spreadsheetStore");
-	const details = spreadsheetStore.stores.details;
+	const { details, hiddenStatuses } = spreadsheetStore.stores;
 
 	// Filter rows by hidden statuses and search query
 	let filteredRows = [];
 	$: filteredRows = $spreadsheetStore.filter(
 		r =>
-			!hiddenStatuses.includes(r.status) &&
+			!$hiddenStatuses.includes(r.status) &&
 			[r.title, r.id].some(field =>
 				field.normalize().toLocaleLowerCase().includes(search.normalize().toLocaleLowerCase())
 			)

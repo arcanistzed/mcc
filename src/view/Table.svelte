@@ -7,20 +7,19 @@
 	import Rows from "./Rows.svelte";
 	import Footer from "./Footer.svelte";
 
-	let hiddenStatuses = [],
-		search = "";
+	let search = "";
 </script>
 
 <main>
 	<header>
 		<Versions />
-		<PieChart bind:hiddenStatuses />
+		<PieChart />
 		<Details />
 	</header>
 	<Search bind:search />
 	<table>
 		<Header />
-		<Rows bind:hiddenStatuses bind:search />
+		<Rows bind:search />
 	</table>
 	<Footer />
 </main>

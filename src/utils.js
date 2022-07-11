@@ -15,6 +15,22 @@ export function localize(key) {
 	return game.i18n.localize(`mcc.${key}`);
 }
 
+/**
+ * Provides a Map of statuses keys to index used to hide initial status categories from
+ * {@link SpreadsheetStores.hiddenStatuses} in PieChart component.
+ *
+ * @type {Map<string, number>}
+ */
+export const statusesIndexMap = new Map([
+	["X", 0],
+	["O", 1],
+	["B", 2],
+	["G", 3],
+	["N", 4],
+	["A", 5],
+	["U", 6],
+]);
+
 export const statuses = {
 	X: {
 		hsl: [0, 100, 60],
