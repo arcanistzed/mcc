@@ -7,10 +7,6 @@
 	import Rows from "./Rows.svelte";
 	import Footer from "./Footer.svelte";
 
-	export let rows = [];
-	export let versions;
-	export let version;
-
 	let hiddenStatuses = [],
 		details = false,
 		search = "",
@@ -19,16 +15,16 @@
 
 <main>
 	<header>
-		<Versions bind:versions bind:version />
-		<PieChart bind:rows bind:hiddenStatuses />
+		<Versions />
+		<PieChart bind:hiddenStatuses />
 		<Details bind:details />
 	</header>
 	<Search bind:search />
 	<table>
-		<Header bind:rows bind:details bind:mode />
-		<Rows bind:rows bind:details bind:hiddenStatuses bind:search />
+		<Header bind:details bind:mode />
+		<Rows bind:details bind:hiddenStatuses bind:search />
 	</table>
-	<Footer bind:rows />
+	<Footer />
 </main>
 
 <style>

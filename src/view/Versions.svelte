@@ -1,14 +1,15 @@
 <script>
+	import { getContext } from "svelte";
+
 	import { localize } from "../utils.js";
 
-	export let versions;
-	export let version;
+	const spreadsheetStore = getContext("spreadsheetStore");
 </script>
 
 <label>
 	{localize("selectVersion")}
-	<select bind:value={version}>
-		{#each versions as version}
+	<select bind:value={spreadsheetStore.version}>
+		{#each spreadsheetStore.versions as version}
 			<option value={version}>V{version}</option>
 		{/each}
 	</select>

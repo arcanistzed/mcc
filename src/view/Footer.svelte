@@ -1,17 +1,19 @@
 <script>
+	import { getContext } from "svelte";
+
 	import { isV10, localize } from "../utils.js";
 	import SpreadsheetController from "../controller/SpreadsheetController.js";
 
-	export let rows;
+	const spreadsheetStore = getContext("spreadsheetStore");
 
 	let percentage, working, known, count;
 
-	$: count = rows.length;
+	$: count = $spreadsheetStore.length;
 
 	// Keep the percentage of working packages up to date
 	$: {
-		working = rows.filter(row => row.status === "G" || row.status === "N").length;
-		known = rows.filter(row => row.status !== "U").length;
+		working = $spreadsheetStore.filter(row => row.status === "G" || row.status === "N").length;
+		known = $spreadsheetStore.filter(row => row.status !== "U").length;
 		percentage = parseFloat((100 * (working / Math.max(known, 1))).toFixed(2));
 	}
 </script>

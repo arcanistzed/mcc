@@ -1,16 +1,17 @@
 <script>
-	import { onMount, afterUpdate } from "svelte";
+	import { onMount, afterUpdate, getContext } from "svelte";
 	import { flip } from "svelte/animate";
 	import { isV10, statuses } from "../utils.js";
 
-	export let rows = [];
 	export let details = false;
 	export let hiddenStatuses = [];
 	export let search = "";
 
+	const spreadsheetStore = getContext("spreadsheetStore");
+
 	// Filter rows by hidden statuses and search query
 	let filteredRows = [];
-	$: filteredRows = rows.filter(
+	$: filteredRows = $spreadsheetStore.filter(
 		r =>
 			!hiddenStatuses.includes(r.status) &&
 			[r.title, r.id].some(field =>

@@ -1,7 +1,6 @@
 <script>
 	import Heading from "./Heading.svelte";
 
-	export let rows = [];
 	export let details = false;
 	export let mode;
 </script>
@@ -9,14 +8,14 @@
 <thead>
 	<tr>
 		{#key details}
-			<Heading name={"title"} bind:rows bind:mode />
+			<Heading name={"title"} bind:mode />
 			{#if details}
-				<Heading name={"type"} bind:rows bind:mode />
-				<Heading name={"id"} bind:rows bind:mode />
-				<Heading name={"version"} bind:rows bind:mode />
-				<Heading name={"status"} bind:rows bind:mode />
+				<Heading name={"type"} bind:mode />
+				<Heading name={"id"} bind:mode />
+				<Heading name={"version"} bind:mode />
+				<Heading name={"status"} bind:mode />
 			{/if}
-			<Heading name={"notes"} bind:rows bind:mode />
+			<Heading name={"notes"} bind:mode />
 		{/key}
 	</tr>
 </thead>

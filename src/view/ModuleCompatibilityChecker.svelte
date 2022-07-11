@@ -1,51 +1,32 @@
 <svelte:options accessors={true} />
 
 <script>
+	import { setContext } from "svelte";
+
 	import { ApplicationShell } from "@typhonjs-fvtt/runtime/svelte/component/core";
-	import SpreadsheetController from "../controller/SpreadsheetController.js";
+
+	import { spreadsheetStore } from "../store/SpreadsheetStore.js";
+
 	import Loading from "./Loading.svelte";
 	import Error from "./Error.svelte";
 	import Table from "./Table.svelte";
 
-	let rows = [],
-		state = "loading",
-		errorMessage,
-		versions,
-		version;
+	setContext("spreadsheetStore", spreadsheetStore);
 
-	$: (() => {
-		state = "loading";
-		SpreadsheetController.getVersions()
-		.then(v => {
-			versions = v;
-			version ??= v.at(-1);
-			SpreadsheetController.getRows(version)
-				.then(result => {
-					state = null;
-					rows = result;
-				})
-				.catch(error => {
-					state = "error";
-					errorMessage = error;
-					console.error(error);
-				});
-		})
-		.catch(error => {
-			state = "error";
-			errorMessage = error;
-			console.error(error);
-		});
-	})();
+	let rows = [];
 
 	export let elementRoot;
 </script>
 
 <ApplicationShell bind:elementRoot stylesContent={{ padding: 0 }}>
-	{#if state === "loading"}
+	{#await spreadsheetStore.populate()}
 		<Loading />
-	{:else if state === "error"}
+	{:then result}
+		{(console.log(`!! MCC - then - 1 - spreadsheetStore.version: `, spreadsheetStore.version), '')}
+		{(console.log(`!! MCC - then - 2 - spreadsheetStore.versions: `, spreadsheetStore.versions), '')}
+		<Table bind:rows />
+	{:catch errorMessage}
 		<Error {errorMessage} />
-	{:else}
-		<Table bind:rows bind:versions bind:version />
-	{/if}
+		{(console.error(errorMessage), '')}
+	{/await}
 </ApplicationShell>

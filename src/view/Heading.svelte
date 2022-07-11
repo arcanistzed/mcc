@@ -1,9 +1,13 @@
 <script>
+	import { getContext } from "svelte";
+
 	import { localize } from "../utils.js";
 
 	export let name;
-	export let rows = [];
 	export let mode = "";
+
+	const spreadsheetStore = getContext("spreadsheetStore");
+
 	let direction = false;
 
 	/**
@@ -12,17 +16,17 @@
 	 */
 	function sortBy(heading) {
 		// If there are no contents under this heading, don't sort
-		if (!rows.some(row => row[heading] !== "")) return;
+		if (!$spreadsheetStore.some(row => row[heading] !== "")) return;
 
 		// Update the current sorting mode
 		mode = heading;
 
 		// Sort the rows by this heading
-		rows = rows.sort((a, b) => a[heading].localeCompare(b[heading]));
+		$spreadsheetStore = $spreadsheetStore.sort((a, b) => a[heading].localeCompare(b[heading]));
 
 		// Reverse the order if the direction is "up"
 		direction = !direction;
-		if (direction) rows = rows.reverse();
+		if (direction) $spreadsheetStore = $spreadsheetStore.reverse();
 	}
 </script>
 

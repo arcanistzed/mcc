@@ -1,10 +1,12 @@
 <script>
-	import { onMount, afterUpdate, onDestroy } from "svelte";
+	import { onMount, afterUpdate, onDestroy, getContext } from "svelte";
 	import Chart from "chart.js/auto";
 	import { statuses } from "../utils.js";
 
-	export let rows = [];
+	// export let rows = [];
 	export let hiddenStatuses = [];
+
+	const spreadsheetStore = getContext("spreadsheetStore");
 
 	let chart = null,
 		chartRef,
@@ -14,7 +16,7 @@
 		labels: Object.values(statuses).map(({ explanation }) => explanation),
 		datasets: [
 			{
-				data: Object.keys(statuses).map(status => rows.filter(row => row.status === status).length),
+				data: Object.keys(statuses).map(status => $spreadsheetStore.filter(row => row.status === status).length),
 				backgroundColor: Object.values(statuses).map(
 					({ hsl }) => `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%, 100%)`
 				),
