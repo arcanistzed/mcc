@@ -4,10 +4,12 @@ import { DynArrayReducer } from "@typhonjs-fvtt/runtime/svelte/store";
 import { createFilterQuery } from "@typhonjs-fvtt/svelte-standard/store";
 
 import SpreadsheetController from "../controller/SpreadsheetController.js";
+
 import { mmcSessionStorage } from "./mmcSessionStorage.js";
-import { createReversed } from "./createReversed.js";
+import { createAccessorStore } from "./createAccessorStore.js";
 import { filterHiddenStatuses } from "./filterHiddenStatuses.js";
 import { sortByHeader } from "./sortByHeader.js";
+
 import { statuses } from "../utils.js";
 
 
@@ -27,12 +29,15 @@ class SpreadsheetStore extends DynArrayReducer {
 		super();
 
 		this.#stores = {
-			details: mmcSessionStorage.getStore('mmc.details', false),
+			details: mmcSessionStorage.getStore("mmc.details", false),
 			hiddenStatuses: filterHiddenStatuses,
 			percentage: writable(0),
+			percentageTooltip: writable(''),
 			pieData: writable({}),
-			reversed: createReversed(this),
-			sortBy: sortByHeader
+			reversed: createAccessorStore(this, "reversed", false),
+			scrollTop: mmcSessionStorage.getStore("mmc.scrolltop", 0),
+			sortBy: sortByHeader,
+			version: createAccessorStore(this, "version")
 		}
 
 		this.filters.add(this.#filterSearch);
@@ -66,9 +71,6 @@ class SpreadsheetStore extends DynArrayReducer {
 	 */
 	set version(version) {
 		this.#version = version;
-
-		// TODO: consider try / catch block and error mechanism on any lookup failures when version changes.
-		this.update();
 	}
 
 	async update() {
@@ -80,7 +82,11 @@ class SpreadsheetStore extends DynArrayReducer {
 		const working = data.filter(row => row.status === "G" || row.status === "N").length;
 		const known = data.filter(row => row.status !== "U").length;
 
-		this.#stores.percentage.set(parseFloat((100 * (working / Math.max(known, 1))).toFixed(2)));
+		const percentageKnown = parseFloat((100 * (working / Math.max(known, 1))).toFixed(2));
+
+		this.#stores.percentage.set(parseFloat((100 * (working / Math.max(data.length, 1))).toFixed(2)));
+
+		this.#stores.percentageTooltip.set(game.i18n.format("mcc.percentageKnownTooltip", { known, percentageKnown }));
 
 		// Create the pie chart data.
 		this.#stores.pieData.set({
@@ -101,7 +107,12 @@ class SpreadsheetStore extends DynArrayReducer {
 
 	async initialize() {
 		this.#versions = await SpreadsheetController.getVersions();
-		this.#version ??= this.#versions.at(-1);
+
+		// Only set the version to the latest / last spreadsheet version if it isn't retrieved from session storage.
+		if (typeof this.#version !== 'string' || !this.#versions.includes(this.#version))
+		{
+			this.#stores.version.set(this.#versions.at(-1));
+		}
 
 		return this.update();
 	}
@@ -116,11 +127,17 @@ export const spreadsheetStore = new SpreadsheetStore();
  *
  * @property {import("svelte/store").Writable<string[]>} hiddenStatuses - Stores status codes to filter table data.
  *
- * @property {import("svelte/store").Writable<string>} percentage - Stores percentage of known compatible.
+ * @property {import("svelte/store").Writable<number>} percentage - Stores percentage of all compatible.
+ *
+ * @property {import("svelte/store").Writable<string>} percentageTooltip - Stores percentage tooltip w/ all & known data.
  *
  * @property {import("svelte/store").Writable<number[]>} pieData - Stores Chart.js / pie chart data.
  *
  * @property {import("svelte/store").Writable<boolean>} reversed - Stores DynArrayReducer reversed state.
  *
+ * @property {import("svelte/store").Writable<number>} scrollTop - Stores scroll bar position.
+ *
  * @property {import("svelte/store").Writable<string>} sortBy - Table header key to sort by.
+ *
+ * @property {import("svelte/store").Writable<string>} version - Stores current spreadsheet version.
  */

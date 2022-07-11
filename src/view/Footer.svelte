@@ -6,12 +6,12 @@
 
 	const spreadsheetStore = getContext("spreadsheetStore");
 
-	const { percentage } = spreadsheetStore.stores;
+	const { percentage, percentageTooltip } = spreadsheetStore.stores;
 </script>
 
 <footer>
 	<p>{localize("report.count")}: {$spreadsheetStore.length}</p>
-	<p>{localize("report.percentage")}: {$percentage}%</p>
+	<p title={$percentageTooltip}>{localize("report.percentage")}: {$percentage}%</p>
 	<p>{SpreadsheetController.spreadsheetStatus}</p>
 	<a href={`https://docs.google.com/spreadsheets/d/${SpreadsheetController.spreadsheetID}/pubhtml`}>
 		{localize("source")}

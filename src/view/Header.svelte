@@ -1,14 +1,16 @@
 <script>
 	import { getContext } from "svelte";
 
+	import StickyHeader from "./StickyHeader.svelte";
 	import Heading from "./Heading.svelte";
 
 	const { details } = getContext("spreadsheetStore").stores;
 </script>
 
 <thead>
-	<tr>
-		{#key $details}
+	<StickyHeader />
+	{#key $details}
+		<tr>
 			<Heading name={"title"} />
 			{#if $details}
 				<Heading name={"type"} />
@@ -17,20 +19,26 @@
 				<Heading name={"status"} />
 			{/if}
 			<Heading name={"notes"} />
-		{/key}
-	</tr>
+		</tr>
+	{/key}
 </thead>
 
 <style>
 	thead {
 		position: sticky;
-		background-color: #555;
+		background-color: rgb(211, 209, 196);
 		z-index: 1;
 		top: 0;
 	}
 
+	/* Override Foundry core rule */
+	tr:nth-child(even) {
+		background-color: #555;
+	}
+
 	tr {
 		transition: 250ms;
+		border: solid 1px black;
 	}
 
 	tr:hover {

@@ -1,20 +1,32 @@
 <script>
-	import Versions from "./Versions.svelte";
+	import { getContext } from "svelte";
+
+	import { applyScrolltop } from "@typhonjs-fvtt/runtime/svelte/action";
+
 	import PieChart from "./PieChart.svelte";
-	import Details from "./Details.svelte";
-	import Search from "./Search.svelte";
 	import Header from "./Header.svelte";
 	import Rows from "./Rows.svelte";
 	import Footer from "./Footer.svelte";
+
+	const { scrollTop } = getContext("spreadsheetStore").stores;
+
+	/**
+	 * Handle custom event from StickyHeader to smoothly scroll to the top.
+	 * @param {CustomEvent} event -
+	 */
+	function scrollSmooth(event) {
+		event.currentTarget.scrollTo({
+			top: 0,
+			left: 0,
+			behavior: 'smooth'
+		})
+	}
 </script>
 
-<main>
+<main use:applyScrolltop={scrollTop} on:scrolltop:smooth={scrollSmooth}>
 	<header>
-		<Versions />
 		<PieChart />
-		<Details />
 	</header>
-	<Search />
 	<table>
 		<Header />
 		<Rows />
@@ -27,8 +39,9 @@
 		display: flex;
 		flex-direction: column;
 		overflow-y: scroll;
+		overflow-x: hidden;
 		position: relative;
-		margin: 1rem;
+		scrollbar-width: thin;  /* For Firefox */
 	}
 
 	header {
@@ -40,8 +53,7 @@
 		height: fit-content;
 		width: 100%;
 		margin: 0;
-		border: solid black 1px;
-		border-bottom: none;
+		border: none;
 		box-sizing: border-box;
 		border-collapse: separate;
 		border-spacing: 0;
