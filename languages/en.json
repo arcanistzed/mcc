@@ -11,7 +11,7 @@
             "u": "Unknown status - Package may not be in the official listing"
         },
         "loading": "Loading...",
-        "selectVersion": "Check compatibility for",
+        "selectVersion": "Check compatibility for:",
         "hide": "Hide",
         "show": "Show",
         "details": "details",
@@ -32,6 +32,10 @@
         "error": "Please try again. If this issue persists, join my Discord server to report a bug.",
         "website": "My Website",
         "button": "Module Compatibility Checker",
-        "moduleManagementColorsExplanation": "The background colors below are used to indicate the status of the module in the latest core version. Open the Module Compatibility Checker with the button below for more info."
+        "moduleManagementColorsExplanation": "The background colors below are used to indicate the status of the module in the latest core version. Open the Module Compatibility Checker with the button below for more info.",
+			  "scrollToTop": "Scroll To Top",
+			  "detailsHide": "Hide details",
+			  "detailsShow": "Show details",
+			  "percentageKnownTooltip": "The percentage of all \"known\" ({known}) compatible packages with current spreadsheet data is: {percentageKnown}%."
     }
 }
