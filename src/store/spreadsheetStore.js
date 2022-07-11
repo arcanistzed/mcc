@@ -1,16 +1,14 @@
 import { writable } from "svelte/store";
 
-import {
-	DynArrayReducer,
-	SessionStorage } from "@typhonjs-fvtt/runtime/svelte/store";
-import { storeCallback } from "@typhonjs-fvtt/svelte-standard/store";
+import { DynArrayReducer } from "@typhonjs-fvtt/runtime/svelte/store";
 
 import SpreadsheetController from "../controller/SpreadsheetController.js";
+import { mmcSessionStorage } from "./mmcSessionStorage.js";
+import { filterHiddenStatuses } from "./filterHiddenStatuses.js";
+import { sortByHeader } from "./sortByHeader.js";
 import { statuses } from "../utils.js";
 
 import { createFilterQuery } from "./createFilterQuery.js";
-
-const mmcSessionStorage = new SessionStorage();
 
 class SpreadsheetStore extends DynArrayReducer {
 	#filterSearch = createFilterQuery(["title", "id"]);
@@ -27,19 +25,17 @@ class SpreadsheetStore extends DynArrayReducer {
 	constructor() {
 		super([]);
 
-		let hiddenStatuses = sessionStorage.getItem('mmc.hiddenStatuses') ?? [];
-
 		this.#stores = {
 			details: mmcSessionStorage.getStore('mmc.details', false),
-			hiddenStatuses: storeCallback(mmcSessionStorage.getStore('mmc.hiddenStatuses', []), (store, value) => {
-		     hiddenStatuses = value; this.index.update(); }),
+			hiddenStatuses: filterHiddenStatuses,
 			percentage: writable(0),
 			pieData: writable({}),
-			sortBy: mmcSessionStorage.getStore('mmc.sortBy', "")
+			sortBy: sortByHeader
 		}
 
 		this.filters.add(this.#filterSearch);
-		this.filters.add((entry) => !hiddenStatuses.includes(entry.status));
+		this.filters.add(filterHiddenStatuses);
+		this.sort.set(sortByHeader);
 	}
 
 	get filterSearch() { return this.#filterSearch; }
@@ -84,6 +80,7 @@ class SpreadsheetStore extends DynArrayReducer {
 
 		this.#stores.percentage.set(parseFloat((100 * (working / Math.max(known, 1))).toFixed(2)));
 
+		// Create the pie chart data.
 		this.#stores.pieData.set({
 			labels: Object.values(statuses).map(({ explanation }) => explanation),
 			datasets: [
@@ -94,13 +91,13 @@ class SpreadsheetStore extends DynArrayReducer {
 					),
 					hoverBackgroundColor: Object.values(statuses).map(
 					 ({ hsl }) => `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2] + 10}%, 80%)`
-					),
-				},
-			],
+					)
+				}
+			]
 		});
 	}
 
-	async populate() {
+	async initialize() {
 		this.#versions = await SpreadsheetController.getVersions();
 		this.#version ??= this.#versions.at(-1);
 

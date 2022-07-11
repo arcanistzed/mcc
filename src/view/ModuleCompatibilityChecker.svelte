@@ -17,7 +17,7 @@
 </script>
 
 <ApplicationShell bind:elementRoot stylesContent={{ padding: 0 }}>
-	{#await spreadsheetStore.populate()}
+	{#await spreadsheetStore.initialize()}
 		<Loading />
 	{:then result}
 		<Table />
