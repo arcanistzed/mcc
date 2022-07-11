@@ -1,9 +1,9 @@
 import { mmcSessionStorage } from "./mmcSessionStorage.js";
 
 // Get initial value from session storage immediately.
-let sortBy = sessionStorage.getItem('mmc.sortBy') ?? "";
+let sortBy = mmcSessionStorage.getItem("mmc.sortBy", "");
 
-const storeSortBy = mmcSessionStorage.getStore('mmc.sortBy', "");
+const storeSortBy = mmcSessionStorage.getStore("mmc.sortBy", "");
 
 /**
  * Provides the compare function to sort macros by name alphabetically.

@@ -1,7 +1,7 @@
 import { mmcSessionStorage } from "./mmcSessionStorage.js";
 
 // Get initial value from session storage immediately.
-let hiddenStatuses = new Set(sessionStorage.getItem('mmc.hiddenStatuses') ?? []);
+let hiddenStatuses = new Set(mmcSessionStorage.getItem('mmc.hiddenStatuses', []));
 
 const storeHiddenStatuses = mmcSessionStorage.getStore('mmc.hiddenStatuses', []);
 

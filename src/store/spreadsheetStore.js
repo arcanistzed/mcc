@@ -1,17 +1,18 @@
 import { writable } from "svelte/store";
 
 import { DynArrayReducer } from "@typhonjs-fvtt/runtime/svelte/store";
+import { createFilterQuery } from "@typhonjs-fvtt/svelte-standard/store";
 
 import SpreadsheetController from "../controller/SpreadsheetController.js";
 import { mmcSessionStorage } from "./mmcSessionStorage.js";
+import { createReversed } from "./createReversed.js";
 import { filterHiddenStatuses } from "./filterHiddenStatuses.js";
 import { sortByHeader } from "./sortByHeader.js";
 import { statuses } from "../utils.js";
 
-import { createFilterQuery } from "./createFilterQuery.js";
 
 class SpreadsheetStore extends DynArrayReducer {
-	#filterSearch = createFilterQuery(["title", "id"]);
+	#filterSearch = createFilterQuery(["title", "id"], { store: mmcSessionStorage.getStore("mmc.search", "") });
 
 	/** @type {string} */
 	#version;
@@ -23,13 +24,14 @@ class SpreadsheetStore extends DynArrayReducer {
 	#stores;
 
 	constructor() {
-		super([]);
+		super();
 
 		this.#stores = {
 			details: mmcSessionStorage.getStore('mmc.details', false),
 			hiddenStatuses: filterHiddenStatuses,
 			percentage: writable(0),
 			pieData: writable({}),
+			reversed: createReversed(this),
 			sortBy: sortByHeader
 		}
 
@@ -117,6 +119,8 @@ export const spreadsheetStore = new SpreadsheetStore();
  * @property {import("svelte/store").Writable<string>} percentage - Stores percentage of known compatible.
  *
  * @property {import("svelte/store").Writable<number[]>} pieData - Stores Chart.js / pie chart data.
+ *
+ * @property {import("svelte/store").Writable<boolean>} reversed - Stores DynArrayReducer reversed state.
  *
  * @property {import("svelte/store").Writable<string>} sortBy - Table header key to sort by.
  */

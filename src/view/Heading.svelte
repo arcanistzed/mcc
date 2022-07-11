@@ -6,30 +6,31 @@
 	export let name;
 
 	const spreadsheetStore = getContext("spreadsheetStore");
-    const sortByStore = spreadsheetStore.stores.sortBy;
+    const { sortBy, reversed } = spreadsheetStore.stores;
 
-	let direction = false;
+	// Correctly set direction from initial reversed state when sortBy === name.
+	let direction = $sortBy === name && $reversed;
 
 	// Reset direction to false when another sort header is clicked.
-	$: if ($sortByStore !== name) { direction = false; }
+	$: if ($sortBy !== name) { direction = true; }
 
 	/**
 	 * Sort the rows by a given heading
 	 * @param heading - The heading to sort by
 	 */
-	function sortBy(heading) {
+	function setSortBy(heading) {
 		// Update the current sorting mode
-		$sortByStore = heading;
+		$sortBy = heading;
 
 		// Reverse the order if the direction is "up"
 		direction = !direction;
-		// if (direction) $spreadsheetStore = $spreadsheetStore.reverse();
+		$reversed = direction;
 	}
 </script>
 
-<th on:click={() => sortBy(name)}>
+<th on:click={() => setSortBy(name)}>
 	{localize(name)}
-	<i class="fas fa-sort{$sortByStore !== name ? '' : direction ? '-up' : '-down'}" />
+	<i class="fas fa-sort{$sortBy !== name ? '' : direction ? '-up' : '-down'}" />
 </th>
 
 <style>
