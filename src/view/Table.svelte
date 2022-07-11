@@ -8,7 +8,6 @@
 	import Footer from "./Footer.svelte";
 
 	let hiddenStatuses = [],
-		details = false,
 		search = "",
 		mode;
 </script>
@@ -17,12 +16,12 @@
 	<header>
 		<Versions />
 		<PieChart bind:hiddenStatuses />
-		<Details bind:details />
+		<Details />
 	</header>
 	<Search bind:search />
 	<table>
-		<Header bind:details bind:mode />
-		<Rows bind:details bind:hiddenStatuses bind:search />
+		<Header bind:mode />
+		<Rows bind:hiddenStatuses bind:search />
 	</table>
 	<Footer />
 </main>

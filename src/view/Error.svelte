@@ -1,6 +1,7 @@
 <script>
 	import { isV10, localize } from "../utils.js";
 	export let error = "";
+	console.error(error);
 </script>
 
 <main>

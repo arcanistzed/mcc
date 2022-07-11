@@ -1,3 +1,5 @@
+import { mmcSessionStorage } from "./mmcSessionStorage.js";
+
 import SpreadsheetController from "../controller/SpreadsheetController.js";
 
 class SpreadsheetStore {
@@ -15,6 +17,20 @@ class SpreadsheetStore {
 	 * @type {(function(T[]): void)[]}
 	 */
 	#subscriptions = [];
+
+	/** @type {SpreadsheetStores} */
+	#stores;
+
+	constructor() {
+		this.#stores = {
+			details: mmcSessionStorage.getStore('mmc.details', false)
+		}
+	}
+
+	/**
+	 * @returns {SpreadsheetStores}
+	 */
+	get stores() { return this.#stores; }
 
 	/**
 	 * @returns {string}
@@ -40,7 +56,6 @@ class SpreadsheetStore {
 
 	async update() {
 		this.#data = await SpreadsheetController.getRows(this.#version);
-
 		this.#updateSubscribers();
 	}
 
@@ -86,3 +101,9 @@ class SpreadsheetStore {
 }
 
 export const spreadsheetStore = new SpreadsheetStore();
+
+/**
+ * @typedef {object} SpreadsheetStores
+ *
+ * @property {import("svelte/store").Writable<boolean>} details - Show hide additional details in table / rows.
+ */

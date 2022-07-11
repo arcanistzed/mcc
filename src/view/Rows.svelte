@@ -3,11 +3,11 @@
 	import { flip } from "svelte/animate";
 	import { isV10, statuses } from "../utils.js";
 
-	export let details = false;
 	export let hiddenStatuses = [];
 	export let search = "";
 
 	const spreadsheetStore = getContext("spreadsheetStore");
+	const details = spreadsheetStore.stores.details;
 
 	// Filter rows by hidden statuses and search query
 	let filteredRows = [];
@@ -62,7 +62,7 @@
 			title={!isV10() ? statuses[row.status].explanation : null}
 		>
 			<td>{row.title}</td>
-			{#if details}
+			{#if $details}
 				<td>{row.type}</td>
 				<td>{row.id}</td>
 				<td class="center">{row.version}</td>
