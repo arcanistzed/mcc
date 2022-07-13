@@ -1,4 +1,4 @@
-import { writable } from "svelte/store";
+import { derived, writable } from "svelte/store";
 
 import { DynArrayReducer } from "@typhonjs-fvtt/runtime/svelte/store";
 import { createFilterQuery } from "@typhonjs-fvtt/svelte-standard/store";
@@ -27,7 +27,23 @@ class SpreadsheetStore extends DynArrayReducer {
 	constructor() {
 		super();
 
+		/**
+		 * Creates a derived store that calculates the current working percentage based on filtered packages.
+		 *
+		 * @type {import("svelte/store").Readable<number>}
+		 */
+		const currentPercentage = derived(this, () => {
+			let working = 0;
+
+			for (const row of this) {
+				if (row.status === "G" || row.status === "N") { working++; }
+			}
+
+			return parseFloat((100 * (working / Math.max(this.index.length, 1))).toFixed(2))
+		});
+
 		this.#stores = {
+			currentPercentage,
 			details: mccSessionStorage.getStore("mcc.details", false),
 			hiddenStatuses: filterHiddenStatuses,
 			percentage: writable(0),
@@ -121,6 +137,9 @@ export const spreadsheetStore = new SpreadsheetStore();
 
 /**
  * @typedef {object} SpreadsheetStores
+ *
+ * @property {import("svelte/store").Readable<number>} currentPercentage - Stores current working percentage on
+ *                                                                         filtered package data.
  *
  * @property {import("svelte/store").Writable<boolean>} details - Show hide additional details in table / rows.
  *
