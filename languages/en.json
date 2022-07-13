@@ -36,6 +36,7 @@
 			  "scrollToTop": "Scroll To Top",
 			  "detailsHide": "Hide details",
 			  "detailsShow": "Show details",
+			  "percentageCurrentTooltip": "The percentage ready for current filtered package count.",
 			  "percentageKnownTooltip": "The percentage of all \"known\" ({known}) compatible packages with current spreadsheet data is: {percentageKnown}%."
     }
 }
