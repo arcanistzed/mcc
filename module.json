@@ -1,8 +1,8 @@
 {
+  "id": "mcc",
   "name": "mcc",
   "title": "Module Compatibility Checker",
   "description": "Check your module list for compatibility with the latest major version of Foundry VTT.",
-  "author": "Arcanist",
   "authors": [
     {
       "name": "Arcanist",
@@ -21,6 +21,10 @@
     "allowBugReporter": true
   },
   "version": "This is auto replaced",
+  "compatibility": {
+    "minimum": "9",
+    "verified": "10"
+  },
   "minimumCoreVersion": "9",
   "compatibleCoreVersion": "10",
   "scripts": [],
@@ -39,7 +43,6 @@
   ],
   "packs": [],
   "system": [],
-  "dependencies": [],
   "manifest": "This is auto replaced",
   "download": "This is auto replaced",
   "library": false,
