@@ -1,9 +1,9 @@
-import { mmcSessionStorage } from "./mmcSessionStorage.js";
+import { mccSessionStorage } from "./mccSessionStorage.js";
 
 // Get initial value from session storage immediately.
-let hiddenStatuses = new Set(mmcSessionStorage.getItem('mmc.hiddenStatuses', []));
+let hiddenStatuses = new Set(mccSessionStorage.getItem('mcc.hiddenStatuses', []));
 
-const storeHiddenStatuses = mmcSessionStorage.getStore('mmc.hiddenStatuses', []);
+const storeHiddenStatuses = mccSessionStorage.getStore('mcc.hiddenStatuses', []);
 
 /**
  * Provides a filter function to remove rows that are part of hidden statuses set.

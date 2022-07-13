@@ -1,6 +1,6 @@
 import { hasSetter } from "@typhonjs-fvtt/runtime/svelte/util";
 
-import { mmcSessionStorage } from "./mmcSessionStorage.js";
+import { mccSessionStorage } from "./mccSessionStorage.js";
 
 /**
  * Creates a session storage store and link it to an accessor / setter on the given target.
@@ -19,11 +19,11 @@ export function createAccessorStore(target, accessor, initial)
 {
 	if (!hasSetter(target, accessor)) { throw new TypeError(`Accessor '${accessor} is not available on target.`); }
 
-	const sessionKey = `mmc.${accessor}`;
+	const sessionKey = `mcc.${accessor}`;
 
-	target[accessor] = mmcSessionStorage.getItem(sessionKey, initial);
+	target[accessor] = mccSessionStorage.getItem(sessionKey, initial);
 
-	const mmcSessionStore = mmcSessionStorage.getStore(sessionKey, initial);
+	const mccSessionStore = mccSessionStorage.getStore(sessionKey, initial);
 
 	return {
 		/**
@@ -31,14 +31,14 @@ export function createAccessorStore(target, accessor, initial)
 		 *
 		 * @returns {import("svelte/store").Unsubscriber}
 		 */
-		subscribe: (handler) => mmcSessionStore.subscribe(handler),
+		subscribe: (handler) => mccSessionStore.subscribe(handler),
 
 		/**
 		 * @param {T} value -
 		 */
 		set: (value) => {
 			target[accessor] = value;
-			mmcSessionStore.set(value);
+			mccSessionStore.set(value);
 		}
 	}
 }

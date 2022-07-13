@@ -5,16 +5,15 @@ import { createFilterQuery } from "@typhonjs-fvtt/svelte-standard/store";
 
 import SpreadsheetController from "../controller/SpreadsheetController.js";
 
-import { mmcSessionStorage } from "./mmcSessionStorage.js";
+import { mccSessionStorage } from "./mccSessionStorage.js";
 import { createAccessorStore } from "./createAccessorStore.js";
 import { filterHiddenStatuses } from "./filterHiddenStatuses.js";
 import { sortByHeader } from "./sortByHeader.js";
 
 import { statuses } from "../utils.js";
 
-
 class SpreadsheetStore extends DynArrayReducer {
-	#filterSearch = createFilterQuery(["title", "id"], { store: mmcSessionStorage.getStore("mmc.search", "") });
+	#filterSearch = createFilterQuery(["title", "id"], { store: mccSessionStorage.getStore("mcc.search", "") });
 
 	/** @type {string} */
 	#version;
@@ -29,13 +28,13 @@ class SpreadsheetStore extends DynArrayReducer {
 		super();
 
 		this.#stores = {
-			details: mmcSessionStorage.getStore("mmc.details", false),
+			details: mccSessionStorage.getStore("mcc.details", false),
 			hiddenStatuses: filterHiddenStatuses,
 			percentage: writable(0),
 			percentageTooltip: writable(''),
 			pieData: writable({}),
 			reversed: createAccessorStore(this, "reversed", false),
-			scrollTop: mmcSessionStorage.getStore("mmc.scrolltop", 0),
+			scrollTop: mccSessionStorage.getStore("mcc.scrolltop", 0),
 			sortBy: sortByHeader,
 			version: createAccessorStore(this, "version")
 		}
