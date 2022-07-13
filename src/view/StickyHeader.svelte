@@ -88,13 +88,8 @@
 		border: solid 0.1em rgba(0, 0, 0, 0.5);
 		padding: 0.35em 0.25em 0.25em 0.25em;
 		margin: 0 0.25em;
-		color: var(--color-text-dark-primary);
+		color: #191813;
 		text-shadow: none;
-
-		--tjs-comp-input-padding: 0 0.25em;
-		--tjs-icon-button-background: rgba(0, 0, 0, 0.1);
-		--tjs-icon-button-background-hover: rgba(0, 0, 0, 0.15);
-		--tjs-icon-button-background-selected: rgba(0, 0, 0, 0.2);
 	}
 
 	span {

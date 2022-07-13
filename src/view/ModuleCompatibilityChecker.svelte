@@ -16,7 +16,7 @@
 	export let elementRoot;
 </script>
 
-<ApplicationShell bind:elementRoot stylesContent={{ padding: 0 }}>
+<ApplicationShell bind:elementRoot>
 	{#await spreadsheetStore.initialize()}
 		<Loading />
 	{:then result}

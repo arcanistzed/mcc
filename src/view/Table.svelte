@@ -42,6 +42,7 @@
 		overflow-x: hidden;
 		position: relative;
 		scrollbar-width: thin;  /* For Firefox */
+		color: #191813;
 	}
 
 	header {
