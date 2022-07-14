@@ -26,15 +26,16 @@
 <style>
 	footer {
 		position: sticky;
-		background-color: #555;
-		bottom: 0;
+		background: linear-gradient(to top, #283048, #859398);
+		bottom: -0.5px; /* A small negative value prevents a 1px gap from sporadically showing */
 		color: white;
 		text-align: center;
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
 		gap: 1ch;
-		border: solid black 1px;
+		border-top: solid 1px rgba(0, 0, 0, 0.2);
+		border-bottom: solid 1px rgba(0, 0, 0, 0.2);
 	}
 
 	a {

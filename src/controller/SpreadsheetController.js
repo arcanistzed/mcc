@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-unused-vars
-import { localize, statuses, statusesIndexMap } from "../utils.js";
+import { localize, statuses } from "../utils.js";
 
 /**
  * @typedef {object} RowData
@@ -109,7 +108,7 @@ export default class SpreadsheetController {
 		if (typeof data.status === 'string') { data.status = data.status.toUpperCase(); }
 
 		// Check for valid status. Warn if not found and append a note.
-		if (!statusesIndexMap.has(data.status)) {
+		if (!statuses[data.status]) {
 			const message = `Error in spreadsheet: ${data.title} (${data.id}) has invalid status '${
 			 data.status}'. Please contact 'Anathema#3668' on Discord.`
 

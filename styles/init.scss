@@ -14,13 +14,17 @@
 		padding: 0 !important;
 	}
 
-	select {
-		background: rgba(0, 0, 0, 0.05) !important;
-		color: #191813 !important;
+	a:hover {
+		text-shadow: 0 0 8px #ff0000 !important;
 	}
 
 	p {
 		font-family: "Signika", sans-serif !important;
 		font-size: 0.875rem !important;
+	}
+
+	select {
+		background: rgba(0, 0, 0, 0.05) !important;
+		color: #191813 !important;
 	}
 }

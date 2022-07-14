@@ -38,6 +38,7 @@
 		white-space: nowrap;
 		padding: 1ch;
 		border-right: solid 2px rgba(0, 0, 0, 0.2);
+		cursor: pointer;
 	}
 
 	th:last-child {

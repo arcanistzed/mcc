@@ -16,6 +16,24 @@ class SpreadsheetStore extends DynArrayReducer {
 	/** @type {Map<string, PackageLinkData>} */
 	#packageLinks = new Map();
 
+	/**
+	 * Stores pie chart data; further data is initialized at runtime.
+	 *
+	 * @type {PieChartData}
+	 */
+	#pieData = {
+		datasets: [
+			{
+				backgroundColor: Object.values(statuses).map(
+				 ({ hsl }) => `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%, 100%)`
+				),
+				hoverBackgroundColor: Object.values(statuses).map(
+				 ({ hsl }) => `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2] + 10}%, 80%)`
+				)
+			}
+		]
+	};
+
 	/** @type {string} */
 	#version;
 
@@ -47,8 +65,6 @@ class SpreadsheetStore extends DynArrayReducer {
 			details: mccSessionStorage.getStore("mcc.details", false),
 			filteredPercentage,
 			filterSearch: createFilterQuery(["title", "id"], { store: mccSessionStorage.getStore("mcc.search", "") }),
-			percentage: writable(0),
-			percentageTooltip: writable(''),
 			pieData: writable({}),
 			reversed: createAccessorStore(this, "reversed", false),
 			scrollTop: mccSessionStorage.getStore("mcc.scrolltop", 0),
@@ -60,6 +76,17 @@ class SpreadsheetStore extends DynArrayReducer {
 		this.filters.add(this.#stores.filterSearch);
 		this.filters.add(filterStatuses);
 		this.sort.set(sortByHeader);
+
+		// Subscribe to updates and calculate pie chart data for filtered packages.
+		this.subscribe(() => {
+			const filteredData = [...this];
+
+			// Update pie chart data w/ filtered data.
+			this.#pieData.datasets[0].data = Object.keys(statuses).map(status => filteredData.filter(
+			 row => row.status === status).length);
+
+			this.#stores.pieData.set(this.#pieData);
+		})
 	}
 
 	/**
@@ -117,33 +144,10 @@ class SpreadsheetStore extends DynArrayReducer {
 	async update() {
 		const data = await SpreadsheetController.getRows(this.#version);
 
+		// Add all package data to pie chart data.
+		this.#pieData.allData = Object.keys(statuses).map(status => data.filter(row => row.status === status).length);
+
 		this.setData(data);
-
-		// Update percentage of working packages.
-		const working = data.filter(row => row.status === "G" || row.status === "N").length;
-		const known = data.filter(row => row.status !== "U").length;
-
-		const percentageKnown = parseFloat((100 * (working / Math.max(known, 1))).toFixed(2));
-
-		this.#stores.percentage.set(parseFloat((100 * (working / Math.max(data.length, 1))).toFixed(2)));
-
-		this.#stores.percentageTooltip.set(game.i18n.format("mcc.percentageKnownTooltip", { known, percentageKnown }));
-
-		// Create the pie chart data.
-		this.#stores.pieData.set({
-			labels: Object.values(statuses).map(({ explanation }) => explanation),
-			datasets: [
-				{
-					data: Object.keys(statuses).map(status => data.filter(row => row.status === status).length),
-					backgroundColor: Object.values(statuses).map(
-					 ({ hsl }) => `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%, 100%)`
-					),
-					hoverBackgroundColor: Object.values(statuses).map(
-					 ({ hsl }) => `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2] + 10}%, 80%)`
-					)
-				}
-			]
-		});
 	}
 
 	async initialize() {
@@ -154,6 +158,9 @@ class SpreadsheetStore extends DynArrayReducer {
 		{
 			this.#stores.version.set(this.#versions.at(-1));
 		}
+
+		// Add pie chart label data.
+		this.#pieData.labels = Object.values(statuses).map(({ explanation }) => explanation);
 
 		this.buildPackageLinks();
 
@@ -172,6 +179,22 @@ export const spreadsheetStore = new SpreadsheetStore();
  */
 
 /**
+ * @typedef {object} PieChartData
+ *
+ * @property {number[]} allData - All status data calculated when the spreadsheet updates.
+ *
+ * @property {string[]} labels - All status labels.
+ *
+ * @property {object[]} datasets -
+ *
+ * @property {number[]} datasets.data -
+ *
+ * @property {string[]} datasets.backgroundColor -
+ *
+ * @property {string[]} datasets.hoverBackgroundColor -
+ */
+
+/**
  * @typedef {object} SpreadsheetStores
  *
  * @property {import("svelte/store").Writable<boolean>} details - Show hide additional details in table / rows.
@@ -180,10 +203,6 @@ export const spreadsheetStore = new SpreadsheetStore();
  *                                                                           filtered package data.
  *
  * @property {import("svelte/store").Writable<string>} filterSearch - Stores the filter search string.
- *
- * @property {import("svelte/store").Writable<number>} percentage - Stores percentage of all compatible.
- *
- * @property {import("svelte/store").Writable<string>} percentageTooltip - Stores percentage tooltip w/ all & known data.
  *
  * @property {import("svelte/store").Writable<number[]>} pieData - Stores Chart.js / pie chart data.
  *

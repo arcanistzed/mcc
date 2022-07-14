@@ -33,7 +33,7 @@
 
 	/* Override Foundry core rule */
 	tr:nth-child(even) {
-		background-color: #555;
+		background: linear-gradient(to bottom, #283048, #859398);
 	}
 
 	tr {

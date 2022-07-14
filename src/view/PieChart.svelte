@@ -31,7 +31,7 @@
 			data: $pieData,
 			options: {
 				aspectRatio: 1,
-				borderColor: "rgba(0, 0, 0, 0.1)",
+				borderColor: "transparent",
 				layout: { padding: 0 },
 				maintainAspectRatio: false,
 				plugins: {
@@ -63,7 +63,9 @@
 <section>
 	<div class=side />
 	<div class=center>
-		<canvas bind:this={canvasEl} on:click={onCanvasClick}/>
+		<div class=canvas>
+			<canvas bind:this={canvasEl} on:click={onCanvasClick}/>
+		</div>
 		<PieChartLegend />
 	</div>
 	<div class=side />
@@ -75,6 +77,12 @@
 		width: 250px;
 		height: 250px;
 		cursor: pointer;
+	}
+
+	div.canvas {
+		border-radius: 50%;
+		border: 1px solid rgba(0, 0, 0, 0.2);
+		background: rgba(0, 0, 0, 0.1);
 	}
 
 	div.side {

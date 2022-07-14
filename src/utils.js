@@ -16,62 +16,37 @@ export function localize(key) {
 }
 
 /**
- * Provides a Map of statuses keys to index used to hide initial status categories from
- * {@link SpreadsheetStores.hiddenStatuses} in PieChart component.
+ * @typedef {{hsl: number[], readonly explanation: string}} StatusesEntry
  *
- * @type {Map<string, number>}
+ * @type {{A: StatusesEntry, B: StatusesEntry, U: StatusesEntry, G: StatusesEntry, X: StatusesEntry, N: StatusesEntry, O: StatusesEntry}}
  */
-export const statusesIndexMap = new Map([
-	["X", 0],
-	["O", 1],
-	["B", 2],
-	["G", 3],
-	["N", 4],
-	["A", 5],
-	["U", 6],
-]);
-
 export const statuses = {
 	X: {
 		hsl: [0, 100, 60],
-		get explanation() {
-			return localize("statuses.x");
-		},
+		get explanation() { return localize("statuses.x"); }
 	},
 	O: {
 		hsl: [45, 90, 60],
-		get explanation() {
-			return localize("statuses.o");
-		},
+		get explanation() {	return localize("statuses.o"); }
 	},
 	B: {
 		hsl: [30, 90, 40],
-		get explanation() {
-			return localize("statuses.b");
-		},
+		get explanation() {	return localize("statuses.b"); }
 	},
 	G: {
 		hsl: [120, 40, 50],
-		get explanation() {
-			return localize("statuses.g");
-		},
+		get explanation() {	return localize("statuses.g"); }
 	},
 	N: {
 		hsl: [200, 60, 50],
-		get explanation() {
-			return localize("statuses.n");
-		},
+		get explanation() {	return localize("statuses.n"); }
 	},
 	A: {
 		hsl: [0, 0, 50],
-		get explanation() {
-			return localize("statuses.a");
-		},
+		get explanation() {	return localize("statuses.a"); },
 	},
 	U: {
 		hsl: [0, 0, 100],
-		get explanation() {
-			return localize("statuses.u");
-		},
+		get explanation() {	return localize("statuses.u"); },
 	},
 };

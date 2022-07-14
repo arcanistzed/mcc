@@ -6,7 +6,7 @@
 	import { statuses } from "../utils.js";
 
 	const spreadsheetStore = getContext("spreadsheetStore");
-	const { details, hiddenStatuses } = spreadsheetStore.stores;
+	const { details } = spreadsheetStore.stores;
 
 	function onContextMenu(event, id) {
 		const linkData = spreadsheetStore.getPackageLinks(id);

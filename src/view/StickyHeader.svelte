@@ -57,7 +57,6 @@
 	 * @param {MouseEvent}	event -
 	 */
 	function scrollSmooth(event) {
-		event.stopImmediatePropagation();
 		event.target.dispatchEvent(new CustomEvent("scrolltop:smooth", { bubbles: true }));
 	}
 </script>
