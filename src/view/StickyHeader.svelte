@@ -14,8 +14,7 @@
 	import { localize } from "../utils.js";
 
 	const spreadsheetStore = getContext("spreadsheetStore");
-	const filterSearch = spreadsheetStore.filterSearch;
-	const { details, version } = spreadsheetStore.stores;
+	const { details, filterSearch, version } = spreadsheetStore.stores;
 
 	const select = {
 		store: version,

@@ -8,13 +8,12 @@ import SpreadsheetController from "../controller/SpreadsheetController.js";
 import { mccSessionStorage } from "./mccSessionStorage.js";
 import { createAccessorStore } from "./createAccessorStore.js";
 import { filterHiddenStatuses } from "./filterHiddenStatuses.js";
+import { filterStatuses } from "./filterStatuses.js";
 import { sortByHeader } from "./sortByHeader.js";
 
 import { statuses } from "../utils.js";
 
 class SpreadsheetStore extends DynArrayReducer {
-	#filterSearch = createFilterQuery(["title", "id"], { store: mccSessionStorage.getStore("mcc.search", "") });
-
 	/** @type {Map<string, PackageLinkData>} */
 	#packageLinks = new Map();
 
@@ -48,6 +47,7 @@ class SpreadsheetStore extends DynArrayReducer {
 		this.#stores = {
 			details: mccSessionStorage.getStore("mcc.details", false),
 			filteredPercentage,
+			filterSearch: createFilterQuery(["title", "id"], { store: mccSessionStorage.getStore("mcc.search", "") }),
 			hiddenStatuses: filterHiddenStatuses,
 			percentage: writable(0),
 			percentageTooltip: writable(''),
@@ -55,15 +55,14 @@ class SpreadsheetStore extends DynArrayReducer {
 			reversed: createAccessorStore(this, "reversed", false),
 			scrollTop: mccSessionStorage.getStore("mcc.scrolltop", 0),
 			sortBy: sortByHeader,
+			statuses: filterStatuses,
 			version: createAccessorStore(this, "version")
 		}
 
-		this.filters.add(this.#filterSearch);
-		this.filters.add(filterHiddenStatuses);
+		this.filters.add(this.#stores.filterSearch);
+		this.filters.add(filterStatuses);
 		this.sort.set(sortByHeader);
 	}
-
-	get filterSearch() { return this.#filterSearch; }
 
 	/**
 	 * @returns {SpreadsheetStores}
@@ -182,6 +181,8 @@ export const spreadsheetStore = new SpreadsheetStore();
  * @property {import("svelte/store").Readable<number>} filteredPercentage - Stores current working percentage on
  *                                                                           filtered package data.
  *
+ * @property {import("svelte/store").Writable<string>} filterSearch - Stores the filter search string.
+ *
  * @property {import("svelte/store").Writable<string[]>} hiddenStatuses - Stores status codes to filter table data.
  *
  * @property {import("svelte/store").Writable<number>} percentage - Stores percentage of all compatible.
@@ -195,6 +196,8 @@ export const spreadsheetStore = new SpreadsheetStore();
  * @property {import("svelte/store").Writable<number>} scrollTop - Stores scroll bar position.
  *
  * @property {import("svelte/store").Writable<string>} sortBy - Table header key to sort by.
+ *
+ * @property {import("svelte/store").Readable<object[]>} statuses - Stores statuses visibility.
  *
  * @property {import("svelte/store").Writable<string>} version - Stores current spreadsheet version.
  */

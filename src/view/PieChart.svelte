@@ -1,13 +1,15 @@
 <script>
 	import { onMount, onDestroy, getContext } from "svelte";
+
 	import Chart from "chart.js/auto";
-	import { statuses, statusesIndexMap } from "../utils.js";
+
+	import PieChartLegend from "./PieChartLegend.svelte";
 
 	const spreadsheetStore = getContext("spreadsheetStore");
-	const { hiddenStatuses, pieData } = spreadsheetStore.stores;
+	const { statuses, pieData } = spreadsheetStore.stores;
 
 	let chart = null,
-		chartRef;
+		canvasEl;
 
 	Chart.defaults.font = {
 		family: getComputedStyle(document.documentElement).getPropertyValue("--font-primary").trim(),
@@ -19,42 +21,81 @@
 		chart.update();
 	}
 
+	$: if (chart) { updateDataVisibility($statuses); }
+
+	function updateDataVisibility(statusArray)
+	{
+		for (let cntr = 0; cntr < statusArray.length; cntr++)
+		{
+			chart[statusArray[cntr].value ? 'show' : 'hide'](0, cntr);
+		}
+	}
+
 	onMount(() => {
-		chart = new Chart(chartRef, {
+		chart = new Chart(canvasEl, {
 			type: "pie",
 			data: $pieData,
 			options: {
-				responsive: true,
-				maintainAspectRatio: true,
-				layout: {
-					padding: {
-						bottom: 20,
-					},
+				aspectRatio: 1,
+				borderColor: "rgba(0, 0, 0, 0.1)",
+				events: ['click'],
+				layout: { padding: 0 },
+				maintainAspectRatio: false,
+				plugins: {
+					legend: { display: false },
+					tooltip: { enabled: false }
 				},
-				borderColor: "transparent",
+				responsive: false
 			},
 		});
 
-		// Set initial hidden statuses coming from session storage.
-		for (const status of $hiddenStatuses) {
-			chart.toggleDataVisibility(statusesIndexMap.get(status));
-		}
-
-		const original = chart.toggleDataVisibility;
-
-		chart.toggleDataVisibility = function (index) {
-			original.call(chart, index);
-			$hiddenStatuses = Object.entries(chart._hiddenIndices)
-				.filter(i => i[1])
-				.map(i => Object.keys(statuses)[i[0]]);
-			chart.update();
-		};
+		updateDataVisibility($statuses);
 	});
 
 	onDestroy(() => {
 		if (chart) chart.destroy();
 		chart = null;
 	});
+
+	function onCanvasClick(event) {
+		const points = chart.getElementsAtEventForMode(event, 'nearest', { intersect: true }, true);
+
+		if (points.length) {
+			const firstPoint = points[0];
+			statuses.setExclusive(firstPoint.index);
+		}
+	}
 </script>
 
-<canvas bind:this={chartRef} style="max-height: 400px" />
+<section>
+	<div class=side />
+	<div class=center>
+		<canvas bind:this={canvasEl} on:click={onCanvasClick}/>
+		<PieChartLegend />
+	</div>
+	<div class=side />
+</section>
+
+
+<style>
+	canvas {
+		width: 250px;
+		height: 250px;
+	}
+
+	div.side {
+		flex-grow: 1;
+	}
+
+	div.center {
+		width: fit-content;
+		display: flex;
+	}
+
+	section {
+		margin: 1em 0;
+		display: flex;
+		justify-content: center;
+		align-content: center;
+	}
+</style>

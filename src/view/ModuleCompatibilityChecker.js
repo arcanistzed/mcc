@@ -8,10 +8,11 @@ export default class ModuleCompatibilityChecker extends SvelteApplication {
 			id: "mcc-main-app",
 			title: "mcc.appTitle",
 			classes: ["mcc"],
-			width: window.innerWidth * 0.5,
+			width: 775,
 			height: window.innerHeight * 0.75,
 			resizable: true,
-			minWidth: 750,
+			minWidth: 775,
+			minHeight: 580,
 
 			svelte: {
 				class: ModuleCompatibilityCheckerShell,
