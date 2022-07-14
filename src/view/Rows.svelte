@@ -1,7 +1,9 @@
 <script>
 	import { onMount, afterUpdate, getContext } from "svelte";
 	import { flip } from "svelte/animate";
-	import { isV10, statuses } from "../utils.js";
+	import { TJSContextMenu } from "@typhonjs-fvtt/svelte-standard/application";
+
+	import { statuses } from "../utils.js";
 
 	const spreadsheetStore = getContext("spreadsheetStore");
 	const { details, hiddenStatuses } = spreadsheetStore.stores;
@@ -35,6 +37,37 @@
 
 	// Set all colors after the DOM updates
 	afterUpdate(setAllColors);
+
+	function onContextMenu(event, id) {
+		const linkData = spreadsheetStore.getPackageLinks(id);
+
+		if (linkData) {
+			const items = [];
+
+			items.push({
+				label: "Foundry Package Listing (May not exist)",
+				icon: "fas fa-link",
+				onclick: () => window.open(`https://foundryvtt.com/packages/${linkData.id}`, "_blank")
+			})
+
+			if (linkData.url)
+			{
+				items.push({
+					label: "Package URL / Repository",
+					icon: "fas fa-link",
+					onclick: () => window.open(linkData.url, "_blank")
+				})
+			}
+
+			TJSContextMenu.create({
+				duration: 200,
+				id: 'mmc-package-menu',
+				x: event.pageX,
+				y: event.pageY,
+				items
+			});
+		}
+	}
 </script>
 
 <tbody>
@@ -43,10 +76,9 @@
 			animate:flip={{ duration: 250 }}
 			on:mouseenter={e => setColor(e.target, row.status, i, true)}
 			on:mouseleave={e => setColor(e.target, row.status, i)}
+			on:contextmenu={(event) => onContextMenu(event, row.id)}
 			data-status={row.status}
-			data-tooltip={isV10() ? statuses[row.status].explanation : null}
-			data-tooltip-direction={isV10() ? "LEFT" : null}
-			title={!isV10() ? statuses[row.status].explanation : null}
+			title={statuses[row.status].explanation}
 		>
 			<td>{row.title}</td>
 			{#if $details}

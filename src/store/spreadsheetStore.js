@@ -15,6 +15,9 @@ import { statuses } from "../utils.js";
 class SpreadsheetStore extends DynArrayReducer {
 	#filterSearch = createFilterQuery(["title", "id"], { store: mccSessionStorage.getStore("mcc.search", "") });
 
+	/** @type {Map<string, PackageLinkData>} */
+	#packageLinks = new Map();
+
 	/** @type {string} */
 	#version;
 
@@ -88,6 +91,32 @@ class SpreadsheetStore extends DynArrayReducer {
 		this.#version = version;
 	}
 
+	/**
+	 * Parses and builds all package data for any links to show on context menu click.
+	 */
+	buildPackageLinks() {
+		const packageList = SpreadsheetController.getModuleList();
+
+		for (const data of packageList) {
+			const packageData = data?.data;
+			const id = packageData?.id ?? packageData?.name;
+			const url = packageData?.url;
+
+			if (id) { this.#packageLinks.set(id, { id, url }); }
+		}
+	}
+
+	/**
+	 * Returns the package link data for the given package ID.
+	 *
+	 * @param {string}	id - Package ID.
+	 *
+	 * @returns {PackageLinkData} Any package link data.
+	 */
+	getPackageLinks(id) {
+		return this.#packageLinks.get(id);
+	}
+
 	async update() {
 		const data = await SpreadsheetController.getRows(this.#version);
 
@@ -129,11 +158,21 @@ class SpreadsheetStore extends DynArrayReducer {
 			this.#stores.version.set(this.#versions.at(-1));
 		}
 
+		this.buildPackageLinks();
+
 		return this.update();
 	}
 }
 
 export const spreadsheetStore = new SpreadsheetStore();
+
+/**
+ * @typedef {object} PackageLinkData
+ *
+ * @property {string} id - Package name / id
+ *
+ * @property {string} [url] - Package URL.
+ */
 
 /**
  * @typedef {object} SpreadsheetStores
