@@ -8,13 +8,7 @@
 	const spreadsheetStore = getContext("spreadsheetStore");
 	const { statuses, pieData } = spreadsheetStore.stores;
 
-	let chart = null,
-		canvasEl;
-
-	Chart.defaults.font = {
-		family: getComputedStyle(document.documentElement).getPropertyValue("--font-primary").trim(),
-		size: 14,
-	};
+	let chart = null, canvasEl;
 
 	$: if (chart) {
 		chart.data = $pieData;
@@ -38,7 +32,6 @@
 			options: {
 				aspectRatio: 1,
 				borderColor: "rgba(0, 0, 0, 0.1)",
-				events: ['click'],
 				layout: { padding: 0 },
 				maintainAspectRatio: false,
 				plugins: {

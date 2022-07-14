@@ -1,11 +1,8 @@
-import ModuleCompatibilityChecker from "./view/ModuleCompatibilityChecker.js";
 import PatreonButton from "./view/PatreonButton.svelte";
 import ModuleManagementButton from "./view/ModuleManagementButton.svelte";
 import applyModuleManagementColors from "./view/ModuleManagementColors.js";
 
 import "../styles/init.scss";
-
-globalThis.ModuleCompatibilityChecker = ModuleCompatibilityChecker;
 
 Hooks.on("renderModuleManagement", (app, [html]) => {
 	applyModuleManagementColors(app, html);

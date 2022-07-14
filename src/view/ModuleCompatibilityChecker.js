@@ -2,6 +2,17 @@ import { SvelteApplication } from "@typhonjs-fvtt/runtime/svelte/application";
 import ModuleCompatibilityCheckerShell from "./ModuleCompatibilityChecker.svelte";
 
 export default class ModuleCompatibilityChecker extends SvelteApplication {
+	/** @inheritDoc */
+	constructor(options = {}) {
+		super(options);
+
+		try {
+			// Attempt to parse session storage item and set application state.
+			this.state.set(JSON.parse(sessionStorage.getItem(`mcc.appstate`)));
+		}
+		catch (err) { /**/ }
+	}
+
 	/** @override */
 	static get defaultOptions() {
 		return foundry.utils.mergeObject(super.defaultOptions, {

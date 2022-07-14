@@ -1,11 +1,13 @@
 <svelte:options accessors={true} />
 
 <script>
-	import { setContext } from "svelte";
+	import { getContext, setContext } from "svelte";
 
 	import { ApplicationShell } from "@typhonjs-fvtt/runtime/svelte/component/core";
+	import { debounce } from "@typhonjs-fvtt/runtime/svelte/util";
 
 	import { spreadsheetStore } from "../store/SpreadsheetStore.js";
+	import { mccSessionStorage } from "../store/mccSessionStorage.js";
 
 	import Loading from "./Loading.svelte";
 	import Error from "./Error.svelte";
@@ -14,6 +16,20 @@
 	setContext("spreadsheetStore", spreadsheetStore);
 
 	export let elementRoot;
+
+	const { application } = getContext('external');
+
+	// Get a store that is synchronized with session storage.
+	const stateStore = mccSessionStorage.getStore(`mcc.appstate`);
+
+	// Application position store reference. Stores need to be a top level variable to be accessible for reactivity.
+	const position = application.position;
+
+	// A debounced callback that serializes application state after 500-millisecond delay.
+	const storePosition = debounce(() => $stateStore = application.state.get(), 500);
+
+	// Reactive statement to invoke debounce callback on Position changes.
+	$: storePosition($position);
 </script>
 
 <ApplicationShell bind:elementRoot>
