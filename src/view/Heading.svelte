@@ -37,8 +37,7 @@
 	th {
 		white-space: nowrap;
 		padding: 1ch;
-		border-right: solid 1px;
-		border-color: black;
+		border-right: solid 2px rgba(0, 0, 0, 0.2);
 	}
 
 	th:last-child {

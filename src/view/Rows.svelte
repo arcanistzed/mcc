@@ -1,5 +1,5 @@
 <script>
-	import { onMount, afterUpdate, getContext } from "svelte";
+	import { getContext } from "svelte";
 	import { flip } from "svelte/animate";
 	import { TJSContextMenu } from "@typhonjs-fvtt/svelte-standard/application";
 
@@ -8,36 +8,6 @@
 	const spreadsheetStore = getContext("spreadsheetStore");
 	const { details, hiddenStatuses } = spreadsheetStore.stores;
 
-	/**
-	 * Set the color of a row based for an alternating colors effect
-	 * @param element - The element to set the color on
-	 * @param status - The status of the row
-	 * @param i - The index of the row
-	 * @param hover - Whether the row is hovered
-	 */
-	function setColor(element, status, i, hover = false) {
-		const { hsl } = statuses[status];
-		element.style.backgroundColor =
-			i % 2
-				? `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2] + 10 * hover}%, ${30 * (hover + 2)}%)`
-				: `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2] + 5 * hover}%, ${50 * (hover + 3)}%)`;
-	}
-
-	/**
-	 * Set alternating colors for all of the rows based on their status
-	 */
-	function setAllColors() {
-		document.querySelectorAll("tr").forEach((tr, i) => {
-			if (tr.dataset.status) setColor(tr, tr.dataset.status, i + 1);
-		});
-	}
-
-	// Set all colors when the component is mounted
-	onMount(setAllColors);
-
-	// Set all colors after the DOM updates
-	afterUpdate(setAllColors);
-
 	function onContextMenu(event, id) {
 		const linkData = spreadsheetStore.getPackageLinks(id);
 
@@ -45,7 +15,7 @@
 			const items = [];
 
 			items.push({
-				label: "Foundry Package Listing (May not exist)",
+				label: "mcc.linkFoundryPackage",
 				icon: "fas fa-link",
 				onclick: () => window.open(`https://foundryvtt.com/packages/${linkData.id}`, "_blank")
 			})
@@ -53,7 +23,7 @@
 			if (linkData.url)
 			{
 				items.push({
-					label: "Package URL / Repository",
+					label: "mcc.linkPackageUrl",
 					icon: "fas fa-link",
 					onclick: () => window.open(linkData.url, "_blank")
 				})
@@ -74,8 +44,6 @@
 	{#each [...$spreadsheetStore] as row, i (row.id)}
 		<tr
 			animate:flip={{ duration: 250 }}
-			on:mouseenter={e => setColor(e.target, row.status, i, true)}
-			on:mouseleave={e => setColor(e.target, row.status, i)}
 			on:contextmenu={(event) => onContextMenu(event, row.id)}
 			data-status={row.status}
 			title={statuses[row.status].explanation}
@@ -92,24 +60,89 @@
 	{/each}
 </tbody>
 
-<style>
+<style lang=scss>
 	tbody {
 		overflow: scroll;
-	}
 
-	tr {
-		transition: background-color 250ms;
-	}
+		tr {
+			transition: background-color 250ms;
 
-	td,
-	td:first-child {
-		padding: 1ch;
-		border-right: solid 1px;
-		border-color: black;
-	}
+			&:hover {
+				box-shadow: inset 0 8px 6px -6px rgba(0, 0, 0, 0.5), inset 0 -8px 6px -6px rgba(0, 0, 0, 0.5);
+				box-sizing: border-box;
+			}
 
-	td:last-child {
-		border-right: none;
+			&:nth-child(odd) {
+				&[data-status="X"] {
+					background-color: hsla(0, 100%, 60%, 88%);
+					&:hover { background-color: hsla(0, 100%, 58%, 92.4%); }
+				}
+				&[data-status="O"] {
+					background-color: hsla(45, 90%, 60%, 88%);
+					&:hover { background-color: hsla(45, 90%, 58%, 92.4%); }
+				}
+				&[data-status="B"] {
+					background-color: hsla(30, 90%, 40%, 88%);
+					&:hover { background-color: hsla(30, 90%, 38%, 92.4%); }
+				}
+				&[data-status="G"] {
+					background-color: hsla(120, 40%, 50%, 88%);
+					&:hover { background-color: hsla(120, 40%, 48%, 92.4%); }
+				}
+				&[data-status="N"] {
+					background-color: hsla(200, 60%, 50%, 88%);
+					&:hover { background-color: hsla(200, 60%, 48%, 92.4%); }
+				}
+				&[data-status="A"] {
+					background-color: hsla(0, 0%, 50%, 88%);
+					&:hover { background-color: hsla(0, 0%, 48%, 92.4%); }
+				}
+				&[data-status="U"] {
+					background-color: hsla(0, 0%, 100%, 88%);
+					&:hover { background-color: hsla(0, 0%, 98%, 92.4%); }
+				}
+			}
+
+			&:nth-child(even) {
+				&[data-status="X"] {
+					background-color: hsla(0, 100%, 61.4%, 70.4%);
+					&:hover { background-color: hsla(0, 100%, 64.2%, 66%); }
+				}
+				&[data-status="O"] {
+					background-color: hsla(45, 90%, 61.4%, 70.4%);
+					&:hover { background-color: hsla(45, 90%, 64.2%, 66%); }
+				}
+				&[data-status="B"] {
+					background-color: hsla(30, 90%, 41.4%, 70.4%);
+					&:hover { background-color: hsla(30, 90%, 44.2%, 66%); }
+				}
+				&[data-status="G"] {
+					background-color: hsla(120, 40%, 51.4%, 70.4%);
+					&:hover { background-color: hsla(120, 40%, 54.2%, 66%); }
+				}
+				&[data-status="N"] {
+					background-color: hsla(200, 60%, 51.4%, 70.4%);
+					&:hover { background-color: hsla(200, 60%, 54.2%, 66%); }
+				}
+				&[data-status="A"] {
+					background-color: hsla(0, 0%, 51.4%, 70.4%);
+					&:hover { background-color: hsla(0, 0%, 54.2%, 66%); }
+				}
+				&[data-status="U"] {
+					background-color: hsla(0, 0%, 101.4%, 70.4%);
+					&:hover { background-color: hsla(0, 0%, 104.2%, 66%); }
+				}
+			}
+		}
+
+		td {
+			padding: 1ch;
+			border-right: solid 2px rgba(0, 0, 0, 0.2);
+		}
+
+		td:last-child {
+			border-right: none;
+		}
 	}
 
 	.center {

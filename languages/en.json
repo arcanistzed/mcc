@@ -37,6 +37,8 @@
 			  "detailsHide": "Hide details",
 			  "detailsShow": "Show details",
 			  "percentageFilteredTooltip": "The percentage ready for current filtered package count.",
-			  "percentageKnownTooltip": "The percentage of all \"known\" ({known}) compatible packages with current spreadsheet data is: {percentageKnown}%."
+			  "percentageKnownTooltip": "The percentage of all \"known\" ({known}) compatible packages with current spreadsheet data is: {percentageKnown}%.",
+				"linkFoundryPackage": "Foundry Package Listing (May not exist)",
+				"linkPackageUrl": "Package URL / Repository"
     }
 }
