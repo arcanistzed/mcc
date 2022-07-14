@@ -6,12 +6,12 @@
 
 	const spreadsheetStore = getContext("spreadsheetStore");
 
-	const { currentPercentage } = spreadsheetStore.stores;
+	const { filteredPercentage } = spreadsheetStore.stores;
 </script>
 
 <footer>
 	<p>{localize("report.count")}: {$spreadsheetStore.index.length} / {$spreadsheetStore.length}</p>
-	<p title={localize("percentageCurrentTooltip")}>{localize("report.percentage")}: {$currentPercentage}%</p>
+	<p title={localize("percentageFilteredTooltip")}>{localize("report.percentage")}: {$filteredPercentage}%</p>
 	<p>{SpreadsheetController.spreadsheetStatus}</p>
 	<a href={`https://docs.google.com/spreadsheets/d/${SpreadsheetController.spreadsheetID}/pubhtml`}>
 		{localize("source")}

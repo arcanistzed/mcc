@@ -32,7 +32,7 @@ class SpreadsheetStore extends DynArrayReducer {
 		 *
 		 * @type {import("svelte/store").Readable<number>}
 		 */
-		const currentPercentage = derived(this, () => {
+		const filteredPercentage = derived(this, () => {
 			let working = 0;
 
 			for (const row of this) {
@@ -43,8 +43,8 @@ class SpreadsheetStore extends DynArrayReducer {
 		});
 
 		this.#stores = {
-			currentPercentage,
 			details: mccSessionStorage.getStore("mcc.details", false),
+			filteredPercentage,
 			hiddenStatuses: filterHiddenStatuses,
 			percentage: writable(0),
 			percentageTooltip: writable(''),
@@ -138,10 +138,10 @@ export const spreadsheetStore = new SpreadsheetStore();
 /**
  * @typedef {object} SpreadsheetStores
  *
- * @property {import("svelte/store").Readable<number>} currentPercentage - Stores current working percentage on
- *                                                                         filtered package data.
- *
  * @property {import("svelte/store").Writable<boolean>} details - Show hide additional details in table / rows.
+ *
+ * @property {import("svelte/store").Readable<number>} filteredPercentage - Stores current working percentage on
+ *                                                                           filtered package data.
  *
  * @property {import("svelte/store").Writable<string[]>} hiddenStatuses - Stores status codes to filter table data.
  *
