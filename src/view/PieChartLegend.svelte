@@ -20,10 +20,10 @@
 			  <span style:background-color={$pieData.datasets[0].backgroundColor[cntr]}>
 				  {$pieData.datasets[0].data[cntr]}
 			  </span>
-			  {$pieData.labels[cntr]}
+			  <a>{$pieData.labels[cntr]}</a>
 		  </div>
       {/each}
-	  <a on:click={resetFilters}><i class="fas fa-trash"></i> {localize("resetAllFilters")}</a>
+	  <a class=resetFilters on:click={resetFilters}><i class="fas fa-trash"></i> {localize("resetAllFilters")}</a>
 </section>
 
 
@@ -32,7 +32,7 @@
 		text-decoration: line-through;
 	}
 
-	a {
+	a.resetFilters {
 		margin-top: 0.75em;
 	}
 
@@ -40,6 +40,7 @@
 		display: flex;
 		align-items: center;
 		margin-bottom: 0.25em;
+		cursor: pointer;
 	}
 
 	section {

@@ -7,7 +7,6 @@ import SpreadsheetController from "../controller/SpreadsheetController.js";
 
 import { mccSessionStorage } from "./mccSessionStorage.js";
 import { createAccessorStore } from "./createAccessorStore.js";
-import { filterHiddenStatuses } from "./filterHiddenStatuses.js";
 import { filterStatuses } from "./filterStatuses.js";
 import { sortByHeader } from "./sortByHeader.js";
 
@@ -48,7 +47,6 @@ class SpreadsheetStore extends DynArrayReducer {
 			details: mccSessionStorage.getStore("mcc.details", false),
 			filteredPercentage,
 			filterSearch: createFilterQuery(["title", "id"], { store: mccSessionStorage.getStore("mcc.search", "") }),
-			hiddenStatuses: filterHiddenStatuses,
 			percentage: writable(0),
 			percentageTooltip: writable(''),
 			pieData: writable({}),
@@ -182,8 +180,6 @@ export const spreadsheetStore = new SpreadsheetStore();
  *                                                                           filtered package data.
  *
  * @property {import("svelte/store").Writable<string>} filterSearch - Stores the filter search string.
- *
- * @property {import("svelte/store").Writable<string[]>} hiddenStatuses - Stores status codes to filter table data.
  *
  * @property {import("svelte/store").Writable<number>} percentage - Stores percentage of all compatible.
  *

@@ -81,6 +81,7 @@
 	canvas {
 		width: 250px;
 		height: 250px;
+		cursor: pointer;
 	}
 
 	div.side {
