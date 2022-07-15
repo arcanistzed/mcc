@@ -1,7 +1,8 @@
 import { SvelteApplication } from "@typhonjs-fvtt/runtime/svelte/application";
-import ModuleCompatibilityCheckerShell from "./ModuleCompatibilityChecker.svelte";
 
-export default class ModuleCompatibilityChecker extends SvelteApplication {
+import ModuleCompatibilityCheckerShell from "./ModuleCompatibilityCheckerShell.svelte";
+
+export class ModuleCompatibilityChecker extends SvelteApplication {
 	/** @inheritDoc */
 	constructor(options = {}) {
 		super(options);
@@ -19,10 +20,10 @@ export default class ModuleCompatibilityChecker extends SvelteApplication {
 			id: "mcc-main-app",
 			title: "mcc.appTitle",
 			classes: ["mcc"],
-			width: 825,
+			width: 800,
 			height: window.innerHeight * 0.75,
 			resizable: true,
-			minWidth: 825,
+			minWidth: 800,
 			minHeight: 580,
 
 			svelte: {

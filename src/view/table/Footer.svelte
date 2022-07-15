@@ -1,8 +1,9 @@
 <script>
 	import { getContext } from "svelte";
 
-	import { isV10, localize } from "../utils.js";
-	import SpreadsheetController from "../controller/SpreadsheetController.js";
+	import { localize } from "@typhonjs-fvtt/runtime/svelte/helper"
+
+	import SpreadsheetController from "../../controller/SpreadsheetController.js";
 
 	const spreadsheetStore = getContext("spreadsheetStore");
 
@@ -10,16 +11,12 @@
 </script>
 
 <footer>
-	<p>{localize("report.count")}: {$spreadsheetStore.index.length} / {$spreadsheetStore.length}</p>
-	<p title={localize("percentageFilteredTooltip")}>{localize("report.percentage")}: {$filteredPercentage}%</p>
+	<p>{localize("mcc.report.count")}: {$spreadsheetStore.index.length} / {$spreadsheetStore.length}</p>
+	<p title={localize("mcc.percentageFilteredTooltip")}>{localize("mcc.report.percentage")}: {$filteredPercentage}%</p>
 	<p>{SpreadsheetController.spreadsheetStatus}</p>
 	<a href={`https://docs.google.com/spreadsheets/d/${SpreadsheetController.spreadsheetID}/pubhtml`}>
-		{localize("source")}
-		{#if isV10()}
-			<i class="fa-solid fa-arrow-up-right-from-square" />
-		{:else}
-			<i class="fas fa-external-link-alt" />
-		{/if}
+		{localize("mcc.source")}
+		<i class="fas fa-external-link-alt" />
 	</a>
 </footer>
 

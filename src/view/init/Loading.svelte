@@ -1,9 +1,9 @@
 <script>
-	import { localize } from "../utils.js";
+	import { localize } from "@typhonjs-fvtt/runtime/svelte/helper"
 </script>
 
 <main>
-	<p>{localize("loading")}</p>
+	<p>{localize("mcc.loading")}</p>
 	<progress />
 </main>
 
@@ -14,6 +14,7 @@
 		justify-content: center;
 		margin: auto;
 		font-size: 2em;
+		color: #191813;
 	}
 
 	p {

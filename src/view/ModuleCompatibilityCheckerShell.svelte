@@ -9,9 +9,9 @@
 	import { spreadsheetStore } from "../store/SpreadsheetStore.js";
 	import { mccSessionStorage } from "../store/mccSessionStorage.js";
 
-	import Loading from "./Loading.svelte";
-	import Error from "./Error.svelte";
-	import Table from "./Table.svelte";
+	import Loading from "./init/Loading.svelte";
+	import Error from "./init/Error.svelte";
+	import Table from "./table/Table.svelte";
 
 	setContext("spreadsheetStore", spreadsheetStore);
 

@@ -141,6 +141,15 @@ class SpreadsheetStore extends DynArrayReducer {
 		return this.#packageLinks.get(id);
 	}
 
+	/**
+	 * Resets the search and status filters.
+	 */
+	resetFilters() {
+		const { filterSearch, statuses } = this.#stores;
+		filterSearch.set('');
+		statuses.reset();
+	}
+
 	async update() {
 		const data = await SpreadsheetController.getRows(this.#version);
 

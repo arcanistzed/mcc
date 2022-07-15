@@ -1,19 +1,4 @@
-/**
- * Check if the core version is at least V10
- * @returns {boolean} - Whether the versions is sufficient
- */
-export function isV10() {
-	return game.release.generation >= 10;
-}
-
-/**
- * Localization helper
- * @param {string} key - A key to localize
- * @returns {string} - The localized result
- */
-export function localize(key) {
-	return game.i18n.localize(`mcc.${key}`);
-}
+import { localize } from "@typhonjs-fvtt/runtime/svelte/helper"
 
 /**
  * @typedef {{hsl: number[], readonly explanation: string}} StatusesEntry
@@ -23,30 +8,30 @@ export function localize(key) {
 export const statuses = {
 	X: {
 		hsl: [0, 100, 60],
-		get explanation() { return localize("statuses.x"); }
+		get explanation() { return localize("mcc.statuses.x"); }
 	},
 	O: {
 		hsl: [45, 90, 60],
-		get explanation() {	return localize("statuses.o"); }
+		get explanation() {	return localize("mcc.statuses.o"); }
 	},
 	B: {
 		hsl: [30, 90, 40],
-		get explanation() {	return localize("statuses.b"); }
+		get explanation() {	return localize("mcc.statuses.b"); }
 	},
 	G: {
 		hsl: [120, 40, 50],
-		get explanation() {	return localize("statuses.g"); }
+		get explanation() {	return localize("mcc.statuses.g"); }
 	},
 	N: {
 		hsl: [200, 60, 50],
-		get explanation() {	return localize("statuses.n"); }
+		get explanation() {	return localize("mcc.statuses.n"); }
 	},
 	A: {
 		hsl: [0, 0, 50],
-		get explanation() {	return localize("statuses.a"); },
+		get explanation() {	return localize("mcc.statuses.a"); },
 	},
 	U: {
 		hsl: [0, 0, 100],
-		get explanation() {	return localize("statuses.u"); },
+		get explanation() {	return localize("mcc.statuses.u"); },
 	},
 };

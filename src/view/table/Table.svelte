@@ -3,7 +3,7 @@
 
 	import { applyScrolltop } from "@typhonjs-fvtt/runtime/svelte/action";
 
-	import PieChart from "./PieChart.svelte";
+	import PieChart from "../pie/PieChart.svelte";
 	import Header from "./Header.svelte";
 	import Rows from "./Rows.svelte";
 	import Footer from "./Footer.svelte";

@@ -1,9 +1,10 @@
 <script>
 	import { getContext } from "svelte";
 	import { flip } from "svelte/animate";
+
 	import { TJSContextMenu } from "@typhonjs-fvtt/svelte-standard/application";
 
-	import { statuses } from "../utils.js";
+	import { statuses } from "../../utils.js";
 
 	const spreadsheetStore = getContext("spreadsheetStore");
 	const { details } = spreadsheetStore.stores;

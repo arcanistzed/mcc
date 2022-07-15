@@ -1,4 +1,6 @@
-import { localize, statuses } from "../utils.js";
+import { localize } from "@typhonjs-fvtt/runtime/svelte/helper"
+
+import { statuses } from "../utils.js";
 
 /**
  * @typedef {object} RowData
@@ -82,10 +84,10 @@ export default class SpreadsheetController {
 			compatibility: { verified = null } = {},
 		} = module.data;
 		const fallback = {
-			title: title ?? localize("untitled"),
+			title: title ?? localize("mcc.untitled"),
 			type,
 			id: module.id ?? module.name,
-			author: authorName ?? module.author ?? localize("unknownAuthor"),
+			author: authorName ?? module.author ?? localize("mcc.unknownAuthor"),
 			version: verified ?? compatibleCoreVersion ?? "?",
 			status: "U",
 			notes: "",

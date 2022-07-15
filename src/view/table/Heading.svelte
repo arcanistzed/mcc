@@ -1,7 +1,7 @@
 <script>
 	import { getContext } from "svelte";
 
-	import { localize } from "../utils.js";
+	import { localize } from "@typhonjs-fvtt/runtime/svelte/helper"
 
 	export let name;
 
@@ -29,7 +29,7 @@
 </script>
 
 <th on:click={() => setSortBy(name)}>
-	{localize(name)}
+	{localize(`mcc.${name}`)}
 	<i class="fas fa-sort{$sortBy !== name ? '' : direction ? '-up' : '-down'}" />
 </th>
 

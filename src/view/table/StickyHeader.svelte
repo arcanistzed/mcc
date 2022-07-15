@@ -1,6 +1,8 @@
 <script>
 	import { getContext } from "svelte";
 
+	import { localize } from "@typhonjs-fvtt/runtime/svelte/helper"
+
 	import {
 		ripple,
 		rippleFocus } from "@typhonjs-fvtt/svelte-standard/action";
@@ -10,8 +12,6 @@
 		TJSInput,
 	 	TJSSelect,
 		TJSToggleIconButton } from "@typhonjs-fvtt/svelte-standard/component";
-
-	import { localize } from "../utils.js";
 
 	const spreadsheetStore = getContext("spreadsheetStore");
 	const { details, filterSearch, version } = spreadsheetStore.stores;
@@ -64,7 +64,7 @@
 <tr>
 	<td colspan={$details ? 6 : 2}>
 		<div>
-			<span>{localize("selectVersion")}</span>
+			<span>{localize("mcc.selectVersion")}</span>
 
 			<!-- TODO: Consider showing an overlay on change to show loading state and any error. -->
 			<TJSSelect {select} on:change={() => spreadsheetStore.update()} />

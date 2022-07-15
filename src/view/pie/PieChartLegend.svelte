@@ -1,17 +1,10 @@
 <script>
 	import { getContext } from "svelte";
 
-	import { localize } from "../utils.js";
+	import { localize } from "@typhonjs-fvtt/runtime/svelte/helper"
 
 	const spreadsheetStore = getContext("spreadsheetStore");
-	const { filterSearch, pieData, statuses } = spreadsheetStore.stores;
-
-	function resetFilters() {
-		filterSearch.set('');
-		statuses.reset();
-	}
-
-	// <i class="fas fa-ice-cream"></i>
+	const { pieData, statuses } = spreadsheetStore.stores;
 </script>
 
 <section>
@@ -27,8 +20,8 @@
     {/each}
 	<hr>
 	<div class=links>
-		<a class=links on:click={statuses.setKnownVisible}><i class="fas fa-thumbs-up"></i> {localize("showKnownPackages")}</a>
-		<a class=links on:click={resetFilters}><i class="fas fa-trash"></i> {localize("resetAllFilters")}</a>
+		<a class=links on:click={statuses.setKnownVisible}><i class="fas fa-thumbs-up"></i> {localize("mcc.showKnownPackages")}</a>
+		<a class=links on:click={() => spreadsheetStore.resetFilters()}><i class="fas fa-trash"></i> {localize("mcc.resetAllFilters")}</a>
 	</div>
 </section>
 

@@ -1,8 +1,10 @@
-import SpreadsheetController from "./controller/SpreadsheetController.js";
-import { localize, statuses } from "./utils.js";
+import { localize } from "@typhonjs-fvtt/runtime/svelte/helper"
 
-import PatreonButton from "./view/PatreonButton.svelte";
-import ModuleManagementButton from "./view/ModuleManagementButton.svelte";
+import SpreadsheetController from "./controller/SpreadsheetController.js";
+import { statuses } from "./utils.js";
+
+import PatreonButton from "./view/external/PatreonButton.svelte";
+import ModuleManagementButton from "./view/external/ModuleManagementButton.svelte";
 
 import "../styles/init.scss";
 
@@ -29,7 +31,7 @@ Hooks.on("renderModuleManagement", (app, [html]) => {
  * @param {HTMLElement} html
  */
 async function applyModuleManagementColors(app, html) {
-	html.querySelector(".notes").textContent += localize("moduleManagementColorsExplanation");
+	html.querySelector(".notes").textContent += localize("mcc.moduleManagementColorsExplanation");
 
 	// Resize the app to fit the new contents
 	app.setPosition();
