@@ -1,4 +1,4 @@
-import { localize } from "@typhonjs-fvtt/runtime/svelte/helper"
+import { localize } from "@typhonjs-fvtt/runtime/svelte/helper";
 
 import { statuses } from "../utils.js";
 
@@ -112,7 +112,7 @@ export default class SpreadsheetController {
 		// Check for valid status. Warn if not found and append a note.
 		if (!statuses[data.status]) {
 			const message = `Error in spreadsheet: ${data.title} (${data.id}) has invalid status '${
-			 data.status}'. Please contact 'Anathema#3668' on Discord.`
+				data.status}'. Please contact 'Anathema#3668' on Discord.`;
 
 			console.warn(message);
 

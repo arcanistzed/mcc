@@ -25,10 +25,10 @@ class SpreadsheetStore extends DynArrayReducer {
 		datasets: [
 			{
 				backgroundColor: Object.values(statuses).map(
-				 ({ hsl }) => `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%, 100%)`
+					({ hsl }) => `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%, 100%)`
 				),
 				hoverBackgroundColor: Object.values(statuses).map(
-				 ({ hsl }) => `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2] + 10}%, 80%)`
+					({ hsl }) => `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2] + 10}%, 80%)`
 				)
 			}
 		]
@@ -58,7 +58,7 @@ class SpreadsheetStore extends DynArrayReducer {
 				if (row.status === "G" || row.status === "N") { working++; }
 			}
 
-			return parseFloat((100 * (working / Math.max(this.index.length, 1))).toFixed(2))
+			return parseFloat((100 * (working / Math.max(this.index.length, 1))).toFixed(2));
 		});
 
 		this.#stores = {
@@ -71,7 +71,7 @@ class SpreadsheetStore extends DynArrayReducer {
 			sortBy: sortByHeader,
 			statuses: filterStatuses,
 			version: createAccessorStore(this, "version")
-		}
+		};
 
 		this.filters.add(this.#stores.filterSearch);
 		this.filters.add(filterStatuses);
@@ -83,33 +83,33 @@ class SpreadsheetStore extends DynArrayReducer {
 
 			// Update pie chart data w/ filtered data.
 			this.#pieData.datasets[0].data = Object.keys(statuses).map(status => filteredData.filter(
-			 row => row.status === status).length);
+				row => row.status === status).length);
 
 			this.#stores.pieData.set(this.#pieData);
-		})
+		});
 	}
 
 	/**
-	 * @returns {SpreadsheetStores}
+	 * @returns {SpreadsheetStores} All child stores.
 	 */
 	get stores() { return this.#stores; }
 
 	/**
-	 * @returns {string}
+	 * @returns {string} Current spreadsheet version.
 	 */
 	get version() {
 		return this.#version;
 	}
 
 	/**
-	 * @returns {string[]}
+	 * @returns {string[]} All spreadsheet versions.
 	 */
 	get versions() {
 		return this.#versions;
 	}
 
 	/**
-	 * @param {string} version -
+	 * @param {string} version - New spreadsheet version.
 	 */
 	set version(version) {
 		this.#version = version;
@@ -145,9 +145,8 @@ class SpreadsheetStore extends DynArrayReducer {
 	 * Resets the search and status filters.
 	 */
 	resetFilters() {
-		const { filterSearch, statuses } = this.#stores;
-		filterSearch.set('');
-		statuses.reset();
+		this.#stores.filterSearch.set('');
+		this.#stores.statuses.reset();
 	}
 
 	async update() {
@@ -163,8 +162,7 @@ class SpreadsheetStore extends DynArrayReducer {
 		this.#versions = await SpreadsheetController.getVersions();
 
 		// Only set the version to the latest / last spreadsheet version if it isn't retrieved from session storage.
-		if (typeof this.#version !== 'string' || !this.#versions.includes(this.#version))
-		{
+		if (typeof this.#version !== 'string' || !this.#versions.includes(this.#version)) {
 			this.#stores.version.set(this.#versions.at(-1));
 		}
 

@@ -13,10 +13,9 @@ import { mccSessionStorage } from "./mccSessionStorage.js";
  *
  * @param {T} [initial] - An initial default value.
  *
- * @returns {import("svelte/store").Writable<T>}
+ * @returns {import("svelte/store").Writable<T>} An accessor store.
  */
-export function createAccessorStore(target, accessor, initial)
-{
+export function createAccessorStore(target, accessor, initial) {
 	if (!hasSetter(target, accessor)) { throw new TypeError(`Accessor '${accessor} is not available on target.`); }
 
 	const sessionKey = `mcc.${accessor}`;
@@ -29,16 +28,16 @@ export function createAccessorStore(target, accessor, initial)
 		/**
 		 * @param {(T) => void} handler
 		 *
-		 * @returns {import("svelte/store").Unsubscriber}
+		 * @returns {import("svelte/store").Unsubscriber} Unsubscriber
 		 */
-		subscribe: (handler) => mccSessionStore.subscribe(handler),
+		subscribe: handler => mccSessionStore.subscribe(handler),
 
 		/**
 		 * @param {T} value -
 		 */
-		set: (value) => {
+		set: value => {
 			target[accessor] = value;
 			mccSessionStore.set(value);
 		}
-	}
+	};
 }

@@ -1,4 +1,4 @@
-import { localize } from "@typhonjs-fvtt/runtime/svelte/helper"
+import { localize } from "@typhonjs-fvtt/runtime/svelte/helper";
 
 import SpreadsheetController from "./controller/SpreadsheetController.js";
 import { statuses } from "./utils.js";

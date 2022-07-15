@@ -42,13 +42,15 @@ async function handleRequest(request) {
 	headers.append("Access-Control-Expose-Headers", "X-Spreadsheet-ID");
 	headers.append("Access-Control-Allow-Methods", "GET");
 
-	if (url.pathname === "/api/versions") return new Response(JSON.stringify(VERSIONS), { status: 200, headers });
-	if (url.pathname !== "/") return new Response("Not found", { status: 404 });
+	if (url.pathname === "/api/versions") { return new Response(JSON.stringify(VERSIONS), { status: 200, headers }); }
+	if (url.pathname !== "/") { return new Response("Not found", { status: 404 }); }
 
 	const version = url.searchParams.get("version")?.split(".")[0];
-	if (!version) return new Response("Missing Foundry VTT core version parameter", { status: 400 });
+	if (!version) { return new Response("Missing Foundry VTT core version parameter", { status: 400 }); }
+
 	const ID = getSpreadsheetID(version);
-	if (!ID) return new Response("Unsupported Foundry VTT core version", { status: 422 });
+	if (!ID) { return new Response("Unsupported Foundry VTT core version", { status: 422 }); }
+
 	headers.append("X-Spreadsheet-ID", ID);
 
 	// Return the cached version if it exists

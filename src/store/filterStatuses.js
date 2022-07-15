@@ -7,7 +7,7 @@ import { mccSessionStorage } from "./mccSessionStorage.js";
  *
  * @type {{key: string, value: boolean}[]}
  */
-let statuses = mccSessionStorage.getItem('mcc.statuses', [
+const statuses = mccSessionStorage.getItem('mcc.statuses', [
 	{ key: "X", value: true },
 	{ key: "O", value: true },
 	{ key: "B", value: true },
@@ -19,21 +19,21 @@ let statuses = mccSessionStorage.getItem('mcc.statuses', [
 
 const storeStatuses = writable(statuses);
 
-storeStatuses.getVisible = (key) => {
-	const index = statuses.findIndex((entry) => entry.key === key);
+storeStatuses.getVisible = key => {
+	const index = statuses.findIndex(entry => entry.key === key);
 	return index >= 0 ? statuses[index].value : void 0;
-}
+};
 
-storeStatuses.setExclusive = (index) => {
+storeStatuses.setExclusive = index => {
 	if (index >= 0 && index < statuses.length) {
 		for (const status of statuses) { status.value = false; }
 
 		statuses[index].value = true;
 
-		mccSessionStorage.setItem('mcc.statuses', statuses)
+		mccSessionStorage.setItem('mcc.statuses', statuses);
 		storeStatuses.set(statuses);
 	}
-}
+};
 
 storeStatuses.setKnownVisible = () => {
 	for (const status of statuses) { status.value = false; }
@@ -41,35 +41,35 @@ storeStatuses.setKnownVisible = () => {
 	statuses[3].value = true;
 	statuses[4].value = true;
 
-	mccSessionStorage.setItem('mcc.statuses', statuses)
+	mccSessionStorage.setItem('mcc.statuses', statuses);
 	storeStatuses.set(statuses);
-}
+};
 
 storeStatuses.setVisible = (key, value) => {
-	const index = statuses.findIndex((entry) => entry.key === key);
+	const index = statuses.findIndex(entry => entry.key === key);
 
 	if (index >= 0) {
 		statuses[index].value = value;
-		mccSessionStorage.setItem('mcc.statuses', statuses)
+		mccSessionStorage.setItem('mcc.statuses', statuses);
 		storeStatuses.set(statuses);
 	}
-}
+};
 
-storeStatuses.toggleVisible = (key) => {
-	const index = statuses.findIndex((entry) => entry.key === key);
+storeStatuses.toggleVisible = key => {
+	const index = statuses.findIndex(entry => entry.key === key);
 
 	if (index >= 0) {
 		statuses[index].value = !statuses[index].value;
-		mccSessionStorage.setItem('mcc.statuses', statuses)
+		mccSessionStorage.setItem('mcc.statuses', statuses);
 		storeStatuses.set(statuses);
 	}
-}
+};
 
 storeStatuses.reset = () => {
 	for (const status of statuses) { status.value = true; }
-	mccSessionStorage.setItem('mcc.statuses', statuses)
+	mccSessionStorage.setItem('mcc.statuses', statuses);
 	storeStatuses.set(statuses);
-}
+};
 
 /**
  * Provides a filter function to remove rows that are part of hidden statuses set.
@@ -78,13 +78,12 @@ storeStatuses.reset = () => {
  *
  * @returns {boolean} filtered
  */
-function filterStatuses(row)
-{
+function filterStatuses(row) {
 	return storeStatuses.getVisible(row.status) ?? false;
 }
 
 // Create a custom store that changes when hidden statuses changes.
-filterStatuses.subscribe = (handler) => storeStatuses.subscribe(handler);
+filterStatuses.subscribe = handler => storeStatuses.subscribe(handler);
 
 filterStatuses.getVisible = storeStatuses.getVisible;
 filterStatuses.reset = storeStatuses.reset;
