@@ -9,8 +9,7 @@ import { mccSessionStorage } from "./mccSessionStorage.js";
 import { createAccessorStore } from "./createAccessorStore.js";
 import { filterStatuses } from "./filterStatuses.js";
 import { sortByHeader } from "./sortByHeader.js";
-
-import { statuses } from "../utils.js";
+import { statusData } from "./statusData.js";
 
 class SpreadsheetStore extends DynArrayReducer {
 	/** @type {Map<string, PackageLinkData>} */
@@ -24,10 +23,10 @@ class SpreadsheetStore extends DynArrayReducer {
 	#pieData = {
 		datasets: [
 			{
-				backgroundColor: Object.values(statuses).map(
+				backgroundColor: Object.values(statusData).map(
 					({ hsl }) => `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%, 100%)`
 				),
-				hoverBackgroundColor: Object.values(statuses).map(
+				hoverBackgroundColor: Object.values(statusData).map(
 					({ hsl }) => `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2] + 10}%, 80%)`
 				)
 			}
@@ -82,7 +81,7 @@ class SpreadsheetStore extends DynArrayReducer {
 			const filteredData = [...this];
 
 			// Update pie chart data w/ filtered data.
-			this.#pieData.datasets[0].data = Object.keys(statuses).map(status => filteredData.filter(
+			this.#pieData.datasets[0].data = Object.keys(statusData).map(status => filteredData.filter(
 				row => row.status === status).length);
 
 			this.#stores.pieData.set(this.#pieData);
@@ -153,7 +152,7 @@ class SpreadsheetStore extends DynArrayReducer {
 		const data = await SpreadsheetController.getRows(this.#version);
 
 		// Add all package data to pie chart data.
-		this.#pieData.allData = Object.keys(statuses).map(status => data.filter(row => row.status === status).length);
+		this.#pieData.allData = Object.keys(statusData).map(status => data.filter(row => row.status === status).length);
 
 		this.setData(data);
 	}
@@ -167,7 +166,7 @@ class SpreadsheetStore extends DynArrayReducer {
 		}
 
 		// Add pie chart label data.
-		this.#pieData.labels = Object.values(statuses).map(({ explanation }) => explanation);
+		this.#pieData.labels = Object.values(statusData).map(({ explanation }) => explanation);
 
 		this.buildPackageLinks();
 

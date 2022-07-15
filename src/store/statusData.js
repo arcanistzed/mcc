@@ -5,7 +5,7 @@ import { localize } from "@typhonjs-fvtt/runtime/svelte/helper";
  *
  * @type {{A: StatusesEntry, B: StatusesEntry, U: StatusesEntry, G: StatusesEntry, X: StatusesEntry, N: StatusesEntry, O: StatusesEntry}}
  */
-export const statuses = {
+export const statusData = {
 	X: {
 		hsl: [0, 100, 60],
 		get explanation() { return localize("mcc.statuses.x"); }

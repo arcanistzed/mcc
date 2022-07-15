@@ -4,7 +4,7 @@
 
 	import { TJSContextMenu } from "@typhonjs-fvtt/svelte-standard/application";
 
-	import { statuses } from "../../utils.js";
+	import { statusData } from "../../store/statusData.js";
 
 	const spreadsheetStore = getContext("spreadsheetStore");
 	const { details } = spreadsheetStore.stores;
@@ -47,7 +47,7 @@
 			animate:flip={{ duration: 250 }}
 			on:contextmenu={(event) => onContextMenu(event, row.id)}
 			data-status={row.status}
-			title={statuses[row.status].explanation}
+			title={statusData[row.status].explanation}
 		>
 			<td>{row.title}</td>
 			{#if $details}

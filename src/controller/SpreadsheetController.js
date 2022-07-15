@@ -1,6 +1,6 @@
 import { localize } from "@typhonjs-fvtt/runtime/svelte/helper";
 
-import { statuses } from "../utils.js";
+import { statusData } from "../store/statusData.js";
 
 /**
  * @typedef {object} RowData
@@ -9,7 +9,7 @@ import { statuses } from "../utils.js";
  * @property {string} id - The ID of the module
  * @property {string} author - The author of the module
  * @property {string} version - The verified compatible version of the module
- * @property {keyof statuses} status - The status of the module
+ * @property {keyof statusData} status - The status of the module
  * @property {string} notes - Any notes about the module
  *
  * @typedef {string[]} SpreadsheetRow
@@ -110,7 +110,7 @@ export default class SpreadsheetController {
 		if (typeof data.status === 'string') { data.status = data.status.toUpperCase(); }
 
 		// Check for valid status. Warn if not found and append a note.
-		if (!statuses[data.status]) {
+		if (!statusData[data.status]) {
 			const message = `Error in spreadsheet: ${data.title} (${data.id}) has invalid status '${
 				data.status}'. Please contact 'Anathema#3668' on Discord.`;
 
