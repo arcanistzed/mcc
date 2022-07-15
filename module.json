@@ -10,7 +10,13 @@
       "email": "arcanistzed@gmail.com",
       "discord": "arcanist#4317",
       "reddit": "u/arcanistzed"
-    }
+    },
+		{
+			"name": "Michael Leahy (TyphonJS)",
+			"url": "https://github.com/typhonrt",
+			"discord": "MLeahy#4299",
+			"reddit": "u/typhonrt"
+		}
   ],
   "url": "This is auto replaced",
   "license": "https://github.com/arcanistzed/mcc/blob/main/LICENSE",
