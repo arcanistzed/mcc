@@ -1,4 +1,9 @@
 <script>
+	/**
+	 * This component hooks up several stores to input components including the spreadsheet version selection,
+	 * search filter, showing / hiding package details, and dispatches a CustomEvent to smoothly scroll the table to
+	 * top.
+	 */
 	import { getContext } from "svelte";
 
 	import { localize } from "@typhonjs-fvtt/runtime/svelte/helper"
@@ -54,6 +59,8 @@
 	};
 
 	/**
+	 * Dispatch a CustomEvent that is received by the main Table component to smoothly scroll to the top.
+	 *
 	 * @param {MouseEvent}	event -
 	 */
 	function scrollSmooth(event) {

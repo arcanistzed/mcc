@@ -11,15 +11,14 @@
 	const { scrollTop } = getContext("spreadsheetStore").stores;
 
 	/**
-	 * Handle custom event from StickyHeader to smoothly scroll to the top.
+	 * Handle CustomEvent from StickyHeader to smoothly scroll to the top.
+	 *
 	 * @param {CustomEvent} event -
 	 */
 	function scrollSmooth(event) {
-		event.currentTarget.scrollTo({
-			top: 0,
-			left: 0,
-			behavior: 'smooth'
-		})
+		event.currentTarget.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+		event.preventDefault();
+		event.stopPropagation();
 	}
 </script>
 

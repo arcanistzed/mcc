@@ -9,6 +9,15 @@
 	const spreadsheetStore = getContext("spreadsheetStore");
 	const { details } = spreadsheetStore.stores;
 
+	/**
+	 * Show a context menu for the table row clicked. Automatically create a link to the Foundry packages list
+	 * regardless if the link exists or not. Due to CORS limitations we can't check if it exists, etc. Also add a link
+	 * for the `url` field in {@link ModuleData} / {@link SystemData}; IE the package manifest.
+	 *
+	 * @param {MouseEvent}	event - MouseEvent.
+	 *
+	 * @param {string}		id - Package ID.
+	 */
 	function onContextMenu(event, id) {
 		const linkData = spreadsheetStore.getPackageLinks(id);
 

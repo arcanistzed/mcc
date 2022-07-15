@@ -5,7 +5,7 @@ import { mccSessionStorage } from "./mccSessionStorage.js";
 /**
  * Get initial value from session storage immediately.
  *
- * @type {{key: string, value: boolean}[]}
+ * @type {StatusEntry}
  */
 const statuses = mccSessionStorage.getItem('mcc.statuses', [
 	{ key: "X", value: true },
@@ -93,3 +93,11 @@ filterStatuses.setVisible = storeStatuses.setVisible;
 filterStatuses.toggleVisible = storeStatuses.toggleVisible;
 
 export { filterStatuses };
+
+/**
+ * @typedef {object} StatusEntry
+ *
+ * @property {keyof statusData} key - Status key
+ *
+ * @property {boolean} value - Status enabled state.
+ */

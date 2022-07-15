@@ -15,8 +15,11 @@
 	$: if ($sortBy !== name) { direction = true; }
 
 	/**
-	 * Sort the rows by a given heading
-	 * @param heading - The heading to sort by
+	 * Sort the rows by a given heading. Set the `sortBy` store to the heading clicked which will sort the spreadsheet
+	 * store. Additionally, set the reversed accessor store that will change the iteration order of the spreadsheet
+	 * store.
+	 *
+	 * @param heading - The heading to sort by.
 	 */
 	function setSortBy(heading) {
 		// Update the current sorting mode

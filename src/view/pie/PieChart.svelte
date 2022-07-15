@@ -17,11 +17,14 @@
 
 	$: if (chart) { updateDataVisibility($statuses); }
 
-	function updateDataVisibility(statusArray)
-	{
-		for (let cntr = 0; cntr < statusArray.length; cntr++)
-		{
-			chart[statusArray[cntr].value ? 'show' : 'hide'](0, cntr);
+	/**
+	 * Update chart data visibility based on statuses store entries.
+	 *
+	 * @param {StatusEntry[]}	statusEntries -
+	 */
+	function updateDataVisibility(statusEntries) {
+		for (let cntr = 0; cntr < statusEntries.length; cntr++) {
+			chart[statusEntries[cntr].value ? 'show' : 'hide'](0, cntr);
 		}
 	}
 
@@ -50,6 +53,11 @@
 		chart = null;
 	});
 
+	/**
+	 * Convert click event on canvas to pie chart / status data field index and set statuses data exclusively to it.
+	 *
+	 * @param {MouseEvent}	event -
+	 */
 	function onCanvasClick(event) {
 		const points = chart.getElementsAtEventForMode(event, 'nearest', { intersect: true }, true);
 
