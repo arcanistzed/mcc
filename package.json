@@ -10,7 +10,7 @@
   ],
   "dependencies": {
     "@typhonjs-fvtt/runtime": "^0.0.16",
-    "@typhonjs-fvtt/svelte-standard": "^0.0.4",
+    "@typhonjs-fvtt/svelte-standard": "^0.0.5",
     "chart.js": "^3.8.0",
     "svelte": "^3.49.0",
     "svelte-preprocess": "^4.10.7"
