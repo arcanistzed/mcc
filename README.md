@@ -16,6 +16,7 @@ In the setup screen, use the URL `https://github.com/arcanistzed/mcc/releases/la
 
 Once you've cloned the GitHub repo, use `npm install` to fetch all dependencies such as Svelte and TyphonJS Runtime Library. Compile the module with `npm run build` (or `npm run build-watch` for watch mode). Use `npm run release` to compile for production (this is automatically run by the GitHub Actions CI pipeline as well).
 In order for your development version of the module to show up in Foundry VTT, you must [symlink](https://world-smiths.github.io/documentation/wiki/symlinking.html) it.
+Run `wrangler dev worker/worker.js` to test out the Cloudflare Worker or `wrangler publish worker/worker.js` to publish it to your Cloudflare account.
 
 ## Support
 
