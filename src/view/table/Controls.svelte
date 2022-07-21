@@ -34,6 +34,9 @@
 		efx: ripple(),
 		title: "mcc.showDetails",
 		titleSelected: "mcc.hideDetails",
+        styles: {
+            filter: "drop-shadow(0 0 1px var(--mcc-dark-color))",
+		},
 	};
 
 	const buttonScrollToTop = {
@@ -44,7 +47,7 @@
 			position: "fixed",
 			bottom: "3rem",
 			right: "1.5rem",
-			filter: "drop-shadow(0 0 5px gray)",
+			filter: "drop-shadow(0 0 1px var(--mcc-dark-color))",
 		},
 	};
 

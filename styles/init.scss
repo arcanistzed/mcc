@@ -10,10 +10,10 @@
     --mcc-text-light-color: white;
 
 	--tjs-input-text-padding: 0 0.25em;
-	--tjs-input-placeholder-color: #595543;
-	--tjs-icon-button-background: rgba(0, 0, 0, 0.1);
-	--tjs-icon-button-background-hover: rgba(0, 0, 0, 0.15);
-	--tjs-icon-button-background-selected: rgba(0, 0, 0, 0.2);
+	--tjs-input-placeholder-color: hsl(50deg 15% 30%);
+	--tjs-icon-button-background: hsl(50deg 10% 80%);
+	--tjs-icon-button-background-hover: hsl(50deg 10% 75%);
+	--tjs-icon-button-background-selected: hsl(50deg 5% 60%);
 
 	.window-content {
 		background: url(../../../ui/parchment.jpg) !important;
