@@ -9,8 +9,9 @@
 	<i class="fas fa-exclamation-triangle" />
 	<pre>{error}</pre>
 	<p>{localize("mcc.error")}</p>
-	<a href="https://arcanist.me">
-		{localize("mcc.website")}
+	<!-- svelte-ignore missing-declaration -->
+	<a href={game.modules.get("mcc").data.bugs}>
+		{localize("mcc.issues")}
 		<i class="fas fa-external-link-alt" />
 	</a>
 </main>
@@ -26,9 +27,5 @@
 	.fa-exclamation-triangle {
 		font-size: 8em;
 		color: var(--mcc-dark-color);
-	}
-
-	a:hover {
-		text-shadow: none;
 	}
 </style>
