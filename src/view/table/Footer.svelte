@@ -27,6 +27,7 @@
 <style>
 	footer {
 		position: sticky;
+        bottom: 0;
 		background-color: #283048;
 		color: white;
 		text-align: center;
