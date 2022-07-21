@@ -32,6 +32,7 @@
 		transition: 250ms;
 		border: solid 1px black;
 	}
+
 	tr:hover {
 		filter: drop-shadow(0 0 0 black);
 	}

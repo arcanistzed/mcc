@@ -16,9 +16,9 @@
 		store: version,
 		efx: rippleFocus(),
 		options: spreadsheetStore.versions.map(entry => ({ label: `v${entry}`, value: entry })),
-        styles: {
-            width: "7em",
-        }
+		styles: {
+			width: "7em",
+		},
 	};
 
 	const input = {
@@ -26,20 +26,14 @@
 		efx: rippleFocus(),
 		placeholder: "Search module compatibility...",
 		type: "search",
-		styles: {
-			"flex-grow": "1",
-			"margin-left": "2em",
-			"margin-right": "2em"
-		}
-	}
+	};
 
 	const buttonDetails = {
 		store: details,
 		icon: "fas fa-info",
 		efx: ripple(),
-		title: "mcc.detailsShow",
-		titleSelected: "mcc.detailsHide",
-		styles: { "margin-left": "auto" }
+		title: "mcc.showDetails",
+		titleSelected: "mcc.hideDetails",
 	};
 
 	const buttonScrollToTop = {
@@ -82,11 +76,9 @@
 
 	div {
 		display: flex;
-		justify-content: center;
-		border-radius: 0.5em;
-		border: solid 0.1em rgba(0, 0, 0, 0.5);
-		padding: 0.35em 0.25em 0.25em 0.25em;
-		margin: 0 0.25em;
+		gap: 1ch;
+		padding: 1ch;
+		align-items: center;
 		color: #191813;
 		text-shadow: none;
 	}
