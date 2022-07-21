@@ -28,8 +28,8 @@
 	footer {
 		position: sticky;
 		bottom: -0.5px; /* A small negative value prevents a 1px gap from sporadically showing */
-		background-color: #283048;
-		color: white;
+		background-color: var(--mcc-dark-color);
+		color: var(--mcc-text-light-color);
 		text-align: center;
 		display: flex;
 		justify-content: space-around;
@@ -40,7 +40,7 @@
 	}
 
 	a {
-		color: white;
+		color: var(--mcc-text-light-color);
 		white-space: nowrap;
 	}
 </style>

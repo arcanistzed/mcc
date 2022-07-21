@@ -20,12 +20,12 @@
 		padding: 1em;
 		text-align: center;
 		font-size: 1.5em;
-		color: #191813;
+		color: var(--mcc-text-dark-color);
 	}
 
 	.fa-exclamation-triangle {
 		font-size: 8em;
-		color: #333;
+		color: var(--mcc-dark-color);
 	}
 
 	a:hover {

@@ -14,7 +14,7 @@
 		justify-content: center;
 		margin: auto;
 		font-size: 2em;
-		color: #191813;
+		color: var(--mcc-text-dark-color);
 	}
 
 	p {

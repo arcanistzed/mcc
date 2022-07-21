@@ -40,7 +40,7 @@
 		overflow-x: hidden;
 		position: relative;
 		scrollbar-width: thin; /* For Firefox */
-		color: #191813;
+		color: var(--mcc-text-dark-color);
         padding: 0 1ch;
         margin: 1ch 0;
 	}

@@ -1,7 +1,13 @@
-// Sadly there are several game systems out there that use '!important' to override styles thus we must too.
-#mcc-main-app {
+// Unfortunately there are several game systems out there that use `!important` to override styles
+#mcc {
+	accent-color: var(--mcc-medium-color);
 	font-family: "Signika", sans-serif !important;
 	font-size: 0.875rem !important;
+
+	--mcc-dark-color: hsl(220, 30%, 20%);
+	--mcc-medium-color: hsl(220, 70%, 40%);
+    --mcc-text-dark-color: black;
+    --mcc-text-light-color: white;
 
 	--tjs-input-text-padding: 0 0.25em;
 	--tjs-input-placeholder-color: #595543;
@@ -12,19 +18,19 @@
 	.window-content {
 		background: url(../../../ui/parchment.jpg) !important;
 		padding: 0 !important;
-	}
 
-	a:hover {
-		text-shadow: 0 0 8px #ff0000 !important;
-	}
-
+		a,
 	p {
 		font-family: "Signika", sans-serif !important;
 		font-size: 0.875rem !important;
 	}
 
+    a:hover {
+        text-shadow: 0 0 8px var(--mcc-medium-color) !important;
+    }
+
 	select {
 		background: rgba(0, 0, 0, 0.05) !important;
-		color: #191813 !important;
+		color: var(--mcc-dark-text-color) !important;
 	}
 }

@@ -79,7 +79,7 @@
 		gap: 1ch;
 		padding: 1ch;
 		align-items: center;
-		color: #191813;
+		color: var(--mcc-text-dark-color);
 		text-shadow: none;
 	}
 </style>

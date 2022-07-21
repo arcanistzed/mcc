@@ -24,16 +24,17 @@
 <style>
 	thead {
 		position: sticky;
-		background-color: #283048;
+		background-color: var(--mcc-dark-color);
+        color: var(--mcc-text-light-color);
 		top: 0;
 	}
 
 	tr {
 		transition: 250ms;
-		border: solid 1px black;
+		border: solid 1px var(--mcc-dark-color);
 	}
 
 	tr:hover {
-		filter: drop-shadow(0 0 0 black);
+		filter: drop-shadow(0 0 0 var(--mcc-dark-color));
 	}
 </style>
