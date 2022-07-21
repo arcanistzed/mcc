@@ -29,7 +29,6 @@
 <style>
 	thead {
 		position: sticky;
-		z-index: 1;
 		background-color: #283048;
 		top: 0;
 	}
