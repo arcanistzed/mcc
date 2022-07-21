@@ -44,9 +44,12 @@ export default () => {
 				svelte({
 					preprocess: preprocess(),
 					onwarn: (warning, handler) => {
-						// Suppress `a11y-missing-attribute` for missing href in <a> links.
-						// Foundry doesn't follow accessibility rules.
-						if (warning.message.includes("<a> element should have an href attribute")) {
+						// Suppress `a11y-missing-attribute` for missing href in <a> links
+						// Suppress `a11y-label-has-associated-control` for detached <label> and control
+						if (
+							warning.message.includes("<a> element should have an href attribute") ||
+							warning.message.includes("A form label must be associated with a control")
+						) {
 							return;
 						}
 
