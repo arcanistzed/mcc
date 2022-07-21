@@ -42,11 +42,16 @@
 		styles: { "margin-left": "auto" }
 	};
 
-	const buttonScrolltop = {
+	const buttonScrollToTop = {
 		icon: "fas fa-angle-double-up",
 		efx: ripple(),
 		title: "mcc.scrollToTop",
-		styles: { "margin-left": "0.5em" }
+		styles: {
+			position: "fixed",
+			bottom: "3rem",
+			right: "1.5rem",
+			filter: "drop-shadow(0 0 5px gray)",
+		},
 	};
 
 	/**
@@ -67,7 +72,7 @@
 
 	<TJSToggleIconButton button={buttonDetails} />
 
-	<TJSIconButton button={buttonScrolltop} on:click={scrollSmooth} />
+	<TJSIconButton button={buttonScrollToTop} on:click={scrollSmooth} />
 </div>
 
 <style>
