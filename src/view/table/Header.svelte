@@ -29,14 +29,9 @@
 <style>
 	thead {
 		position: sticky;
-		background-color: rgb(211, 209, 196);
 		z-index: 1;
+		background-color: #283048;
 		top: 0;
-	}
-
-	/* Override Foundry core rule */
-	tr:nth-child(even) {
-		background: linear-gradient(to bottom, #283048, #859398);
 	}
 
 	tr {
