@@ -36,6 +36,8 @@
 		gap: 1ch;
 		border-top: solid 1px rgba(0, 0, 0, 0.2);
 		border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+        border-bottom-left-radius: 0.5ch;
+        border-bottom-right-radius: 0.5ch;
 	}
 
 	a {

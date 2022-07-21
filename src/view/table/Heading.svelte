@@ -44,8 +44,13 @@
 		cursor: pointer;
 	}
 
+	th:first-child {
+		border-top-left-radius: 0.5ch;
+	}
+
 	th:last-child {
 		border-right: none;
+		border-top-right-radius: 0.5ch;
 	}
 
 	i {
