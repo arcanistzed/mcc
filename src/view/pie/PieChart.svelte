@@ -70,14 +70,8 @@
 </script>
 
 <section>
-	<div class=side />
-	<div class=center>
-		<div class=canvas>
-			<canvas bind:this={canvasEl} on:click={onCanvasClick}/>
-		</div>
-		<PieChartLegend />
-	</div>
-	<div class=side />
+	<canvas bind:this={canvasEl} on:click={onCanvasClick} />
+	<PieChartLegend />
 </section>
 
 <style>
@@ -85,27 +79,12 @@
 		width: 250px;
 		height: 250px;
 		cursor: pointer;
-	}
-
-	div.canvas {
-		border-radius: 50%;
-		border: 1px solid rgba(0, 0, 0, 0.2);
-		background: rgba(0, 0, 0, 0.1);
-	}
-
-	div.side {
-		flex-grow: 1;
-	}
-
-	div.center {
-		width: fit-content;
-		display: flex;
+		filter: drop-shadow(0 0 1ch rgba(0, 0, 0, 0.25));
 	}
 
 	section {
-		margin: 1em 0;
+		margin: 1ch auto;
 		display: flex;
-		justify-content: center;
-		align-content: center;
+		gap: 1.5rem;
 	}
 </style>

@@ -35,43 +35,35 @@
 		text-decoration: line-through;
 	}
 
-	a.links {
-		margin: 0.5em 1.5em 0 0;
-		width: fit-content;
-	}
-
 	div.entry {
 		display: flex;
+		gap: 1ch;
 		align-items: center;
-		margin-bottom: 0.25em;
+		margin: 0.25ch;
 		cursor: pointer;
 	}
 
 	div.links {
 		display: flex;
+		justify-content: space-evenly;
+		padding: 1ch;
 	}
 
 	hr {
-		width: 33em;
-		margin: 0.5em 0 0 0;
-		border-top: 1px solid #b5b3a4;
-		border-bottom: 1px solid #f0f0e0;
+		width: 100%;
+		margin: 1ch;
 	}
 
 	section {
 		display: flex;
 		flex-direction: column;
-		width: fit-content;
-		margin-left: 1.5em;
 		justify-content: center;
 	}
 
 	span {
-		width: 6em;
-		height: 1.5em;
-		line-height: 1.25em;
-		margin-right: 0.5em;
+		box-sizing: border-box;
+		width: 5rem;
 		text-align: center;
-		border: 2px solid rgba(0, 0, 0, 0.4)
+		border: 2px solid rgba(0, 0, 0, 0.4);
 	}
 </style>
