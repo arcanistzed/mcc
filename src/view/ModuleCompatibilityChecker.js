@@ -34,3 +34,5 @@ export class ModuleCompatibilityChecker extends SvelteApplication {
 		});
 	}
 }
+
+globalThis.ModuleCompatibilityChecker = ModuleCompatibilityChecker;
