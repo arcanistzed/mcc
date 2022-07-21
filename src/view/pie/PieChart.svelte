@@ -21,7 +21,7 @@
 	}
 
 	/**
-	 * Update chart data visibility based on statuses store entries.
+	 * Update chart data visibility based on statuses store entries
 	 * @param {StatusEntry[]} statusEntries
 	 */
 	function updateDataVisibility(statusEntries) {
@@ -56,7 +56,7 @@
 	});
 
 	/**
-	 * Convert click event on canvas to pie chart / status data field index and set statuses data exclusively to it.
+	 * Convert click event on canvas to pie chart / status data field index and set statuses data exclusively to it
 	 * @param {MouseEvent} event
 	 */
 	function onCanvasClick(event) {

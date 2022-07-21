@@ -6,9 +6,9 @@ import { mccSessionStorage } from "./mccSessionStorage.js";
  * Creates a session storage store and link it to an accessor / setter on the given target.
  * @template T
  * @param {object} target - Target object
- * @param {string} accessor - The accessor property to set.
- * @param {T} [initial] - An initial default value.
- * @returns {import("svelte/store").Writable<T>} An accessor store.
+ * @param {string} accessor - The accessor property to set
+ * @param {T} [initial] - An initial default value
+ * @returns {import("svelte/store").Writable<T>} An accessor store
  */
 export function createAccessorStore(target, accessor, initial) {
 	if (!hasSetter(target, accessor)) {

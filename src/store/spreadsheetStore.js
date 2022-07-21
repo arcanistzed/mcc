@@ -104,17 +104,17 @@ class SpreadsheetStore extends DynArrayReducer {
 	}
 
 	/**
+	 * @param {string} version New spreadsheet version
+	 */
+	set version(version) {
+		this.#version = version;
+	}
+
+	/**
 	 * @returns {string[]} All spreadsheet versions
 	 */
 	get versions() {
 		return this.#versions;
-	}
-
-	/**
-	 * @param {string} version - New spreadsheet version
-	 */
-	set version(version) {
-		this.#version = version;
 	}
 
 	/**
@@ -163,7 +163,7 @@ class SpreadsheetStore extends DynArrayReducer {
 	async initialize() {
 		this.#versions = await SpreadsheetController.getVersions();
 
-		// Only set the version to the latest / last spreadsheet version if it isn't retrieved from session storage
+		// Only set the version to the latest spreadsheet version if it isn't retrieved from session storage
 		if (typeof this.#version !== "string" || !this.#versions.includes(this.#version)) {
 			this.#stores.version.set(this.#versions.at(-1));
 		}

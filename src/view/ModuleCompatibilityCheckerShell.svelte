@@ -23,7 +23,7 @@
 
 	const { application } = getContext("external");
 
-	// Get a store that is synchronized with session storage.
+	// Get a store that is synchronized with session storage
 	const stateStore = mccSessionStorage.getStore(`mcc.appState`);
 
 	// Application position store reference. Stores need to be a top level variable to be accessible for reactivity.

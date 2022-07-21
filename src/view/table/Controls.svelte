@@ -49,7 +49,7 @@
 	};
 
 	/**
-	 * Dispatch a CustomEvent that is received by the main Table component to smoothly scroll to the top.
+	 * Dispatch a CustomEvent that is received by the main Table component to smoothly scroll to the top
 	 * @param {MouseEvent} event
 	 */
 	function scrollSmooth(event) {
