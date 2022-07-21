@@ -1,4 +1,3 @@
-import { babel } from "@rollup/plugin-babel";
 import postcss from "rollup-plugin-postcss"; // Process Sass / CSS w/ PostCSS
 import resolve from "@rollup/plugin-node-resolve"; // This resolves NPM modules from node_modules.
 import svelte from "rollup-plugin-svelte";
@@ -20,7 +19,7 @@ const postcssMain = postcssConfig({
 
 const RESOLVE_CONFIG = {
 	browser: true,
-	dedupe: ["svelte"],
+	dedupe: ["svelte"]
 };
 
 export default () => {
@@ -57,19 +56,7 @@ export default () => {
 
 				postcss(postcssMain),
 
-				resolve(RESOLVE_CONFIG),
-
-				// Transpile only for production builds
-				PRODUCTION &&
-					babel({
-						babelHelpers: "bundled",
-						presets: [
-							[
-								"@babel/preset-env",
-								{ bugfixes: true, shippedProposals: true, targets: { esmodules: true } },
-							],
-						],
-					}),
+				resolve(RESOLVE_CONFIG)
 			],
 			onwarn(warning, warn) {
 				// Suppress warning from library code

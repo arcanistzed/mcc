@@ -1,5 +1,6 @@
-// eslint-disable-next-line no-unused-vars
-import { localize, statuses } from "../utils.js";
+import { localize } from "@typhonjs-fvtt/runtime/svelte/helper";
+
+import { statusData } from "../store/statusData.js";
 
 /**
  * @typedef {object} RowData
@@ -8,7 +9,7 @@ import { localize, statuses } from "../utils.js";
  * @property {string} id - The ID of the module
  * @property {string} author - The author of the module
  * @property {string} version - The verified compatible version of the module
- * @property {keyof statuses} status - The status of the module
+ * @property {keyof statusData} status - The status of the module
  * @property {string} notes - Any notes about the module
  *
  * @typedef {string[]} SpreadsheetRow
@@ -83,10 +84,10 @@ export default class SpreadsheetController {
 			compatibility: { verified = null } = {},
 		} = module.data;
 		const fallback = {
-			title: title ?? localize("untitled"),
+			title: title ?? localize("mcc.untitled"),
 			type,
 			id: module.id ?? module.name,
-			author: authorName ?? module.author ?? localize("unknownAuthor"),
+			author: authorName ?? module.author ?? localize("mcc.unknownAuthor"),
 			version: verified ?? compatibleCoreVersion ?? "?",
 			status: "U",
 			notes: "",
@@ -103,6 +104,20 @@ export default class SpreadsheetController {
 			if (data[property] === undefined) {
 				data[property] = fallback[property];
 			}
+		}
+
+		// Covert to upper case; just in case!
+		if (typeof data.status === 'string') { data.status = data.status.toUpperCase(); }
+
+		// Check for valid status. Warn if not found and append a note.
+		if (!statusData[data.status]) {
+			const message = `Error in spreadsheet: ${data.title} (${data.id}) has invalid status '${
+				data.status}'. Please contact 'Anathema#3668' on Discord.`;
+
+			console.warn(message);
+
+			data.notes = message;
+			data.status = "X";
 		}
 
 		return data;

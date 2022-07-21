@@ -1,0 +1,30 @@
+// Sadly there are several game systems out there that use '!important' to override styles thus we must too.
+#mcc-main-app {
+	font-family: "Signika", sans-serif !important;
+	font-size: 0.875rem !important;
+
+	--tjs-comp-input-padding: 0 0.25em;
+	--tjs-input-placeholder-color: #595543;
+	--tjs-icon-button-background: rgba(0, 0, 0, 0.1);
+	--tjs-icon-button-background-hover: rgba(0, 0, 0, 0.15);
+	--tjs-icon-button-background-selected: rgba(0, 0, 0, 0.2);
+
+	.window-content {
+		background: url(../../../ui/parchment.jpg) !important;
+		padding: 0 !important;
+	}
+
+	a:hover {
+		text-shadow: 0 0 8px #ff0000 !important;
+	}
+
+	p {
+		font-family: "Signika", sans-serif !important;
+		font-size: 0.875rem !important;
+	}
+
+	select {
+		background: rgba(0, 0, 0, 0.05) !important;
+		color: #191813 !important;
+	}
+}
