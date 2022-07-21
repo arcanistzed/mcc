@@ -58,21 +58,17 @@
 	}
 </script>
 
-<tr>
-	<td colspan={$details ? 6 : 2}>
-		<div>
-			<!-- TODO: link elements with id -->
-			<label>{localize("mcc.selectVersion")}</label>
-			<TJSSelect {select} on:change={() => spreadsheetStore.update()} />
+<div>
+	<!-- TODO: link elements with id -->
+	<label>{localize("mcc.selectVersion")}</label>
+	<TJSSelect {select} on:change={() => spreadsheetStore.update()} />
 
-			<TJSInput {input} />
+	<TJSInput {input} />
 
-			<TJSToggleIconButton button={buttonDetails} />
+	<TJSToggleIconButton button={buttonDetails} />
 
-			<TJSIconButton button={buttonScrolltop} on:click={scrollSmooth}/>
-		</div>
-	</td>
-</tr>
+	<TJSIconButton button={buttonScrolltop} on:click={scrollSmooth} />
+</div>
 
 <style>
 	label {
@@ -88,9 +84,5 @@
 		margin: 0 0.25em;
 		color: #191813;
 		text-shadow: none;
-	}
-
-	tr {
-		height: 3em;
 	}
 </style>

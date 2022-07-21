@@ -1,17 +1,12 @@
 <script>
-	/**
-	 * This component wires up the table header along w/ the StickyHeader component above the table header.
-	 */
 	import { getContext } from "svelte";
 
-	import StickyHeader from "./StickyHeader.svelte";
 	import Heading from "./Heading.svelte";
 
 	const { details } = getContext("spreadsheetStore").stores;
 </script>
 
 <thead>
-	<StickyHeader />
 	{#key $details}
 		<tr>
 			<Heading name={"title"} />
