@@ -95,6 +95,7 @@ export default class SpreadsheetController {
 
 		// Get spreadsheet data
 		const data = this.rowToData(spreadsheet.find(r => r[2] === (module.id ?? module.name)) ?? []);
+		data.official = true;
 
 		// Merge data
 		for (const property in data) {
@@ -102,6 +103,7 @@ export default class SpreadsheetController {
 				data.version = isNewerVersion(data.version, fallback.version) ? data.version : fallback.version;
 			}
 			if (data[property] === undefined) {
+				if (!["status", "notes"].includes(property)) data.official = false;
 				data[property] = fallback[property];
 			}
 		}

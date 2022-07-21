@@ -13,18 +13,21 @@
 	 * Show a context menu for the table row clicked
 	 * @param {MouseEvent} event
 	 * @param {string} id - Package ID
+	 * @param {boolean} official - Whether the package is on the official listing
 	 */
-	function onContextMenu(event, id) {
+	function onContextMenu(event, id, official) {
 		const linkData = spreadsheetStore.getPackageLinks(id);
 
 		if (linkData) {
 			const items = [];
 
-			items.push({
-				label: "mcc.packageListingURL",
-				icon: "fas fa-link",
-				onclick: () => window.open(`https://foundryvtt.com/packages/${linkData.id}`, "_blank"),
-			});
+			if (official) {
+				items.push({
+					label: "mcc.packageListingURL",
+					icon: "fas fa-link",
+					onclick: () => window.open(`https://foundryvtt.com/packages/${linkData.id}`, "_blank"),
+				});
+			}
 
 			if (linkData.url) {
 				items.push({
@@ -49,7 +52,7 @@
 	{#each [...$spreadsheetStore] as row, i (row.id)}
 		<tr
 			animate:flip={{ duration: 250 }}
-			on:contextmenu={event => onContextMenu(event, row.id)}
+			on:contextmenu={event => onContextMenu(event, row.id, row.official)}
 			data-status={row.status}
 			title={statusData[row.status].explanation}
 		>
