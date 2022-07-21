@@ -22,11 +22,25 @@
 			const items = [];
 
 			if (official) {
-				items.push({
-					label: "mcc.packageListingURL",
-					icon: "fas fa-link",
-					onclick: () => window.open(`https://foundryvtt.com/packages/${linkData.id}`, "_blank"),
-				});
+				items.push(
+					{
+						label: "mcc.packageListingURL",
+						icon: "fas fa-external-link",
+						onclick: () => window.open(`https://foundryvtt.com/packages/${linkData.id}`, "_blank"),
+					},
+					{
+						label: "mcc.foundryHubURL",
+						icon: "fas fa-external-link",
+						image: "https://www.foundryvtt-hub.com/wp-content/uploads/2021/08/foundryhublogo4-verysmall.webp",
+						onclick: () => window.open(`https://www.foundryvtt-hub.com/package/${linkData.id}`, "_blank"),
+					},
+					{
+						label: "mcc.bazaarURL",
+						icon: "fas fa-external-link",
+						image: "https://forge-vtt.com/images/the-forge-logo-48x48.png",
+						onclick: () => window.open(`https://forge-vtt.com/bazaar/package/${linkData.id}`, "_blank"),
+					}
+				);
 			}
 
 			if (linkData.url) {

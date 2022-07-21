@@ -33,6 +33,8 @@
         "showDetails": "Show details",
         "percentageFilteredTooltip": "The percentage ready for current filtered package count",
         "packageListingURL": "Foundry VTT Package Listing",
+        "foundryHubURL": "Foundry Hub",
+        "bazaarURL": "The Forge Bazaar",
         "projectURL": "Project URL",
         "showKnownCompatible": "Show known compatible packages",
         "resetFilters": "Reset filters"
