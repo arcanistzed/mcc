@@ -61,9 +61,8 @@
 <tr>
 	<td colspan={$details ? 6 : 2}>
 		<div>
-			<span>{localize("mcc.selectVersion")}</span>
-
-			<!-- TODO: Consider showing an overlay on change to show loading state and any error. -->
+			<!-- TODO: link elements with id -->
+			<label>{localize("mcc.selectVersion")}</label>
 			<TJSSelect {select} on:change={() => spreadsheetStore.update()} />
 
 			<TJSInput {input} />
@@ -76,6 +75,10 @@
 </tr>
 
 <style>
+	label {
+		white-space: nowrap;
+	}
+
 	div {
 		display: flex;
 		justify-content: center;
@@ -85,11 +88,6 @@
 		margin: 0 0.25em;
 		color: #191813;
 		text-shadow: none;
-	}
-
-	span {
-		line-height: 2em;
-		width: 19em;
 	}
 
 	tr {
