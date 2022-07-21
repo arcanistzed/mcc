@@ -27,7 +27,7 @@
 <style>
 	footer {
 		position: sticky;
-        bottom: 0;
+		bottom: -0.5px; /* A small negative value prevents a 1px gap from sporadically showing */
 		background-color: #283048;
 		color: white;
 		text-align: center;
