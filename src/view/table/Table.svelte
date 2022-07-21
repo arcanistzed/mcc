@@ -39,6 +39,8 @@
 		position: relative;
 		scrollbar-width: thin; /* For Firefox */
 		color: #191813;
+        padding: 0 1ch;
+        margin: 1ch 0;
 	}
 
 	table {
