@@ -6,8 +6,8 @@
 
 	--mcc-dark-color: hsl(220, 30%, 20%);
 	--mcc-medium-color: hsl(220, 70%, 40%);
-    --mcc-text-dark-color: black;
-    --mcc-text-light-color: white;
+	--mcc-text-dark-color: black;
+	--mcc-text-light-color: white;
 
 	--tjs-input-text-padding: 0 0.25em;
 	--tjs-input-placeholder-color: hsl(50deg 15% 30%);
@@ -20,18 +20,18 @@
 		padding: 0 !important;
 
 		a,
-	p {
-		font-family: "Signika", sans-serif !important;
-		font-size: 0.875rem !important;
-	}
+		p {
+			font-family: "Signika", sans-serif !important;
+			font-size: 0.875rem !important;
+		}
 
-    a:hover {
-        text-shadow: 0 0 8px var(--mcc-medium-color) !important;
-    }
+		a:hover {
+			text-shadow: 0 0 8px var(--mcc-medium-color) !important;
+		}
 
-	select {
-		background: rgba(0, 0, 0, 0.05) !important;
-		color: var(--mcc-dark-text-color) !important;
+		select {
+			background: rgba(0, 0, 0, 0.05) !important;
+			color: var(--mcc-dark-text-color) !important;
 		}
 	}
 }
