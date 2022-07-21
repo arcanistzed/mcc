@@ -5,18 +5,9 @@
 	 * top.
 	 */
 	import { getContext } from "svelte";
-
-	import { localize } from "@typhonjs-fvtt/runtime/svelte/helper"
-
-	import {
-		ripple,
-		rippleFocus } from "@typhonjs-fvtt/svelte-standard/action";
-
-	import {
-		TJSIconButton,
-		TJSInput,
-	 	TJSSelect,
-		TJSToggleIconButton } from "@typhonjs-fvtt/svelte-standard/component";
+	import { localize } from "@typhonjs-fvtt/runtime/svelte/helper";
+	import { ripple, rippleFocus } from "@typhonjs-fvtt/svelte-standard/action";
+	import { TJSIconButton, TJSInput, TJSSelect, TJSToggleIconButton } from "@typhonjs-fvtt/svelte-standard/component";
 
 	const spreadsheetStore = getContext("spreadsheetStore");
 	const { details, filterSearch, version } = spreadsheetStore.stores;
@@ -24,10 +15,10 @@
 	const select = {
 		store: version,
 		efx: rippleFocus(),
-		options: spreadsheetStore.versions.map((entry) => ({ label: `v${entry}`, value: entry })),
-		styles: {
-			width: "7em"
-		}
+		options: spreadsheetStore.versions.map(entry => ({ label: `v${entry}`, value: entry })),
+        styles: {
+            width: "7em",
+        }
 	};
 
 	const input = {
@@ -60,11 +51,10 @@
 
 	/**
 	 * Dispatch a CustomEvent that is received by the main Table component to smoothly scroll to the top.
-	 *
-	 * @param {MouseEvent}	event -
+	 * @param {MouseEvent} event
 	 */
 	function scrollSmooth(event) {
-		event.target.dispatchEvent(new CustomEvent("scrolltop:smooth", { bubbles: true }));
+		event.target.dispatchEvent(new CustomEvent("scrollTop:smooth", { bubbles: true }));
 	}
 </script>
 

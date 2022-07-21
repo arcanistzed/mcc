@@ -5,9 +5,9 @@ import { createFilterQuery } from "@typhonjs-fvtt/svelte-standard/store";
 
 import SpreadsheetController from "../controller/SpreadsheetController.js";
 
-import { mccSessionStorage } from "./mccSessionStorage.js";
 import { createAccessorStore } from "./createAccessorStore.js";
 import { filterStatuses } from "./filterStatuses.js";
+import { mccSessionStorage } from "./mccSessionStorage.js";
 import { sortByHeader } from "./sortByHeader.js";
 import { statusData } from "./statusData.js";
 
@@ -16,8 +16,7 @@ class SpreadsheetStore extends DynArrayReducer {
 	#packageLinks = new Map();
 
 	/**
-	 * Stores pie chart data; further data is initialized at runtime.
-	 *
+	 * Stores pie chart data; further data is initialized at runtime
 	 * @type {PieChartData}
 	 */
 	#pieData = {
@@ -28,9 +27,9 @@ class SpreadsheetStore extends DynArrayReducer {
 				),
 				hoverBackgroundColor: Object.values(statusData).map(
 					({ hsl }) => `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2] + 10}%, 80%)`
-				)
-			}
-		]
+				),
+			},
+		],
 	};
 
 	/** @type {string} */
@@ -46,15 +45,16 @@ class SpreadsheetStore extends DynArrayReducer {
 		super();
 
 		/**
-		 * Creates a derived store that calculates the current working percentage based on filtered packages.
-		 *
+		 * Creates a derived store that calculates the current working percentage based on filtered packages
 		 * @type {import("svelte/store").Readable<number>}
 		 */
 		const filteredPercentage = derived(this, () => {
 			let working = 0;
 
 			for (const row of this) {
-				if (row.status === "G" || row.status === "N") { working++; }
+				if (row.status === "G" || row.status === "N") {
+					working++;
+				}
 			}
 
 			return parseFloat((100 * (working / Math.max(this.index.length, 1))).toFixed(2));
@@ -66,56 +66,59 @@ class SpreadsheetStore extends DynArrayReducer {
 			filterSearch: createFilterQuery(["title", "id"], { store: mccSessionStorage.getStore("mcc.search", "") }),
 			pieData: writable({}),
 			reversed: createAccessorStore(this, "reversed", false),
-			scrollTop: mccSessionStorage.getStore("mcc.scrolltop", 0),
+			scrollTop: mccSessionStorage.getStore("mcc.scrollTop", 0),
 			sortBy: sortByHeader,
 			statuses: filterStatuses,
-			version: createAccessorStore(this, "version")
+			version: createAccessorStore(this, "version"),
 		};
 
 		this.filters.add(this.#stores.filterSearch);
 		this.filters.add(filterStatuses);
 		this.sort.set(sortByHeader);
 
-		// Subscribe to updates and calculate pie chart data for filtered packages.
+		// Subscribe to updates and calculate pie chart data for filtered packages
 		this.subscribe(() => {
 			const filteredData = [...this];
 
 			// Update pie chart data w/ filtered data.
-			this.#pieData.datasets[0].data = Object.keys(statusData).map(status => filteredData.filter(
-				row => row.status === status).length);
+			this.#pieData.datasets[0].data = Object.keys(statusData).map(
+				status => filteredData.filter(row => row.status === status).length
+			);
 
 			this.#stores.pieData.set(this.#pieData);
 		});
 	}
 
 	/**
-	 * @returns {SpreadsheetStores} All child stores.
+	 * @returns {SpreadsheetStores} All child stores
 	 */
-	get stores() { return this.#stores; }
+	get stores() {
+		return this.#stores;
+	}
 
 	/**
-	 * @returns {string} Current spreadsheet version.
+	 * @returns {string} Current spreadsheet version
 	 */
 	get version() {
 		return this.#version;
 	}
 
 	/**
-	 * @returns {string[]} All spreadsheet versions.
+	 * @returns {string[]} All spreadsheet versions
 	 */
 	get versions() {
 		return this.#versions;
 	}
 
 	/**
-	 * @param {string} version - New spreadsheet version.
+	 * @param {string} version - New spreadsheet version
 	 */
 	set version(version) {
 		this.#version = version;
 	}
 
 	/**
-	 * Parses and builds all package data for any links to show on context menu click.
+	 * Parses and builds all package data for any links to show on context menu click
 	 */
 	buildPackageLinks() {
 		const packageList = SpreadsheetController.getModuleList();
@@ -125,33 +128,33 @@ class SpreadsheetStore extends DynArrayReducer {
 			const id = packageData?.id ?? packageData?.name;
 			const url = packageData?.url;
 
-			if (id) { this.#packageLinks.set(id, { id, url }); }
+			if (id) {
+				this.#packageLinks.set(id, { id, url });
+			}
 		}
 	}
 
 	/**
-	 * Returns the package link data for the given package ID.
-	 *
-	 * @param {string}	id - Package ID.
-	 *
-	 * @returns {PackageLinkData} Any package link data.
+	 * Returns the package link data for the given package ID
+	 * @param {string}	id - Package ID
+	 * @returns {PackageLinkData} Any package link data
 	 */
 	getPackageLinks(id) {
 		return this.#packageLinks.get(id);
 	}
 
 	/**
-	 * Resets the search and status filters.
+	 * Resets the search and status filters
 	 */
 	resetFilters() {
-		this.#stores.filterSearch.set('');
+		this.#stores.filterSearch.set("");
 		this.#stores.statuses.reset();
 	}
 
 	async update() {
 		const data = await SpreadsheetController.getRows(this.#version);
 
-		// Add all package data to pie chart data.
+		// Add all package data to pie chart data
 		this.#pieData.allData = Object.keys(statusData).map(status => data.filter(row => row.status === status).length);
 
 		this.setData(data);
@@ -160,12 +163,12 @@ class SpreadsheetStore extends DynArrayReducer {
 	async initialize() {
 		this.#versions = await SpreadsheetController.getVersions();
 
-		// Only set the version to the latest / last spreadsheet version if it isn't retrieved from session storage.
-		if (typeof this.#version !== 'string' || !this.#versions.includes(this.#version)) {
+		// Only set the version to the latest / last spreadsheet version if it isn't retrieved from session storage
+		if (typeof this.#version !== "string" || !this.#versions.includes(this.#version)) {
 			this.#stores.version.set(this.#versions.at(-1));
 		}
 
-		// Add pie chart label data.
+		// Add pie chart label data
 		this.#pieData.labels = Object.values(statusData).map(({ explanation }) => explanation);
 
 		this.buildPackageLinks();
@@ -178,47 +181,29 @@ export const spreadsheetStore = new SpreadsheetStore();
 
 /**
  * @typedef {object} PackageLinkData
- *
- * @property {string} id - Package name / id
- *
- * @property {string} [url] - Package URL.
+ * @property {string} id - Package ID
+ * @property {string} [url] - Package URL
  */
 
 /**
  * @typedef {object} PieChartData
- *
- * @property {number[]} allData - All status data calculated when the spreadsheet updates.
- *
- * @property {string[]} labels - All status labels.
- *
- * @property {object[]} datasets -
- *
- * @property {number[]} datasets.data -
- *
- * @property {string[]} datasets.backgroundColor -
- *
- * @property {string[]} datasets.hoverBackgroundColor -
+ * @property {number[]} allData - All status data calculated when the spreadsheet updates
+ * @property {string[]} labels - All status labels
+ * @property {object[]} datasets
+ * @property {number[]} datasets.data
+ * @property {string[]} datasets.backgroundColor
+ * @property {string[]} datasets.hoverBackgroundColor
  */
 
 /**
  * @typedef {object} SpreadsheetStores
- *
- * @property {import("svelte/store").Writable<boolean>} details - Show hide additional details in table / rows.
- *
- * @property {import("svelte/store").Readable<number>} filteredPercentage - Stores current working percentage on
- *                                                                           filtered package data.
- *
- * @property {import("svelte/store").Writable<string>} filterSearch - Stores the filter search string.
- *
- * @property {import("svelte/store").Writable<number[]>} pieData - Stores Chart.js / pie chart data.
- *
- * @property {import("svelte/store").Writable<boolean>} reversed - Stores DynArrayReducer reversed state.
- *
- * @property {import("svelte/store").Writable<number>} scrollTop - Stores scroll bar position.
- *
- * @property {import("svelte/store").Writable<string>} sortBy - Table header key to sort by.
- *
- * @property {import("svelte/store").Readable<object[]>} statuses - Stores statuses visibility.
- *
- * @property {import("svelte/store").Writable<string>} version - Stores current spreadsheet version.
+ * @property {import("svelte/store").Writable<boolean>} details - Show hide additional details in table
+ * @property {import("svelte/store").Readable<number>} filteredPercentage - Stores current working percentage on filtered package data
+ * @property {import("svelte/store").Writable<string>} filterSearch - Stores the filter search string
+ * @property {import("svelte/store").Writable<number[]>} pieData - Stores Chart.js pie chart data
+ * @property {import("svelte/store").Writable<boolean>} reversed - Stores DynArrayReducer reversed state
+ * @property {import("svelte/store").Writable<number>} scrollTop - Stores scroll bar position
+ * @property {import("svelte/store").Writable<string>} sortBy - Table header key to sort by
+ * @property {import("svelte/store").Readable<object[]>} statuses - Stores statuses visibility
+ * @property {import("svelte/store").Writable<string>} version - Stores current spreadsheet version
  */

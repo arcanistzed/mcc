@@ -3,8 +3,8 @@ import { localize } from "@typhonjs-fvtt/runtime/svelte/helper";
 import SpreadsheetController from "./controller/SpreadsheetController.js";
 import { statusData } from "./store/statusData.js";
 
-import PatreonButton from "./view/external/PatreonButton.svelte";
 import ModuleManagementButton from "./view/external/ModuleManagementButton.svelte";
+import PatreonButton from "./view/external/PatreonButton.svelte";
 
 import "../styles/init.scss";
 
@@ -23,7 +23,6 @@ Hooks.on("renderModuleManagement", (app, [html]) => {
 		anchor: html.querySelector("[name='deactivate']"),
 	});
 });
-
 
 /**
  * Apply the status colors to the module management app

@@ -1,9 +1,10 @@
-import postcss from "rollup-plugin-postcss"; // Process Sass / CSS w/ PostCSS
+/* global process */
 import resolve from "@rollup/plugin-node-resolve"; // This resolves NPM modules from node_modules.
-import svelte from "rollup-plugin-svelte";
-import preprocess from "svelte-preprocess";
-import { terser } from "rollup-plugin-terser"; // Terser is used for minification / mangling
 import { postcssConfig, terserConfig } from "@typhonjs-fvtt/runtime/rollup";
+import postcss from "rollup-plugin-postcss"; // Process Sass / CSS w/ PostCSS
+import svelte from "rollup-plugin-svelte";
+import { terser } from "rollup-plugin-terser"; // Terser is used for minification / mangling
+import preprocess from "svelte-preprocess";
 
 const PRODUCTION = process.env.BUILD === "production";
 
@@ -19,7 +20,7 @@ const postcssMain = postcssConfig({
 
 const RESOLVE_CONFIG = {
 	browser: true,
-	dedupe: ["svelte"]
+	dedupe: ["svelte"],
 };
 
 export default () => {
@@ -32,9 +33,9 @@ export default () => {
 	return [
 		{
 			// The main module bundle
-			input: `src/init.js`,
+			input: "src/init.js",
 			output: {
-				file: `dist/mcc.js`,
+				file: "dist/mcc.js",
 				format: "es",
 				plugins: outputPlugins,
 				sourcemap,
@@ -45,7 +46,7 @@ export default () => {
 					onwarn: (warning, handler) => {
 						// Suppress `a11y-missing-attribute` for missing href in <a> links.
 						// Foundry doesn't follow accessibility rules.
-						if (warning.message.includes(`<a> element should have an href attribute`)) {
+						if (warning.message.includes("<a> element should have an href attribute")) {
 							return;
 						}
 
@@ -56,7 +57,7 @@ export default () => {
 
 				postcss(postcssMain),
 
-				resolve(RESOLVE_CONFIG)
+				resolve(RESOLVE_CONFIG),
 			],
 			onwarn(warning, warn) {
 				// Suppress warning from library code

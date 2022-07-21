@@ -1,5 +1,5 @@
 <script>
-	import { localize } from "@typhonjs-fvtt/runtime/svelte/helper"
+	import { localize } from "@typhonjs-fvtt/runtime/svelte/helper";
 </script>
 
 <main>

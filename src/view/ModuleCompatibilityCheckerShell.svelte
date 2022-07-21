@@ -1,10 +1,10 @@
 <svelte:options accessors={true} />
 
 <script>
-	/**
-	 * This is the main `ApplicationShell` component. Await upon spreadsheet fetch and either show the table or an
-	 * error. Also coordinates debouncing / serializing app state / position to session storage on positional changes.
-	 */
+	/*
+    This is the main `ApplicationShell` component. Await upon spreadsheet fetch and either show the table or an error.
+    Also coordinates debouncing / serializing app state / position to session storage on positional changes.
+    */
 	import { getContext, setContext } from "svelte";
 
 	import { ApplicationShell } from "@typhonjs-fvtt/runtime/svelte/component/core";
@@ -21,16 +21,16 @@
 
 	export let elementRoot;
 
-	const { application } = getContext('external');
+	const { application } = getContext("external");
 
 	// Get a store that is synchronized with session storage.
-	const stateStore = mccSessionStorage.getStore(`mcc.appstate`);
+	const stateStore = mccSessionStorage.getStore(`mcc.appState`);
 
 	// Application position store reference. Stores need to be a top level variable to be accessible for reactivity.
 	const position = application.position;
 
 	// A debounced callback that serializes application state after 500-millisecond delay.
-	const storePosition = debounce(() => $stateStore = application.state.get(), 500);
+	const storePosition = debounce(() => ($stateStore = application.state.get()), 500);
 
 	// Reactive statement to invoke debounce callback on Position changes.
 	$: storePosition($position);

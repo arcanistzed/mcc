@@ -1,62 +1,62 @@
 {
-  "id": "mcc",
-  "name": "mcc",
-  "title": "Module Compatibility Checker",
-  "description": "Check your module list for compatibility with the latest major version of Foundry VTT.",
-  "authors": [
-    {
-      "name": "Arcanist",
-      "url": "https://arcanistzed.github.io/",
-      "email": "arcanistzed@gmail.com",
-      "discord": "arcanist#4317",
-      "reddit": "u/arcanistzed"
+    "id": "mcc",
+    "name": "mcc",
+    "title": "Module Compatibility Checker",
+    "description": "Check your module list for compatibility with the latest major version of Foundry VTT.",
+    "authors": [
+        {
+            "name": "Arcanist",
+            "url": "https://arcanistzed.github.io/",
+            "email": "arcanistzed@gmail.com",
+            "discord": "arcanist#4317",
+            "reddit": "u/arcanistzed"
+        },
+        {
+            "name": "Michael Leahy (TyphonJS)",
+            "url": "https://github.com/typhonrt",
+            "discord": "MLeahy#4299",
+            "reddit": "u/typhonrt"
+        }
+    ],
+    "url": "This is auto replaced",
+    "license": "https://github.com/arcanistzed/mcc/blob/main/LICENSE",
+    "readme": "https://github.com/arcanistzed/mcc/blob/main/README.md",
+    "bugs": "https://github.com/arcanistzed/mcc/issues/new/choose",
+    "changelog": "https://github.com/arcanistzed/mcc/blob/main/CHANGELOG.md",
+    "flags": {
+        "allowBugReporter": true
     },
-		{
-			"name": "Michael Leahy (TyphonJS)",
-			"url": "https://github.com/typhonrt",
-			"discord": "MLeahy#4299",
-			"reddit": "u/typhonrt"
-		}
-  ],
-  "url": "This is auto replaced",
-  "license": "https://github.com/arcanistzed/mcc/blob/main/LICENSE",
-  "readme": "https://github.com/arcanistzed/mcc/blob/main/README.md",
-  "bugs": "https://github.com/arcanistzed/mcc/issues/new/choose",
-  "changelog": "https://github.com/arcanistzed/mcc/blob/main/CHANGELOG.md",
-  "flags": {
-    "allowBugReporter": true
-  },
-  "version": "This is auto replaced",
-  "compatibility": {
-    "minimum": "9",
-    "verified": "10"
-  },
-  "minimumCoreVersion": "9",
-  "compatibleCoreVersion": "10",
-  "scripts": [],
-  "esmodules": [
-    "dist/mcc.js"
-  ],
-  "styles": [
-    "dist/mcc.css"
-  ],
-  "languages": [
-    {
-      "lang": "en",
-      "name": "English",
-      "path": "languages/en.json"
-    }
-  ],
-  "packs": [],
-  "system": [],
-  "manifest": "This is auto replaced",
-  "download": "This is auto replaced",
-  "library": false,
-  "manifestPlusVersion": "1.2.0",
-  "media": [
-    {
-      "type": "cover",
-      "url": "https://i.imgur.com/DlIyyzs.png"
-    }
-  ]
+    "version": "This is auto replaced",
+    "compatibility": {
+        "minimum": "9",
+        "verified": "10"
+    },
+    "minimumCoreVersion": "9",
+    "compatibleCoreVersion": "10",
+    "scripts": [],
+    "esmodules": [
+        "dist/mcc.js"
+    ],
+    "styles": [
+        "dist/mcc.css"
+    ],
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "languages/en.json"
+        }
+    ],
+    "packs": [],
+    "system": [],
+    "manifest": "This is auto replaced",
+    "download": "This is auto replaced",
+    "library": false,
+    "manifestPlusVersion": "1.2.0",
+    "media": [
+        {
+            "type": "cover",
+            "url": "https://i.imgur.com/DlIyyzs.png"
+        }
+    ]
 }

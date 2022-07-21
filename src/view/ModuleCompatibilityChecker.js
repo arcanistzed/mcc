@@ -9,8 +9,10 @@ export class ModuleCompatibilityChecker extends SvelteApplication {
 
 		try {
 			// Attempt to parse session storage item and set application state.
-			this.state.set(JSON.parse(sessionStorage.getItem(`mcc.appstate`)));
-		} catch (err) { /**/ }
+			this.state.set(JSON.parse(sessionStorage.getItem("mcc.appState")));
+		} catch (err) {
+			//
+		}
 	}
 
 	/** @override */

@@ -1,34 +1,34 @@
 <script>
-	/**
-	 * This component creates a custom legend for the pie chart displaying all currently filtered status state along
-	 * with two links to set status state to all known entries and reset all filters.
-	 */
+	/*
+	This component creates a custom legend for the pie chart displaying all currently filtered status state along with two links to set status state to all known entries and reset all filters.
+	*/
 	import { getContext } from "svelte";
 
-	import { localize } from "@typhonjs-fvtt/runtime/svelte/helper"
+	import { localize } from "@typhonjs-fvtt/runtime/svelte/helper";
 
 	const spreadsheetStore = getContext("spreadsheetStore");
 	const { pieData, statuses } = spreadsheetStore.stores;
 </script>
 
 <section>
-	{#each $statuses as status, cntr (status.key)}
-		<div class=entry
-			 class:line-through={!status.value}
-			 on:click={() => statuses.toggleVisible(status.key)}>
-			<span style:background-color={$pieData.datasets[0].backgroundColor[cntr]}>
-				{$pieData.datasets[0].data[cntr]} / {$pieData.allData[cntr]}
+	{#each $statuses as status, i (status.key)}
+		<div class="entry" class:line-through={!status.value} on:click={() => statuses.toggleVisible(status.key)}>
+			<span style:background-color={$pieData.datasets[0].backgroundColor[i]}>
+				{$pieData.datasets[0].data[i]} / {$pieData.allData[i]}
 			</span>
-			<a>{$pieData.labels[cntr]}</a>
+			<a>{$pieData.labels[i]}</a>
 		</div>
-    {/each}
-	<hr>
-	<div class=links>
-		<a class=links on:click={statuses.setKnownVisible}><i class="fas fa-thumbs-up"></i> {localize("mcc.showKnownPackages")}</a>
-		<a class=links on:click={() => spreadsheetStore.resetFilters()}><i class="fas fa-trash"></i> {localize("mcc.resetAllFilters")}</a>
+	{/each}
+	<hr />
+	<div class="links">
+		<a class="links" on:click={statuses.setKnownVisible}
+			><i class="fas fa-thumbs-up" /> {localize("mcc.showKnownCompatible")}</a
+		>
+		<a class="links" on:click={() => spreadsheetStore.resetFilters()}
+			><i class="fas fa-trash" /> {localize("mcc.resetFilters")}</a
+		>
 	</div>
 </section>
-
 
 <style>
 	.line-through {

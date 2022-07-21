@@ -2,19 +2,16 @@
     "mcc": {
         "appTitle": "Module Compatibility Checker",
         "statuses": {
-            "x": "Package does not function at all or prevents the world loading.",
-            "o": "Package functions with some errors.",
-            "b": "Blocked from being tested.",
-            "g": "Package works without issue or an updated version is available.",
-            "n": "No testing necessary.",
-            "a": "Archived - To be archived or no longer available.",
-            "u": "Unknown status - Package may not be in the official listing."
+            "x": "Package does not function at all or prevents the world loading",
+            "o": "Package functions with some errors",
+            "b": "Blocked from being tested",
+            "g": "Package works without issue or an updated version is available",
+            "n": "No testing necessary",
+            "a": "Archived - To be archived or no longer available",
+            "u": "Unknown status - Package may not be in the official listing"
         },
         "loading": "Loading...",
         "selectVersion": "Check compatibility for:",
-        "hide": "Hide",
-        "show": "Show",
-        "details": "details",
         "title": "Title",
         "type": "Type",
         "id": "ID",
@@ -26,21 +23,18 @@
             "count": "Package count",
             "percentage": "Percentage ready"
         },
-        "ready": "Ready",
-        "notReady": "Not ready",
         "source": "Open official spreadsheet",
         "error": "Please try again. If this issue persists, join my Discord server to report a bug.",
         "website": "My Website",
         "button": "Module Compatibility Checker",
         "moduleManagementColorsExplanation": "The background colors below are used to indicate the status of the module in the latest core version. Open the Module Compatibility Checker with the button below for more info.",
-			  "scrollToTop": "Scroll To Top",
-			  "detailsHide": "Hide details",
-			  "detailsShow": "Show details",
-			  "percentageFilteredTooltip": "The percentage ready for current filtered package count.",
-			  "percentageKnownTooltip": "The percentage of all \"known\" ({known}) compatible packages with current spreadsheet data is: {percentageKnown}%.",
-				"linkFoundryPackage": "Foundry Package Listing (May not exist)",
-				"linkPackageUrl": "Package URL / Repository",
-				"showKnownPackages": "Show currently known compatible packages.",
-				"resetAllFilters": "Reset all filters."
+        "scrollToTop": "Scroll To Top",
+        "hideDetails": "Hide details",
+        "showDetails": "Show details",
+        "percentageFilteredTooltip": "The percentage ready for current filtered package count",
+        "packageListingURL": "Foundry VTT Package Listing",
+        "projectURL": "Project URL",
+        "showKnownCompatible": "Show known compatible packages",
+        "resetFilters": "Reset filters"
     }
 }

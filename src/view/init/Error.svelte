@@ -1,5 +1,5 @@
 <script>
-	import { localize } from "@typhonjs-fvtt/runtime/svelte/helper"
+	import { localize } from "@typhonjs-fvtt/runtime/svelte/helper";
 
 	export let error = "";
 	console.error(error);

@@ -12,17 +12,16 @@
 
 	/**
 	 * Handle CustomEvent from StickyHeader to smoothly scroll to the top.
-	 *
-	 * @param {CustomEvent} event -
+	 * @param {CustomEvent} event
 	 */
 	function scrollSmooth(event) {
-		event.currentTarget.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+		event.currentTarget.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 		event.preventDefault();
 		event.stopPropagation();
 	}
 </script>
 
-<main use:applyScrolltop={scrollTop} on:scrolltop:smooth={scrollSmooth}>
+<main use:applyScrolltop={scrollTop} on:scrollTop:smooth={scrollSmooth}>
 	<PieChart />
 	<table>
 		<Header />
@@ -38,7 +37,7 @@
 		overflow-y: scroll;
 		overflow-x: hidden;
 		position: relative;
-		scrollbar-width: thin;  /* For Firefox */
+		scrollbar-width: thin; /* For Firefox */
 		color: #191813;
 	}
 

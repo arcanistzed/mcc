@@ -10,13 +10,9 @@
 	const { details } = spreadsheetStore.stores;
 
 	/**
-	 * Show a context menu for the table row clicked. Automatically create a link to the Foundry packages list
-	 * regardless if the link exists or not. Due to CORS limitations we can't check if it exists, etc. Also add a link
-	 * for the `url` field in {@link ModuleData} / {@link SystemData}; IE the package manifest.
-	 *
-	 * @param {MouseEvent}	event - MouseEvent.
-	 *
-	 * @param {string}		id - Package ID.
+	 * Show a context menu for the table row clicked
+	 * @param {MouseEvent} event
+	 * @param {string} id - Package ID
 	 */
 	function onContextMenu(event, id) {
 		const linkData = spreadsheetStore.getPackageLinks(id);
@@ -25,26 +21,25 @@
 			const items = [];
 
 			items.push({
-				label: "mcc.linkFoundryPackage",
+				label: "mcc.packageListingURL",
 				icon: "fas fa-link",
-				onclick: () => window.open(`https://foundryvtt.com/packages/${linkData.id}`, "_blank")
-			})
+				onclick: () => window.open(`https://foundryvtt.com/packages/${linkData.id}`, "_blank"),
+			});
 
-			if (linkData.url)
-			{
+			if (linkData.url) {
 				items.push({
-					label: "mcc.linkPackageUrl",
-					icon: "fas fa-link",
-					onclick: () => window.open(linkData.url, "_blank")
-				})
+					label: "mcc.projectURL",
+					icon: "fas fa-code",
+					onclick: () => window.open(linkData.url, "_blank"),
+				});
 			}
 
 			TJSContextMenu.create({
 				duration: 200,
-				id: 'mmc-package-menu',
+				id: "mmc-package-menu",
 				x: event.pageX,
 				y: event.pageY,
-				items
+				items,
 			});
 		}
 	}
@@ -54,7 +49,7 @@
 	{#each [...$spreadsheetStore] as row, i (row.id)}
 		<tr
 			animate:flip={{ duration: 250 }}
-			on:contextmenu={(event) => onContextMenu(event, row.id)}
+			on:contextmenu={event => onContextMenu(event, row.id)}
 			data-status={row.status}
 			title={statusData[row.status].explanation}
 		>
@@ -70,7 +65,7 @@
 	{/each}
 </tbody>
 
-<style lang=scss>
+<style lang="scss">
 	tbody {
 		overflow: scroll;
 
@@ -85,62 +80,90 @@
 			&:nth-child(odd) {
 				&[data-status="X"] {
 					background-color: hsla(0, 100%, 60%, 88%);
-					&:hover { background-color: hsla(0, 100%, 58%, 92.4%); }
+					&:hover {
+						background-color: hsla(0, 100%, 58%, 92.4%);
+					}
 				}
 				&[data-status="O"] {
 					background-color: hsla(45, 90%, 60%, 88%);
-					&:hover { background-color: hsla(45, 90%, 58%, 92.4%); }
+					&:hover {
+						background-color: hsla(45, 90%, 58%, 92.4%);
+					}
 				}
 				&[data-status="B"] {
 					background-color: hsla(30, 90%, 40%, 88%);
-					&:hover { background-color: hsla(30, 90%, 38%, 92.4%); }
+					&:hover {
+						background-color: hsla(30, 90%, 38%, 92.4%);
+					}
 				}
 				&[data-status="G"] {
 					background-color: hsla(120, 40%, 50%, 88%);
-					&:hover { background-color: hsla(120, 40%, 48%, 92.4%); }
+					&:hover {
+						background-color: hsla(120, 40%, 48%, 92.4%);
+					}
 				}
 				&[data-status="N"] {
 					background-color: hsla(200, 60%, 50%, 88%);
-					&:hover { background-color: hsla(200, 60%, 48%, 92.4%); }
+					&:hover {
+						background-color: hsla(200, 60%, 48%, 92.4%);
+					}
 				}
 				&[data-status="A"] {
 					background-color: hsla(0, 0%, 50%, 88%);
-					&:hover { background-color: hsla(0, 0%, 48%, 92.4%); }
+					&:hover {
+						background-color: hsla(0, 0%, 48%, 92.4%);
+					}
 				}
 				&[data-status="U"] {
 					background-color: hsla(0, 0%, 100%, 88%);
-					&:hover { background-color: hsla(0, 0%, 98%, 92.4%); }
+					&:hover {
+						background-color: hsla(0, 0%, 98%, 92.4%);
+					}
 				}
 			}
 
 			&:nth-child(even) {
 				&[data-status="X"] {
 					background-color: hsla(0, 100%, 61.4%, 70.4%);
-					&:hover { background-color: hsla(0, 100%, 64.2%, 66%); }
+					&:hover {
+						background-color: hsla(0, 100%, 64.2%, 66%);
+					}
 				}
 				&[data-status="O"] {
 					background-color: hsla(45, 90%, 61.4%, 70.4%);
-					&:hover { background-color: hsla(45, 90%, 64.2%, 66%); }
+					&:hover {
+						background-color: hsla(45, 90%, 64.2%, 66%);
+					}
 				}
 				&[data-status="B"] {
 					background-color: hsla(30, 90%, 41.4%, 70.4%);
-					&:hover { background-color: hsla(30, 90%, 44.2%, 66%); }
+					&:hover {
+						background-color: hsla(30, 90%, 44.2%, 66%);
+					}
 				}
 				&[data-status="G"] {
 					background-color: hsla(120, 40%, 51.4%, 70.4%);
-					&:hover { background-color: hsla(120, 40%, 54.2%, 66%); }
+					&:hover {
+						background-color: hsla(120, 40%, 54.2%, 66%);
+					}
 				}
 				&[data-status="N"] {
 					background-color: hsla(200, 60%, 51.4%, 70.4%);
-					&:hover { background-color: hsla(200, 60%, 54.2%, 66%); }
+					&:hover {
+						background-color: hsla(200, 60%, 54.2%, 66%);
+					}
 				}
 				&[data-status="A"] {
 					background-color: hsla(0, 0%, 51.4%, 70.4%);
-					&:hover { background-color: hsla(0, 0%, 54.2%, 66%); }
+					&:hover {
+						background-color: hsla(0, 0%, 54.2%, 66%);
+					}
 				}
 				&[data-status="U"] {
 					background-color: hsla(0, 0%, 101.4%, 70.4%);
-					&:hover { background-color: hsla(0, 0%, 104.2%, 66%); }
+					&:hover {
+						background-color: hsla(0, 0%, 104.2%, 66%);
+					}
 				}
 			}
 		}

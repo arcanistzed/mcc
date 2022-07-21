@@ -4,17 +4,16 @@ import { mccSessionStorage } from "./mccSessionStorage.js";
 
 /**
  * Get initial value from session storage immediately.
- *
  * @type {StatusEntry}
  */
-const statuses = mccSessionStorage.getItem('mcc.statuses', [
+const statuses = mccSessionStorage.getItem("mcc.statuses", [
 	{ key: "X", value: true },
 	{ key: "O", value: true },
 	{ key: "B", value: true },
 	{ key: "G", value: true },
 	{ key: "N", value: true },
 	{ key: "A", value: true },
-	{ key: "U", value: true }
+	{ key: "U", value: true },
 ]);
 
 const storeStatuses = writable(statuses);
@@ -26,22 +25,26 @@ storeStatuses.getVisible = key => {
 
 storeStatuses.setExclusive = index => {
 	if (index >= 0 && index < statuses.length) {
-		for (const status of statuses) { status.value = false; }
+		for (const status of statuses) {
+			status.value = false;
+		}
 
 		statuses[index].value = true;
 
-		mccSessionStorage.setItem('mcc.statuses', statuses);
+		mccSessionStorage.setItem("mcc.statuses", statuses);
 		storeStatuses.set(statuses);
 	}
 };
 
 storeStatuses.setKnownVisible = () => {
-	for (const status of statuses) { status.value = false; }
+	for (const status of statuses) {
+		status.value = false;
+	}
 
 	statuses[3].value = true;
 	statuses[4].value = true;
 
-	mccSessionStorage.setItem('mcc.statuses', statuses);
+	mccSessionStorage.setItem("mcc.statuses", statuses);
 	storeStatuses.set(statuses);
 };
 
@@ -50,7 +53,7 @@ storeStatuses.setVisible = (key, value) => {
 
 	if (index >= 0) {
 		statuses[index].value = value;
-		mccSessionStorage.setItem('mcc.statuses', statuses);
+		mccSessionStorage.setItem("mcc.statuses", statuses);
 		storeStatuses.set(statuses);
 	}
 };
@@ -60,22 +63,22 @@ storeStatuses.toggleVisible = key => {
 
 	if (index >= 0) {
 		statuses[index].value = !statuses[index].value;
-		mccSessionStorage.setItem('mcc.statuses', statuses);
+		mccSessionStorage.setItem("mcc.statuses", statuses);
 		storeStatuses.set(statuses);
 	}
 };
 
 storeStatuses.reset = () => {
-	for (const status of statuses) { status.value = true; }
-	mccSessionStorage.setItem('mcc.statuses', statuses);
+	for (const status of statuses) {
+		status.value = true;
+	}
+	mccSessionStorage.setItem("mcc.statuses", statuses);
 	storeStatuses.set(statuses);
 };
 
 /**
- * Provides a filter function to remove rows that are part of hidden statuses set.
- *
- * @param {RowData} row -
- *
+ * Provides a filter function to remove rows that are part of hidden statuses set
+ * @param {RowData} row
  * @returns {boolean} filtered
  */
 function filterStatuses(row) {
@@ -96,8 +99,6 @@ export { filterStatuses };
 
 /**
  * @typedef {object} StatusEntry
- *
  * @property {keyof statusData} key - Status key
- *
- * @property {boolean} value - Status enabled state.
+ * @property {boolean} value - Status enabled state
  */

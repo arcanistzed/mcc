@@ -1,25 +1,25 @@
 <script>
 	import { getContext } from "svelte";
 
-	import { localize } from "@typhonjs-fvtt/runtime/svelte/helper"
+	import { localize } from "@typhonjs-fvtt/runtime/svelte/helper";
 
 	export let name;
 
 	const spreadsheetStore = getContext("spreadsheetStore");
-    const { sortBy, reversed } = spreadsheetStore.stores;
+	const { sortBy, reversed } = spreadsheetStore.stores;
 
 	// Correctly set direction from initial reversed state when sortBy === name.
 	let direction = $sortBy === name && $reversed;
 
 	// Reset direction to false when another sort header is clicked.
-	$: if ($sortBy !== name) { direction = true; }
+	$: if ($sortBy !== name) {
+		direction = true;
+	}
 
 	/**
 	 * Sort the rows by a given heading. Set the `sortBy` store to the heading clicked which will sort the spreadsheet
-	 * store. Additionally, set the reversed accessor store that will change the iteration order of the spreadsheet
-	 * store.
-	 *
-	 * @param heading - The heading to sort by.
+	 * store. Additionally, set the reversed accessor store that will change the iteration order of the spreadsheet store.
+	 * @param heading - The heading to sort by
 	 */
 	function setSortBy(heading) {
 		// Update the current sorting mode

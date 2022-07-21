@@ -1,5 +1,5 @@
 <script>
-	import { onMount, onDestroy, getContext } from "svelte";
+	import { getContext, onDestroy, onMount } from "svelte";
 
 	import Chart from "chart.js/auto";
 
@@ -8,23 +8,25 @@
 	const spreadsheetStore = getContext("spreadsheetStore");
 	const { statuses, pieData } = spreadsheetStore.stores;
 
-	let chart = null, canvasEl;
+	let chart = null,
+		canvasEl;
 
 	$: if (chart) {
 		chart.data = $pieData;
 		chart.update();
 	}
 
-	$: if (chart) { updateDataVisibility($statuses); }
+	$: if (chart) {
+		updateDataVisibility($statuses);
+	}
 
 	/**
 	 * Update chart data visibility based on statuses store entries.
-	 *
-	 * @param {StatusEntry[]}	statusEntries -
+	 * @param {StatusEntry[]} statusEntries
 	 */
 	function updateDataVisibility(statusEntries) {
-		for (let cntr = 0; cntr < statusEntries.length; cntr++) {
-			chart[statusEntries[cntr].value ? 'show' : 'hide'](0, cntr);
+		for (let i = 0; i < statusEntries.length; i++) {
+			chart[statusEntries[i].value ? "show" : "hide"](0, i);
 		}
 	}
 
@@ -39,9 +41,9 @@
 				maintainAspectRatio: false,
 				plugins: {
 					legend: { display: false },
-					tooltip: { enabled: false }
+					tooltip: { enabled: false },
 				},
-				responsive: false
+				responsive: false,
 			},
 		});
 
@@ -55,11 +57,10 @@
 
 	/**
 	 * Convert click event on canvas to pie chart / status data field index and set statuses data exclusively to it.
-	 *
-	 * @param {MouseEvent}	event -
+	 * @param {MouseEvent} event
 	 */
 	function onCanvasClick(event) {
-		const points = chart.getElementsAtEventForMode(event, 'nearest', { intersect: true }, true);
+		const points = chart.getElementsAtEventForMode(event, "nearest", { intersect: true }, true);
 
 		if (points.length) {
 			const firstPoint = points[0];
@@ -78,7 +79,6 @@
 	</div>
 	<div class=side />
 </section>
-
 
 <style>
 	canvas {

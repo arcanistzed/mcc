@@ -7,11 +7,8 @@ const storeSortBy = mccSessionStorage.getStore("mcc.sortBy", "");
 
 /**
  * Provides the compare function to sort macros by name alphabetically.
- *
- * @param {object} a -
- *
- * @param {object} b -
- *
+ * @param {object} a
+ * @param {object} b
  * @returns {number} sort order
  */
 function sortByHeader(a, b) {
