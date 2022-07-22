@@ -6,6 +6,6 @@
 	const mccMainApp = new ModuleCompatibilityChecker();
 </script>
 
-<button on:click={() => mccMainApp.render(true, { focus: true })}>
+<button type="button" on:click={() => mccMainApp.render(true, { focus: true })}>
 	{localize("mcc.button")}
 </button>
