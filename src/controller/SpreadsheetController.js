@@ -113,6 +113,11 @@ export default class SpreadsheetController {
 			data.status = data.status.toUpperCase();
 		}
 
+		// No status is equivalent to "Unknown"
+		if (data.status === "") {
+			data.status = "U";
+		}
+
 		// Check for valid status. Warn if not found and append a note.
 		if (!statusData[data.status]) {
 			const message = `Error in spreadsheet: ${data.title} (${data.id}) has an invalid status "${data.status}". Please contact Anathema#3668 on Discord.`;
