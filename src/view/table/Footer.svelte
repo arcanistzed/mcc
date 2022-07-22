@@ -26,8 +26,8 @@
 
 <style>
 	footer {
-		position: sticky;
-		bottom: -0.5px; /* A small negative value prevents a 1px gap from sporadically showing */
+		max-height: 2rem;
+		margin: 0 calc(1ch + 6px) 1ch 1ch;
 		background-color: var(--mcc-dark-color);
 		color: var(--mcc-text-light-color);
 		text-align: center;

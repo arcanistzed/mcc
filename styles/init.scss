@@ -34,9 +34,18 @@
 			color: var(--mcc-dark-text-color) !important;
 		}
 
+		::-webkit-scrollbar {
+			width: 6px;
+			height: 6px;
+		}
+
 		::-webkit-scrollbar-thumb {
 			background: var(--mcc-dark-color);
 			border: 1px solid var(--mcc-medium-color);
+		}
+
+		::-webkit-scrollbar-track {
+			box-shadow: none;
 		}
 	}
 }

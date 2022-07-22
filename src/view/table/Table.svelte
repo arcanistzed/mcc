@@ -29,8 +29,8 @@
 		<Header />
 		<Rows />
 	</table>
-	<Footer />
 </main>
+<Footer />
 
 <style>
 	main {
@@ -42,7 +42,7 @@
 		scrollbar-width: thin; /* For Firefox */
 		color: var(--mcc-text-dark-color);
 		padding: 0 1ch;
-		margin: 1ch 0;
+		margin-top: 1ch;
 	}
 
 	table {
