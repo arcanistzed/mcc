@@ -40,7 +40,8 @@
 	th {
 		white-space: nowrap;
 		padding: 1ch;
-		border-right: solid 2px rgba(0, 0, 0, 0.2);
+		border-right: solid 1px rgba(0, 0, 0, 0.1);
+		border-bottom: solid 1px rgba(0, 0, 0, 0.1);
 		cursor: pointer;
 		font-weight: normal;
 	}
@@ -50,8 +51,8 @@
 	}
 
 	th:last-child {
-		border-right: none;
 		border-top-right-radius: 0.5ch;
+		border-right: none;
 	}
 
 	i {

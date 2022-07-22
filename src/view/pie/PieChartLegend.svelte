@@ -63,8 +63,8 @@
 	span {
 		box-sizing: border-box;
 		width: 5rem;
-        border-radius: .5ch;
+		border-radius: 0.5ch;
 		text-align: center;
-		border: 2px solid rgba(0, 0, 0, 0.4);
+		border: solid 2px rgba(0, 0, 0, 0.4);
 	}
 </style>

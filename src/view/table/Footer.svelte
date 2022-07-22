@@ -35,8 +35,8 @@
 		justify-content: space-around;
 		align-items: center;
 		gap: 1ch;
-        border-bottom-left-radius: 0.5ch;
-        border-bottom-right-radius: 0.5ch;
+		border-bottom-left-radius: 0.5ch;
+		border-bottom-right-radius: 0.5ch;
 	}
 
 	a {

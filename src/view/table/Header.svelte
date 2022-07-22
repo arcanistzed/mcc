@@ -30,8 +30,7 @@
 	}
 
 	tr {
-		transition: 250ms;
-		border: solid 1px var(--mcc-dark-color);
+		transition: background-color 250ms;
 	}
 
 	tr:hover {
