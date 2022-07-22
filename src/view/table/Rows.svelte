@@ -62,44 +62,21 @@
 	}
 
 	/**
-	 * Set the color of a row based for an alternating colors effect
-	 * @param element - The element to set the color on
-	 * @param status - The status of the row
-	 * @param i - The index of the row
-	 * @param hover - Whether the row is hovered
+	 * Get the color for a given status
+	 * @param {string} status - Status
+	 * @returns {string} - Color in HSL format
 	 */
-	function setColor(element, status, i, hover = false) {
+	function getColor(status) {
 		const { hsl } = statusData[status];
-		element.style.backgroundColor =
-			i % 2
-				? `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2] + 10 * hover}%, ${30 * (hover + 2)}%)`
-				: `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2] + 5 * hover}%, ${50 * (hover + 3)}%)`;
+		return `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%, 60%)`;
 	}
-
-	/**
-	 * Set alternating colors for all of the rows based on their status
-	 */
-	function setAllColors() {
-		document.querySelectorAll("tr").forEach((tr, i) => {
-			if (tr.dataset.status) setColor(tr, tr.dataset.status, i + 1);
-		});
-	}
-
-	// Set all colors when the component is mounted
-	onMount(setAllColors);
-
-	// Set all colors after the DOM updates
-	afterUpdate(setAllColors);
 </script>
 
 <tbody>
 	{#each [...$spreadsheetStore] as row, i (row.id)}
 		<tr
 			animate:flip={{ duration: 250 }}
-			on:contextmenu={event => onContextMenu(event, row.id, row.official)}
-			on:mouseenter={e => setColor(e.target, row.status, i, true)}
-			on:mouseleave={e => setColor(e.target, row.status, i)}
-			data-status={row.status}
+			style:background-color={getColor(row.status)}
 			title={statusData[row.status].explanation}
 		>
 			<td>{row.title}</td>
@@ -116,20 +93,19 @@
 
 <style lang="scss">
 	tbody {
-		overflow: scroll;
-
 		tr {
 			transition: background-color 250ms;
 
 			&:hover {
 				box-shadow: inset 0 10px 10px -10px rgb(0 0 0 / 50%), inset 0 -10px 10px -10px rgb(0 0 0 / 50%);
-				box-sizing: border-box;
+				backdrop-filter: brightness(1.2) saturate(1.2);
 			}
 		}
 
 		td {
 			padding: 1ch;
-			border-right: solid 2px rgba(0, 0, 0, 0.2);
+			border-right: solid 1px rgba(0, 0, 0, 0.1);
+			border-bottom: solid 1px rgba(0, 0, 0, 0.1);
 		}
 
 		td:last-child {
