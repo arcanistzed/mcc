@@ -108,7 +108,7 @@ export default class SpreadsheetController {
 			}
 		}
 
-		// Covert to upper case; just in case!
+		// Convert to upper case; just in case!
 		if (typeof data.status === "string") {
 			data.status = data.status.toUpperCase();
 		}
