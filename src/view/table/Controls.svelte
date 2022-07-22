@@ -35,8 +35,8 @@
 		efx: ripple(),
 		title: "mcc.showDetails",
 		titleSelected: "mcc.hideDetails",
-        styles: {
-            filter: "drop-shadow(0 0 1px var(--mcc-dark-color))",
+		styles: {
+			filter: "drop-shadow(0 0 1px var(--mcc-dark-color))",
 		},
 	};
 
