@@ -4,7 +4,7 @@
 	import { applyScrolltop } from "@typhonjs-fvtt/runtime/svelte/action";
 
 	import PieChart from "../pie/PieChart.svelte";
-    import StickyHeader from "./Controls.svelte";
+	import StickyHeader from "./Controls.svelte";
 	import Header from "./Header.svelte";
 	import Rows from "./Rows.svelte";
 	import Footer from "./Footer.svelte";
@@ -24,7 +24,7 @@
 
 <main use:applyScrolltop={scrollTop} on:scrollTop:smooth={scrollSmooth}>
 	<PieChart />
-    <StickyHeader />
+	<StickyHeader />
 	<table>
 		<Header />
 		<Rows />
@@ -41,8 +41,8 @@
 		position: relative;
 		scrollbar-width: thin; /* For Firefox */
 		color: var(--mcc-text-dark-color);
-        padding: 0 1ch;
-        margin: 1ch 0;
+		padding: 0 1ch;
+		margin: 1ch 0;
 	}
 
 	table {
