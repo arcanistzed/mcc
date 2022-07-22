@@ -28,7 +28,7 @@
         "issues": "Issue Tracker",
         "button": "Module Compatibility Checker",
         "moduleManagementColorsExplanation": "The background colors below are used to indicate the status of the module in the latest core version. Open the Module Compatibility Checker with the button below for more info.",
-        "scrollToTop": "Scroll To Top",
+        "scrollTop": "Scroll To Top",
         "hideDetails": "Hide details",
         "showDetails": "Show details",
         "percentageFilteredTooltip": "The percentage ready for current filtered package count",
