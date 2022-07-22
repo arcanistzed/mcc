@@ -88,8 +88,9 @@
 	}
 
 	section {
-		margin: 1ch auto;
+		margin: 1ch;
 		display: flex;
-		gap: 1.5rem;
+		gap: 2rem;
+		justify-content: center;
 	}
 </style>
