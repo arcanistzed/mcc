@@ -3,7 +3,7 @@
 </script>
 
 <main>
-	<h3>{localize("mcc.loading")}</h3>
+	<h4>{localize("mcc.loading")}</h4>
 	<progress />
 </main>
 
@@ -17,7 +17,7 @@
 		color: var(--mcc-text-dark-color);
 	}
 
-	h3 {
+	h4 {
 		font-size: 2em;
         text-align: center;
 	}
