@@ -12,7 +12,13 @@ const storeSortBy = mccSessionStorage.getStore("mcc.sortBy", "");
  * @returns {number} sort order
  */
 function sortByHeader(a, b) {
-	return sortBy && a?.[sortBy] && b?.[sortBy] ? a[sortBy].localeCompare(b[sortBy]) : 0;
+	if (sortBy && a?.[sortBy] && b?.[sortBy]) {
+		if (sortBy === "version") {
+			return foundry.utils.isNewerVersion(a.version, b.version) ? 1 : -1;
+		}
+		return a[sortBy].localeCompare(b[sortBy]);
+	}
+	return 0;
 }
 
 // Create a custom store that changes when a table header clicked
