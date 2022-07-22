@@ -115,7 +115,7 @@ export default class SpreadsheetController {
 
 		// Check for valid status. Warn if not found and append a note.
 		if (!statusData[data.status]) {
-			const message = `Error in spreadsheet: ${data.title} (${data.id}) has invalid status '${data.status}'. Please contact 'Anathema#3668' on Discord.`;
+			const message = `Error in spreadsheet: ${data.title} (${data.id}) has an invalid status "${data.status}". Please contact Anathema#3668 on Discord.`;
 
 			console.warn(message);
 
