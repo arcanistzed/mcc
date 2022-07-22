@@ -122,7 +122,7 @@
 			transition: background-color 250ms;
 
 			&:hover {
-				box-shadow: inset 0 8px 6px -6px rgba(0, 0, 0, 0.5), inset 0 -8px 6px -6px rgba(0, 0, 0, 0.5);
+				box-shadow: inset 0 10px 10px -10px rgb(0 0 0 / 50%), inset 0 -10px 10px -10px rgb(0 0 0 / 50%);
 				box-sizing: border-box;
 			}
 		}
