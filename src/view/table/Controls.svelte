@@ -64,7 +64,7 @@
 <div>
 	<!-- TODO: link elements with id -->
 	<label>{localize("mcc.selectVersion")}</label>
-	<TJSSelect {select} on:change={() => spreadsheetStore.update()} />
+	<TJSSelect {select} />
 
 	<TJSInput {input} />
 

@@ -34,14 +34,19 @@
 
 	// Reactive statement to invoke debounce callback on Position changes.
 	$: storePosition($position);
+
+	// Reload when the version is changed
+	const { version } = spreadsheetStore.stores;
 </script>
 
 <ApplicationShell bind:elementRoot>
-	{#await spreadsheetStore.initialize()}
-		<Loading />
-	{:then}
-		<Table />
-	{:catch error}
-		<Error {error} />
-	{/await}
+	{#key $version}
+		{#await spreadsheetStore.initialize()}
+			<Loading />
+		{:then}
+			<Table />
+		{:catch error}
+			<Error {error} />
+		{/await}
+	{/key}
 </ApplicationShell>
