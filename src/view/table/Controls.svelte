@@ -62,13 +62,13 @@
 	<div class="iconButton">
 		<TJSToggleIconButton button={buttonDetails} />
 	</div>
-
-	{#if $scrollTop > 300}
-		<div transition:fade class="scrollTop iconButton">
-			<TJSIconButton button={buttonScrollTop} on:click={scrollSmooth} />
-		</div>
-	{/if}
 </nav>
+
+{#if $scrollTop > 300}
+	<div transition:fade class="scrollTop iconButton">
+		<TJSIconButton button={buttonScrollTop} on:click={scrollSmooth} />
+	</div>
+{/if}
 
 <style>
 	label {
