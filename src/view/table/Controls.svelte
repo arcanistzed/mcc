@@ -5,12 +5,13 @@
 	 * top.
 	 */
 	import { getContext } from "svelte";
+	import { fade } from "svelte/transition";
 	import { localize } from "@typhonjs-fvtt/runtime/svelte/helper";
 	import { ripple, rippleFocus } from "@typhonjs-fvtt/svelte-standard/action";
 	import { TJSIconButton, TJSInput, TJSSelect, TJSToggleIconButton } from "@typhonjs-fvtt/svelte-standard/component";
 
 	const spreadsheetStore = getContext("spreadsheetStore");
-	const { details, filterSearch, version } = spreadsheetStore.stores;
+	const { details, filterSearch, scrollTop, version } = spreadsheetStore.stores;
 
 	const select = {
 		store: version,
@@ -69,7 +70,11 @@
 
 	<TJSToggleIconButton button={buttonDetails} />
 
-	<TJSIconButton button={buttonScrollTop} on:click={scrollSmooth} />
+	{#if $scrollTop > 300}
+		<div transition:fade>
+			<TJSIconButton button={buttonScrollTop} on:click={scrollSmooth} />
+		</div>
+	{/if}
 </div>
 
 <style>
