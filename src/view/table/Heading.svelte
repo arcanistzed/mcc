@@ -42,6 +42,7 @@
 		padding: 1ch;
 		border-right: solid 2px rgba(0, 0, 0, 0.2);
 		cursor: pointer;
+		font-weight: normal;
 	}
 
 	th:first-child {
