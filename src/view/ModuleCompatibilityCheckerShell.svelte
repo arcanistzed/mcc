@@ -39,7 +39,7 @@
 <ApplicationShell bind:elementRoot>
 	{#await spreadsheetStore.initialize()}
 		<Loading />
-	{:then result}
+	{:then}
 		<Table />
 	{:catch error}
 		<Error {error} />
