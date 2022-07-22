@@ -62,6 +62,11 @@
 	function onCanvasClick(event) {
 		const points = chart.getElementsAtEventForMode(event, "nearest", { intersect: true }, true);
 
+		if ($statuses.filter(status => status.value).length <= 1) {
+			statuses.reset();
+			return;
+		}
+
 		if (points.length) {
 			const firstPoint = points[0];
 			statuses.setExclusive(firstPoint.index);
