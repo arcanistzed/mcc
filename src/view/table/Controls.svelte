@@ -35,21 +35,12 @@
 		efx: ripple(),
 		title: "mcc.showDetails",
 		titleSelected: "mcc.hideDetails",
-		styles: {
-			filter: "drop-shadow(0 0 1px var(--mcc-dark-color))",
-		},
 	};
 
 	const buttonScrollTop = {
 		icon: "fas fa-angle-double-up",
 		efx: ripple(),
 		title: "mcc.scrollTop",
-		styles: {
-			position: "fixed",
-			bottom: "3rem",
-			right: "1.5rem",
-			filter: "drop-shadow(0 0 1px var(--mcc-dark-color))",
-		},
 	};
 
 	/**
@@ -61,33 +52,45 @@
 	}
 </script>
 
-<div>
+<nav>
 	<!-- TODO: link elements with id -->
 	<label>{localize("mcc.selectVersion")}</label>
 	<TJSSelect {select} />
 
 	<TJSInput {input} />
 
-	<TJSToggleIconButton button={buttonDetails} />
+	<div class="iconButton">
+		<TJSToggleIconButton button={buttonDetails} />
+	</div>
 
 	{#if $scrollTop > 300}
-		<div transition:fade>
+		<div transition:fade class="scrollTop iconButton">
 			<TJSIconButton button={buttonScrollTop} on:click={scrollSmooth} />
 		</div>
 	{/if}
-</div>
+</nav>
 
 <style>
 	label {
 		white-space: nowrap;
 	}
 
-	div {
+	nav {
 		display: flex;
 		gap: 1ch;
 		padding: 1ch;
 		align-items: center;
 		color: var(--mcc-text-dark-color);
 		text-shadow: none;
+	}
+
+	.scrollTop {
+		position: fixed;
+		bottom: 3rem;
+		right: 1.5rem;
+	}
+
+	.iconButton {
+		filter: drop-shadow(0 0 1px var(--mcc-dark-color));
 	}
 </style>
