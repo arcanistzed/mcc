@@ -36,8 +36,8 @@
 
 <style>
 	div {
+		flex: 1;
 		background: rgba(0, 0, 0, 0.1);
-		flex: 1
 	}
 
 	main {
