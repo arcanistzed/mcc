@@ -40,10 +40,7 @@
 	 * @returns {boolean} Inside chart radius.
 	 */
 	function isInsideChart(x, y) {
-		const adjX = x - radius;
-		const adjY = y - radius;
-
-		return adjX * adjX + adjY * adjY <= radius * radius;
+		return Math.sqrt((x - radius) ** 2 + (-y + radius) ** 2) < radius;
 	}
 
 	onMount(() => {
