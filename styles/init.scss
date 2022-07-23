@@ -6,18 +6,23 @@
 
 	--mcc-dark-color: hsl(220, 30%, 20%);
 	--mcc-medium-color: hsl(220, 70%, 40%);
+	--mcc-light-color: hsl(220, 70%, 60%);
 	--mcc-text-dark-color: black;
 	--mcc-text-light-color: white;
+
+	--tjs-action-ripple-background: linear-gradient(64.5deg, var(--mcc-medium-color) 40%, var(--mcc-light-color) 60% );
 
 	--tjs-input-text-padding: 0 0.25em;
 	--tjs-input-placeholder-color: hsl(50deg 15% 30%);
 	--tjs-icon-button-background: hsl(50deg 10% 80%);
 	--tjs-icon-button-background-hover: hsl(50deg 10% 75%);
-	--tjs-icon-button-background-selected: hsl(50deg 5% 60%);
+	--tjs-icon-button-background-selected: hsla(220, 70%, 60%, 0.2);
 
 	.window-content {
 		background: url(../../../ui/parchment.jpg) !important;
 		padding: 0 !important;
+
+		scrollbar-color: var(--mcc-medium-color) var(--mcc-dark-color) !important; // For firefox
 
 		a,
 		p {
