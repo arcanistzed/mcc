@@ -27,6 +27,7 @@
 		background-color: var(--mcc-dark-color);
         color: var(--mcc-text-light-color);
 		top: 0;
+		z-index: 1;
 	}
 
 	tr {

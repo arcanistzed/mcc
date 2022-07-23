@@ -88,6 +88,7 @@
 		position: fixed;
 		bottom: 3rem;
 		right: 1.5rem;
+		z-index: 1;
 	}
 
 	.iconButton {
