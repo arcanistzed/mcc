@@ -25,11 +25,12 @@
 <main use:applyScrolltop={scrollTop} on:scrollTop:smooth={scrollSmooth}>
 	<PieChart />
 	<StickyHeader />
-	<table>
-		<Header />
-		<Rows />
-	</table>
-	<div></div>
+	<div>
+		<table>
+			<Header />
+			<Rows />
+		</table>
+	</div>
 </main>
 <Footer />
 
@@ -52,8 +53,7 @@
 	}
 
 	table {
-		height: fit-content;
-		width: 100%;
+		flex: 1;
 		margin: 0;
 		border: none;
 		box-sizing: border-box;
