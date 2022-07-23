@@ -57,9 +57,9 @@
 					tooltip: { enabled: false },
 				},
 				responsive: false,
-				onHover: (event) => {
-					event.chart.canvas.style.cursor = isInsideChart(event.x, event.y) ? 'pointer' : 'default';
-				}
+				onHover: event => {
+					event.chart.canvas.style.cursor = isInsideChart(event.x, event.y) ? "pointer" : "default";
+				},
 			},
 		});
 
