@@ -97,23 +97,16 @@
 
 <section>
 	<div>
-		<canvas bind:this={canvasEl} on:click={onClick} />
+		<canvas bind:this={canvasEl} on:click={onClick} width={radius * 2} height={radius * 2} />
 	</div>
 	<PieChartLegend />
 </section>
 
 <style>
-	canvas {
-		width: 250px;
-		height: 250px;
-		filter: drop-shadow(0 0 1ch rgba(0, 0, 0, 0.25));
-	}
-
 	div {
-		width: 250px;
-		height: 250px;
-		border-radius: 50%;
-		background: rgba(0, 0, 0, 0.05);
+		border-radius: 100%;
+		box-shadow: 0 0 1ch rgba(0, 0, 0, 0.25);
+		background-color: rgba(0, 0, 0, 0.05);
 	}
 
 	section {
