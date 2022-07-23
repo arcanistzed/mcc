@@ -7,6 +7,7 @@
 
 	const spreadsheetStore = getContext("spreadsheetStore");
 	const { statuses, pieData } = spreadsheetStore.stores;
+	const radius = 125;
 
 	let chart = null,
 		canvasEl;
@@ -30,6 +31,21 @@
 		}
 	}
 
+	/**
+	 * Determines if an x / y point is inside the chart radius.
+	 *
+	 * @param {number}	x - X coord.
+	 * @param {number}	y - Y coord.
+	 *
+	 * @returns {boolean} Inside chart radius.
+	 */
+	function isInsideChart(x, y) {
+		const adjX = x - radius;
+		const adjY = y - radius;
+
+		return adjX * adjX + adjY * adjY <= radius * radius;
+	}
+
 	onMount(() => {
 		chart = new Chart(canvasEl, {
 			type: "pie",
@@ -44,6 +60,9 @@
 					tooltip: { enabled: false },
 				},
 				responsive: false,
+				onHover: (event) => {
+					event.chart.canvas.style.cursor = isInsideChart(event.x, event.y) ? 'pointer' : 'default';
+				}
 			},
 		});
 
@@ -55,19 +74,24 @@
 		chart = null;
 	});
 
-	/**
-	 * Convert click event on canvas to pie chart / status data field index and set statuses data exclusively to it
-	 * @param {MouseEvent} event
-	 */
-	function onCanvasClick(event) {
-		const points = chart.getElementsAtEventForMode(event, "nearest", { intersect: true }, true);
+	function onClick(event) {
+		const rect = canvasEl.getBoundingClientRect();
 
-		if ($statuses.filter(status => status.value).length <= 1) {
+		// Check if the click is inside the chart by adjusting for the canvas bounding rect.
+		if (!isInsideChart(event.clientX - rect.left, event.clientY - rect.top)) {
+			return;
+		}
+
+		const statusLength = $statuses.filter(status => status.value).length;
+
+		if (statusLength <= 1) {
 			statuses.reset();
 			return;
 		}
 
-		if (points.length) {
+		const points = chart.getElementsAtEventForMode(event, "nearest", { intersect: true }, true);
+
+		if (statusLength > 1 && points.length) {
 			const firstPoint = points[0];
 			statuses.setExclusive(firstPoint.index);
 		}
@@ -75,7 +99,9 @@
 </script>
 
 <section>
-	<canvas bind:this={canvasEl} on:click={onCanvasClick} />
+	<div>
+		<canvas bind:this={canvasEl} on:click={onClick} />
+	</div>
 	<PieChartLegend />
 </section>
 
@@ -83,8 +109,14 @@
 	canvas {
 		width: 250px;
 		height: 250px;
-		cursor: pointer;
 		filter: drop-shadow(0 0 1ch rgba(0, 0, 0, 0.25));
+	}
+
+	div {
+		width: 250px;
+		height: 250px;
+		border-radius: 50%;
+		background: rgba(0, 0, 0, 0.05);
 	}
 
 	section {

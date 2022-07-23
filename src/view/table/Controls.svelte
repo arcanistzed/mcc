@@ -8,7 +8,7 @@
 	import { fade } from "svelte/transition";
 	import { localize } from "@typhonjs-fvtt/runtime/svelte/helper";
 	import { ripple, rippleFocus } from "@typhonjs-fvtt/svelte-standard/action";
-	import { TJSIconButton, TJSInput, TJSSelect, TJSToggleIconButton } from "@typhonjs-fvtt/svelte-standard/component";
+	import { TJSIconButton, TJSInputText, TJSSelect, TJSToggleIconButton } from "@typhonjs-fvtt/svelte-standard/component";
 
 	const spreadsheetStore = getContext("spreadsheetStore");
 	const { details, filterSearch, scrollTop, version } = spreadsheetStore.stores;
@@ -57,7 +57,7 @@
 	<label>{localize("mcc.selectVersion")}</label>
 	<TJSSelect {select} />
 
-	<TJSInput {input} />
+	<TJSInputText {input} />
 
 	<div class="iconButton">
 		<TJSToggleIconButton button={buttonDetails} />

@@ -29,10 +29,16 @@
 		<Header />
 		<Rows />
 	</table>
+	<div></div>
 </main>
 <Footer />
 
 <style>
+	div {
+		background: rgba(0, 0, 0, 0.1);
+		flex: 1
+	}
+
 	main {
 		display: flex;
 		flex-direction: column;
