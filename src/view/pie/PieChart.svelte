@@ -23,7 +23,7 @@
 
 	/**
 	 * Update chart data visibility based on statuses store entries
-	 * @param {StatusEntry[]} statusEntries
+	 * @param {StatusEntry[]} statusEntries - Status entries to update visibility for
 	 */
 	function updateDataVisibility(statusEntries) {
 		for (let i = 0; i < statusEntries.length; i++) {
@@ -32,12 +32,10 @@
 	}
 
 	/**
-	 * Determines if an x / y point is inside the chart radius.
-	 *
-	 * @param {number}	x - X coord.
-	 * @param {number}	y - Y coord.
-	 *
-	 * @returns {boolean} Inside chart radius.
+	 * Determines if a point is inside the chart radius
+	 * @param {number} x - X coord
+	 * @param {number} y - Y coord
+	 * @returns {boolean} - Whether the point is inside the chart radius
 	 */
 	function isInsideChart(x, y) {
 		return Math.sqrt((x - radius) ** 2 + (-y + radius) ** 2) < radius;
@@ -74,7 +72,7 @@
 	function onClick(event) {
 		const rect = canvasEl.getBoundingClientRect();
 
-		// Check if the click is inside the chart by adjusting for the canvas bounding rect.
+		// Check if the click is inside the chart by adjusting for the canvas bounding rect
 		if (!isInsideChart(event.clientX - rect.left, event.clientY - rect.top)) {
 			return;
 		}
