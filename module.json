@@ -35,10 +35,10 @@
     "compatibleCoreVersion": "10",
     "scripts": [],
     "esmodules": [
-        "dist/mcc.js"
+        "index.js"
     ],
     "styles": [
-        "dist/mcc.css"
+        "style.css"
     ],
     "languages": [
         {

@@ -1,7 +1,7 @@
 .github/
-dist/
 languages/
 styles/
 templates/
 src/**/*.svelte
-rollup.config.mjs
+/index.js
+/index.js.map
