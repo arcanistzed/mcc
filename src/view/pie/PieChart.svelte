@@ -94,7 +94,7 @@
 </script>
 
 <section>
-	<div>
+	<div style:height={radius}>
 		<canvas bind:this={canvasEl} on:click={onClick} width={radius * 2} height={radius * 2} />
 	</div>
 	<PieChartLegend />

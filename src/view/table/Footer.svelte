@@ -37,10 +37,10 @@
 		gap: 1ch;
 		border-bottom-left-radius: 0.5ch;
 		border-bottom-right-radius: 0.5ch;
+		white-space: nowrap;
 	}
 
 	a {
 		color: var(--mcc-text-light-color);
-		white-space: nowrap;
 	}
 </style>

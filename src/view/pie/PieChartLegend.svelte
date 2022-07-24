@@ -66,5 +66,7 @@
 		border-radius: 0.5ch;
 		text-align: center;
 		border: solid 2px rgba(0, 0, 0, 0.4);
+		white-space: nowrap;
+		padding: 0 1ch;
 	}
 </style>
