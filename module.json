@@ -24,7 +24,10 @@
 	"bugs": "https://github.com/arcanistzed/mcc/issues/new/choose",
 	"changelog": "https://github.com/arcanistzed/mcc/blob/main/CHANGELOG.md",
 	"flags": {
-		"allowBugReporter": true
+		"allowBugReporter": true,
+		"fvttdevleague": {
+			"package-jam": 2022
+		}
 	},
 	"version": "This is auto replaced",
 	"compatibility": {
