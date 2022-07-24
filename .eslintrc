@@ -1,3 +1,3 @@
 {
-    "extends": "eslint-config-arcanist"
+	"extends": "eslint-config-arcanist"
 }

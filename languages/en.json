@@ -1,42 +1,42 @@
 {
-    "mcc": {
-        "appTitle": "Module Compatibility Checker",
-        "statuses": {
-            "x": "Package does not function at all or prevents the world loading",
-            "o": "Package functions with some errors",
-            "b": "Blocked from being tested",
-            "g": "Package works without issue or an updated version is available",
-            "n": "No testing necessary",
-            "a": "Archived - To be archived or no longer available",
-            "u": "Unknown status - Package may not be in the official listing"
-        },
-        "loading": "Loading...",
-        "selectVersion": "Check compatibility for:",
-        "title": "Title",
-        "type": "Type",
-        "id": "ID",
-        "version": "Compatible Version",
-        "status": "Status",
-        "notes": "Notes",
-        "untitled": "Untitled",
-        "report": {
-            "count": "Package count",
-            "percentage": "Percentage ready"
-        },
-        "source": "Open official spreadsheet",
-        "error": "Please try again. If this issue persists, please report an issue on GitHub.",
-        "issues": "Issue Tracker",
-        "button": "Module Compatibility Checker",
-        "moduleManagementColorsExplanation": "The background colors below are used to indicate the status of the module in the latest core version. Open the Module Compatibility Checker with the button below for more info.",
-        "scrollTop": "Scroll To Top",
-        "hideDetails": "Hide details",
-        "showDetails": "Show details",
-        "percentageFilteredTooltip": "The percentage ready for current filtered package count",
-        "packageListingURL": "Foundry VTT Package Listing",
-        "foundryHubURL": "Foundry Hub",
-        "bazaarURL": "The Forge Bazaar",
-        "projectURL": "Project URL",
-        "showKnownCompatible": "Show known compatible packages",
-        "resetFilters": "Reset filters"
-    }
+	"mcc": {
+		"appTitle": "Module Compatibility Checker",
+		"statuses": {
+			"x": "Package does not function at all or prevents the world loading",
+			"o": "Package functions with some errors",
+			"b": "Blocked from being tested",
+			"g": "Package works without issue or an updated version is available",
+			"n": "No testing necessary",
+			"a": "Archived - To be archived or no longer available",
+			"u": "Unknown status - Package may not be in the official listing"
+		},
+		"loading": "Loading...",
+		"selectVersion": "Check compatibility for:",
+		"title": "Title",
+		"type": "Type",
+		"id": "ID",
+		"version": "Compatible Version",
+		"status": "Status",
+		"notes": "Notes",
+		"untitled": "Untitled",
+		"report": {
+			"count": "Package count",
+			"percentage": "Percentage ready"
+		},
+		"source": "Open official spreadsheet",
+		"error": "Please try again. If this issue persists, please report an issue on GitHub.",
+		"issues": "Issue Tracker",
+		"button": "Module Compatibility Checker",
+		"moduleManagementColorsExplanation": "The background colors below are used to indicate the status of the module in the latest core version. Open the Module Compatibility Checker with the button below for more info.",
+		"scrollTop": "Scroll To Top",
+		"hideDetails": "Hide details",
+		"showDetails": "Show details",
+		"percentageFilteredTooltip": "The percentage ready for current filtered package count",
+		"packageListingURL": "Foundry VTT Package Listing",
+		"foundryHubURL": "Foundry Hub",
+		"bazaarURL": "The Forge Bazaar",
+		"projectURL": "Project URL",
+		"showKnownCompatible": "Show known compatible packages",
+		"resetFilters": "Reset filters"
+	}
 }
