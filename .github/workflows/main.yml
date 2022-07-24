@@ -40,7 +40,7 @@ jobs:
       - run: npm ci
 
       # Build distribution
-      - run: npm run release
+      - run: npm run build
 
       # Create a zip file with all files required by the module to add to the release
       - run: zip -r ./module.zip module.json README.md LICENSE CHANGELOG.md index.js index.js.map style.css languages/
