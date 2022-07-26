@@ -100,7 +100,7 @@ export default class SpreadsheetController {
 		// Merge data
 		for (const property in data) {
 			if (property === "version") {
-				data.version = isNewerVersion(data.version, fallback.version) ? data.version : fallback.version;
+				data.version = foundry.utils.isNewerVersion(data.version, fallback.version) ? data.version : fallback.version;
 			}
 			if (data[property] === undefined) {
 				if (!["status", "notes"].includes(property)) data.official = false;
