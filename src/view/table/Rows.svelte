@@ -73,9 +73,10 @@
 </script>
 
 <tbody>
-	{#each [...$spreadsheetStore] as row, i (row.id)}
+	{#each [...$spreadsheetStore] as row (row.id)}
 		<tr
 			animate:flip={{ duration: 250 }}
+			on:contextmenu={(event) => onContextMenu(event, row.id, row.official)}
 			style:background-color={getColor(row.status)}
 			title={statusData[row.status].explanation}
 		>
