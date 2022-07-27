@@ -21,3 +21,7 @@ Add button to toggle showing only active packages / all installed packages
 ## 1.2.1 - 27 Jul 2022
 
 Fix initial window height
+
+## 1.2.2 - 27 Jul 2022
+
+Removed use of an unavailable Font Awesome icon
