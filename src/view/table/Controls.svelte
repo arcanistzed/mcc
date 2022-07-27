@@ -37,7 +37,7 @@
 
 	const buttonActive = {
 		store: active,
-		icon: "fas fa-box-check",
+		icon: "fas fa-check",
 		efx: ripple(),
 		title: "mcc.enableActive",
 		titleSelected: "mcc.disableActive",
