@@ -22,7 +22,7 @@ export class ModuleCompatibilityChecker extends SvelteApplication {
 			title: "mcc.appTitle",
 			classes: ["mcc"],
 			width: Math.max(window.innerWidth * 2 / 3, 800),
-			height: Math.max(window.innerWidth * 2 / 3, 580),
+			height: Math.max(window.innerHeight * 2 / 3, 580),
 			resizable: true,
 			minWidth: 800,
 			minHeight: 580,
