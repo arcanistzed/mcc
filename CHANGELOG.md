@@ -17,3 +17,7 @@ Fix context menu not appearing
 ## 1.2.0 - 27 Jul 2022
 
 Add button to toggle showing only active packages / all installed packages
+
+## 1.2.1 - 27 Jul 2022
+
+Fix initial window height
