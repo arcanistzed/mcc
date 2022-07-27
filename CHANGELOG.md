@@ -13,3 +13,7 @@
 ## 1.1.1 - 26 Jul 2022
 
 Fix context menu not appearing
+
+## 1.2.0 - 27 Jul 2022
+
+Add button to toggle showing only active packages / all installed packages
