@@ -1,6 +1,6 @@
 import { mccSessionStorage } from "./mccSessionStorage.js";
 
-// Get initial value from session storage immediately.
+// Get initial value from session storage immediately
 let sortBy = mccSessionStorage.getItem("mcc.sortBy", "");
 
 const storeSortBy = mccSessionStorage.getStore("mcc.sortBy", "");

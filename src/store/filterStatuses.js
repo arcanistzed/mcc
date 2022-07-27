@@ -85,7 +85,7 @@ function filterStatuses(row) {
 	return storeStatuses.getVisible(row.status) ?? false;
 }
 
-// Create a custom store that changes when hidden statuses changes.
+// Create a custom store that changes when hidden statuses changes
 filterStatuses.subscribe = handler => storeStatuses.subscribe(handler);
 
 filterStatuses.getVisible = storeStatuses.getVisible;
