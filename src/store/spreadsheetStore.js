@@ -6,6 +6,7 @@ import { createFilterQuery } from "@typhonjs-fvtt/svelte-standard/store";
 import SpreadsheetController from "../controller/SpreadsheetController.js";
 
 import { createAccessorStore } from "./createAccessorStore.js";
+import { filterActive } from "./filterActive.js";
 import { filterStatuses } from "./filterStatuses.js";
 import { mccSessionStorage } from "./mccSessionStorage.js";
 import { sortByHeader } from "./sortByHeader.js";
@@ -62,6 +63,7 @@ class SpreadsheetStore extends DynArrayReducer {
 
 		this.#stores = {
 			details: mccSessionStorage.getStore("mcc.details", false),
+			active: filterActive,
 			filteredPercentage,
 			filterSearch: createFilterQuery(["title", "id"], { store: mccSessionStorage.getStore("mcc.search", "") }),
 			pieData: writable({}),
@@ -73,6 +75,7 @@ class SpreadsheetStore extends DynArrayReducer {
 		};
 
 		this.filters.add(this.#stores.filterSearch);
+		this.filters.add(filterActive);
 		this.filters.add(filterStatuses);
 		this.sort.set(sortByHeader);
 
@@ -197,7 +200,8 @@ export const spreadsheetStore = new SpreadsheetStore();
 
 /**
  * @typedef {object} SpreadsheetStores
- * @property {import("svelte/store").Writable<boolean>} details - Show hide additional details in table
+ * @property {import("svelte/store").Writable<boolean>} details - Show or hide additional details in table
+ * @property {import("svelte/store").Writable<boolean>} active - Whether or not only active packages are displayed
  * @property {import("svelte/store").Readable<number>} filteredPercentage - Stores current working percentage on filtered package data
  * @property {import("svelte/store").Writable<string>} filterSearch - Stores the filter search string
  * @property {import("svelte/store").Writable<number[]>} pieData - Stores Chart.js pie chart data

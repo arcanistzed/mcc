@@ -31,6 +31,8 @@
 		"scrollTop": "Scroll To Top",
 		"hideDetails": "Hide details",
 		"showDetails": "Show details",
+		"enableActive": "Only show active packages",
+		"disableActive": "Show all installed packages",
 		"percentageFilteredTooltip": "The percentage ready for current filtered package count",
 		"packageListingURL": "Foundry VTT Package Listing",
 		"foundryHubURL": "Foundry Hub",

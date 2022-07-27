@@ -1,9 +1,7 @@
 <script>
-	/**
-	 * This component hooks up several stores to input components including the spreadsheet version selection,
-	 * search filter, showing / hiding package details, and dispatches a CustomEvent to smoothly scroll the table to
-	 * top.
-	 */
+	/*
+	This component hooks up several stores to input components including the spreadsheet version selection, search filter, showing / hiding package details, showing only active packages, and dispatches a CustomEvent to smoothly scroll the table to top.
+	*/
 	import { getContext } from "svelte";
 	import { fade } from "svelte/transition";
 	import { localize } from "@typhonjs-fvtt/runtime/svelte/helper";
@@ -11,7 +9,7 @@
 	import { TJSIconButton, TJSInputText, TJSSelect, TJSToggleIconButton } from "@typhonjs-fvtt/svelte-standard/component";
 
 	const spreadsheetStore = getContext("spreadsheetStore");
-	const { details, filterSearch, scrollTop, version } = spreadsheetStore.stores;
+	const { details, active, filterSearch, scrollTop, version } = spreadsheetStore.stores;
 
 	const select = {
 		store: version,
@@ -35,6 +33,14 @@
 		efx: ripple(),
 		title: "mcc.showDetails",
 		titleSelected: "mcc.hideDetails",
+	};
+
+	const buttonActive = {
+		store: active,
+		icon: "fas fa-box-check",
+		efx: ripple(),
+		title: "mcc.enableActive",
+		titleSelected: "mcc.disableActive",
 	};
 
 	const buttonScrollTop = {
@@ -61,6 +67,10 @@
 
 	<div class="iconButton">
 		<TJSToggleIconButton button={buttonDetails} />
+	</div>
+
+	<div class="iconButton">
+		<TJSToggleIconButton button={buttonActive} />
 	</div>
 </nav>
 
