@@ -60,6 +60,11 @@
 		{
 			"type": "cover",
 			"url": "https://i.imgur.com/lIkl2md.png"
+		},
+		{
+			"type": "video",
+			"url": "https://www.youtube.com/watch?v=1UPVY52k6Tg",
+			"caption": "A narrated showcase of the Module Compatibility CHecker"
 		}
 	]
 }
