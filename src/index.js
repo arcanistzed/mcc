@@ -22,6 +22,8 @@ Hooks.on("renderModuleManagement", (app, [html]) => {
 		target: html.querySelector("footer"),
 		anchor: html.querySelector("[name='deactivate']"),
 	});
+
+	app.setPosition();
 });
 
 /**
