@@ -2,6 +2,8 @@ import { localize } from "@typhonjs-fvtt/runtime/svelte/helper";
 
 import { statusData } from "../store/statusData.js";
 
+const WORKER_URL = "https://mcc.arcanist.workers.dev";
+
 /**
  * @typedef {object} RowData
  * @property {string} title - The title of the module
@@ -32,7 +34,7 @@ export default class SpreadsheetController {
 	 * @returns {Promise<string[]>} The versions available
 	 */
 	static async getVersions() {
-		const response = await fetch("https://mcc.arcanist.workers.dev/api/versions");
+		const response = await fetch(`${WORKER_URL}/api/versions`);
 		return await response.json();
 	}
 
@@ -55,7 +57,7 @@ export default class SpreadsheetController {
 	 * @returns {Promise<Spreadsheet>} The spreadsheet
 	 */
 	static async getSpreadsheet(version) {
-		const response = await fetch(`https://mcc.arcanist.workers.dev/?version=${version}`);
+		const response = await fetch(`${WORKER_URL}/?version=${version}`);
 		this.spreadsheetID = response.headers.get("X-Spreadsheet-ID");
 		return await response.json();
 	}
