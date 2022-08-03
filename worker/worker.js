@@ -1,6 +1,6 @@
 /* global MCC API_KEY */
 
-const VERSIONS = ["9", "10"];
+const VERSIONS = ["8", "9", "10"];
 const RANGE = encodeURIComponent("A:N");
 const TTL = 60 * 10; // 10 minutes
 
@@ -11,6 +11,8 @@ const TTL = 60 * 10; // 10 minutes
  */
 function getSpreadsheetID(version) {
 	switch (version) {
+		case "8":
+			return "17ov1y91lglUXDj8Nu6J22ewC2x_483AoI6RyB6i1NRs"
 		case "9":
 			return "1ppPR348igxL75M_G7dWl3otzXYpPwrnj7NVSDP8GmVw";
 		case "10":
