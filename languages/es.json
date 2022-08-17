@@ -1,0 +1,45 @@
+{
+	"mcc": {
+		"appTitle": "Verificador de Compatibilidad de Módulos",
+		"statuses": {
+			"x": "El Paquete fallo o previene que el mundo cargue",
+			"o": "El Paquete funciona con errores",
+			"b": "Imposible de probar",
+			"g": "El Paquete funciona sin problemas o hay una nueva versión disponible",
+			"n": "No es necesario probar",
+			"a": "Archivado - Para archivar o no disponible",
+			"u": "Estado Desconocido - El Paquete no se encuentra en el listado oficial"
+		},
+		"loading": "Cargando...",
+		"selectVersion": "Verificando compatibilidad con:",
+		"title": "Título",
+		"type": "Tipo",
+		"id": "ID",
+		"version": "Version Compatible",
+		"status": "Estado",
+		"notes": "Notas",
+		"untitled": "Sin Título",
+		"report": {
+			"count": "Conteo de Paquete",
+			"percentage": "Percentage listo"
+		},
+		"source": "Hoja de Cálculo Oficial Abierta",
+		"error": "Intente Nuevamente. Si el error persiste, tenga a bien reportarlo en GitHub.",
+		"issues": "Rastreador de Errores",
+		"button": "Verificador de Compatibilidad de Módulos",
+		"moduleManagementColorsExplanation": "Los colores del fondo listados debajo son usados para indicar el estado del módulo para la última versión. Abrir el Verificador de Compatibilidad de Módulos con el botón aquí debajo para más información.",
+		"patreon": "Convertirse en Patron",
+		"scrollTop": "Desplazarse hasta Arriba",
+		"hideDetails": "Ocultar Detalles",
+		"showDetails": "Mostrar Detalles",
+		"enableActive": "Solo mostrar Paquetes activos",
+		"disableActive": "Mostrar todos los Paquetes instalados",
+		"percentageFilteredTooltip": "Porcentaje del Contador de Paquetes filtrados",
+		"packageListingURL": "Listado de Paquetes de Foundry VTT",
+		"foundryHubURL": "Centro de Foundry",
+		"bazaarURL": "Bazar de la Forja",
+		"projectURL": "URL del Proyecto",
+		"showKnownCompatible": "Mostrar sólo Paquetes compatibles",
+		"resetFilters": "Reiniciar Filtros"
+	}
+}
