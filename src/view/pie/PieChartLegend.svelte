@@ -19,10 +19,10 @@
 	{/each}
 	<hr />
 	<div class="links">
-		<a class="links" on:click={statuses.setKnownVisible}
+		<a on:click={statuses.setKnownVisible}
 			><i class="fas fa-thumbs-up" /> {localize("mcc.showKnownCompatible")}</a
 		>
-		<a class="links" on:click={() => spreadsheetStore.resetFilters()}
+		<a on:click={() => spreadsheetStore.resetFilters()}
 			><i class="fas fa-trash" /> {localize("mcc.resetFilters")}</a
 		>
 	</div>
@@ -33,7 +33,7 @@
 		text-decoration: line-through;
 	}
 
-	div.entry {
+	.entry {
 		display: flex;
 		gap: 1ch;
 		align-items: center;
@@ -45,7 +45,7 @@
 		width: 100%;
 	}
 
-	div.links {
+	.links {
 		display: flex;
 		justify-content: space-evenly;
 		padding: 1ch;
