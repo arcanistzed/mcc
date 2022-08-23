@@ -37,8 +37,12 @@
 		display: flex;
 		gap: 1ch;
 		align-items: center;
-		margin: 0.25ch;
+		padding: 0.5ch 0;
 		cursor: pointer;
+	}
+
+	.entry a {
+		width: 100%;
 	}
 
 	div.links {
