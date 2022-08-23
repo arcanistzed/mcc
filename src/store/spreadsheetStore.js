@@ -83,7 +83,7 @@ class SpreadsheetStore extends DynArrayReducer {
 		this.subscribe(() => {
 			const filteredData = [...this];
 
-			// Update pie chart data w/ filtered data.
+			// Update pie chart data with filtered data
 			this.#pieData.datasets[0].data = Object.keys(statusData).map(
 				status => filteredData.filter(row => row.status === status).length
 			);
