@@ -13,9 +13,7 @@
 <section>
 	{#each $statuses as status, i (status.key)}
 		<div class="entry" class:line-through={!status.value} on:click={() => statuses.toggleVisible(status.key)}>
-			<span style:background-color={$pieData.datasets[0].backgroundColor[i]}>
-				{$pieData.datasets[0].data[i]} / {$pieData.allData[i]}
-			</span>
+			<span style:background-color={$pieData.datasets[0].backgroundColor[i]}>{$pieData.datasets[0].data[i]} / {$spreadsheetStore.index.length}</span>
 			<a>{$pieData.labels[i]}</a>
 		</div>
 	{/each}

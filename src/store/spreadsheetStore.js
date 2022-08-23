@@ -156,10 +156,6 @@ class SpreadsheetStore extends DynArrayReducer {
 
 	async update() {
 		const data = await SpreadsheetController.getRows(this.#version);
-
-		// Add all package data to pie chart data
-		this.#pieData.allData = Object.keys(statusData).map(status => data.filter(row => row.status === status).length);
-
 		this.setData(data);
 	}
 
@@ -190,7 +186,6 @@ export const spreadsheetStore = new SpreadsheetStore();
 
 /**
  * @typedef {object} PieChartData
- * @property {number[]} allData - All status data calculated when the spreadsheet updates
  * @property {string[]} labels - All status labels
  * @property {object[]} datasets
  * @property {number[]} datasets.data
