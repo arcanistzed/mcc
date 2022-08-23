@@ -9,8 +9,8 @@
 		"Michael Leahy <support@typhonjs.io> (https://github.com/typhonrt)"
 	],
 	"dependencies": {
-		"@typhonjs-fvtt/runtime": "^0.0.18",
-		"@typhonjs-fvtt/svelte-standard": "^0.0.7",
+		"@typhonjs-fvtt/runtime": "^0.0.19",
+		"@typhonjs-fvtt/svelte-standard": "^0.0.8",
 		"chart.js": "^3.9.1",
 		"svelte": "^3.49.0",
 		"svelte-preprocess": "^4.10.7"
@@ -20,7 +20,7 @@
 		"@typhonjs-fvtt/eslint-config-foundry.js": "^0.8.0",
 		"eslint": "^8.22.0",
 		"eslint-config-arcanist": "^1.5.0",
-		"vite": "^3.0.8"
+		"vite": "^3.0.9"
 	},
 	"browserslist": [
 		">5%",
