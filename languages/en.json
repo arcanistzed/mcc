@@ -20,7 +20,7 @@
 		"notes": "Notes",
 		"untitled": "Untitled",
 		"report": {
-			"count": "Package count",
+			"visible": "Packages visible",
 			"percentage": "Percentage ready"
 		},
 		"source": "Open official spreadsheet",

@@ -20,7 +20,7 @@
 		"notes": "Notas",
 		"untitled": "Sin Título",
 		"report": {
-			"count": "Conteo de Paquete",
+			"visible": "Paquetes visibles",
 			"percentage": "Percentage listo"
 		},
 		"source": "Hoja de Cálculo Oficial Abierta",

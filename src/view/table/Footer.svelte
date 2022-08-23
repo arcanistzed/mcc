@@ -15,7 +15,7 @@
 </script>
 
 <footer>
-	<p>{localize("mcc.report.count")}: {$spreadsheetStore.index.length} / {$spreadsheetStore.length}</p>
+	<p>{localize("mcc.report.visible")}: {$spreadsheetStore.index.length} / {$spreadsheetStore.length}</p>
 	<p title={localize("mcc.percentageFilteredTooltip")}>{localize("mcc.report.percentage")}: {$filteredPercentage}%</p>
 	<p>{SpreadsheetController.spreadsheetStatus}</p>
 	<a href={`https://docs.google.com/spreadsheets/d/${SpreadsheetController.spreadsheetID}/pubhtml`}>
