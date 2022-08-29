@@ -77,7 +77,7 @@ export default class SpreadsheetController {
 	 * @returns {RowData} The row of compatibility data
 	 */
 	static lookupCompatibility(spreadsheet, module) {
-		// Get fallback
+		// Get installed data
 		const {
 			title,
 			type = "module",
@@ -85,7 +85,7 @@ export default class SpreadsheetController {
 			compatibleCoreVersion,
 			compatibility: { verified = null } = {},
 		} = module.data;
-		const fallback = {
+		const installed = {
 			title: title ?? localize("mcc.untitled"),
 			type,
 			id: module.id ?? module.name,
@@ -101,12 +101,17 @@ export default class SpreadsheetController {
 
 		// Merge data
 		for (const property in data) {
+			// Use the latest of the version numbers
 			if (property === "version") {
-				data.version = foundry.utils.isNewerVersion(data.version, fallback.version) ? data.version : fallback.version;
+				data.version = foundry.utils.isNewerVersion(data.version, installed.version) ? data.version : installed.version;
 			}
-			if (data[property] === undefined) {
-				if (!["status", "notes"].includes(property)) data.official = false;
-				data[property] = fallback[property];
+			// Mark the package as non-official if there is no status or notes
+			if (!["status", "notes"].includes(property)) {
+				data.official = false;
+			}
+			// Use the spreadsheet data for the title, author, or if there is no spreadsheet data for this property
+			if (["title", "author"].includes(property) || data[property] === undefined) {
+				data[property] = installed[property];
 			}
 		}
 
