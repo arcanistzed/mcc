@@ -12,7 +12,7 @@ import { mccSessionStorage } from "./mccSessionStorage.js";
 import { sortByHeader } from "./sortByHeader.js";
 import { statusData } from "./statusData.js";
 
-class SpreadsheetStore extends DynArrayReducer {
+export class SpreadsheetStore extends DynArrayReducer {
 	/** @type {Map<string, PackageLinkData>} */
 	#packageLinks = new Map();
 
@@ -175,8 +175,6 @@ class SpreadsheetStore extends DynArrayReducer {
 		return this.update();
 	}
 }
-
-export const spreadsheetStore = new SpreadsheetStore();
 
 /**
  * @typedef {object} PackageLinkData

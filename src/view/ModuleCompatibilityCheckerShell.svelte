@@ -10,13 +10,14 @@
 	import { ApplicationShell } from "@typhonjs-fvtt/runtime/svelte/component/core";
 	import { debounce } from "@typhonjs-fvtt/runtime/svelte/util";
 
-	import { spreadsheetStore } from "../store/spreadsheetStore.js";
+	import { SpreadsheetStore } from "../store/spreadsheetStore.js";
 	import { mccSessionStorage } from "../store/mccSessionStorage.js";
 
 	import Loading from "./init/Loading.svelte";
 	import Error from "./init/Error.svelte";
 	import Table from "./table/Table.svelte";
 
+	const spreadsheetStore = new SpreadsheetStore();
 	setContext("spreadsheetStore", spreadsheetStore);
 
 	export let elementRoot;
