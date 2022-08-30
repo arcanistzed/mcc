@@ -1,8 +1,10 @@
 # Changelog
 
-## 1.2.5 - 29 Aug 2022
+## 1.2.6 - 30 Aug 2022
 
-### Fixed
+Fixed error message in console ([#7](https://github.com/arcanistzed/mcc/issues/7))
+
+## 1.2.5 - 29 Aug 2022
 
 Fix display of title & author to work around the upstream spreadsheet not displaying accents or emojis
 
