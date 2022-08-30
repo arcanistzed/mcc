@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.2.6 - 30 Aug 2022
+## 1.2.7 - 30 Aug 2022
 
 Fixed error message in console ([#7](https://github.com/arcanistzed/mcc/issues/7))
 
