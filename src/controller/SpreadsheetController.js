@@ -115,7 +115,7 @@ export default class SpreadsheetController {
 			}
 		}
 
-		// Convert to upper case; just in case!
+		// Convert to upper case
 		if (typeof data.status === "string") {
 			data.status = data.status.toUpperCase();
 		}
@@ -125,7 +125,7 @@ export default class SpreadsheetController {
 			data.status = "U";
 		}
 
-		// Check for valid status. Warn if not found and append a note.
+		// Check for valid status and warn if not
 		if (!statusData[data.status]) {
 			const message = `Error in spreadsheet: ${data.title} (${data.id}) has an invalid status "${data.status}". Please contact Anathema#3668 on Discord.`;
 
