@@ -10,7 +10,7 @@
 			"a": "Archivado - Para archivar o no disponible",
 			"u": "Estado Desconocido - El Paquete no se encuentra en el listado oficial"
 		},
-		"loading": "Cargando...",
+		"loading": "Cargando…",
 		"selectVersion": "Verificando compatibilidad con:",
 		"title": "Título",
 		"type": "Tipo",
@@ -36,8 +36,8 @@
 		"disableActive": "Mostrar todos los Paquetes instalados",
 		"percentageFilteredTooltip": "Porcentaje del Contador de Paquetes filtrados",
 		"packageListingURL": "Listado de Paquetes de Foundry VTT",
-		"foundryHubURL": "Centro de Foundry",
-		"bazaarURL": "Bazar de la Forja",
+		"foundryHubURL": "Foundry Hub",
+		"bazaarURL": "The Forge Bazaar",
 		"projectURL": "URL del Proyecto",
 		"showKnownCompatible": "Mostrar sólo Paquetes compatibles",
 		"resetFilters": "Reiniciar Filtros"
