@@ -10,7 +10,7 @@
 			"a": "Archived - To be archived or no longer available",
 			"u": "Unknown status - Package may not be in the official listing"
 		},
-		"loading": "Loading...",
+		"loading": "Loading…",
 		"selectVersion": "Check compatibility for:",
 		"title": "Title",
 		"type": "Type",
@@ -27,7 +27,7 @@
 		"error": "Please try again. If this issue persists, please report an issue on GitHub.",
 		"issues": "Issue Tracker",
 		"button": "Module Compatibility Checker",
-		"moduleManagementColorsExplanation": "The background colors below are used to indicate the status of the module in the latest core version. Open the Module Compatibility Checker with the button below for more info.",
+		"moduleManagementColorsExplanation": "The background colors below are used to indicate the status of the module in the latest Core version. Open the Module Compatibility Checker with the button below for more info.",
 		"patreon": "Become a Patron",
 		"scrollTop": "Scroll To Top",
 		"hideDetails": "Hide details",
