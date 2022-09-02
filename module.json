@@ -1,75 +1,80 @@
 {
-	"id": "mcc",
-	"name": "mcc",
-	"title": "Module Compatibility Checker",
-	"description": "Check your module list for compatibility with the latest major version of Foundry VTT.",
-	"authors": [
-		{
-			"name": "Arcanist",
-			"url": "https://arcanist.me",
-			"email": "arcanistzed@gmail.com",
-			"discord": "arcanist#4317",
-			"reddit": "u/arcanistzed"
-		},
-		{
-			"name": "Michael Leahy (TyphonJS)",
-			"url": "https://github.com/typhonrt",
-			"discord": "MLeahy#4299",
-			"reddit": "u/typhonrt"
-		}
-	],
-	"url": "This is auto replaced",
-	"license": "https://github.com/arcanistzed/mcc/blob/main/LICENSE",
-	"readme": "https://github.com/arcanistzed/mcc/blob/main/README.md",
-	"bugs": "https://github.com/arcanistzed/mcc/issues/new/choose",
-	"changelog": "https://github.com/arcanistzed/mcc/blob/main/CHANGELOG.md",
-	"flags": {
-		"allowBugReporter": true,
-		"fvttdevleague": {
-			"package-jam": 2022
-		}
-	},
-	"version": "This is auto replaced",
-	"compatibility": {
-		"minimum": "9",
-		"verified": "10"
-	},
-	"minimumCoreVersion": "9",
-	"compatibleCoreVersion": "10",
-	"scripts": [],
-	"esmodules": [
-		"index.js"
-	],
-	"styles": [
-		"style.css"
-	],
-	"languages": [
-		{
-			"lang": "en",
-			"name": "English",
-			"path": "languages/en.json"
-		},
-		{
-			"lang": "es",
-			"name": "Español",
-			"path": "languages/es.json"
-		}
-	],
-	"packs": [],
-	"system": [],
-	"manifest": "This is auto replaced",
-	"download": "This is auto replaced",
-	"library": false,
-	"manifestPlusVersion": "1.2.0",
-	"media": [
-		{
-			"type": "cover",
-			"url": "https://i.imgur.com/lIkl2md.png"
-		},
-		{
-			"type": "video",
-			"url": "https://www.youtube.com/watch?v=1UPVY52k6Tg",
-			"caption": "A narrated showcase of the Module Compatibility CHecker"
-		}
-	]
+    "id": "mcc",
+    "name": "mcc",
+    "title": "Module Compatibility Checker",
+    "description": "Check your module list for compatibility with the latest major version of Foundry VTT.",
+    "authors": [
+        {
+            "name": "Arcanist",
+            "url": "https://arcanist.me",
+            "email": "arcanistzed@gmail.com",
+            "discord": "arcanist#4317",
+            "reddit": "u/arcanistzed"
+        },
+        {
+            "name": "Michael Leahy (TyphonJS)",
+            "url": "https://github.com/typhonrt",
+            "discord": "MLeahy#4299",
+            "reddit": "u/typhonrt"
+        }
+    ],
+    "url": "This is auto replaced",
+    "license": "https://github.com/arcanistzed/mcc/blob/main/LICENSE",
+    "readme": "https://github.com/arcanistzed/mcc/blob/main/README.md",
+    "bugs": "https://github.com/arcanistzed/mcc/issues/new/choose",
+    "changelog": "https://github.com/arcanistzed/mcc/blob/main/CHANGELOG.md",
+    "flags": {
+        "allowBugReporter": true,
+        "fvttdevleague": {
+            "package-jam": 2022
+        }
+    },
+    "version": "This is auto replaced",
+    "compatibility": {
+        "minimum": "9",
+        "verified": "10"
+    },
+    "minimumCoreVersion": "9",
+    "compatibleCoreVersion": "10",
+    "scripts": [],
+    "esmodules": [
+        "index.js"
+    ],
+    "styles": [
+        "style.css"
+    ],
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "languages/en.json"
+        },
+        {
+            "lang": "es",
+            "name": "Español",
+            "path": "languages/es.json"
+        },
+        {
+            "lang": "fr",
+            "name": "Français",
+            "path": "languages/fr.json"
+        }
+    ],
+    "packs": [],
+    "system": [],
+    "manifest": "This is auto replaced",
+    "download": "This is auto replaced",
+    "library": false,
+    "manifestPlusVersion": "1.2.0",
+    "media": [
+        {
+            "type": "cover",
+            "url": "https://i.imgur.com/lIkl2md.png"
+        },
+        {
+            "type": "video",
+            "url": "https://www.youtube.com/watch?v=1UPVY52k6Tg",
+            "caption": "A narrated showcase of the Module Compatibility CHecker"
+        }
+    ]
 }
