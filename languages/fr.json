@@ -1,45 +1,45 @@
 {
-				"mcc": {
-								"title": "Titre",
-								"type": "Type",
-								"id": "ID",
-								"notes": "Notes",
-								"statuses": {
-												"o": "Le paquet fonctionne avec quelques erreurs",
-												"b": "Phase de test bloquée",
-												"g": "Le paquet fonctionne sans problème ou une nouvelle version est disponible",
-												"n": "Pas de test nécessaire",
-												"a": "Archivé - A archiver ou n'est plus disponible",
-												"x": "Le paquet ne fonctionne pas du tout ou empêche le chargement du monde",
-												"u": "Statut inconnu - Le paquet n'est peut être pas sur la liste officielle"
-								},
-								"loading": "Chargement…",
-								"appTitle": "Vérificateur de Compatibilité des Modules",
-								"selectVersion": "Vérifier la compatibilité pour :",
-								"version": "Version compatible",
-								"status": "Statut",
-								"untitled": "Sans titre",
-								"report": {
-												"visible": "Paquets visibles",
-												"percentage": "Pourcentage prêt"
-								},
-								"source": "Ouvrir la feuille officielle",
-								"error": "Veuillez réessayer. Si ce problème persiste, veuillez rapporter le soucis sur GitHub.",
-								"issues": "Traqueur de bug",
-								"button": "Vérificateur de compatibilité des modules",
-								"moduleManagementColorsExplanation": "Les couleurs de fond ci-dessous sont utilisées pour indiquer le statut du module dans la dernière version de Foundry VTT. Ouvrez le vérificateur de compatibilité des modules avec le bouton ci-dessous pour plus d'informations.",
-								"patreon": "Soutenir sur Patreon",
-								"scrollTop": "Revenir en haut",
-								"hideDetails": "Cacher les détails",
-								"showDetails": "Afficher les détails",
-								"enableActive": "Afficher uniquement les paquets actifs",
-								"disableActive": "Afficher tous les paquets installés",
-								"percentageFilteredTooltip": "Le pourcentage prêt pour le nombre de paquets filtrés actuels",
-								"packageListingURL": "Liste des paquets Foundry VTT",
-								"foundryHubURL": "Foundry Hub",
-								"bazaarURL": "The Forge Bazaar",
-								"projectURL": "URL du projet",
-								"showKnownCompatible": "Afficher les paquets compatibles connus",
-								"resetFilters": "Réinitialiser les filtres"
-				}
+	"mcc": {
+		"title": "Titre",
+		"type": "Type",
+		"id": "ID",
+		"notes": "Notes",
+		"statuses": {
+			"o": "Le paquet fonctionne avec quelques erreurs",
+			"b": "Phase de test bloquée",
+			"g": "Le paquet fonctionne sans problème ou une nouvelle version est disponible",
+			"n": "Pas de test nécessaire",
+			"a": "Archivé - A archiver ou n'est plus disponible",
+			"x": "Le paquet ne fonctionne pas du tout ou empêche le chargement du monde",
+			"u": "Statut inconnu - Le paquet n'est peut être pas sur la liste officielle"
+		},
+		"loading": "Chargement…",
+		"appTitle": "Vérificateur de Compatibilité des Modules",
+		"selectVersion": "Vérifier la compatibilité pour :",
+		"version": "Version Compatible",
+		"status": "Statut",
+		"untitled": "Sans titre",
+		"report": {
+			"visible": "Paquets visibles",
+			"percentage": "Pourcentage prêt"
+		},
+		"source": "Ouvrir la feuille officielle",
+		"error": "Veuillez réessayer. Si ce problème persiste, veuillez rapporter le soucis sur GitHub.",
+		"issues": "Traqueur de bug",
+		"button": "Vérificateur de compatibilité des modules",
+		"moduleManagementColorsExplanation": "Les couleurs de fond ci-dessous sont utilisées pour indiquer le statut du module dans la dernière version de Foundry VTT. Ouvrez le vérificateur de compatibilité des modules avec le bouton ci-dessous pour plus d'informations.",
+		"patreon": "Soutenir sur Patreon",
+		"scrollTop": "Revenir en haut",
+		"hideDetails": "Cacher les détails",
+		"showDetails": "Afficher les détails",
+		"enableActive": "Afficher uniquement les paquets actifs",
+		"disableActive": "Afficher tous les paquets installés",
+		"percentageFilteredTooltip": "Le pourcentage prêt pour le nombre de paquets filtrés actuels",
+		"packageListingURL": "Liste des paquets Foundry VTT",
+		"foundryHubURL": "Foundry Hub",
+		"bazaarURL": "The Forge Bazaar",
+		"projectURL": "URL du projet",
+		"showKnownCompatible": "Afficher les paquets compatibles connus",
+		"resetFilters": "Réinitialiser les filtres"
+	}
 }
