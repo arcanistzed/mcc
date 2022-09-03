@@ -1,1 +1,41 @@
-{}
+{
+	"mcc": {
+		"appTitle": "Module Compatibility Checker",
+		"statuses": {
+			"o": "Paketti toimii, mutta siinä on joitain virheitä",
+			"u": "Tuntematon tila - Paketti ei ehkä ole virallisessa luettelossa",
+			"x": "Paketti ei toimi lainkaan tai estää maailman lataamisen",
+			"g": "Paketti toimii ongelmitta tai päivitetty versio on saatavilla",
+			"a": "Arkistoitu - Arkistoidaan tai ei ole enää saatavilla"
+		},
+		"loading": "Ladataan…",
+		"selectVersion": "Tarkista yhteensopivuus:",
+		"title": "Otsikko",
+		"type": "Tyyppi",
+		"id": "ID",
+		"version": "Yhteensopiva versio",
+		"status": "Tila",
+		"notes": "Huomautukset",
+		"untitled": "Nimetön",
+		"report": {
+			"percentage": "Prosenttiosuus valmiina"
+		},
+		"source": "Avaa virallinen laskentataulukko",
+		"error": "Yritä uudelleen. Jos ongelma jatkuu, ilmoita asiasta GitHubissa.",
+		"issues": "Ongelmanseurain",
+		"button": "Module Compatibility Checker",
+		"moduleManagementColorsExplanation": "Alla olevia taustavärejä käytetään osoittamaan moduulin tilaa uusimmassa ytimen versiossa. Avaa Module Compatibility Checker alla olevasta painikkeesta saadaksesi lisätietoja.",
+		"patreon": "Ryhdy tukijaksi",
+		"scrollTop": "Vieritä alkuun",
+		"hideDetails": "Piilota yksityiskohdat",
+		"showDetails": "Näytä yksityiskohdat",
+		"enableActive": "Näytä vain käytetyt paketit",
+		"disableActive": "Näytä kaikki asennetut paketit",
+		"packageListingURL": "Foundry VTT:n pakettiluettelo",
+		"foundryHubURL": "Foundry Hub",
+		"bazaarURL": "The Forgen Bazaar",
+		"projectURL": "Projektin osoite",
+		"showKnownCompatible": "Näytä tunnettavasti yhteensopivat paketit",
+		"resetFilters": "Nollaa suotimet"
+	}
+}
