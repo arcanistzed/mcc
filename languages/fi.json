@@ -6,7 +6,9 @@
 			"u": "Tuntematon tila - Paketti ei ehkä ole virallisessa luettelossa",
 			"x": "Paketti ei toimi lainkaan tai estää maailman lataamisen",
 			"g": "Paketti toimii ongelmitta tai päivitetty versio on saatavilla",
-			"a": "Arkistoitu - Arkistoidaan tai ei ole enää saatavilla"
+			"a": "Arkistoitu - Arkistoidaan tai ei ole enää saatavilla",
+			"n": "Testausta ei tarvita",
+			"b": "Testaaminen estetty"
 		},
 		"loading": "Ladataan…",
 		"selectVersion": "Tarkista yhteensopivuus:",
@@ -18,7 +20,8 @@
 		"notes": "Huomautukset",
 		"untitled": "Nimetön",
 		"report": {
-			"percentage": "Prosenttiosuus valmiina"
+			"percentage": "Prosenttiosuus valmiina",
+			"visible": "Näytettyjä paketteja"
 		},
 		"source": "Avaa virallinen laskentataulukko",
 		"error": "Yritä uudelleen. Jos ongelma jatkuu, ilmoita asiasta GitHubissa.",
