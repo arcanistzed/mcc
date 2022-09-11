@@ -1,7 +1,4 @@
 <script>
-	/*
-	This component hooks up several stores to input components including the spreadsheet version selection, search filter, showing / hiding package details, showing only active packages, and dispatches a CustomEvent to smoothly scroll the table to top.
-	*/
 	import { getContext } from "svelte";
 	import { fade } from "svelte/transition";
 	import { localize } from "@typhonjs-fvtt/runtime/svelte/helper";

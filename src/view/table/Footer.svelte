@@ -1,8 +1,4 @@
 <script>
-	/**
-	 * This component provides a sticky footer with package count, current filtered percentage data, last spreadsheet
-	 * update date, and a link to the current spreadsheet selected.
-	 */
 	import { getContext } from "svelte";
 
 	import { localize } from "@typhonjs-fvtt/runtime/svelte/helper";
