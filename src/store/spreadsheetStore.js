@@ -53,7 +53,7 @@ export class SpreadsheetStore extends DynArrayReducer {
 			let working = 0;
 
 			for (const row of this) {
-				if (row.status === "G" || row.status === "N") {
+				if (["G", "N", "C"].includes(row.status)) {
 					working++;
 				}
 			}
