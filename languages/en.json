@@ -7,8 +7,9 @@
 			"b": "Blocked from being tested",
 			"g": "Package works without issue or an updated version is available",
 			"n": "No testing necessary",
-			"a": "Archived - To be archived or no longer available",
-			"u": "Unknown status - Package may not be in the official listing"
+			"a": "Archived - To be archived or no longer available (package may still function but is not actively maintained)",
+			"u": "Unknown status - Package may not be in the official listing",
+			"c": "Marked as compatible by developer in manifest"
 		},
 		"loading": "Loading…",
 		"selectVersion": "Check compatibility for:",
