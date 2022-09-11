@@ -125,6 +125,12 @@ export default class SpreadsheetController {
 			data.status = "U";
 		}
 
+		// If the status is unknown and the version is compatible with the current version, mark as compatible
+		if (data.status === "U" && this.isCompatibleVersion(data.version)) {
+			console.log(data.version);
+			data.status = "C";
+		}
+
 		// Check for valid status and warn if not
 		if (!statusData[data.status]) {
 			const message = `Error in spreadsheet: ${data.title} (${data.id}) has an invalid status "${data.status}". Please contact Anathema#3668 on Discord.`;
@@ -136,6 +142,18 @@ export default class SpreadsheetController {
 		}
 
 		return data;
+	}
+
+	/**
+	 * Compare if a given version is compatible with another version
+	 * @param {string|number} v1 - The target version
+	 * @param {string|number} v0 - The current version
+	 * @returns {boolean} Whether v1 is compatible with v0
+	 */
+	static isCompatibleVersion(v1, v0 = game.release.version) {
+		const v1Major = String(v1).split(".")[0];
+		const v0Major = String(v0).split(".")[0];
+		return v1Major === v0Major || isNewerVersion(v1Major, v0Major);
 	}
 
 	/**

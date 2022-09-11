@@ -2,7 +2,7 @@ import { localize } from "@typhonjs-fvtt/runtime/svelte/helper";
 
 /**
  * @typedef {{hsl: number[], readonly explanation: string}} StatusesEntry
- * @type {{A: StatusesEntry, B: StatusesEntry, U: StatusesEntry, G: StatusesEntry, X: StatusesEntry, N: StatusesEntry, O: StatusesEntry}}
+ * @type {{A: StatusesEntry, B: StatusesEntry, U: StatusesEntry, G: StatusesEntry, X: StatusesEntry, N: StatusesEntry, O: StatusesEntry, C: StatusesEntry}}
  */
 export const statusData = {
 	X: {
@@ -47,4 +47,10 @@ export const statusData = {
 			return localize("mcc.statuses.u");
 		},
 	},
+	C: {
+		hsl: [175, 75, 50],
+		get explanation() {
+			return localize("mcc.statuses.c");
+		}
+	}
 };
