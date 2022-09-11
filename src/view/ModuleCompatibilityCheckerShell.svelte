@@ -1,10 +1,6 @@
 <svelte:options accessors={true} />
 
 <script>
-	/*
-    This is the main `ApplicationShell` component. Await upon spreadsheet fetch and either show the table or an error.
-    Also coordinates debouncing / serializing app state / position to session storage on positional changes.
-    */
 	import { getContext, setContext } from "svelte";
 
 	import { ApplicationShell } from "@typhonjs-fvtt/runtime/svelte/component/core";

@@ -1,7 +1,4 @@
 <script>
-	/*
-	This component creates a custom legend for the pie chart displaying all currently filtered status state along with two links to set status state to all known entries and reset all filters.
-	*/
 	import { getContext } from "svelte";
 
 	import { localize } from "@typhonjs-fvtt/runtime/svelte/helper";
