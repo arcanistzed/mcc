@@ -103,7 +103,7 @@ export default class SpreadsheetController {
 		for (const property in data) {
 			// Use the latest of the version numbers
 			if (property === "version") {
-				data.version = foundry.utils.isNewerVersion(data.version, installed.version) ? data.version : installed.version;
+				data.version = isNewerVersion(data.version, installed.version) ? data.version : installed.version;
 			}
 			// Mark the package as non-official if there is no status or notes
 			if (!["status", "notes"].includes(property)) {

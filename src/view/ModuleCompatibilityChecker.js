@@ -17,7 +17,7 @@ export class ModuleCompatibilityChecker extends SvelteApplication {
 
 	/** @override */
 	static get defaultOptions() {
-		return foundry.utils.mergeObject(super.defaultOptions, {
+		return mergeObject(super.defaultOptions, {
 			id: "mcc",
 			title: "mcc.appTitle",
 			classes: ["mcc"],
