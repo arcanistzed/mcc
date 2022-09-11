@@ -41,6 +41,7 @@
 		"bazaarURL": "The Forge Bazaar",
 		"projectURL": "Project URL",
 		"showCompatible": "Show compatible packages",
-		"resetFilters": "Reset filters"
+		"resetFilters": "Reset filters",
+		"reminder": "Please remember that module and system developers are volunteers, they have their own lives and schedules and just because they have not yet updated doesn't mean they never will. Patience is important! Devs are human too."
 	}
 }
