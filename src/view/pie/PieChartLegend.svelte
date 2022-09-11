@@ -19,8 +19,8 @@
 	{/each}
 	<hr />
 	<div class="links">
-		<a on:click={statuses.setKnownVisible}
-			><i class="fas fa-thumbs-up" /> {localize("mcc.showKnownCompatible")}</a
+		<a on:click={statuses.setCompatibleVisible}
+			><i class="fas fa-thumbs-up" /> {localize("mcc.showCompatible")}</a
 		>
 		<a on:click={() => spreadsheetStore.resetFilters()}
 			><i class="fas fa-trash" /> {localize("mcc.resetFilters")}</a
