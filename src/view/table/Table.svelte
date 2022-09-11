@@ -3,6 +3,7 @@
 
 	import { applyScrolltop } from "@typhonjs-fvtt/runtime/svelte/action";
 
+	import Reminder from "./Reminder.svelte"
 	import PieChart from "../pie/PieChart.svelte";
 	import StickyHeader from "./Controls.svelte";
 	import Header from "./Header.svelte";
@@ -23,6 +24,7 @@
 </script>
 
 <main use:applyScrolltop={scrollTop} on:scrollTop:smooth={scrollSmooth}>
+	<Reminder />
 	<PieChart />
 	<StickyHeader />
 	<div>
