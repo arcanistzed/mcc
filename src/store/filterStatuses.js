@@ -1,20 +1,13 @@
 import { writable } from "svelte/store";
 
 import { mccSessionStorage } from "./mccSessionStorage.js";
+import { statusData } from "./statusData.js";
 
 /**
  * Get initial value from session storage immediately.
  * @type {StatusEntry}
  */
-const statuses = mccSessionStorage.getItem("mcc.statuses", [
-	{ key: "X", value: true },
-	{ key: "O", value: true },
-	{ key: "B", value: true },
-	{ key: "G", value: true },
-	{ key: "N", value: true },
-	{ key: "A", value: true },
-	{ key: "U", value: true },
-]);
+const statuses = mccSessionStorage.getItem("mcc.statuses", Object.keys(statusData).map(key => ({ key, value: true })));
 
 const storeStatuses = writable(statuses);
 
