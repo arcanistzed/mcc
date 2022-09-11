@@ -36,6 +36,7 @@ storeStatuses.setKnownVisible = () => {
 
 	statuses[3].value = true;
 	statuses[4].value = true;
+	statuses[7].value = true;
 
 	mccSessionStorage.setItem("mcc.statuses", statuses);
 	storeStatuses.set(statuses);
