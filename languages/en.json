@@ -40,7 +40,7 @@
 		"foundryHubURL": "Foundry Hub",
 		"bazaarURL": "The Forge Bazaar",
 		"projectURL": "Project URL",
-		"showKnownCompatible": "Show known compatible packages",
+		"showCompatible": "Show compatible packages",
 		"resetFilters": "Reset filters"
 	}
 }

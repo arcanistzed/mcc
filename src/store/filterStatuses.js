@@ -29,7 +29,7 @@ storeStatuses.setExclusive = index => {
 	}
 };
 
-storeStatuses.setKnownVisible = () => {
+storeStatuses.setCompatibleVisible = () => {
 	for (const status of statuses) {
 		status.value = false;
 	}
@@ -85,7 +85,7 @@ filterStatuses.subscribe = handler => storeStatuses.subscribe(handler);
 filterStatuses.getVisible = storeStatuses.getVisible;
 filterStatuses.reset = storeStatuses.reset;
 filterStatuses.setExclusive = storeStatuses.setExclusive;
-filterStatuses.setKnownVisible = storeStatuses.setKnownVisible;
+filterStatuses.setCompatibleVisible = storeStatuses.setCompatibleVisible;
 filterStatuses.setVisible = storeStatuses.setVisible;
 filterStatuses.toggleVisible = storeStatuses.toggleVisible;
 
