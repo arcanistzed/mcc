@@ -14,7 +14,7 @@ const storeSortBy = mccSessionStorage.getStore("mcc.sortBy", "");
 function sortByHeader(a, b) {
 	if (sortBy && a?.[sortBy] && b?.[sortBy]) {
 		if (sortBy === "version") {
-			return foundry.utils.isNewerVersion(a.version, b.version) ? 1 : -1;
+			return isNewerVersion(a.version, b.version) ? 1 : -1;
 		}
 		return a[sortBy].localeCompare(b[sortBy]);
 	}
