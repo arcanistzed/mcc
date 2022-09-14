@@ -60,9 +60,9 @@
 			"path": "languages/fr.json"
 		},
 		{
-			"lang": "pt_BR",
+			"lang": "pt-BR",
 			"name": "Português (Brasil)",
-			"path": "languages/pt_BR.json"
+			"path": "languages/pt-BR.json"
 		},
 		{
 			"lang": "it",

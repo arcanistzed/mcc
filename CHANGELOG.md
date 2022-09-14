@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.1 - 13 Sep 2022
+
+Fix invalid localization code
+
 ## 1.3.0 - 13 Sep 2022
 
 ### Added
