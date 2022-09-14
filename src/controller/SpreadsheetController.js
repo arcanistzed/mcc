@@ -128,7 +128,6 @@ export default class SpreadsheetController {
 
 		// If the status is unknown and the version is compatible with the current version, mark as compatible
 		if (data.status === "U" && this.isCompatibleVersion(data.version, version)) {
-			console.log(data.version);
 			data.status = "C";
 		}
 
