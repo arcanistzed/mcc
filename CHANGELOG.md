@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.3.0 - 13 Sep 2022
+
+### Added
+
+* Translations from Foundry Hub Weblate (thanks to @JiDW):
+  * French (thanks to @JiDW)
+  * Finnish (thanks to @DemianWright)
+  * Italian (thanks to @EldritchTranslator)
+  * Brazilian Portuguese (thanks to @Beur1998)
+  * Spanish
+* New status for modules marked as compatible by the developer in the manifest
+* Clarify some of the status descriptions
+* Notification to remind users to be respectful to community developers
+
+### Fixed
+
+* Allow players to access the compatibility checker ([#12](https://github.com/arcanistzed/mcc/issues/12))
+
 ## 1.2.7 - 30 Aug 2022
 
 Fixed error message in console ([#7](https://github.com/arcanistzed/mcc/issues/7))
