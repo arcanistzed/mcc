@@ -47,7 +47,7 @@ export default class SpreadsheetController {
 		const spreadsheet = await this.getSpreadsheet(version);
 		this.spreadsheetStatus = spreadsheet[0][0];
 		const modules = this.getModuleList();
-		const rows = modules.map(module => this.lookupCompatibility(spreadsheet, module));
+		const rows = modules.map(module => this.lookupCompatibility(spreadsheet, module, version));
 		return rows;
 	}
 
@@ -74,9 +74,10 @@ export default class SpreadsheetController {
 	 * Lookup the compatibility of a module in the spreadsheet
 	 * @param {Spreadsheet} spreadsheet - The spreadsheet
 	 * @param {ModuleData} module - The module to lookup
+	 * @param {string} version - The Foundry VTT core version of the spreadsheet
 	 * @returns {RowData} The row of compatibility data
 	 */
-	static lookupCompatibility(spreadsheet, module) {
+	static lookupCompatibility(spreadsheet, module, version) {
 		// Get installed data
 		const {
 			title,
@@ -90,7 +91,7 @@ export default class SpreadsheetController {
 			type,
 			id: module.id ?? module.name,
 			author: authorName ?? module.author ?? localize("mcc.unknownAuthor"),
-			version: verified ?? compatibleCoreVersion ?? "?",
+			verified: verified ?? compatibleCoreVersion ?? "?",
 			status: "U",
 			notes: "",
 		};
@@ -103,7 +104,7 @@ export default class SpreadsheetController {
 		for (const property in data) {
 			// Use the latest of the version numbers
 			if (property === "version") {
-				data.version = isNewerVersion(data.version, installed.version) ? data.version : installed.version;
+				data.version = isNewerVersion(data.version, installed.verified) ? data.version : installed.verified;
 			}
 			// Mark the package as non-official if there is no status or notes
 			if (!["status", "notes"].includes(property)) {
@@ -126,7 +127,7 @@ export default class SpreadsheetController {
 		}
 
 		// If the status is unknown and the version is compatible with the current version, mark as compatible
-		if (data.status === "U" && this.isCompatibleVersion(data.version)) {
+		if (data.status === "U" && this.isCompatibleVersion(data.version, version)) {
 			console.log(data.version);
 			data.status = "C";
 		}
