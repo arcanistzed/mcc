@@ -1,0 +1,45 @@
+{
+	"mcc": {
+		"statuses": {
+			"x": "Non funziona del tutto, o previene il caricamento del mondo",
+			"o": "Funziona con errori",
+			"b": "Bloccato dall'essere testato",
+			"n": "Nessun test necessario",
+			"u": "Status sconosciuto - Potrebbe non essere presente nella lista ufficiale",
+			"g": "Funziona senza problemi, o è disponibile una versione aggiornata",
+			"a": "Archiviato - deve essere archiviato, o non più disponibile"
+		},
+		"loading": "Caricamento…",
+		"selectVersion": "Controllo compatibilità per:",
+		"title": "Titolo",
+		"type": "Tipo",
+		"id": "ID",
+		"status": "Status",
+		"notes": "Note",
+		"untitled": "Senza titolo",
+		"report": {
+			"visible": "Pacchetti visibili",
+			"percentage": "Percentuale pronti"
+		},
+		"issues": "",
+		"button": "",
+		"patreon": "Diventa un Patron",
+		"scrollTop": "Scorri in cima",
+		"hideDetails": "Nascondi dettagli",
+		"showDetails": "Mostra dettagli",
+		"disableActive": "Mostra tutti i pacchetti installati",
+		"packageListingURL": "Lista dei pacchetti di FoundryVTT",
+		"bazaarURL": "Il Bazaar di The Forge",
+		"projectURL": "Link progetto",
+		"showKnownCompatible": "Mostra i pacchetti compatibili conosciuti",
+		"resetFilters": "Resetta filtri",
+		"appTitle": "Module Compatibility Checker",
+		"version": "Versione compatibile",
+		"source": "Apri il foglio di calcolo ufficiale",
+		"error": "Prova ancora. Se il problema persiste, segnala il problema su GitHub.",
+		"moduleManagementColorsExplanation": "I colori di sfondo qui sotto sono utilizzati per indicare lo stato del modulo nell'ultima versione di Foundry. Per maggiori informazioni, aprite Module Compatibility Checker con il pulsante sottostante.",
+		"enableActive": "Mostra solo pacchetti attivi",
+		"percentageFilteredTooltip": "La percentuale di pacchetti pronti (filtrati)",
+		"foundryHubURL": "Foundry Hub"
+	}
+}
