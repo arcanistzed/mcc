@@ -18,8 +18,14 @@ Hooks.on("renderModuleManagement", (app, [html]) => {
 	});
 
 	// Add a button to the bottom of the module management window
+	let footer = html.querySelector("footer");
+	if (!footer) {
+		footer = document.createElement("footer");
+		footer.classList.add("flexrow");
+		html.querySelector("form").append(footer);
+	}
 	new ModuleManagementButton({
-		target: html.querySelector("footer"),
+		target: footer,
 		anchor: html.querySelector("[name='deactivate']"),
 	});
 
