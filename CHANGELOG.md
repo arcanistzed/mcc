@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.3.2 - 18 Sep 2022
+
+* Remove deprecated manifest field
+* Adjust the relative path used in the styling for the background of the app
+
 ## 1.3.1 - 13 Sep 2022
 
 Fix invalid localization code
