@@ -42,6 +42,7 @@ export default defineConfig(({ command }) => {
 			open: "/game",
 			proxy: {
 				[`^(/modules/${MODULE_ID}/languages)`]: "http://localhost:30000",
+				[`^(/modules/${MODULE_ID}/style.css)`]: "http://localhost:30000",
 				[`^(?!/modules/${MODULE_ID}/)`]: "http://localhost:30000",
 				"/socket.io": { target: "ws://localhost:30000", ws: true },
 			},
