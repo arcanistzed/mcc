@@ -41,8 +41,8 @@ export default defineConfig(({ command }) => {
 			port: 30001,
 			open: "/game",
 			proxy: {
-				[`^(/modules/${MODULE_ID}/languages)`]:
-					"http://localhost:30000",
+				[`^(/modules/${MODULE_ID}/languages)`]: "http://localhost:30000",
+				[`^(/modules/${MODULE_ID}/style.css)`]: "http://localhost:30000",
 				[`^(?!/modules/${MODULE_ID}/)`]: "http://localhost:30000",
 				"/socket.io": { target: "ws://localhost:30000", ws: true },
 			},
@@ -58,9 +58,7 @@ export default defineConfig(({ command }) => {
 			brotliSize: true,
 			minify: COMPRESS ? "terser" : false,
 			target: ["es2022", "chrome100"],
-			terserOptions: COMPRESS
-				? { ...terserConfig(), ecma: 2022 }
-				: void 0,
+			terserOptions: COMPRESS ? { ...terserConfig(), ecma: 2022 } : void 0,
 			lib: {
 				entry: "./index.js",
 				formats: ["es"],
@@ -75,12 +73,8 @@ export default defineConfig(({ command }) => {
 					// Suppress `a11y-missing-attribute` for missing href in <a> links
 					// Suppress `a11y-label-has-associated-control` for detached <label> and control
 					if (
-						warning.message.includes(
-							"<a> element should have an href attribute"
-						) ||
-						warning.message.includes(
-							"A form label must be associated with a control"
-						)
+						warning.message.includes("<a> element should have an href attribute") ||
+						warning.message.includes("A form label must be associated with a control")
 					) {
 						return;
 					}
