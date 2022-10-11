@@ -11,7 +11,7 @@
 			"n": "Pas de test nécessaire",
 			"a": "Archivé - Le module pourrait encore fonctionner mais n'est plus activement maintenu",
 			"x": "Le module ne fonctionne pas du tout ou empêche le chargement du monde",
-			"u": "Statut inconnu - Le paquet n'est peut être pas sur la liste officielle",
+			"u": "Statut inconnu - Le module n'est peut être pas sur la liste officielle",
 			"c": "Marqué comme compatible par le développeur dans le manifeste"
 		},
 		"loading": "Chargement…",
