@@ -10,7 +10,7 @@
 			"g": "Le module fonctionne sans problème ou une nouvelle version est disponible",
 			"n": "Pas de test nécessaire",
 			"a": "Archivé - Le module peut encore fonctionner mais n'est plus maintenu",
-			"x": "Le module ne fonctionne pas  ou empêche le chargement du monde",
+			"x": "Le module ne fonctionne pas ou empêche le chargement du monde",
 			"u": "Statut inconnu - Le module n'est peut être pas sur la liste officielle",
 			"c": "Marqué comme compatible par le développeur dans le manifeste"
 		},
