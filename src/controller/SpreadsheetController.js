@@ -34,8 +34,7 @@ export default class SpreadsheetController {
 	 * @returns {Promise<string[]>} The versions available
 	 */
 	static async getVersions() {
-		const response = await fetch(`${WORKER_URL}/api/versions`);
-		return await response.json();
+		return await fetchJsonWithTimeout(`${WORKER_URL}/api/versions`);
 	}
 
 	/**
@@ -45,7 +44,7 @@ export default class SpreadsheetController {
 	 */
 	static async getRows(version) {
 		const spreadsheet = await this.getSpreadsheet(version);
-		this.spreadsheetStatus = spreadsheet[0][0];
+		this.spreadsheetStatus = spreadsheet.status.trim();
 		const modules = this.getModuleList();
 		const rows = modules.map(module => this.lookupCompatibility(spreadsheet, module, version));
 		return rows;
@@ -57,7 +56,7 @@ export default class SpreadsheetController {
 	 * @returns {Promise<Spreadsheet>} The spreadsheet
 	 */
 	static async getSpreadsheet(version) {
-		const response = await fetch(`${WORKER_URL}/?version=${version}`);
+		const response = await fetchWithTimeout(`${WORKER_URL}/?version=${version}`);
 		this.spreadsheetID = response.headers.get("X-Spreadsheet-ID");
 		return await response.json();
 	}
@@ -72,7 +71,7 @@ export default class SpreadsheetController {
 
 	/**
 	 * Lookup the compatibility of a module in the spreadsheet
-	 * @param {Spreadsheet} spreadsheet - The spreadsheet
+	 * @param {Spreadsheet} spreadsheet.data - The spreadsheet
 	 * @param {ModuleData} module - The module to lookup
 	 * @param {string} version - The Foundry VTT core version of the spreadsheet
 	 * @returns {RowData} The row of compatibility data
@@ -82,35 +81,31 @@ export default class SpreadsheetController {
 		const {
 			title,
 			type = "module",
-			authors: [{ name: authorName = "" } = {}],
+			authors: [{ name: authorName = null } = {}],
 			compatibleCoreVersion,
 			compatibility: { verified = null } = {},
 		} = module.data;
 		const installed = {
 			title: title ?? localize("mcc.untitled"),
 			type,
-			id: module.id ?? module.name,
-			author: authorName ?? module.author ?? localize("mcc.unknownAuthor"),
-			verified: verified ?? compatibleCoreVersion ?? "?",
+			id: module.id,
+			author: authorName ?? module.data.author ?? localize("mcc.unknownAuthor"),
+			version: verified ?? compatibleCoreVersion ?? "?",
 			status: "U",
 			notes: "",
+			official: false,
 		};
 
 		// Get spreadsheet data
-		const data = this.rowToData(spreadsheet.find(r => r[2] === (module.id ?? module.name)) ?? []);
-		data.official = true;
+		const data = spreadsheet.data.find(m => m.id === (module.id ?? module.name)) ?? installed;
 
 		// Merge data
-		for (const property in data) {
+		for (const property of ["title", "type", "id", "author", "version", "status", "notes"]) {
 			// Use the latest of the version numbers
 			if (property === "version") {
-				data.version = isNewerVersion(data.version, installed.verified) ? data.version : installed.verified;
+				data.version = isNewerVersion(data.version, installed.version) ? data.version : installed.version;
 			}
-			// Mark the package as non-official if there is no status or notes
-			if (!["status", "notes"].includes(property)) {
-				data.official = false;
-			}
-			// Use the spreadsheet data for the title, author, or if there is no spreadsheet data for this property
+			// Use the installed data for the title, author, or if there is no spreadsheet data for this property
 			if (["title", "author"].includes(property) || data[property] === undefined) {
 				data[property] = installed[property];
 			}
@@ -122,7 +117,7 @@ export default class SpreadsheetController {
 		}
 
 		// No status is equivalent to "Unknown"
-		if (data.status === "") {
+		if (data.status === undefined || data.status === "") {
 			data.status = "U";
 		}
 
@@ -154,22 +149,5 @@ export default class SpreadsheetController {
 		const v1Major = String(v1).split(".")[0];
 		const v0Major = String(v0).split(".")[0];
 		return v1Major === v0Major || isNewerVersion(v1Major, v0Major);
-	}
-
-	/**
-	 * Convert a spreadsheet row to a row of data
-	 * @param {SpreadsheetRow} row - The spreadsheet row
-	 * @returns {RowData} The row of data
-	 */
-	static rowToData(row) {
-		/** @type {RowData} */
-		const data = {},
-			/** @type {Array<keyof RowData>} */
-			headings = ["title", "type", "id", "author", "version", "status", "notes"];
-
-		for (let i = 0; i < headings.length; i++) {
-			data[headings[i]] = row?.[i];
-		}
-		return data;
 	}
 }

@@ -36,7 +36,7 @@
 		"showDetails": "Show details",
 		"enableActive": "Only show active packages",
 		"disableActive": "Show all installed packages",
-		"percentageFilteredTooltip": "The percentage ready for current filtered package count",
+		"percentageTooltip": "The percentage of visible packages that are ready to be used on the selected core version.",
 		"packageListingURL": "Foundry VTT Package Listing",
 		"foundryHubURL": "Foundry Hub",
 		"bazaarURL": "The Forge Bazaar",
