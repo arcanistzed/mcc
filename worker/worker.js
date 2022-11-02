@@ -1,4 +1,4 @@
-/* global MCC API_KEY */
+/* global MCC SHEETS_API_KEY FVTT_API_KEY FVTT_LICENSE */
 
 const VERSIONS = ["8", "9", "10"];
 const RANGE = encodeURIComponent("A:N");
@@ -12,7 +12,7 @@ const TTL = 60 * 10; // 10 minutes
 function getSpreadsheetID(version) {
 	switch (version) {
 		case "8":
-			return "17ov1y91lglUXDj8Nu6J22ewC2x_483AoI6RyB6i1NRs"
+			return "17ov1y91lglUXDj8Nu6J22ewC2x_483AoI6RyB6i1NRs";
 		case "9":
 			return "1ppPR348igxL75M_G7dWl3otzXYpPwrnj7NVSDP8GmVw";
 		case "10":
@@ -71,14 +71,92 @@ async function handleRequest(request) {
 
 	// Get the data from Google Sheets
 	const response = await fetch(
-		`https://sheets.googleapis.com/v4/spreadsheets/${ID}/values/${RANGE}?majorDimension=ROWS&key=${API_KEY}`
+		`https://sheets.googleapis.com/v4/spreadsheets/${ID}/values/${RANGE}?majorDimension=ROWS&key=${SHEETS_API_KEY}`
 	);
 	/** @type {string[][]} */
 	const { values } = await response.json();
 
+	const data = {
+		// Supplement the data
+		data: await supplement(values, version),
+		// Get the status from the spreadsheet
+		status: values[0][0],
+	};
+
 	// Cache the data
-	await MCC.put(ID, JSON.stringify(values, null, 2), { expirationTtl: TTL });
+	await MCC.put(ID, JSON.stringify(data), { expirationTtl: TTL });
 
 	// Return the data
-	return new Response(JSON.stringify(values, null, 2), { status: 201, headers });
+	return new Response(JSON.stringify(data), { status: 201, headers });
+}
+
+/**
+ * Supplement the data to be in a more useful format
+ * @param {string[][]} values The raw data from Google Sheets
+ * @param {string} version The Foundry VTT core version
+ * @returns {Promise<{title: string, type: string, id: author, version: string, status: string, notes: string}[]>} The data as an array of objects
+ */
+async function supplement(values, version) {
+	// Fetch compatible version from the Foundry VTT API
+	const remotePackages = await fromPackageListing(version);
+
+	const data = [];
+	// Translate each row into an object
+	for (let value of values) {
+		value = value.map(v => (v === "#N/A" ? undefined : v));
+		const [title, type, id, author, version, status, notes] = value;
+		const remote = remotePackages.find(p => p.id === id);
+		data.push({
+			title,
+			type,
+			id,
+			author,
+			version: remote?.version || version, // Use the remote version if it exists
+			status,
+			notes,
+			official: remote ? true : false,
+		});
+	}
+	return data;
+}
+
+/**
+ * Fetch the compatible version of all packages from the Foundry VTT API
+ * @param {string} version The Foundry VTT core version
+ * @returns {Promise<{id: string, version: string}[]>} The compatible versions of all packages
+ */
+async function fromPackageListing(version) {
+	const packages = [];
+	for (const type of ["module", "system"]) {
+		const response = await fetch(
+			"https://foundryvtt.com/_api/packages/get",
+			{
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `APIKey:${FVTT_API_KEY}`,
+				},
+				method: "POST",
+				body: JSON.stringify({
+					type,
+					version,
+					license: {
+						license: FVTT_LICENSE,
+					},
+				}),
+			}
+		);
+		const json = await response.json();
+		if (json.status !== "success") {
+			console.error(json);
+			return;
+		}
+		packages.push(
+			...json.packages.map(({ name, version }) => ({
+				id: name,
+				version: version.compatible_core_version,
+			}))
+		);
+	}
+	console.log("Request");
+	return packages;
 }
