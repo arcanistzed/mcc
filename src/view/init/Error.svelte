@@ -28,4 +28,8 @@
 		font-size: 8em;
 		color: var(--mcc-dark-color);
 	}
+
+	pre {
+		white-space: normal;
+	}
 </style>
