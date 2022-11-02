@@ -5,13 +5,14 @@
 		"id": "ID",
 		"notes": "Notes",
 		"statuses": {
-			"o": "Le paquet fonctionne avec quelques erreurs",
+			"o": "Le module fonctionne avec quelques erreurs",
 			"b": "Phase de test bloquée",
-			"g": "Le paquet fonctionne sans problème ou une nouvelle version est disponible",
+			"g": "Le module fonctionne sans problème ou une nouvelle version est disponible",
 			"n": "Pas de test nécessaire",
-			"a": "Archivé - A archiver ou n'est plus disponible",
-			"x": "Le paquet ne fonctionne pas du tout ou empêche le chargement du monde",
-			"u": "Statut inconnu - Le paquet n'est peut être pas sur la liste officielle"
+			"a": "Archivé - Le module peut encore fonctionner mais n'est plus maintenu",
+			"x": "Le module ne fonctionne pas ou empêche le chargement du monde",
+			"u": "Statut inconnu - Le module n'est peut être pas sur la liste officielle",
+			"c": "Marqué comme compatible par le développeur dans le manifeste"
 		},
 		"loading": "Chargement…",
 		"appTitle": "Vérificateur de Compatibilité des Modules",
@@ -40,6 +41,8 @@
 		"bazaarURL": "The Forge Bazaar",
 		"projectURL": "URL du projet",
 		"showCompatible": "Afficher les paquets compatibles",
-		"resetFilters": "Réinitialiser les filtres"
+		"resetFilters": "Réinitialiser les filtres",
+		"reminder": "N'oubliez pas que les développeurs de modules et de systèmes sont des bénévoles, qu'ils ont leur propre vie et leur propre emploi du temps et que ce n'est pas parce qu'ils n'ont pas encore effectué de mise à jour qu'ils ne le feront jamais. La patience est importante ! Les développeurs sont aussi des êtres humains.",
+		"unknownAuthor": "Auteur inconnu"
 	}
 }
