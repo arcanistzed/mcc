@@ -157,6 +157,5 @@ async function fromPackageListing(version) {
 			}))
 		);
 	}
-	console.log("Request");
 	return packages;
 }
