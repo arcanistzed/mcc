@@ -7,7 +7,8 @@
 			"n": "Nessun test necessario",
 			"u": "Status sconosciuto - Potrebbe non essere presente nella lista ufficiale",
 			"g": "Funziona senza problemi, o è disponibile una versione aggiornata",
-			"a": "Archiviato - deve essere archiviato, o non più disponibile"
+			"a": "Archiviato - deve essere archiviato, o non più disponibile",
+			"c": ""
 		},
 		"loading": "Caricamento…",
 		"selectVersion": "Controllo compatibilità per:",
@@ -40,6 +41,10 @@
 		"moduleManagementColorsExplanation": "I colori di sfondo qui sotto sono utilizzati per indicare lo stato del modulo nell'ultima versione di Foundry. Per maggiori informazioni, aprite Module Compatibility Checker con il pulsante sottostante.",
 		"enableActive": "Mostra solo pacchetti attivi",
 		"percentageFilteredTooltip": "La percentuale di pacchetti pronti (filtrati)",
-		"foundryHubURL": "Foundry Hub"
+		"foundryHubURL": "Foundry Hub",
+		"percentageTooltip": "",
+		"unknownAuthor": "",
+		"showCompatible": "",
+		"reminder": ""
 	}
 }

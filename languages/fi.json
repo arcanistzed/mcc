@@ -8,7 +8,8 @@
 			"g": "Paketti toimii ongelmitta tai päivitetty versio on saatavilla",
 			"a": "Arkistoitu - Arkistoidaan tai ei ole enää saatavilla",
 			"n": "Testausta ei tarvita",
-			"b": "Testaaminen estetty"
+			"b": "Testaaminen estetty",
+			"c": ""
 		},
 		"loading": "Ladataan…",
 		"selectVersion": "Tarkista yhteensopivuus:",
@@ -39,6 +40,10 @@
 		"bazaarURL": "The Forgen Bazaar",
 		"projectURL": "Projektin osoite",
 		"showKnownCompatible": "Näytä tunnettavasti yhteensopivat paketit",
-		"resetFilters": "Nollaa suotimet"
+		"resetFilters": "Nollaa suotimet",
+		"reminder": "",
+		"percentageTooltip": "",
+		"unknownAuthor": "",
+		"showCompatible": ""
 	}
 }
