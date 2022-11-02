@@ -12,7 +12,7 @@
 
 <footer>
 	<p>{localize("mcc.report.visible")}: {$spreadsheetStore.index.length} / {$spreadsheetStore.data.length}</p>
-	<p title={localize("mcc.percentageFilteredTooltip")}>{localize("mcc.report.percentage")}: {$filteredPercentage}%</p>
+	<p title={localize("mcc.percentageTooltip")}>{localize("mcc.report.percentage")}: {$filteredPercentage}%</p>
 	<p>{SpreadsheetController.spreadsheetStatus}</p>
 	<a href={`https://docs.google.com/spreadsheets/d/${SpreadsheetController.spreadsheetID}/pubhtml`}>
 		{localize("mcc.source")}
