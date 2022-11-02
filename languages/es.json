@@ -8,7 +8,8 @@
 			"g": "El Paquete funciona sin problemas o hay una nueva versión disponible",
 			"n": "No es necesario probar",
 			"a": "Archivado - Para archivar o no disponible",
-			"u": "Estado Desconocido - El Paquete no se encuentra en el listado oficial"
+			"u": "Estado Desconocido - El Paquete no se encuentra en el listado oficial",
+			"c": ""
 		},
 		"loading": "Cargando…",
 		"selectVersion": "Verificando compatibilidad con:",
@@ -40,6 +41,9 @@
 		"bazaarURL": "The Forge Bazaar",
 		"projectURL": "URL del Proyecto",
 		"showCompatible": "Mostrar sólo Paquetes compatibles",
-		"resetFilters": "Reiniciar Filtros"
+		"resetFilters": "Reiniciar Filtros",
+		"unknownAuthor": "",
+		"percentageTooltip": "",
+		"reminder": ""
 	}
 }
