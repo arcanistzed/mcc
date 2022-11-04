@@ -9,7 +9,7 @@
 			"n": "No es necesario probar",
 			"a": "Archivado - Para archivar o no disponible",
 			"u": "Estado Desconocido - El Paquete no se encuentra en el listado oficial",
-			"c": ""
+			"c": "Marcado como compatible por el desarrollador en el manifiesto"
 		},
 		"loading": "Cargando…",
 		"selectVersion": "Verificando compatibilidad con:",
@@ -42,8 +42,8 @@
 		"projectURL": "URL del Proyecto",
 		"showCompatible": "Mostrar sólo Paquetes compatibles",
 		"resetFilters": "Reiniciar Filtros",
-		"unknownAuthor": "",
-		"percentageTooltip": "",
+		"unknownAuthor": "Autor Desconocido",
+		"percentageTooltip": "El porcentaje de paquetes visibles que está listo para ser usado con la versión core seleccionada.",
 		"reminder": ""
 	}
 }
