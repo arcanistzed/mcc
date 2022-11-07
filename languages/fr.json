@@ -44,6 +44,6 @@
 		"resetFilters": "Réinitialiser les filtres",
 		"reminder": "N'oubliez pas que les développeurs de modules et de systèmes sont des bénévoles, qu'ils ont leur propre vie et leur propre emploi du temps et que ce n'est pas parce qu'ils n'ont pas encore effectué de mise à jour qu'ils ne le feront jamais. La patience est importante ! Les développeurs sont aussi des êtres humains.",
 		"unknownAuthor": "Auteur inconnu",
-		"percentageTooltip": ""
+		"percentageTooltip": "Le pourcentage de paquets visibles qui sont prêts à être utilisés sur la version sélectionnée de Foundry VTT."
 	}
 }
