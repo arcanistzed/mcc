@@ -139,9 +139,6 @@ async function fromPackageListing(version) {
 				body: JSON.stringify({
 					type,
 					version,
-					license: {
-						license: FVTT_LICENSE,
-					},
 				}),
 			}
 		);
