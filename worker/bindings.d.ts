@@ -1,6 +1,7 @@
 export { };
 
 declare global {
-    const API_KEY: string;
-    const MCC: KVNamespace;
+	const SHEETS_API_KEY: string;
+	const FVTT_API_KEY: string;
+    const MCC2: KVNamespace;
 }

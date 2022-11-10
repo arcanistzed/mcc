@@ -1,4 +1,4 @@
-/* global MCC SHEETS_API_KEY FVTT_API_KEY FVTT_LICENSE */
+/* global MCC2 SHEETS_API_KEY FVTT_API_KEY */
 
 const VERSIONS = ["8", "9", "10"];
 const RANGE = encodeURIComponent("A:N");
@@ -64,7 +64,7 @@ async function handleRequest(request) {
 	headers.append("X-Spreadsheet-ID", ID);
 
 	// Return the cached version if it exists
-	const cached = await MCC.get(ID, { cacheTtl: TTL });
+	const cached = await MCC2.get(ID, { cacheTtl: TTL });
 	if (cached) {
 		return new Response(cached, { status: 200, headers });
 	}
@@ -84,7 +84,7 @@ async function handleRequest(request) {
 	};
 
 	// Cache the data
-	await MCC.put(ID, JSON.stringify(data), { expirationTtl: TTL });
+	await MCC2.put(ID, JSON.stringify(data), { expirationTtl: TTL });
 
 	// Return the data
 	return new Response(JSON.stringify(data), { status: 201, headers });
