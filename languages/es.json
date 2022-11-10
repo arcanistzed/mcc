@@ -7,9 +7,9 @@
 			"b": "Imposible de probar",
 			"g": "El Paquete funciona sin problemas o hay una nueva versión disponible",
 			"n": "No es necesario probar",
-			"a": "Archivado - Para archivar o no disponible",
+			"a": "Archivado - El paquete puede funcionar, pero no es mantenido activamente",
 			"u": "Estado Desconocido - El Paquete no se encuentra en el listado oficial",
-			"c": ""
+			"c": "Marcado como compatible por el desarrollador en el manifiesto"
 		},
 		"loading": "Cargando…",
 		"selectVersion": "Verificando compatibilidad con:",
@@ -42,8 +42,8 @@
 		"projectURL": "URL del Proyecto",
 		"showCompatible": "Mostrar sólo Paquetes compatibles",
 		"resetFilters": "Reiniciar Filtros",
-		"unknownAuthor": "",
-		"percentageTooltip": "",
-		"reminder": ""
+		"unknownAuthor": "Autor Desconocido",
+		"percentageTooltip": "El porcentaje de paquetes visibles que está listo para ser usado con la versión core seleccionada.",
+		"reminder": "Favor de recordar que los desarrolladores de módulos y sistemas son voluntarios, tienen sus propias vidas y agendas. Solo porque no hayan actualizado el contenido aun, no significa que no lo vayan a hacer nunca. Es importante tener paciencia. Los desarrolladores son humanos también."
 	}
 }
