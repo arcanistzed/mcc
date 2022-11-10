@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.4.0 - 9 Nov 2022
+
+* Added missing localization string
+* Fixed preventing error text from being cut off
+* Updated dependencies
+* Added feature to pull updated compatibility data from the official package listing
+* Fixed total visible packages count
+* Clarified localization string for percentage filtered tooltip
+* Updated translations from Foundry Hub
+
 ## 1.3.2 - 18 Sep 2022
 
 * Remove deprecated manifest field
