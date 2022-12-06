@@ -80,7 +80,7 @@ jobs:
       - name: FoundryVTT AutoPublish
         id: auto_publish
         if: "!github.event.release.prerelease"
-        uses: Varriount/fvtt-autopublish@v1.0.9
+        uses: Varriount/fvtt-autopublish@v1.1.0
         with:
           username: ${{ secrets.FOUNDRY_ADMIN_USER }}
           password: ${{ secrets.FOUNDRY_ADMIN_PW }}
