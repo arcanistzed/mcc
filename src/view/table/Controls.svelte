@@ -57,6 +57,7 @@
 
 <nav>
 	<!-- TODO: link elements with id -->
+	<!-- svelte-ignore a11y-label-has-associated-control -->
 	<label>{localize("mcc.selectVersion")}</label>
 	<TJSSelect {select} />
 
