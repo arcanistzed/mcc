@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.1 - 8 Feb 2023
+
+Update TRL and Svelte dependencies (thanks to @typhonrt)
+
 ## 1.4.0 - 9 Nov 2022
 
 * Added missing localization string
