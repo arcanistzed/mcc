@@ -9,16 +9,20 @@
 
 <section>
 	{#each $statuses as status, i (status.key)}
+		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<div class="entry" class:line-through={!status.value} on:click={() => statuses.toggleVisible(status.key)}>
 			<span style:background-color={$pieData.datasets[0].backgroundColor[i]}>{$pieData.datasets[0].data[i]} / {$spreadsheetStore.index.length}</span>
+			<!-- svelte-ignore a11y-missing-attribute -->
 			<a>{$pieData.labels[i]}</a>
 		</div>
 	{/each}
 	<hr />
 	<div class="links">
+		<!-- svelte-ignore a11y-missing-attribute a11y-click-events-have-key-events -->
 		<a on:click={statuses.setCompatibleVisible}>
 			<i class="fas fa-thumbs-up" /> {localize("mcc.showCompatible")}
 		</a>
+		<!-- svelte-ignore a11y-missing-attribute a11y-click-events-have-key-events -->
 		<a on:click={() => spreadsheetStore.resetFilters()}>
 			<i class="fas fa-trash" /> {localize("mcc.resetFilters")}
 		</a>

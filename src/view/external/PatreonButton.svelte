@@ -2,6 +2,7 @@
 import { localize } from "@typhonjs-fvtt/runtime/svelte/helper";
 </script>
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <span class="tag patreon" on:click={() => window.open("https://www.patreon.com/bePatron?u=15896855", "_blank")}>
 	<i class="fab fa-patreon" />
 	{localize("mcc.patreon")}

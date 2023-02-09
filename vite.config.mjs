@@ -21,8 +21,7 @@ export default defineConfig(({ command }) => {
 		resolve: { conditions: ["import", "browser"] },
 
 		esbuild: {
-			target: ["es2022", "chrome100"],
-			keepNames: true, // Note: doesn't seem to work
+			target: ["es2022"]
 		},
 
 		css: {
@@ -49,6 +48,7 @@ export default defineConfig(({ command }) => {
 			hmr: {
 				overlay: false,
 			},
+			fs: { strict: false }
 		},
 
 		build: {
@@ -57,7 +57,7 @@ export default defineConfig(({ command }) => {
 			sourcemap: SOURCEMAPS,
 			brotliSize: true,
 			minify: COMPRESS ? "terser" : false,
-			target: ["es2022", "chrome100"],
+			target: ["es2022"],
 			terserOptions: COMPRESS ? { ...terserConfig(), ecma: 2022 } : void 0,
 			lib: {
 				entry: "./index.js",
@@ -68,26 +68,20 @@ export default defineConfig(({ command }) => {
 
 		plugins: [
 			svelte({
-				preprocess: preprocess(),
-				onwarn: (warning, handler) => {
-					// Suppress `a11y-missing-attribute` for missing href in <a> links
-					// Suppress `a11y-label-has-associated-control` for detached <label> and control
-					if (
-						warning.message.includes("<a> element should have an href attribute") ||
-						warning.message.includes("A form label must be associated with a control")
-					) {
-						return;
-					}
-
-					// Let Rollup handle all other warnings normally
-					handler && handler(warning);
+				compilerOptions: {
+					// Provides a custom hash adding the string defined in `s_SVELTE_HASH_ID` to scoped Svelte styles;
+					// This is reasonable to do as the framework styles in TRL compiled across `n` different packages
+					// will be the same. Slightly modifying the hash ensures that your package has uniquely scoped
+					// styles for all TRL components and makes it easier to review styles in the browser debugger.
+					cssHash: ({ hash, css }) => `svelte-${MODULE_ID}-${hash(css)}`
 				},
+				preprocess: preprocess()
 			}),
 
 			// Necessary when bundling npm-linked packages
 			resolve({
 				browser: true,
-				dedupe: ["svelte"],
+				dedupe: ["svelte", '@typhonjs-fvtt/runtime', '@typhonjs-fvtt/svelte-standard'],
 			}),
 		],
 	};

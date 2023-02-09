@@ -1,3 +1,9 @@
+// Provides blue text shadow for package context menu.
+#mmc-package-menu {
+	--tjs-default-popup-background: hsl(220, 30%, 20%);
+	--tjs-default-text-shadow-focus-hover: 0 0 8px blue;
+}
+
 // Unfortunately there are several game systems out there that use `!important` to override styles
 #mcc {
 	accent-color: var(--mcc-medium-color);
@@ -12,11 +18,14 @@
 
 	--tjs-action-ripple-background: linear-gradient(64.5deg, var(--mcc-medium-color) 40%, var(--mcc-light-color) 60% );
 
+	--tjs-default-text-shadow-focus-hover: 0 0 8px blue;
+	--tjs-default-popup-background: var(--mcc-dark-color);
 	--tjs-input-text-padding: 0 0.25em;
 	--tjs-input-placeholder-color: hsl(50deg 15% 30%);
 	--tjs-icon-button-background: hsl(50deg 10% 80%);
 	--tjs-icon-button-background-hover: hsl(50deg 10% 75%);
 	--tjs-icon-button-background-selected: hsla(220, 70%, 60%, 0.2);
+	--tjs-select-option-background: var(--mcc-medium-color);
 
 	.window-content {
 		background: url(../../ui/parchment.jpg) !important;
