@@ -2,7 +2,7 @@ import { localize } from "@typhonjs-fvtt/runtime/svelte/helper";
 
 import { statusData } from "../store/statusData.js";
 
-const WORKER_URL = "https://mcc.arcanist.workers.dev";
+const WORKER_URL = "https://mcc2.arcanist.workers.dev";
 
 /**
  * @typedef {object} RowData

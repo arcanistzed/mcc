@@ -1,6 +1,6 @@
-name = "mcc"
+name = "mcc2"
 workers_dev = true
 kv_namespaces = [
-	{ binding = "MCC", id = "ff0447bcbe66448ea02cd70edc7ddf95", preview_id = "2a6423ab395b49998cfc94534df7fc6f" },
+	{ binding = "MCC2", id = "23da573f09ee42e3be72cd0d8726e224", preview_id = "9b4eb7c58f8245beb711994ee97cc1e2" },
 ]
 compatibility_date = "2022-07-07"
