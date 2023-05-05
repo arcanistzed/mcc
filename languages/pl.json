@@ -38,6 +38,11 @@
 		"version": "Wersja kompatybilna",
 		"notes": "Uwagi",
 		"error": "Proszę spróbować ponownie. Jeśli ten problem nadal występuje, zgłoś problem na GitHubie.",
-		"moduleManagementColorsExplanation": "Kolory tła poniżej są używane do wskazania statusu modułu w najnowszej wersji Foundry VTT. Otwórz Module Compatibility Checker za pomocą poniższego przycisku, aby uzyskać więcej informacji."
+		"moduleManagementColorsExplanation": "Kolory tła poniżej są używane do wskazania statusu modułu w najnowszej wersji Foundry VTT. Otwórz Module Compatibility Checker za pomocą poniższego przycisku, aby uzyskać więcej informacji.",
+		"bazaarURL": "The Forge Bazaar",
+		"projectURL": "URL projektu",
+		"showCompatible": "Pokaż zgodne pakiety",
+		"resetFilters": "Wyczyść filtry",
+		"reminder": "Proszę pamiętać, że twórcy modułów i systemów są wolontariuszami, mają swoje własne życie i plany, a to, że nie dokonali jeszcze aktualizacji nie oznacza, że nigdy tego nie zrobią. Cierpliwość jest ważna! Deweloperzy też są ludźmi."
 	}
 }
