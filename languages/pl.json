@@ -1,1 +1,43 @@
-{}
+{
+	"mcc": {
+		"statuses": {
+			"o": "Pakiet działa z nielicznymi błędami",
+			"b": "Zablokowanie możliwości testowania",
+			"n": "Nie trzeba przeprowadzać żadnych testów",
+			"x": "Pakiet w ogóle nie działa lub uniemożliwia załadowanie świata",
+			"g": "Pakiet działa bez problemu lub dostępna jest jego zaktualizowana wersja",
+			"a": "Archiwalny - Pakiet może nadal funkcjonować, ale nie jest aktywnie utrzymywany",
+			"u": "Status nieznany - pakiet może nie znajdować się w oficjalnym wykazie",
+			"c": "Oznaczone jako kompatybilne przez dewelopera w manifeście"
+		},
+		"loading": "Ładowanie…",
+		"title": "Tytuł",
+		"id": "ID",
+		"status": "Status",
+		"untitled": "Bez tytułu",
+		"unknownAuthor": "Nieznany autor",
+		"report": {
+			"visible": "Widoczne pakiety",
+			"percentage": "Procent gotowych"
+		},
+		"source": "Otwórz oficjalny arkusz",
+		"issues": "Rejestr błędów",
+		"button": "Sprawdzanie zgodności modułów",
+		"patreon": "Dołącz do Patronów",
+		"scrollTop": "Przewiń do góry",
+		"hideDetails": "Ukryj szczegóły",
+		"showDetails": "Pokaż szczegóły",
+		"enableActive": "Pokaż tylko aktywne pakiety",
+		"disableActive": "Pokaż wszystkie zainstalowane pakiety",
+		"percentageTooltip": "Procent widocznych pakietów, które są gotowe do użycia na wybranej wersji Foundry VTT.",
+		"packageListingURL": "Lista pakietów Foundry VTT",
+		"foundryHubURL": "Foundry Hub",
+		"appTitle": "Sprawdzanie zgodności modułów",
+		"selectVersion": "Sprawdź zgodność dla:",
+		"type": "Typ",
+		"version": "Wersja kompatybilna",
+		"notes": "Uwagi",
+		"error": "Proszę spróbować ponownie. Jeśli ten problem nadal występuje, zgłoś problem na GitHubie.",
+		"moduleManagementColorsExplanation": "Kolory tła poniżej są używane do wskazania statusu modułu w najnowszej wersji Foundry VTT. Otwórz Module Compatibility Checker za pomocą poniższego przycisku, aby uzyskać więcej informacji."
+	}
+}
