@@ -1,1 +1,14 @@
-{}
+{
+	"mcc": {
+		"appTitle": "Module Compatibility Checker",
+		"statuses": {
+			"x": "Das Modul funktioniert überhaupt nicht oder verhindert, dass die Welt laden kann",
+			"o": "Das Modul funktioniert, hat aber einige Fehler",
+			"b": "Vom Testen gesperrt",
+			"n": "Kein Test notwendig",
+			"a": "Archiviert - Das Modul könnte funktionieren, wird aber nicht mehr weiterentwickelt",
+			"u": "Unbekannter Status - Das Modul ist wahrscheinlich offiziell nicht gelistet",
+			"g": "Das Modul funktioniert ohne Probleme oder eine aktualisierte Version ist verfügbar"
+		}
+	}
+}
