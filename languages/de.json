@@ -1,0 +1,48 @@
+{
+	"mcc": {
+		"appTitle": "Module Compatibility Checker",
+		"statuses": {
+			"x": "Das Modul funktioniert überhaupt nicht oder verhindert, dass die Welt laden kann",
+			"o": "Das Modul funktioniert, hat aber einige Fehler",
+			"b": "Vom Testen gesperrt",
+			"n": "Kein Test notwendig",
+			"a": "Archiviert - Das Modul könnte funktionieren, wird aber nicht mehr weiterentwickelt",
+			"u": "Unbekannter Status - Das Modul ist wahrscheinlich offiziell nicht gelistet",
+			"g": "Das Modul funktioniert ohne Probleme oder eine aktualisierte Version ist verfügbar",
+			"c": "Ist im Manifest vom Entwickler als kompatibel markiert"
+		},
+		"loading": "Laden…",
+		"selectVersion": "Überprüfe Kompatibilität für:",
+		"title": "Name",
+		"type": "Typ",
+		"id": "ID",
+		"version": "Kompatible Version",
+		"status": "Status",
+		"notes": "Bemerkung",
+		"untitled": "Ohne Titel",
+		"unknownAuthor": "Unbekannter Autor",
+		"report": {
+			"visible": "Sichtbare Module",
+			"percentage": "Funktional (Prozentual)"
+		},
+		"source": "Öffne offizielle Tabelle",
+		"error": "Bitte versuche es erneut. Wenn das Problem weiterhin besteht, bitte melde es auf GitHub.",
+		"issues": "Fehler-Tracker",
+		"button": "Module Compatibility Checker",
+		"moduleManagementColorsExplanation": "Die unten aufgeführten Hintergrundfarben zeigen den Status der Module in der aktuellen FoundryVTT-Version an. Öffne Module Compatibility Checker mit der Schaltfläche für mehr Informationen.",
+		"patreon": "Werde ein Patron",
+		"scrollTop": "Nach oben scrollen",
+		"hideDetails": "Verstecke Details",
+		"showDetails": "Zeige Details",
+		"enableActive": "Zeige nur aktive Module",
+		"disableActive": "Zeige alle installierten Module",
+		"percentageTooltip": "Die Prozentzahl der sichtbaren Module, welche bereit sind in der ausgewählten FoundryVTT benutzt zu werden.",
+		"packageListingURL": "FoundryVTT Modulliste",
+		"foundryHubURL": "Foundry Hub",
+		"bazaarURL": "The Forge Bazaar",
+		"projectURL": "Projekt-URL",
+		"showCompatible": "Zeige kompatible Module",
+		"resetFilters": "Filter zurücksetzen",
+		"reminder": "Bitte erinnere dich daran, dass Modul- und System-Entwickler dies ehrenamtlich tun. Sie haben ihr eigenes Leben und ihren eigenen Zeitplan. Nur weil es noch nicht aktualisiert wurde, heißt es nicht, dass es niemals passieren wird. Geduld ist wichtig! Entwickler sind auch nur Menschen."
+	}
+}
