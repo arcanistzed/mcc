@@ -6,10 +6,10 @@
 			"u": "Tuntematon tila - Paketti ei ehkä ole virallisessa luettelossa",
 			"x": "Paketti ei toimi lainkaan tai estää maailman lataamisen",
 			"g": "Paketti toimii ongelmitta tai päivitetty versio on saatavilla",
-			"a": "Arkistoitu - Arkistoidaan tai ei ole enää saatavilla",
+			"a": "Arkistoitu - Paketti voi yhä toimia, mutta sitä ei ylläpidetä aktiivisesti",
 			"n": "Testausta ei tarvita",
 			"b": "Testaaminen estetty",
-			"c": ""
+			"c": "Kehittäjä on merkinnyt yhteensopivaksi manifestissa"
 		},
 		"loading": "Ladataan…",
 		"selectVersion": "Tarkista yhteensopivuus:",
@@ -28,7 +28,7 @@
 		"error": "Yritä uudelleen. Jos ongelma jatkuu, ilmoita asiasta GitHubissa.",
 		"issues": "Ongelmanseurain",
 		"button": "Module Compatibility Checker",
-		"moduleManagementColorsExplanation": "Alla olevia taustavärejä käytetään osoittamaan moduulin tilaa uusimmassa ytimen versiossa. Avaa Module Compatibility Checker alla olevasta painikkeesta saadaksesi lisätietoja.",
+		"moduleManagementColorsExplanation": "Alla olevia taustavärejä käytetään osoittamaan moduulin tilaa uusimmassa Foundry VTT versiossa. Avaa Module Compatibility Checker alla olevasta painikkeesta saadaksesi lisätietoja.",
 		"patreon": "Ryhdy tukijaksi",
 		"scrollTop": "Vieritä alkuun",
 		"hideDetails": "Piilota yksityiskohdat",
@@ -41,9 +41,9 @@
 		"projectURL": "Projektin osoite",
 		"showKnownCompatible": "Näytä tunnettavasti yhteensopivat paketit",
 		"resetFilters": "Nollaa suotimet",
-		"reminder": "",
-		"percentageTooltip": "",
-		"unknownAuthor": "",
-		"showCompatible": ""
+		"reminder": "Muistathan, että moduulien ja järjestelmien kehittäjät ovat vapaaehtoisia: heillä on oma elämänsä ja aikataulunsa ja vaikka he eivät ole vielä päivittäneet, se ei tarkoita, etteivät he koskaan tee sitä. Kärsivällisyys on tärkeää! Myös kehittäjät ovat ihmisiä.",
+		"percentageTooltip": "Näkyvissä olevien pakettien prosenttiosuus, jotka ovat valmiita käytettäväksi valitulla Foundry VTT versiolla.",
+		"unknownAuthor": "Tuntematon tekijä",
+		"showCompatible": "Näytä yhteensopivat paketit"
 	}
 }
