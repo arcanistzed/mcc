@@ -8,7 +8,7 @@
 			"u": "Status sconosciuto - Potrebbe non essere presente nella lista ufficiale",
 			"g": "Funziona senza problemi, o è disponibile una versione aggiornata",
 			"a": "Archiviato - deve essere archiviato, o non più disponibile",
-			"c": ""
+			"c": "Contrassegnato come compatibile dallo sviluppatore nel manifesto"
 		},
 		"loading": "Caricamento…",
 		"selectVersion": "Controllo compatibilità per:",
@@ -22,8 +22,8 @@
 			"visible": "Pacchetti visibili",
 			"percentage": "Percentuale pronti"
 		},
-		"issues": "",
-		"button": "",
+		"issues": "Localizzatore dei problemi",
+		"button": "Verifica dei moduli compatibili",
 		"patreon": "Diventa un Patron",
 		"scrollTop": "Scorri in cima",
 		"hideDetails": "Nascondi dettagli",
@@ -42,9 +42,9 @@
 		"enableActive": "Mostra solo pacchetti attivi",
 		"percentageFilteredTooltip": "La percentuale di pacchetti pronti (filtrati)",
 		"foundryHubURL": "Foundry Hub",
-		"percentageTooltip": "",
-		"unknownAuthor": "",
-		"showCompatible": "",
-		"reminder": ""
+		"percentageTooltip": "Percentuale di pacchetti visibili pronti per essere utilizzati nella versione Foundry VTT selezionata.",
+		"unknownAuthor": "Autore Sconosciuto",
+		"showCompatible": "Mostra pacchetti compatibili",
+		"reminder": "Ricordatevi che gli sviluppatori di moduli e sistemi sono volontari, hanno le loro vite e i loro programmi e solo perché non hanno ancora aggiornato non significa che non lo faranno mai. La pazienza è importante! Anche gli sviluppatori sono umani."
 	}
 }
